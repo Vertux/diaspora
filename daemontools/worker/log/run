@@ -1,0 +1,9 @@
+#!/bin/bash
+
+ABSOLUTE_PATH=$(dirname $(readlink -e $0))
+cd $ABSOLUTE_PATH/../..
+source ./common.sh
+
+cd $ABSOLUTE_PATH
+
+exec setuidgid $DIASPORA_USER multilog t ./worker

@@ -1,0 +1,11 @@
+#!/bin/bash
+
+echo "(Re)Starting Diaspora Appserver..."
+
+cd $(dirname $(readlink -e $0))/..
+source ./common.sh
+
+mkdir -p /var/run/diaspora
+chown $DIASPORA_USER /var/run/diaspora
+
+exec setuidgid $DIASPORA_USER bundle exec unicorn -c config/unicorn.rb

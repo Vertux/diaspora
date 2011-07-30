@@ -1,0 +1,9 @@
+#!/bin/bash
+
+ABSOLUTE_PATH=$(dirname $(readlink -e $0))
+cd  $ABSOLUTE_PATH/..
+source ./common.sh
+
+export QUEUE='*' VERBOSE=true
+
+exec setuidgid $DIASPORA_USER bundle exec rake resque:work
