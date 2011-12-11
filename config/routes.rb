@@ -170,14 +170,19 @@ Diaspora::Application.routes.draw do
     end
   end
 
-  scope 'api/v0', :controller => :apis do
-    get :me
-  end
-
   namespace :api do
     namespace :v0 do
-      get "/users/:username" => 'users#show', :as => 'user'
-      get "/tags/:name" => 'tags#show', :as => 'tag'
+      # Backward compatibillity
+      get "/me" => "users#me"
+      
+      scope "/users", :controller => :users do
+        get :me
+        get ":username" => :show, :as => 'user'
+      end
+      
+      scope "/tags", :controller => :tags do
+        get ":name" => :show, :as => 'tag'
+      end
     end
   end
 

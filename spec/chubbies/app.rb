@@ -85,7 +85,7 @@ module Chubbies
       if params['id'] && user = User.where(:id => params['id']).first
         if user.access_token
           begin
-            @resource_response = user.access_token.token.get("/api/v0/me")
+            @resource_response = user.access_token.token.get("/api/v0/users/me")
             haml :response
           rescue OAuth2::Error
             "Token invalid"

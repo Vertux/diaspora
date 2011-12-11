@@ -2,7 +2,4 @@
 #   licensed under the Affero General Public License version 3 or later.  See
 #   the COPYRIGHT file.
 
-require 'spec_helper'
-
-describe ApisController do
-end
+ActsAsApi::Config.add_root_node_for = [:xml]
