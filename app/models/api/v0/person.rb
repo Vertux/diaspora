@@ -7,11 +7,14 @@ module Api::V0::Person
   included do
     acts_as_api
     
-    api_accessible :v0_private_person_info do |tpl|
+    api_accessible :v0_public_person_info do |tpl|
       tpl.add :diaspora_handle
       tpl.add :first_name
       tpl.add :last_name
       tpl.add :api_v0_image_urls, :as => :image_urls
+    end
+    
+    api_accessible :v0_private_person_info, :extend => :v0_public_person_info do |tpl|
       tpl.add "profile.birthday", :as => :birthday
       tpl.add "profile.gender", :as => :gender
       tpl.add "profile.bio", :as => :bio

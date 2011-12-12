@@ -11,8 +11,11 @@ class Api::V0::PeopleController < Api::V0::ApplicationController
       person = ::Person.where(:diaspora_handle => handle).first
     end
     
+    
     if person
-      respond_with person, :api_template => :v0_private_person_info
+      contact = @user.contact_for(person)
+      template = (contact && contact.sharing?) ? :v0_private_person_info : :v0_public_person_info
+      respond_with person, :api_template => template
     else
       head :not_found
     end

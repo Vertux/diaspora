@@ -4,7 +4,7 @@
 
 class Api::V0::LikesController < Api::V0::ApplicationController
   def index
-    if post = Post.api_v0_find_by_type(params[:post_id], params[:post_type])
+    if post = Post.api_v0_find_visible_by_type(@user, params[:post_id], params[:post_type])
       respond_with post.likes, :api_template => :v0_private_like_info
     else
       head :not_found

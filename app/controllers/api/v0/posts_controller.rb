@@ -5,7 +5,7 @@
 
 class Api::V0::PostsController < Api::V0::ApplicationController
   def show
-    if post = Post.api_v0_find_by_type(params[:id], params[:type])
+    if post = Post.api_v0_find_visible_by_type(@user, params[:id], params[:type])
       respond_with post, :api_template => :v0_private_post_info
     else
       head :not_found
