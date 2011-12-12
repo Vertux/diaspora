@@ -3,7 +3,8 @@
 #   the COPYRIGHT file.
 
 class ActivityStreams::Photo < Post
-  include Diaspora::Socketable
+  #include Diaspora::Socketable
+  include Api::V0::Templates::Post::ActivityStreams::Photo
 
   xml_name self.name.underscore.gsub!('/', '-')
   xml_attr :image_url

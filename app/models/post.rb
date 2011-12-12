@@ -8,6 +8,7 @@ class Post < ActiveRecord::Base
   include Diaspora::Likeable
   include Diaspora::Commentable
   include Diaspora::Shareable
+  include Api::V0::Templates::Post
 
   xml_attr :provider_display_name
 

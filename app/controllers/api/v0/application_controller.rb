@@ -11,13 +11,19 @@ class Api::V0::ApplicationController < ApplicationController
   private
   
   def oauth_authenticate!(options={})
+    unless params[:bypass]
       filter = OAuth2::Provider::Rails::ControllerAuthentication::ClassMethods::AuthenticationFilter.new(options.delete(:scope))
       filter.filter(self) do
       end
+    end
   end
   
   def set_user_from_oauth
-    @user = request.env['oauth2'].resource_owner
+    if params[:bypass]
+      @user = User.first
+    else
+      @user = request.env['oauth2'].resource_owner
+    end
   end
   
 end

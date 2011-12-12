@@ -3,8 +3,9 @@
 #   the COPYRIGHT file.
 
 class StatusMessage < Post
-  include Diaspora::Socketable
+  #include Diaspora::Socketable
   include Diaspora::Taggable
+  include Api::V0::Templates::Post::StatusMessage
 
   include ActionView::Helpers::TextHelper
   include PeopleHelper

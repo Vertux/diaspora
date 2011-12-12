@@ -7,6 +7,7 @@ class Photo < ActiveRecord::Base
 
   include Diaspora::Commentable
   include Diaspora::Shareable
+  include Api::V0::Templates::Photo
 
   mount_uploader :processed_image, ProcessedImage
   mount_uploader :unprocessed_image, UnprocessedImage
@@ -87,7 +88,8 @@ class Photo < ActiveRecord::Base
   def url(name = nil)
     if remote_photo_path
       name = name.to_s + '_' if name
-      remote_photo_path + name.to_s + remote_photo_name
+      url = remote_photo_path+ "/" + name.to_s + remote_photo_name
+      url.gsub("//", "/").gsub(":/", "://")
     elsif processed?
       processed_image.url(name)
     else

@@ -2,4 +2,4 @@
 #   licensed under the Affero General Public License version 3 or later.  See
 #   the COPYRIGHT file.
 
-ActsAsApi::Config.add_root_node_for = [:xml]
+ActsAsApi::Config.add_root_node_for = []

@@ -183,6 +183,8 @@ Diaspora::Application.routes.draw do
       scope "/tags", :controller => :tags do
         get ":name" => :show, :as => 'tag'
       end
+      
+      resources :posts, :only => [:show]
     end
   end
 
