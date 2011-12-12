@@ -6,6 +6,8 @@ require File.join(Rails.root, 'lib', 'stream', 'multi')
 require File.join(Rails.root, 'lib','stream', 'comments')
 require File.join(Rails.root, 'lib','stream', 'likes')
 require File.join(Rails.root, 'lib','stream', 'mention')
+require File.join(Rails.root, 'lib', 'stream', 'followed_tag')
+require File.join(Rails.root, 'lib', 'stream', 'tag')
 
 class Api::V0::StreamsController < Api::V0::ApplicationController
   def main
@@ -24,9 +26,22 @@ class Api::V0::StreamsController < Api::V0::ApplicationController
     stream_action(Stream::Mention)
   end
   
+  def followed_tags
+    stream_action(Stream::FollowedTag)
+  end
+  
+  def tag
+    stream_action(Stream::Tag, :second_param => params[:name])
+  end
+  
   private
-  def stream_action(stream_class)
-    stream = stream_class.new(@user, :max_time => max_time, :sort_order => sort_order)
+  def stream_action(stream_class, opts={})
+    opts = {:max_time => max_time, :sort_order => sort_order}.merge(opts)
+    if second_param = opts.delete(:second_param)
+      stream = stream_class.new(@user, second_param, opts)
+    else
+      stream = stream_class.new(@user, opts)
+    end
     
     respond_to do |format|
       format.xml { render_for_api :v0_private_post_info, :xml => stream.stream_posts }

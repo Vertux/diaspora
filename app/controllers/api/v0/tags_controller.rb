@@ -15,4 +15,13 @@ class Api::V0::TagsController < Api::V0::ApplicationController
       head :not_found
     end
   end
+  
+  def followed_tags
+    tags = @user.followed_tags.collect { |tag| tag.name }
+    
+    respond_to do |format|
+      format.xml { render :xml => tags }
+      format.json { render :json => tags }
+    end
+  end
 end

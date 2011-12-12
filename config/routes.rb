@@ -151,13 +151,6 @@ Diaspora::Application.routes.draw do
 
   # External
 
-  resources :authorizations, :only => [:index, :destroy]
-  scope "/oauth", :controller => :authorizations, :as => "oauth" do
-    get "authorize" => :new
-    post "authorize" => :create
-    post :token
-  end
-
   resources :services, :only => [:index, :destroy]
   controller :services do
     scope "/auth", :as => "auth" do
@@ -170,6 +163,15 @@ Diaspora::Application.routes.draw do
     end
   end
 
+  # APIs
+
+  resources :authorizations, :only => [:index, :destroy]
+  scope "/oauth", :controller => :authorizations, :as => "oauth" do
+    get "authorize" => :new
+    post "authorize" => :create
+    post :token
+  end
+
   namespace :api do
     namespace :v0 do
       # Backward compatibillity
@@ -180,8 +182,12 @@ Diaspora::Application.routes.draw do
         get ":username" => :show, :as => 'user'
       end
       
-      scope "/tags", :controller => :tags do
-        get ":name" => :show, :as => 'tag'
+      controller :tags do
+        get :followed_tags
+        
+        scope "/tags" do
+          get ":name" => :show, :as => 'tag'
+        end
       end
       
       resources :posts, :only => [:show] do
@@ -194,6 +200,8 @@ Diaspora::Application.routes.draw do
         get :commented
         get :liked
         get :mentions
+        get :followed_tags
+        get "tags/:name" => :tag
       end
     end
   end
