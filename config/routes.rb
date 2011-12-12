@@ -184,7 +184,9 @@ Diaspora::Application.routes.draw do
         get ":name" => :show, :as => 'tag'
       end
       
-      resources :posts, :only => [:show]
+      resources :posts, :only => [:show] do
+        resources :comments, :only => [:index]
+      end
     end
   end
 

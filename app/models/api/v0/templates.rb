@@ -124,4 +124,19 @@ module Api::V0::Templates
           }.flatten]
       end
   end
+  
+  
+  module Comment
+    extend ActiveSupport::Concern
+    included do
+      acts_as_api
+      
+      api_accessible :v0_private_comment_info do |tpl|
+        tpl.add :text
+        tpl.add "author.diaspora_handle", :as => :diaspora_handle
+        tpl.add :created_at
+        tpl.add :likes_count
+      end
+    end
+  end
 end

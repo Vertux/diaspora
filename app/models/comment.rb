@@ -9,10 +9,10 @@ class Comment < ActiveRecord::Base
   include Diaspora::Webhooks
   include Diaspora::Guid
   include Diaspora::Relayable
-
-  include Diaspora::Socketable
+  #include Diaspora::Socketable
   include Diaspora::Taggable
   include Diaspora::Likeable
+  include Api::V0::Templates::Comment
 
   acts_as_taggable_on :tags
   extract_tags_from :text
