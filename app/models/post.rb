@@ -1,6 +1,9 @@
 #   Copyright (c) 2010-2011, Diaspora Inc.  This file is
 #   licensed under the Affero General Public License version 3 or later.  See
-#   the COPYRIGHT file.
+#   the COPYRIGHT file
+
+# looks like we loose it in our childs if we don't require it here. Don't ask me why
+require File.join(Rails.root, 'lib/diaspora/web_socket')
 
 class Post < ActiveRecord::Base
   include ApplicationHelper
@@ -8,7 +11,7 @@ class Post < ActiveRecord::Base
   include Diaspora::Likeable
   include Diaspora::Commentable
   include Diaspora::Shareable
-  include Api::V0::Templates::Post
+  include Api::V0::Post
 
   xml_attr :provider_display_name
 

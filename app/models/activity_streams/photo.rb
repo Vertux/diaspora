@@ -1,10 +1,11 @@
 #   Copyright (c) 2010-2011, Diaspora Inc.  This file is
 #   licensed under the Affero General Public License version 3 or later.  See
 #   the COPYRIGHT file.
+require File.join(Rails.root, 'lib/diaspora/web_socket')
 
 class ActivityStreams::Photo < Post
-  #include Diaspora::Socketable
-  include Api::V0::Templates::Post::ActivityStreams::Photo
+  include Diaspora::Socketable
+  include Api::V0::ActivityStreams::Photo
 
   xml_name self.name.underscore.gsub!('/', '-')
   xml_attr :image_url

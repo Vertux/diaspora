@@ -10,7 +10,7 @@ require 'rest-client'
 class User < ActiveRecord::Base
   include Diaspora::UserModules
   include Encryptor::Private
-  include Api::V0::Templates::User
+  include Api::V0::User
 
   devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,

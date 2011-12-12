@@ -7,7 +7,7 @@ class Photo < ActiveRecord::Base
 
   include Diaspora::Commentable
   include Diaspora::Shareable
-  include Api::V0::Templates::Photo
+  include Api::V0::Photo
 
   mount_uploader :processed_image, ProcessedImage
   mount_uploader :unprocessed_image, UnprocessedImage

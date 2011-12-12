@@ -2,8 +2,9 @@
 #   licensed under the Affero General Public License version 3 or later.  See
 #   the COPYRIGHT file.
 #
+require File.join(Rails.root, 'lib/diaspora/web_socket')
+
 class Notification < ActiveRecord::Base
-  require File.join(Rails.root, 'lib/diaspora/web_socket')
   include Diaspora::Socketable
 
   belongs_to :recipient, :class_name => 'User'

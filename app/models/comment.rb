@@ -1,18 +1,18 @@
 #   Copyright (c) 2010-2011, Diaspora Inc.  This file is
 #   licensed under the Affero General Public License version 3 or later.  See
 #   the COPYRIGHT file.
+require File.join(Rails.root, 'lib/diaspora/web_socket')
 
 class Comment < ActiveRecord::Base
-  require File.join(Rails.root, 'lib/diaspora/web_socket')
   include ROXML
 
   include Diaspora::Webhooks
   include Diaspora::Guid
   include Diaspora::Relayable
-  #include Diaspora::Socketable
+  include Diaspora::Socketable
   include Diaspora::Taggable
   include Diaspora::Likeable
-  include Api::V0::Templates::Comment
+  include Api::V0::Comment
 
   acts_as_taggable_on :tags
   extract_tags_from :text

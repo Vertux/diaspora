@@ -4,11 +4,11 @@
 
 require 'uri'
 require File.join(Rails.root, 'lib/hcard')
+require File.join(Rails.root, 'lib/diaspora/web_socket')
 
 class Person < ActiveRecord::Base
   include ROXML
   include Encryptor::Public
-  require File.join(Rails.root, 'lib/diaspora/web_socket')
   include Diaspora::Socketable
   include Diaspora::Guid
 

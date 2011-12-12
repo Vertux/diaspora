@@ -186,6 +186,7 @@ Diaspora::Application.routes.draw do
       
       resources :posts, :only => [:show] do
         resources :comments, :only => [:index]
+        resources :likes, :only => [:index]
       end
     end
   end
