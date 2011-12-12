@@ -5,6 +5,7 @@
 class Api::V0::ApplicationController < ApplicationController
   before_filter :oauth_authenticate!
   before_filter :set_user_from_oauth
+  self.responder = ActsAsApi::Responder
   respond_to :json, :xml
   
   

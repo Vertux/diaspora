@@ -13,10 +13,7 @@ class Api::V0::UsersController < Api::V0::ApplicationController
   
   def show
     if user = User.find_by_username(params[:username])
-      respond_to do |format|
-        format.json { render_for_api :v0_private_user_info, :json => user }
-        format.xml { render_for_api :v0_private_user_info, :xml => user }
-      end
+      respond_with user, :api_template => :v0_private_user_info
     else
       head :not_found
     end

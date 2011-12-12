@@ -5,10 +5,7 @@
 class Api::V0::LikesController < Api::V0::ApplicationController
   def index
     if post = Post.api_v0_find_by_type(params[:post_id], params[:post_type])
-      respond_to do |format|
-        format.xml { render_for_api :v0_private_like_info, :xml => post.likes }
-        format.json { render_for_api :v0_private_like_info, :json => post.likes }
-      end
+      respond_with post.likes, :api_template => :v0_private_like_info
     else
       head :not_found
     end

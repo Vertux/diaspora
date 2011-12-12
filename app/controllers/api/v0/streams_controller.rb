@@ -43,10 +43,7 @@ class Api::V0::StreamsController < Api::V0::ApplicationController
       stream = stream_class.new(@user, opts)
     end
     
-    respond_to do |format|
-      format.xml { render_for_api :v0_private_post_info, :xml => stream.stream_posts }
-      format.json { render_for_api :v0_private_post_info, :json => stream.stream_posts }
-    end
+    respond_with stream.stream_posts, :api_template => :v0_private_post_info
   end
   
   def sort_order
