@@ -188,6 +188,13 @@ Diaspora::Application.routes.draw do
         resources :comments, :only => [:index]
         resources :likes, :only => [:index]
       end
+      
+      scope "/streams", :controller => :streams do
+        get :main
+        get :commented
+        get :liked
+        get :mentions
+      end
     end
   end
 
