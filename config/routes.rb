@@ -216,6 +216,8 @@ Diaspora::Application.routes.draw do
       resources :aspects, :only => [:index]
       
       resources :contacts, :only => [:index]
+      
+      resources :notifications, :only => [:index]
     end
   end
 

@@ -6,6 +6,7 @@ require File.join(Rails.root, 'lib/diaspora/web_socket')
 
 class Notification < ActiveRecord::Base
   include Diaspora::Socketable
+  include Api::V0::Notification
 
   belongs_to :recipient, :class_name => 'User'
   has_many :notification_actors, :dependent => :destroy
