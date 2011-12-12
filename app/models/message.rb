@@ -1,3 +1,7 @@
+#   Copyright (c) 2010-2011, Diaspora Inc.  This file is
+#   licensed under the Affero General Public License version 3 or later.  See
+#   the COPYRIGHT file.
+
 class NotVisibleError < RuntimeError; end
 class Message < ActiveRecord::Base
   include ROXML
@@ -5,6 +9,7 @@ class Message < ActiveRecord::Base
   include Diaspora::Guid
   include Diaspora::Webhooks
   include Diaspora::Relayable
+  include Api::V0::Message
 
   xml_attr :text
   xml_attr :created_at

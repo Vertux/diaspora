@@ -209,6 +209,8 @@ Diaspora::Application.routes.draw do
           get ':pod/:username' => :show, :constraints => {:pod => /[^ ]+/ }
         end
       end
+      
+      resources :conversations, :only => [:index, :show]
     end
   end
 
