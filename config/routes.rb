@@ -197,6 +197,7 @@ Diaspora::Application.routes.draw do
       
       scope "/streams", :controller => :streams do
         get :main
+        get :aspects
         get :commented
         get :liked
         get :mentions
@@ -211,6 +212,8 @@ Diaspora::Application.routes.draw do
       end
       
       resources :conversations, :only => [:index, :show]
+      
+      resources :aspects, :only => [:index]
     end
   end
 

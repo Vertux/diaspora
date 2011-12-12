@@ -3,6 +3,7 @@
 #   the COPYRIGHT file.
 
 require File.join(Rails.root, 'lib', 'stream', 'multi')
+require File.join(Rails.root, "lib", 'stream', "aspect")
 require File.join(Rails.root, 'lib','stream', 'comments')
 require File.join(Rails.root, 'lib','stream', 'likes')
 require File.join(Rails.root, 'lib','stream', 'mention')
@@ -12,6 +13,11 @@ require File.join(Rails.root, 'lib', 'stream', 'tag')
 class Api::V0::StreamsController < Api::V0::ApplicationController
   def main
     stream_action(Stream::Multi)
+  end
+
+  def aspects
+    aspect_ids = (params[:aspect_ids]) ? params[:aspect_ids].split(",") : []
+    stream_action(Stream::Aspect, :second_param => aspect_ids)
   end
 
   def commented
@@ -42,7 +48,7 @@ class Api::V0::StreamsController < Api::V0::ApplicationController
     else
       stream = stream_class.new(@user, opts)
     end
-    
+
     respond_with stream.stream_posts, :api_template => :v0_private_post_info
   end
   

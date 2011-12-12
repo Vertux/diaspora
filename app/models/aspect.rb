@@ -3,6 +3,8 @@
 #   the COPYRIGHT file.
 
 class Aspect < ActiveRecord::Base
+  include Api::V0::Aspect
+  
   belongs_to :user
 
   has_many :aspect_memberships, :dependent => :destroy
