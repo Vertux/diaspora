@@ -214,6 +214,8 @@ Diaspora::Application.routes.draw do
       resources :conversations, :only => [:index, :show]
       
       resources :aspects, :only => [:index]
+      
+      resources :contacts, :only => [:index]
     end
   end
 

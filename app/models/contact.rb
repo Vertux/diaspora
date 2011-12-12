@@ -3,6 +3,8 @@
 #   the COPYRIGHT file.
 
 class Contact < ActiveRecord::Base
+  include Api::V0::Contact
+
   belongs_to :user
 
   belongs_to :person
