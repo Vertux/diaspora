@@ -11,6 +11,7 @@ class Person < ActiveRecord::Base
   include Encryptor::Public
   include Diaspora::Socketable
   include Diaspora::Guid
+  include Api::V0::Person
 
   xml_attr :diaspora_handle
   xml_attr :url

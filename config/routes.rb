@@ -203,6 +203,12 @@ Diaspora::Application.routes.draw do
         get :followed_tags
         get "tags/:name" => :tag
       end
+      
+      resources :people, :only => [:show] do
+        collection do
+          get ':pod/:username' => :show, :constraints => {:pod => /[^ ]+/ }
+        end
+      end
     end
   end
 
