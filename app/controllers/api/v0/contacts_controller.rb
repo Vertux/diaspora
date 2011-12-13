@@ -4,6 +4,9 @@
 
 class Api::V0::ContactsController < Api::V0::ApplicationController
   def index
+    ensure_permission!(:aspects, :read)
+    ensure_permission!(:people, :read)
+    
     contacts = @user.contacts
     
     if params[:aspect_ids]

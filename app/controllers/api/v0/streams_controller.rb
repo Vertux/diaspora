@@ -11,6 +11,10 @@ require File.join(Rails.root, 'lib', 'stream', 'followed_tag')
 require File.join(Rails.root, 'lib', 'stream', 'tag')
 
 class Api::V0::StreamsController < Api::V0::ApplicationController
+  before_filter do
+    ensure_permission!(:post, :read)
+  end
+  
   def main
     stream_action(Stream::Multi)
   end

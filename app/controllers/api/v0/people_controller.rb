@@ -4,13 +4,14 @@
 
 class Api::V0::PeopleController < Api::V0::ApplicationController
   def show
+    ensure_permission!(:people, :read)
+    
     if params[:id]
       person = ::Person.where(:id => params[:id]).first
     elsif params[:pod] && params[:username]
       handle = "#{params[:username]}@#{params[:pod]}"
       person = ::Person.where(:diaspora_handle => handle).first
     end
-    
     
     if person
       contact = @user.contact_for(person)

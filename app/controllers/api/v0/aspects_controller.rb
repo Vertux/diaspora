@@ -4,6 +4,8 @@
 
 class Api::V0::AspectsController < Api::V0::ApplicationController
   def index
+    ensure_permission!(:aspects, :read)
+    
     respond_with @user.aspects, :api_template => :v0_private_aspect_info
   end
 end

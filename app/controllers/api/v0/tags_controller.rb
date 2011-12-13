@@ -7,18 +7,17 @@ class Api::V0::TagsController < Api::V0::ApplicationController
   
   def show
     if tag = Api::V0::Tag.find_by_name(params[:name])
-      respond_to do |format|
-        format.xml { render_for_api :v0_public_tag_info, :xml => tag }
-        format.any { render_for_api :v0_public_tag_info, :json => tag }
-      end
+      respond_with tag, :api_template => :v0_public_tag_info
     else
       head :not_found
     end
   end
   
   def followed_tags
+    ensure_permission!(:tags, :read)
+
     tags = @user.followed_tags.collect { |tag| tag.name }
-    
+
     respond_to do |format|
       format.xml { render :xml => tags }
       format.json { render :json => tags }

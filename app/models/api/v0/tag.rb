@@ -21,6 +21,6 @@ class Api::V0::Tag < ActsAsTaggableOn::Tag
   end
   
   def person_count
-    Person.profile_tagged_with(self.name).count
+    ::Person.profile_tagged_with(self.name).count
   end
 end
