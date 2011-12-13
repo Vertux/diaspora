@@ -15,18 +15,20 @@
   %h3
     = t('.permissions.allowed_to')
   %ul#permissions
-    %li#reading_permissions
-      = t('.permissions.reading')
-      %ul
-        - @client.permissions.reading.each do |permission|
-          %li
-            = t('.permissions.read.'+permission.scope)
-    %li#writing_permissions
-      = t('.permissions.writing')
-      %ul
-        - @client.permissions.writing.each do |permission|
-          %li
-            = t('.permissions.write.'+permission.scope)
+    - if @client.permissions.reading.any?
+      %li#reading_permissions
+        = t('.permissions.reading')
+        %ul
+          - @client.permissions.reading.each do |permission|
+            %li
+              = t('.permissions.read.'+permission.scope)
+    - if @client.permissions.writing.any?
+      %li#writing_permissions
+        = t('.permissions.writing')
+        %ul
+          - @client.permissions.writing.each do |permission|
+            %li
+              = t('.permissions.write.'+permission.scope)
     
   = form_for :authorization,
     :url => oauth_authorize_path(params.slice(:redirect_uri, :client_id, :client_secret)) do |form|

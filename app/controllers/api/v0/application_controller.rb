@@ -26,7 +26,8 @@ class Api::V0::ApplicationController < ApplicationController
   
   def oauth_authenticate!(options={})
     unless params[:bypass]
-      request.env['oauth2'].authenticate_request!(nil)
+      request.env['oauth2'].authenticate_request!({:scope => nil}) do
+      end
     end
   end
   
