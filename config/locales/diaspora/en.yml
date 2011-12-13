@@ -212,6 +212,34 @@ en:
       failure: "Failed to remove person from aspect"
       no_membership: "Could not find the selected person in that aspect"
 
+  authorizations:
+    index:
+      revoke_access: "Revoke Access"
+      no_applications: "You haven't registered any applications yet."
+    new:
+      permissions:
+        allowed_to: "You allow…"
+        reading: "Read permissions for"
+        read:
+          posts: "Posts, this also includes access to your streams and your notifications."
+          as_photos: "Photos posted by other apps."
+          comments: "Comments"
+          likes: "Likes"
+          aspects: "Aspects, this also includes access to your contacts"
+          profile: "Profile"
+          people: "Other profiles as you can see them"
+          tags: "Followed tags"
+        writing: "Write permissions for"
+        write:
+          posts: "Create a new Post, delete your posts, hide other posts, create reshares, mark notifications as unread"
+          as_photos: "Post photo as app."
+          comments: "Create and delete comments"
+          likes: "Create and delete likes"
+          aspects: "Create and delete aspects"
+          profile: "Edit your profile"
+          people: "Follow and unfollow other people"
+          tags: "Add and remove followed tags"
+
   bookmarklet:
     heading: "Bookmarklet"
     post_success: "Posted! Closing!"
@@ -874,11 +902,6 @@ en:
       making_the_connection: "Making the Connection"
       connecting_is_simple: "Connecting your Diaspora account is simple!  Just enter your Diaspora ID (<b>%{diaspora_id}</b>) from your cubbies <a href='%{href_link}'>settings page</a> and hit connect."
       via: "(via %{link})"
-
-  authorizations:
-    index:
-      revoke_access: "Revoke Access"
-      no_applications: "You haven't registered any applications yet."
 
   streams:
     recently: "recently:"

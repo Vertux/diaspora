@@ -9,31 +9,25 @@
 
   %h2
     = @client.permissions_overview
-
-  %ul#requested-scopes
-    - @requested_scopes.each do |scope|
-      - if scope == "profile"
-        %li
-          .scope-photo
-            = owner_image_tag
-
-          .scope-description
-            %strong
-              Basic Info
-            %br
-            Cubbies will be able to see your name, profile photo, and other basic profile information.
-
-      - elsif scope == "AS_photo:post"
-        %li
-          .scope-photo
-            = image_tag('/images/icons/photo.png', :title => "Cubbies will be able to post photos on your behalf")
-
-          .scope-description
-            %strong
-              Your Photos
-            %br
-            Cubbies will be able to post photos on your behalf
-
+  
+  %br
+  %br
+  %h3
+    = t('.permissions.allowed_to')
+  %ul#permissions
+    %li#reading_permissions
+      = t('.permissions.reading')
+      %ul
+        - @client.permissions.reading.each do |permission|
+          %li
+            = t('.permissions.read.'+permission.scope)
+    %li#writing_permissions
+      = t('.permissions.writing')
+      %ul
+        - @client.permissions.writing.each do |permission|
+          %li
+            = t('.permissions.write.'+permission.scope)
+    
   = form_for :authorization,
     :url => oauth_authorize_path(params.slice(:redirect_uri, :client_id, :client_secret)) do |form|
     %br

@@ -13,7 +13,6 @@ class AuthorizationsController < ApplicationController
       sign_out current_user
       redirect_to url_with_prefilled_session_form
     else
-      @requested_scopes = params["scope"].split(',')
       @client = oauth2_authorization_request.client
 
       if authorization = current_user.authorizations.where(:client_id => @client.id).first

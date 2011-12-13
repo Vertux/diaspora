@@ -2814,26 +2814,20 @@ h1.tag
   :margin 0
   :padding 0
 
-#authorize
-  :text-align center
-
 #application-description
   :display inline-block
   :width 300px
   :padding-bottom 20px
 
-ul#requested-scopes
-  :vertical-align middle
-  li
-    :display inline-block
-    :padding 5px
 
-    img
-      :height 30px
-      :width 30px
+ul#permissions, li#reading_permissions, li#writing_permissions
+  :list-style disc none outside
+  
+  ul, li
+    :list-style disc none outside
 
-    .scope-description
-      :display none
+#reading_permissions, #writing_permissions
+  :font-weight bold
 
 .canvas
   .image-element,

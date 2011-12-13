@@ -24,4 +24,8 @@ class OAuth2::Provider::Models::ActiveRecord::Client
     
     client
   end
+  
+  def permissions
+    self.oauth_client_permissions
+  end
 end
