@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111207233503) do
+ActiveRecord::Schema.define(:version => 20111213000918) do
 
   create_table "account_deletions", :force => true do |t|
     t.string  "diaspora_handle"
@@ -225,6 +225,12 @@ ActiveRecord::Schema.define(:version => 20111207233503) do
   end
 
   add_index "oauth_authorizations", ["resource_owner_id", "resource_owner_type", "client_id"], :name => "index_oauth_authorizations_on_resource_owner_and_client_id", :unique => true
+
+  create_table "oauth_client_permissions", :force => true do |t|
+    t.integer "client_id"
+    t.string  "scope",       :limit => 127
+    t.string  "access_type", :limit => 127
+  end
 
   create_table "oauth_clients", :force => true do |t|
     t.string "name",                 :limit => 127, :null => false

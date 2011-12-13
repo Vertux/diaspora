@@ -55,8 +55,8 @@ module Chubbies
 
     d.manifest_field(:permissions_overview, "Chubbi.es wants to post photos to your stream.")
 
-    d.permission(:profile, :read, "Chubbi.es wants to view your profile so that it can show it to other users.")
-    d.permission(:photos, :write, "Chubbi.es wants to write to your photos to share your findings with your contacts.")
+    d.permission(:profile, :read)
+    d.permission(:as_photos, :write)
   end
 
   class App < DiasporaClient::App
