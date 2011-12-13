@@ -7,7 +7,7 @@ require File.join(Rails.root, 'app/models/oauth2_provider_models_activerecord_cl
 class Api::V0::ApplicationController < ApplicationController
   include OAuth2::Provider::Rack::Responses
   before_filter :oauth_authenticate!
-  before_filter :set_vars_from_oauth
+  before_filter :setup_from_oauth
   self.responder = ActsAsApi::Responder
   respond_to :json, :xml
   
@@ -30,13 +30,13 @@ class Api::V0::ApplicationController < ApplicationController
     end
   end
   
-  def set_vars_from_oauth
+  def setup_from_oauth
     if params[:bypass]
-      @user = User.first
+      sign_in User.first
       @oauth_client = OAuth2::Provider::Models::ActiveRecord::Client.first
     else
-      @user = request.env['oauth2'].resource_owner
-      @outh_client = request.env['oauth2'].authorization.client
+      sign_in request.env['oauth2'].resource_owner
+      @oauth_client = request.env['oauth2'].authorization.client
     end
   end
 end

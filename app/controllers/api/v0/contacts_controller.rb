@@ -7,7 +7,7 @@ class Api::V0::ContactsController < Api::V0::ApplicationController
     ensure_permission!(:aspects, :read)
     ensure_permission!(:people, :read)
     
-    contacts = @user.contacts
+    contacts = current_user.contacts
     
     if params[:aspect_ids]
       aspect_ids = params[:aspect_ids].split(",").collect { |id| id.to_i }

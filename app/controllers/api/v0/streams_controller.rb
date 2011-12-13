@@ -48,9 +48,9 @@ class Api::V0::StreamsController < Api::V0::ApplicationController
   def stream_action(stream_class, opts={})
     opts = {:max_time => max_time, :sort_order => sort_order}.merge(opts)
     if second_param = opts.delete(:second_param)
-      stream = stream_class.new(@user, second_param, opts)
+      stream = stream_class.new(current_user, second_param, opts)
     else
-      stream = stream_class.new(@user, opts)
+      stream = stream_class.new(current_user, opts)
     end
 
     respond_with stream.stream_posts, :api_template => :v0_private_post_info

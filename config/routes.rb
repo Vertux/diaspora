@@ -33,11 +33,6 @@ Diaspora::Application.routes.draw do
     put :make_profile_photo
   end
 
-  # ActivityStreams routes
-  scope "/activity_streams", :module => "activity_streams", :as => "activity_streams" do
-    resources :photos, :controller => "photos", :only => [:create]
-  end
-
   resources :conversations do
     resources :messages, :only => [:create, :show]
     delete 'visibility' => 'conversation_visibilities#destroy'
@@ -172,9 +167,14 @@ Diaspora::Application.routes.draw do
     post :token
   end
 
+  # ActivityStreams routes - backward compatibility
+  scope "/activity_streams", :module => "api/v0/activity_streams", :as => "activity_streams" do
+    resources :photos, :controller => "photos", :only => [:create]
+  end
+
   namespace :api do
     namespace :v0 do
-      # Backward compatibillity
+      # Backward compatibility
       get "/me" => "users#me"
       
       scope "/users", :controller => :users do
@@ -218,6 +218,10 @@ Diaspora::Application.routes.draw do
       resources :contacts, :only => [:index]
       
       resources :notifications, :only => [:index]
+      
+      namespace :activity_streams do
+        resources :photos, :only => [:create]
+      end
     end
   end
 

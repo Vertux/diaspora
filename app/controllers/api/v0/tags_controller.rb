@@ -16,7 +16,7 @@ class Api::V0::TagsController < Api::V0::ApplicationController
   def followed_tags
     ensure_permission!(:tags, :read)
 
-    tags = @user.followed_tags.collect { |tag| tag.name }
+    tags = current_user.followed_tags.collect { |tag| tag.name }
 
     respond_to do |format|
       format.xml { render :xml => tags }

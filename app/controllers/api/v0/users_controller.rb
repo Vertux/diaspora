@@ -7,7 +7,7 @@ class Api::V0::UsersController < Api::V0::ApplicationController
   
   def me
     respond_to do |format|
-      format.any { render_for_api :v0_me_info, :json => @user }
+      format.any { render_for_api :v0_me_info, :json => current_user }
     end
   end
   
