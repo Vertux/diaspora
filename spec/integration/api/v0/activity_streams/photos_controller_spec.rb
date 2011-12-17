@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe ActivityStreams::PhotosController do
+describe Api::V0::ActivityStreams::PhotosController do
   describe '#create' do
     before do
       @json = JSON.parse <<JSON
@@ -33,8 +33,7 @@ JSON
       @url = activity_streams_photos_path
     end
     it 'allows oauth authentication' do
-      token = Factory(:oauth_access_token)
-      post @url, @json.merge!(:oauth_token => token.access_token)
+      post @url, @json.merge!(api_v0_params)
       response.should be_success
     end
 
@@ -42,17 +41,6 @@ JSON
       post @url, @json.merge!(:oauth_token => "aoijgosidjg")
       response.status.should == 401
       response.body.should be_empty
-    end
-
-    it 'allows token authentication' do
-      bob.reset_authentication_token!
-      post @url, @json.merge!(:auth_token => bob.authentication_token)
-      response.should be_success
-    end
-
-    it 'correctly denies an invalid token' do
-      post @url, @json.merge!(:auth_token => "iudsfghpsdifugh")
-      response.status.should == 401
     end
   end
 end

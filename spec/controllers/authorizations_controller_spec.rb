@@ -28,6 +28,8 @@ describe AuthorizationsController do
         "application_base_url" => "http://chubbi.es/",
         "icon_url"     => "#",
         "permissions_overview" => "I will use the permissions this way!",
+        "permissions" => [{"type" => "as_photos", "access" => "write"},
+                          {"type" => "profile", "access" => "read"}]
       }
   end
 
@@ -77,6 +79,8 @@ describe AuthorizationsController do
           "application_base_url" => url,
           "icon_url"     => "#",
           "permissions_overview" => "I will use the permissions this way!",
+          "permissions" => [{"type" => "as_photos", "access" => "write"},
+                            {"type" => "profile", "access" => "read"}]
         }
 
         packaged_manifest = {:public_key => @public_key.export, :jwt => JWT.encode(manifest, @private_key, "RS256")}.to_json

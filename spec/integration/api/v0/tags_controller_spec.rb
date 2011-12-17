@@ -11,23 +11,24 @@ describe "API V0 tags" do
     end
     
     it 'succeds' do
-      get '/api/v0/tags/'+@tag.name, :format => :json
+      get '/api/v0/tags/'+@tag.name, api_v0_params
       response.should be_success
     end
     
     it "doesn't require authentication" do
-      pending
       get '/api/v0/tags/'+@tag.name, :format => :json
       response.should be_success
     end
     
     it 'returns the right name, followed_count, person_count and posts' do
       posts = []
-      get '/api/v0/tags/'+@tag.name, :format => :json
-      response.body.should == {:name => @tag.name.to_s,
-                               :followed_count => @tag.followed_count,
-                               :person_count => Person.profile_tagged_with(@tag.name).count,
-                               :posts => posts }.to_json
+      get '/api/v0/tags/'+@tag.name, api_v0_params
+      JSON.parse(response.body).symbolize_keys.should == {
+        :name => @tag.name.to_s,
+        :followed_count => @tag.followed_count,
+        :person_count => Person.profile_tagged_with(@tag.name).count,
+        :posts => posts
+      }
     end
   end
 end

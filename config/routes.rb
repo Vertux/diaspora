@@ -62,10 +62,6 @@ Diaspora::Application.routes.draw do
 
   resources :apps, :only => [:show]
 
-  #Cubbies info page
-  resource :token, :only => :show
-
-
   # Users and people
 
   resource :user, :only => [:edit, :update, :destroy], :shallow => true do

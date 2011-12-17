@@ -84,3 +84,39 @@ end
 def photo_fixture_name
   @photo_fixture_name = File.join(File.dirname(__FILE__), 'fixtures', 'button.png')
 end
+
+def oauth_client
+  unless @oauth_client
+    @oauth_client = Factory :app
+    [:tags, :as_photos].each do |perm|
+      [:read, :write].each do |access|
+        @oauth_client.oauth_client_permissions << Factory(:oauth_client_permission,
+                                                          :client_id => @oauth_client.id,
+                                                          :scope => perm.to_s,
+                                                          :access_type => access.to_s)
+      end
+    end
+  end
+  @oauth_client
+end
+
+def oauth_authorization(opts={})
+  client = opts.delete(:client) || oauth_client
+  user = opts.delete(:user) || alice
+  @oauth_authorizations ||= Hash.new
+  @oauth_authorizations[client.id] ||= Hash.new
+  @oauth_authorizations[client.id][user.id] ||= Factory :oauth_authorization,
+                                                        :client => client,
+                                                        :resource_owner => user
+end
+
+def oauth_access_token(authorization=nil)
+  authorization ||= oauth_authorization
+  token = Factory :oauth_access_token, :authorization => authorization
+  token.access_token
+end
+
+def api_v0_params(opts={})
+  token = opts.delete(:access_token) || oauth_access_token
+  {:format => :json, :oauth_token => token}.merge(opts)
+end

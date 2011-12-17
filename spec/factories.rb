@@ -164,6 +164,10 @@ Factory.define(:activity_streams_photo, :class => ActivityStreams::Photo) do |p|
   p.public true
 end
 
+Factory.define(:oauth_client_permission) do
+end
+
+
 Factory.define(:app, :class => OAuth2::Provider.client_class) do |a|
   a.sequence(:name) { |token| "Chubbies#{token}" }
   a.sequence(:application_base_url) { |token| "http://chubbi#{token}.es/" }

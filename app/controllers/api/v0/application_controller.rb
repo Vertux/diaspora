@@ -24,20 +24,19 @@ class Api::V0::ApplicationController < ApplicationController
   
   private
   
-  def oauth_authenticate!(options={})
-    unless params[:bypass]
-      request.env['oauth2'].authenticate_request!({:scope => nil}) do
-      end
-    end
+  def oauth_authenticate!
+    request.env['oauth2'].authenticate_request!({:scope => nil}) {} unless params[:bypass]
   end
   
   def setup_from_oauth
-    if params[:bypass]
-      sign_in User.first
-      @oauth_client = OAuth2::Provider::Models::ActiveRecord::Client.first
-    else
-      sign_in request.env['oauth2'].resource_owner
-      @oauth_client = request.env['oauth2'].authorization.client
+    if request.env['oauth2'] && request.env['oauth2'].authenticated?
+      if params[:bypass]
+        sign_in User.first
+        @oauth_client = OAuth2::Provider::Models::ActiveRecord::Client.first
+      else
+        sign_in request.env['oauth2'].resource_owner
+        @oauth_client = request.env['oauth2'].authorization.client
+      end
     end
   end
 end

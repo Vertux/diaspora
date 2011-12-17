@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111213000918) do
+ActiveRecord::Schema.define(:version => 20111217151409) do
 
   create_table "account_deletions", :force => true do |t|
     t.string  "diaspora_handle"
@@ -461,14 +461,14 @@ ActiveRecord::Schema.define(:version => 20111213000918) do
     t.integer  "invitation_limit"
     t.integer  "invited_by_id"
     t.string   "invited_by_type"
-    t.string   "authentication_token",               :limit => 30
     t.string   "unconfirmed_email"
     t.string   "confirm_email_token",                :limit => 30
     t.datetime "locked_at"
     t.boolean  "show_community_spotlight_in_stream",                :default => true,  :null => false
+    t.boolean  "auto_follow_back",                                  :default => false
+    t.integer  "auto_follow_back_aspect_id"
   end
 
-  add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true
   add_index "users", ["email"], :name => "index_users_on_email"
   add_index "users", ["invitation_service", "invitation_identifier"], :name => "index_users_on_invitation_service_and_invitation_identifier", :unique => true
   add_index "users", ["invitation_token"], :name => "index_users_on_invitation_token"

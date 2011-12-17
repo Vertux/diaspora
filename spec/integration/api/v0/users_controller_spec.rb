@@ -5,11 +5,9 @@
 require 'spec_helper'
 
 describe "API V0 users" do
-  let(:user) { Factory :user }
-  
   context 'requesting an existing user' do
     before do
-      get '/api/v0/users/'+user.username, :format => :json
+      get '/api/v0/users/'+alice.username, api_v0_params
     end
     
     it 'succeeds' do
@@ -17,29 +15,29 @@ describe "API V0 users" do
     end
     
     it 'returns the right diaspora_id, image_url, first_name, last_name and searchable' do
-      response.body.should == {:diaspora_id => user.profile.diaspora_handle,
-                               :image_url => user.profile.image_url,
-                               :first_name => user.profile.first_name,
-                               :last_name => user.profile.last_name,
-                               :searchable => user.profile.searchable}.to_json
+      response.body.should == {:diaspora_id => alice.profile.diaspora_handle,
+                               :image_url => alice.profile.image_url,
+                               :first_name => alice.profile.first_name,
+                               :last_name => alice.profile.last_name,
+                               :searchable => alice.profile.searchable}.to_json
     end
   end
   
   context 'invalid requests' do
     it 'should fail for a not existing user' do
-      get '/api/v0/users/foo', :format => :json
+      get '/api/v0/users/foo', api_v0_params
       response.should_not be_success
     end
     
     it 'should fail for requesting the wrong format' do
-      get '/api/v0/users/'+user.username
+      get '/api/v0/users/'+alice.username, api_v0_params(:format => :html)
       response.should_not be_success
     end
   end
   
   context 'requesting the authenticated user' do
     before do
-      pending "setup fake oauth auth in specs"
+      get '/api/v0/users/me', api_v0_params
     end
     
     it 'succeeds' do
@@ -47,9 +45,9 @@ describe "API V0 users" do
     end
     
     it 'returns the right name, uid and birthday' do
-      response.body.should == {:name => user.person.name,
-                               :uid => user.username,
-                               :birthday => user.profile.birthday}.to_json
+      response.body.should == {:name => alice.person.name,
+                               :uid => alice.username,
+                               :birthday => alice.profile.birthday}.to_json
     end
   end
 end

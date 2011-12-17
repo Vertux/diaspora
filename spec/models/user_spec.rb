@@ -1071,7 +1071,6 @@ describe User do
           invitation_limit
           invited_by_id
           invited_by_type
-          authentication_token
           unconfirmed_email
           confirm_email_token
         }.sort
