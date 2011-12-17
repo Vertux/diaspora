@@ -71,65 +71,6 @@ describe AuthorizationsController do
       @params_hash = {:type => 'client_associate', :signed_string => Base64.encode64(@signed_string), :signature => Base64.encode64(@signature)}
     end
 
-    context 'special casing (temporary, read note in the controller)' do
-      def prepare_manifest(url)
-        manifest =   {
-          "name"         => "Chubbies",
-          "description"  => "The best way to chub.",
-          "application_base_url" => url,
-          "icon_url"     => "#",
-          "permissions_overview" => "I will use the permissions this way!",
-          "permissions" => [{"type" => "as_photos", "access" => "write"},
-                            {"type" => "profile", "access" => "read"}]
-        }
-
-        packaged_manifest = {:public_key => @public_key.export, :jwt => JWT.encode(manifest, @private_key, "RS256")}.to_json
-
-        stub_request(:get, "#{url}manifest.json").
-          to_return(:status => 200, :body =>  packaged_manifest, :headers => {})
-
-        @signed_string = [url,'http://pod.pod',"#{Time.now.to_i}", @nonce].join(';')
-        @signature = @private_key.sign(OpenSSL::Digest::SHA256.new, @signed_string)
-        @params_hash = {:type => 'client_associate', :signed_string => Base64.encode64(@signed_string), :signature => Base64.encode64(@signature)}
-      end
-
-      it 'renders something for chubbies ' do
-        prepare_manifest("http://chubbi.es/")
-        @controller.stub!(:verify).and_return('ok')
-        post :token,  @params_hash
-        response.code.should == "200"
-      end
-
-      it 'renders something for cubbies ' do
-        prepare_manifest("http://cubbi.es/")
-        @controller.stub!(:verify).and_return('ok')
-        post :token,  @params_hash
-        response.code.should == "200"
-      end
-
-      it 'renders something for cubbies ' do
-        prepare_manifest("https://www.cubbi.es:443/")
-        @controller.stub!(:verify).and_return('ok')
-        post :token,  @params_hash
-        response.code.should == "200"
-      end
-
-      it 'renders something for localhost' do
-        prepare_manifest("http://localhost:3423/")
-        @controller.stub!(:verify).and_return('ok')
-        post :token,  @params_hash
-        response.code.should == "200"
-      end
-
-      it 'renders nothing for myspace' do
-        prepare_manifest("http://myspace.com")
-        @controller.stub!(:verify).and_return('ok')
-        post :token,  @params_hash
-        response.code.should == "403"
-        response.body.should include("http://myspace.com")
-      end
-    end
-
     it 'fetches the manifest' do
       @controller.stub!(:verify).and_return('ok')
       post :token,  @params_hash
