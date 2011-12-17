@@ -31,4 +31,34 @@ describe "API V0 tags" do
       }
     end
   end
+  
+  context 'accessing followed tags' do
+    context 'without authentication' do
+      it 'fails' do
+        get '/api/v0/followed_tags', :format => :json
+        response.should_not be_success
+      end
+    end
+    
+    context 'with an authenticated user that follows some tags' do
+      before do
+        user = Factory :user
+        @tags = []
+        3.times do
+          tag = Factory :tag
+          @tags << tag.name.to_s
+          Factory :tag_following, :tag => tag, :user => user
+        end
+        get '/api/v0/followed_tags', api_v0_params(:user => user)
+      end
+      
+      it 'succeeds' do
+        response.should be_success
+      end
+      
+      it 'responds with the right tags' do
+        response.body.should == @tags.to_json
+      end
+    end
+  end
 end

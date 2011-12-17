@@ -188,7 +188,7 @@ Factory.define(:oauth_access_token, :class => OAuth2::Provider.access_token_clas
 end
 
 Factory.define(:tag, :class => ActsAsTaggableOn::Tag) do |t|
-  t.name "partytimeexcellent"
+  t.sequence(:name) {|n| "partytimeexcellent#{n}" }
 end
 
 Factory.define(:tag_following) do |a|

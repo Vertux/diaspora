@@ -4,9 +4,9 @@
 
 class Api::V0::CommentsController < Api::V0::ApplicationController
   def index
-    ensure_permission(:comments, :read)
+    ensure_permission!(:comments, :read)
     
-    if post = Post.api_v0_find_visible_by_type(current_user, params[:post_id], params[:post_type])
+    if post = Api::V0::Post.api_v0_find_visible_by_type(current_user, params[:post_id], params[:post_type])
       respond_with post.comments, :api_template => :v0_private_comment_info
     else
       head :not_found

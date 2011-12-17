@@ -88,7 +88,7 @@ end
 def oauth_client
   unless @oauth_client
     @oauth_client = Factory :app
-    [:tags, :as_photos].each do |perm|
+    [:tags, :as_photos, :aspects, :comments].each do |perm|
       [:read, :write].each do |access|
         @oauth_client.oauth_client_permissions << Factory(:oauth_client_permission,
                                                           :client_id => @oauth_client.id,
@@ -117,6 +117,11 @@ def oauth_access_token(authorization=nil)
 end
 
 def api_v0_params(opts={})
-  token = opts.delete(:access_token) || oauth_access_token
+  if user = opts.delete(:user)
+    token = oauth_access_token(oauth_authorization(:user => user))
+  else
+    token = oauth_access_token
+  end
+  
   {:format => :json, :oauth_token => token}.merge(opts)
 end

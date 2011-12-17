@@ -8,6 +8,7 @@ module Api::V0::Comment
     acts_as_api
     
     api_accessible :v0_private_comment_info do |tpl|
+      tpl.add :id
       tpl.add :text
       tpl.add "author.diaspora_handle", :as => :diaspora_handle
       tpl.add :created_at
