@@ -1,10 +1,18 @@
+#   Copyright (c) 2010-2011, Diaspora Inc.  This file is
+#   licensed under the Affero General Public License version 3 or later.  See
+#   the COPYRIGHT file.
+
+
+require 'jwt'
 require File.join(Rails.root, "app", "models", "oauth2_provider_models_activerecord_authorization")
 require File.join(Rails.root, "app", "models", "oauth2_provider_models_activerecord_client")
 
 class AuthorizationsController < ApplicationController
   include OAuth2::Provider::Rack::AuthorizationCodesSupport
-  before_filter :authenticate_user!, :except => :token
-  before_filter :redirect_or_block_invalid_authorization_code_requests, :except => [:token, :index, :destroy]
+  
+  before_filter :authenticate_user!, :except => [:token, :register]
+  before_filter :redirect_or_block_invalid_authorization_code_requests,
+                :only => [:new, :create, :token]
 
   skip_before_filter :verify_authenticity_token, :only => :token
 
@@ -14,10 +22,13 @@ class AuthorizationsController < ApplicationController
       redirect_to url_with_prefilled_session_form
     else
       @client = oauth2_authorization_request.client
-
-      if authorization = current_user.authorizations.where(:client_id => @client.id).first
-        ac = authorization.authorization_codes.create(:redirect_uri => params[:redirect_uri])
-        redirect_to "#{params[:redirect_uri]}&code=#{ac.code}"
+      
+      if params[:response_type] == "code"
+        if authorization = current_user.authorizations.where(:client_id => @client.id).first
+          ac = authorization.authorization_codes.create(:redirect_uri => params[:redirect_uri])
+          redirect_to "#{params[:redirect_uri]}&code=#{ac.code}"
+          return
+        end
       end
     end
   end
@@ -36,53 +47,93 @@ class AuthorizationsController < ApplicationController
 
   def create
     if params[:commit] == "Authorize"
-      grant_authorization_code(current_user)
+      grant_authorization_code(current_user, Time.now+5.years)
     else
       deny_authorization_code
     end
   end
 
-  def token
-    require 'jwt'
-
-    signed_string = Base64.decode64(params[:signed_string])
-    app_url = signed_string.split(';')[0]
-
-    if (!params[:type] == 'client_associate' && !app_url)
-      render :text => "bad request: #{params.inspect}", :status => 403
+  def register
+    if params[:type] && params[:type] != 'client_associate'
+      render :nothing, :status => 400
       return
     end
     
-    begin
-      packaged_manifest = JSON.parse(RestClient.get("#{app_url}manifest.json").body)
-      public_key = OpenSSL::PKey::RSA.new(packaged_manifest['public_key'])
-      manifest = JWT.decode(packaged_manifest['jwt'], public_key)
-    rescue Exception => e
-      render :text => e.message, :status => 403
+    if params[:signature] && params[:signed_string]
+      signed_string = Base64.decode64(params[:signed_string])
+      app_url = signed_string.split(';')[0].chomp("/")
+      manifest_url = "#{app_url}/manifest.json"
+      flow = "webapp"
+    elsif params[:username] && params[:password] && params[:manifest] && params[:redirect_uri]
+      if user = User.where(:username => params[:username]) && user.valid_password?(params[:password])
+        sign_in user
+        manifest_url = params[:manifest]
+        flow = "mobile"
+      else
+        render :nothing, :status => 403
+        return
+      end
+    else
+      render :nothing, :status => 400
       return
     end
 
-    message = verify(signed_string, Base64.decode64(params[:signature]), public_key, manifest)
-    unless message =='ok'
-      render :text => message, :status => 403
-    else
-      client = OAuth2::Provider.client_class.find_or_create_from_manifest!(manifest, public_key)
-
-      json = {:client_id => client.oauth_identifier,
-              :client_secret => client.oauth_secret,
-              :expires_in => 0,
-              :flows_supported => ""}
-
-      if params[:code]
-        code = client.authorization_codes.claim(params[:code], 
-                                                params[:redirect_uri])
-        json.merge!(
-          :access_token => code.access_token,
-          :refresh_token => code.refresh_token
-        )
+    begin
+      packaged_manifest = JSON.parse(RestClient.get(manifest_url).body)
+      public_key = OpenSSL::PKey::RSA.new(packaged_manifest['public_key'])
+      manifest = JWT.decode(packaged_manifest['jwt'], public_key)
+    rescue Exception => e
+      debugger
+      render :text => e.message, :status => 403
+      return
+    end
+    
+    if flow == "webapp"
+      message = verify(signed_string, Base64.decode64(params[:signature]), public_key, manifest)
+      unless message == "ok"
+        render :text => message, :status => 400
+        return
       end
+    end
+    
+    client = OAuth2::Provider.client_class.find_or_create_from_manifest!(manifest, public_key)
+    
+    if flow == "webapp"
+      render :json => {
+        :client_id => client.oauth_identifier,
+        :client_secret => client.oauth_secret
+      }
+    elsif flow == "mobile"
+      redirect_to oauth_authorize_path(
+        :redirect_uri => params[:redirect_uri],
+        :uid => params[:username],
+        :response_type => "code",
+        :client_id => client.oauth_identifier
+      )
+    end
+  end
 
-      render :json => json
+  def token
+    if params[:code]
+      token = oauth2_authorization_request.client.authorization_codes.claim(
+        params[:code],
+        params[:redirect_uri]
+      )
+    elsif params[:refresh_token]
+      token = oauth2_authorization_request.access_tokens.refresh_with(params[:refresh_token])
+    else
+      render :nothing, :status => 400
+      return
+    end
+    
+    if token
+      render :json => {
+        :access_token => token.access_token,
+        :refresh_token => token.refresh_token,
+        :expires_in => token.expires_in
+      }
+    else
+      render :nothing, :status => 403
     end
   end
 
@@ -97,6 +148,8 @@ class AuthorizationsController < ApplicationController
     auth.revoke
     redirect_to authorizations_path
   end
+
+  private
 
   # @param [String] enc_signed_string A Base64 encoded string with app_url;pod_url;time;nonce
   # @param [String] sig A Base64 encoded signature of the decoded signed_string with public_key.

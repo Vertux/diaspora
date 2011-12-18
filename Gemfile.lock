@@ -31,7 +31,7 @@ GIT
 
 GIT
   remote: git://github.com/diaspora/diaspora-client.git
-  revision: cc9717abf03d258e337e6efaf078d4fb9d5e0d89
+  revision: 66d37ca58db76fd07d1870933f2a617c32260db5
   branch: oauth_scopes
   specs:
     diaspora-client (0.1.2)

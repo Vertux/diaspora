@@ -161,6 +161,7 @@ Diaspora::Application.routes.draw do
     get "authorize" => :new
     post "authorize" => :create
     post :token
+    post :register
   end
 
   # ActivityStreams routes - backward compatibility
