@@ -41,7 +41,7 @@ When /^I try to authorize Chubbies$/ do
   ###
   step "I fill in my Diaspora ID to connect"
   step 'I press "Connect to Diaspora"'
-  step 'And I prepare to authorize Chubbies'
+  step 'I prepare to authorize Chubbies'
 end
 
 And /^I prepare to authorize Chubbies$/ do

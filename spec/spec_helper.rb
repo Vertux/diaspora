@@ -26,6 +26,7 @@ require fixture_builder_file
 
 RSpec.configure do |config|
   config.include Devise::TestHelpers, :type => :controller
+  config.include JsonSpec::Helpers
   config.mock_with :rspec
 
   config.use_transactional_fixtures = true

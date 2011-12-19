@@ -60,33 +60,33 @@ describe AuthorizationsController do
       response.should be_success
     end
   end
-
-  describe '#token' do
+  
+  describe '#register' do
     before do
       packaged_manifest = {:public_key => @public_key.export, :jwt => JWT.encode(@manifest, @private_key, "RS256")}.to_json
-
+    
       stub_request(:get, "http://chubbi.es/manifest.json").
         to_return(:status => 200, :body =>  packaged_manifest, :headers => {})
-
+    
       @params_hash = {:type => 'client_associate', :signed_string => Base64.encode64(@signed_string), :signature => Base64.encode64(@signature)}
     end
-
+      
     it 'fetches the manifest' do
       @controller.stub!(:verify).and_return('ok')
-      post :token,  @params_hash
+      post :register,  @params_hash
     end
-
+    
     it 'creates a client application' do
       @controller.stub!(:verify).and_return('ok')
       lambda {
-        post :token,  @params_hash
+        post :register,  @params_hash
       }.should change(OAuth2::Provider.client_class, :count).by(1)
     end
 
     it 'does not create a client if verification fails' do
       @controller.stub!(:verify).and_return('invalid signature')
       lambda {
-        post :token,  @params_hash
+        post :register,  @params_hash
       }.should_not change(OAuth2::Provider.client_class, :count)
     end
 
@@ -97,7 +97,66 @@ describe AuthorizationsController do
         c.export.should == @public_key.export
         d.should == @manifest
       }
-      post :token,  @params_hash
+      post :register,  @params_hash
+    end
+  end
+
+  describe '#token' do
+    context "with an invalid authorization code" do
+      before do
+        auth_code = Factory :oauth_authorization_code, :expires_at => Time.now-1.day
+        post :token, :code => auth_code.code, :client_id => auth_code.authorization.client.oauth_identifier, :redirect_uri => "http://localhost/callback"
+      end
+      
+      it "responds with a 403" do
+        response.status.should == 403
+      end
+    end
+    
+    context "with am invalid refresh token" do
+      before do
+        authorization = Factory :oauth_authorization, :expires_at => Time.now-1.day
+        token = Factory :oauth_access_token,:authorization => authorization, :expires_at => Time.now-2.days
+        post :token, :client_id => token.client.oauth_identifier, :refresh_token => token.refresh_token
+      end
+      
+      it "responds with a 403" do
+        response.status.should == 403
+      end
+    end
+    
+    context "with an authorization code" do
+      before do
+        auth_code = Factory :oauth_authorization_code
+        post :token, :code => auth_code.code, :client_id => auth_code.authorization.client.oauth_identifier, :redirect_uri => "http://localhost/callback"
+      end
+      
+      it "succeeds" do
+        response.should be_success
+      end
+      
+      it "responds with and access and an refresh token" do 
+        response.body.should have_json_path("access_token")
+        response.body.should have_json_path("refresh_token")
+        response.body.should have_json_path("expires_in")
+      end
+    end
+    
+    context "with a refresh token" do
+      before do
+        token = Factory :oauth_access_token
+        post :token, :refresh_token => token.refresh_token, :client_id => token.client.oauth_identifier
+      end
+      
+      it "succeeds" do
+        response.should be_success
+      end
+      
+      it "responds with and access and an refresh token" do 
+        response.body.should have_json_path("access_token")
+        response.body.should have_json_path("refresh_token")
+        response.body.should have_json_path("expires_in")
+      end
     end
   end
 

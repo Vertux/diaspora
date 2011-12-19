@@ -15,11 +15,11 @@ describe "API V0 users" do
     end
     
     it 'returns the right diaspora_id, image_url, first_name, last_name and searchable' do
-      response.body.should == {:diaspora_id => alice.profile.diaspora_handle,
-                               :image_url => alice.profile.image_url,
-                               :first_name => alice.profile.first_name,
-                               :last_name => alice.profile.last_name,
-                               :searchable => alice.profile.searchable}.to_json
+      response.body.should be_json_eql({:diaspora_id => alice.profile.diaspora_handle,
+                                        :image_url => alice.profile.image_url,
+                                        :first_name => alice.profile.first_name,
+                                        :last_name => alice.profile.last_name,
+                                        :searchable => alice.profile.searchable}.to_json)
     end
   end
   
@@ -45,9 +45,9 @@ describe "API V0 users" do
     end
     
     it 'returns the right name, uid and birthday' do
-      response.body.should == {:name => alice.person.name,
-                               :uid => alice.username,
-                               :birthday => alice.profile.birthday}.to_json
+      response.body.should be_json_eql({:name => alice.person.name,
+                                        :uid => alice.username,
+                                        :birthday => alice.profile.birthday}.to_json)
     end
   end
 end

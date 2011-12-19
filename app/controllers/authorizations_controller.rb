@@ -12,7 +12,7 @@ class AuthorizationsController < ApplicationController
   
   before_filter :authenticate_user!, :except => [:token, :register]
   before_filter :redirect_or_block_invalid_authorization_code_requests,
-                :only => [:new, :create, :token]
+                :only => [:new, :create]
 
   skip_before_filter :verify_authenticity_token, :only => :token
 
@@ -51,7 +51,6 @@ class AuthorizationsController < ApplicationController
 
   def create
     if params[:commit] == "Authorize"
-      OAuth2::Provider::Models::ActiveRecord::AuthorizationCode.default_token_lifespan = 1.hour
       grant_authorization_code(current_user, Time.now+5.years)
     else
       deny_authorization_code
@@ -60,7 +59,7 @@ class AuthorizationsController < ApplicationController
 
   def register
     if params[:type] && params[:type] != 'client_associate'
-      render :nothing, :status => 400
+      render :nothing => true, :status => 400
       return
     end
     
@@ -76,11 +75,11 @@ class AuthorizationsController < ApplicationController
         manifest_url = params[:manifest]
         flow = "mobile"
       else
-        render :nothing, :status => 403
+        render :nothing => true, :status => 403
         return
       end
     else
-      render :nothing, :status => 400
+      render :nothing => true, :status => 400
       return
     end
 
@@ -122,14 +121,20 @@ class AuthorizationsController < ApplicationController
   def token
     token = false
     if params[:code]
+      block_invalid_authorization_code_requests
+      
       token = oauth2_authorization_request.client.authorization_codes.claim(
+        params[:code],
+        params[:redirect_uri]
+      )
+      token ||= oauth2_authorization_request.client.authorization_codes.claim(
         params[:code],
         CGI.unescape(params[:redirect_uri])
       )
-    elsif params[:refresh_token]
-      token = oauth2_authorization_request.access_tokens.refresh_with(params[:refresh_token])
+    elsif params[:refresh_token] && params[:client_id] && client = OAuth2::Provider.client_class.where(:oauth_identifier => params[:client_id]).first
+      token = client.access_tokens.refresh_with(params[:refresh_token])
     else
-      render :nothing, :status => 400
+      render :nothing => true, :status => 400
       return
     end
     
@@ -140,7 +145,7 @@ class AuthorizationsController < ApplicationController
         :expires_in => token.expires_in
       }
     else
-      render :nothing, :status => 403
+      render :nothing => true, :status => 403
     end
   end
 
@@ -155,8 +160,6 @@ class AuthorizationsController < ApplicationController
     auth.revoke
     redirect_to authorizations_path
   end
-
-  private
 
   # @param [String] enc_signed_string A Base64 encoded string with app_url;pod_url;time;nonce
   # @param [String] sig A Base64 encoded signature of the decoded signed_string with public_key.

@@ -183,6 +183,11 @@ Factory.define(:oauth_authorization, :class => OAuth2::Provider.authorization_cl
   a.association(:resource_owner, :factory => :user)
 end
 
+Factory.define :oauth_authorization_code, :class => OAuth2::Provider.authorization_code_class_name do |a|
+  a.redirect_uri "http://localhost/callback"
+  a.association(:authorization, :factory => :oauth_authorization)
+end
+
 Factory.define(:oauth_access_token, :class => OAuth2::Provider.access_token_class) do |a|
   a.association(:authorization, :factory => :oauth_authorization)
 end

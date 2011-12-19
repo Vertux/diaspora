@@ -139,6 +139,7 @@ group :test do
   gem 'webmock', :require => false
   gem 'sqlite3'
   gem 'mock_redis'
+  gem 'json_spec'
 end
 
 group :development do
