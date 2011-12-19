@@ -3,6 +3,8 @@ module Chubbies
   require 'jwt'
   require 'diaspora-client'
   require 'haml'
+  require 'rest_client'
+  require 'addressable/uri'
 
   def self.reset_db
     `rm -f #{File.expand_path('../chubbies.sqlite3', __FILE__)}`
@@ -110,6 +112,28 @@ module Chubbies
       Chubbies.reset_db
     end
 
+    get '/register' do
+      if params[:username] && params[:password]
+        pod = DiasporaClient::ResourceServer.find_or_initialize_by_host(params[:host])
+        begin
+          RestClient.post pod.register_endpoint,
+            :username => params[:username], :password => params[:password],
+            :manifest => DiasporaClient.application_base_url+"manifest.json",
+            :type => "client_associate",
+            :redirect_uri => DiasporaClient.application_base_url+"callback?diaspora_id=#{params[:username]}@#{params[:host]}"
+        rescue RestClient::Found => res
+          redirect_uri = Addressable::URI.parse(res.response.headers[:location])
+          values = redirect_uri.query_values
+          DiasporaClient::ResourceServer.create!(
+            :client_id => values["client_id"],
+            :client_secret => "none",
+            :host => params[:host]
+          )
+          redirect redirect_uri.to_s
+        end
+      end
+    end
+    
     post '/register' do
       DiasporaClient::ResourceServer.create!(params)
     end

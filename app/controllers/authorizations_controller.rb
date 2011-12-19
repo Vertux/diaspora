@@ -26,7 +26,11 @@ class AuthorizationsController < ApplicationController
       if params[:response_type] == "code"
         if authorization = current_user.authorizations.where(:client_id => @client.id).first
           ac = authorization.authorization_codes.create(:redirect_uri => params[:redirect_uri])
-          redirect_to "#{params[:redirect_uri]}&code=#{ac.code}"
+          redirect_uri = Addressable::URI.parse(params[:redirect_uri])
+          query_values = redirect_uri.query_values
+          query_values ||= Hash.new
+          redirect_uri.query_values = query_values.merge(:code => ac.code)
+          redirect_to redirect_uri.to_s
           return
         end
       end
@@ -47,6 +51,7 @@ class AuthorizationsController < ApplicationController
 
   def create
     if params[:commit] == "Authorize"
+      OAuth2::Provider::Models::ActiveRecord::AuthorizationCode.default_token_lifespan = 1.hour
       grant_authorization_code(current_user, Time.now+5.years)
     else
       deny_authorization_code
@@ -65,7 +70,8 @@ class AuthorizationsController < ApplicationController
       manifest_url = "#{app_url}/manifest.json"
       flow = "webapp"
     elsif params[:username] && params[:password] && params[:manifest] && params[:redirect_uri]
-      if user = User.where(:username => params[:username]) && user.valid_password?(params[:password])
+      user = User.where(:username => params[:username]).first
+      if user && user.valid_password?(params[:password])
         sign_in user
         manifest_url = params[:manifest]
         flow = "mobile"
@@ -114,10 +120,11 @@ class AuthorizationsController < ApplicationController
   end
 
   def token
+    token = false
     if params[:code]
       token = oauth2_authorization_request.client.authorization_codes.claim(
         params[:code],
-        params[:redirect_uri]
+        CGI.unescape(params[:redirect_uri])
       )
     elsif params[:refresh_token]
       token = oauth2_authorization_request.access_tokens.refresh_with(params[:refresh_token])

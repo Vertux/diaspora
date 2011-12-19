@@ -18,6 +18,10 @@ Given /^Chubbies is registered on my pod$/ do
   RestClient.post("localhost:#{Chubbies::PORT}/register", params)
 end
 
+When /^I register Chubbies with username and password$/ do
+  step "I visit \"/register?username=#{@me.username}&password=#{@me.password}&host=localhost:9887\" on Chubbies"
+end
+
 And /^I should see my "([^"]+)"/ do |code|
   page.should have_content(@me.person.instance_eval(code).to_s)
 end
@@ -37,9 +41,13 @@ When /^I try to authorize Chubbies$/ do
   ###
   step "I fill in my Diaspora ID to connect"
   step 'I press "Connect to Diaspora"'
+  step 'And I prepare to authorize Chubbies'
+end
+
+And /^I prepare to authorize Chubbies$/ do
   step 'I should be on the new user session page'
-  step "I fill in \"Username\" with \"#{@me.username}\""
   step "I fill in \"Password\" with \"#{@me.password}\""
+  step "I fill in \"Username\" with \"#{@me.username}\""
   step 'I press "Sign in"'
   step 'I should be on the oauth authorize page'
   step 'I should see "Chubbies"'
