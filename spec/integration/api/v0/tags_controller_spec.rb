@@ -57,7 +57,7 @@ describe "API V0 tags" do
       end
       
       it 'responds with the right tags' do
-        response.body.should == @tags.to_json
+        response.body.should be_json_eql(@tags.to_json)
       end
     end
   end

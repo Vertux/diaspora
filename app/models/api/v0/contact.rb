@@ -8,7 +8,7 @@ module Api::V0::Contact
     acts_as_api
     
     api_accessible :v0_private_contact_info do |tpl|
-      tpl.add "person.diaspora_handle", :as => :diasopora_handle
+      tpl.add "person.diaspora_handle", :as => :diaspora_handle
       tpl.add :api_v0_aspect_ids, :as => :aspect_ids
       tpl.add :sharing?, :as => :followed
       tpl.add :receiving?, :as => :following
