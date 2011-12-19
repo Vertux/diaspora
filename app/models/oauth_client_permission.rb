@@ -5,7 +5,7 @@ class OauthClientPermission < ActiveRecord::Base
   validates_inclusion_of :access_type, :in => ["read", "write"]
   validates_inclusion_of :scope, :in => ["posts","as_photos", "comments", 
                                          "likes", "aspects", "profile", 
-                                         "people", "tags"]
+                                         "people", "tags", "conversations"]
   scope :reading, where(:access_type => "read")
   scope :writing, where(:access_type => "write")
 end

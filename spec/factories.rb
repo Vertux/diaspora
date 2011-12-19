@@ -210,3 +210,21 @@ Factory.define(:mention) do |c|
   c.association(:person, :factory => :person)
   c.association(:post, :factory => :status_message)
 end
+
+Factory.define :conversation do |c|
+  c.association(:author, :factory => :person)
+  c.subject "checkout this"
+  c.participants {|c|[c.author, Factory(:person)] }
+  c.after_build do |c|
+    c.messages << Factory(:message, :author => c.author, :conversation => c)
+  end
+end
+
+Factory.define :message do |m|
+  m.association(:author, :factory => :person)
+  m.association(:conversation, :factory => :conversation)
+  m.text "cool stuff"
+  m.after_build do |m|
+    m.conversation.participants << m.author
+  end
+end

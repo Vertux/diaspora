@@ -89,7 +89,8 @@ end
 def oauth_client
   unless @oauth_client
     @oauth_client = Factory :app
-    [:tags, :as_photos, :aspects, :comments, :people].each do |perm|
+    [:tags, :as_photos, :aspects, :comments, :people,
+     :conversations].each do |perm|
       [:read, :write].each do |access|
         @oauth_client.oauth_client_permissions << Factory(:oauth_client_permission,
                                                           :client_id => @oauth_client.id,
