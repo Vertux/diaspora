@@ -4,7 +4,7 @@
 
 class Api::V0::NotificationsController < Api::V0::ApplicationController
   def index
-    ensure_permissions!(:aspects, :read)
+    ensure_permission!(:posts, :read)
     
     respond_with current_user.notifications, :api_template => :v0_private_notification_info
   end
