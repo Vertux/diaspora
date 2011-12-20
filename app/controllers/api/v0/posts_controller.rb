@@ -7,8 +7,9 @@ class Api::V0::PostsController < Api::V0::ApplicationController
   def show
     ensure_permission!(:posts, :read)
     
-    if post = Post.api_v0_find_visible_by_type(current_user, params[:id], params[:type])
-      respond_with post, :api_template => :v0_private_post_info
+    if post = Api::V0::Post.api_v0_find_visible_by_type(current_user, params[:id], params[:type])
+      template = (post.respond_to?(:api_v0_private_post_info_template)) ? post.api_v0_private_post_info_template : :v0_private_post_info
+      respond_with post, :api_template => template
     else
       head :not_found
     end

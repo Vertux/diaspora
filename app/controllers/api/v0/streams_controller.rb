@@ -53,7 +53,7 @@ class Api::V0::StreamsController < Api::V0::ApplicationController
       stream = stream_class.new(current_user, opts)
     end
 
-    respond_with stream.stream_posts, :api_template => :v0_private_post_info
+    respond_with stream.stream_posts, :api_template => :v0_private_stream_post_info
   end
   
   def sort_order
