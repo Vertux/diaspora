@@ -50,6 +50,12 @@ Factory.define :searchable_person, :parent => :person do |p|
   end
 end
 
+Factory.define :unsearchable_person, :parent => :person do |p|
+  p.after_build do |p|
+    p.profile.searchable = false
+  end
+end
+
 Factory.define :like do |x|
   x.association :author, :factory => :person
   x.association :target, :factory => :status_message

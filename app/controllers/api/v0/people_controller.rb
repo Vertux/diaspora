@@ -2,15 +2,15 @@
 #   licensed under the Affero General Public License version 3 or later.  See
 #   the COPYRIGHT file.
 
-class Api::V0::PeopleController < Api::V0::ApplicationController
+class Api::V0::PeopleController < Api::V0::ApplicationController  
   def show
     ensure_permission!(:people, :read)
     
     if params[:id]
-      person = ::Person.where(:id => params[:id]).first
+      person = ::Person.searchable.where(:id => params[:id]).first
     elsif params[:pod] && params[:username]
       handle = "#{params[:username]}@#{params[:pod]}"
-      person = ::Person.where(:diaspora_handle => handle).first
+      person = ::Person.searchable.where(:diaspora_handle => handle).first
     end
     
     if person
