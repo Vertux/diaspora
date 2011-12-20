@@ -51,7 +51,7 @@ class AuthorizationsController < ApplicationController
 
   def create
     if params[:commit] == "Authorize"
-      grant_authorization_code(current_user, Time.now+5.years)
+      grant_authorization_code(current_user, 5.years.from_now)
     else
       deny_authorization_code
     end

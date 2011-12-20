@@ -19,24 +19,19 @@ class Api::V0::ApplicationController < ApplicationController
     elsif access == :write
       perms = @oauth_client.permissions.writing
     end
-    insufficient_scope! unless (params[:bypass] && !params[:test_check]) || perms && perms.where(:scope => scope.to_s).exists?
+    insufficient_scope! unless perms && perms.where(:scope => scope.to_s).exists?
   end
   
   private
   
   def oauth_authenticate!
-    request.env['oauth2'].authenticate_request!({:scope => nil}) {} unless params[:bypass]
+    request.env['oauth2'].authenticate_request!({:scope => nil}) {}
   end
   
   def setup_from_oauth
     if request.env['oauth2'] && request.env['oauth2'].authenticated?
-      if params[:bypass]
-        sign_in User.first
-        @oauth_client = OAuth2::Provider::Models::ActiveRecord::Client.first
-      else
-        sign_in request.env['oauth2'].resource_owner
-        @oauth_client = request.env['oauth2'].authorization.client
-      end
+      sign_in request.env['oauth2'].resource_owner
+      @oauth_client = request.env['oauth2'].authorization.client
     end
   end
 end
