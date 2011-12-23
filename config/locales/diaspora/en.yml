@@ -229,6 +229,7 @@ en:
           profile: "Profile"
           people: "Other profiles as you can see them"
           tags: "Followed tags"
+          conversations: "Conversations"
         writing: "Write permissions for"
         write:
           posts: "Create a new Post, delete your posts, hide other posts, create reshares, mark notifications as unread"
@@ -239,6 +240,7 @@ en:
           profile: "Edit your profile"
           people: "Follow and unfollow other people"
           tags: "Add and remove followed tags"
+          conversations: "Create and delete conversations"
 
   bookmarklet:
     heading: "Bookmarklet"
