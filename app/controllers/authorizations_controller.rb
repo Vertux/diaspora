@@ -88,7 +88,6 @@ class AuthorizationsController < ApplicationController
       public_key = OpenSSL::PKey::RSA.new(packaged_manifest['public_key'])
       manifest = JWT.decode(packaged_manifest['jwt'], public_key)
     rescue Exception => e
-      debugger
       render :text => e.message, :status => 403
       return
     end
