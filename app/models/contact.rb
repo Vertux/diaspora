@@ -3,7 +3,7 @@
 #   the COPYRIGHT file.
 
 class Contact < ActiveRecord::Base
-  include Api::V0::Contact
+  include Api::Models::Contact
 
   belongs_to :user
 

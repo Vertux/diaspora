@@ -9,22 +9,7 @@ class Person < ActiveRecord::Base
   include ROXML
   include Encryptor::Public
   include Diaspora::Guid
-  include Api::V0::Person
-
-  # NOTE API V1 to be extracted
-  acts_as_api
-  api_accessible :backbone do |t|
-    t.add :id
-    t.add :name
-    t.add lambda { |person|
-      person.diaspora_handle
-    }, :as => :diaspora_id
-    t.add lambda { |person|
-      {:small => person.profile.image_url(:thumb_small),
-       :medium => person.profile.image_url(:thumb_medium),
-       :large => person.profile.image_url(:thumb_large) }
-    }, :as => :avatar
-  end
+  include Api::Models::Person
 
   xml_attr :diaspora_handle
   xml_attr :url

@@ -2,51 +2,15 @@
 #   licensed under the Affero General Public License version 3 or later.  See
 #   the COPYRIGHT file
 
-# looks like we loose it in our childs if we don't require it here. Don't ask me why
-require File.join(Rails.root, 'lib/diaspora/web_socket')
-
 class Post < ActiveRecord::Base
   include ApplicationHelper
 
   include Diaspora::Likeable
   include Diaspora::Commentable
   include Diaspora::Shareable
-  include Api::V0::Post
+  include Api::Models::Post
 
   attr_accessor :user_like
-
-  # NOTE API V1 to be extracted
-  acts_as_api
-  api_accessible :backbone do |t|
-    t.add :id
-    t.add :guid
-    t.add lambda { |post|
-      post.raw_message
-    }, :as => :text
-    t.add :public
-    t.add :created_at
-    t.add :comments_count
-    t.add :likes_count
-    t.add :reshares_count
-    t.add :last_three_comments
-    t.add :provider_display_name
-    t.add :author
-    t.add :post_type
-    t.add :photos_count
-    t.add :image_url
-    t.add :object_url
-    t.add :root
-    t.add :o_embed_cache
-    t.add :user_like
-    t.add :mentioned_people
-    t.add lambda { |post|
-      if post.photos_count > 0
-        post.photos
-      else
-        []
-      end
-    }, :as => :photos
-  end
 
   xml_attr :provider_display_name
 

@@ -9,7 +9,7 @@ class Message < ActiveRecord::Base
   include Diaspora::Guid
   include Diaspora::Webhooks
   include Diaspora::Relayable
-  include Api::V0::Message
+  include Api::Models::Message
 
   xml_attr :text
   xml_attr :created_at

@@ -3,7 +3,7 @@
 #   the COPYRIGHT file.
 
 class Reshare < Post
-  include Api::V0::Reshare
+  include Api::Models::Reshare
   
   belongs_to :root, :class_name => 'Post', :foreign_key => :root_guid, :primary_key => :guid
   validate :root_must_be_public

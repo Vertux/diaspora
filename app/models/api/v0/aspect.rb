@@ -5,8 +5,6 @@
 module Api::V0::Aspect
   extend ActiveSupport::Concern
   included do
-    acts_as_api
-    
     api_accessible :v0_private_aspect_info do |tpl|
       tpl.add :id
       tpl.add :name

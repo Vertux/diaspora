@@ -1,3 +1,8 @@
+#   Copyright (c) 2011, Diaspora Inc.  This file is
+#   licensed under the Affero General Public License version 3 or later.  See
+#   the COPYRIGHT file.
+
+
 class UserPreference < ActiveRecord::Base
   belongs_to :user
 

@@ -11,21 +11,11 @@ class Comment < ActiveRecord::Base
 
   include Diaspora::Taggable
   include Diaspora::Likeable
-  include Api::V0::Comment
+  include Api::Models::Comment
 
   acts_as_taggable_on :tags
   extract_tags_from :text
   before_create :build_tags
-
-  # NOTE API V1 to be extracted
-  acts_as_api
-  api_accessible :backbone do |t|
-    t.add :id
-    t.add :guid
-    t.add :text
-    t.add :author
-    t.add :created_at
-  end
 
   xml_attr :text
   xml_attr :diaspora_handle

@@ -3,7 +3,7 @@
 #   the COPYRIGHT file.
 
 class Aspect < ActiveRecord::Base
-  include Api::V0::Aspect
+  include Api::Models::Aspect
   
   belongs_to :user
 

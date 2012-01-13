@@ -7,21 +7,7 @@ class Photo < ActiveRecord::Base
 
   include Diaspora::Commentable
   include Diaspora::Shareable
-  include Api::V0::Photo
-
-  # NOTE API V1 to be extracted
-  acts_as_api
-  api_accessible :backbone do |t|
-    t.add :id
-    t.add :guid
-    t.add :created_at
-    t.add :author
-    t.add lambda { |photo|
-      { :small => photo.url(:thumb_small),
-        :medium => photo.url(:thumb_medium),
-        :large => photo.url(:scaled_full) }
-    }, :as => :sizes
-  end
+  include Api::Models::Photo
 
   mount_uploader :processed_image, ProcessedImage
   mount_uploader :unprocessed_image, UnprocessedImage

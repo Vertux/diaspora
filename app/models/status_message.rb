@@ -1,11 +1,10 @@
 #   Copyright (c) 2010-2011, Diaspora Inc.  This file is
 #   licensed under the Affero General Public License version 3 or later.  See
 #   the COPYRIGHT file.
-require File.join(Rails.root, 'lib/diaspora/web_socket')
 
 class StatusMessage < Post
   include Diaspora::Taggable
-  include Api::V0::StatusMessage
+  include Api::Models::StatusMessage
 
   include ActionView::Helpers::TextHelper
   include PeopleHelper

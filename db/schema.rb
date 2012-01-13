@@ -10,7 +10,6 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-
 ActiveRecord::Schema.define(:version => 20111217151409) do
 
   create_table "account_deletions", :force => true do |t|
@@ -321,8 +320,8 @@ ActiveRecord::Schema.define(:version => 20111217151409) do
     t.integer  "likes_count",                         :default => 0
     t.integer  "comments_count",                      :default => 0
     t.integer  "o_embed_cache_id"
-    t.integer  "reshares_count",                      :default => 0
     t.integer  "photos_count",                        :default => 0
+    t.integer  "reshares_count",                      :default => 0
   end
 
   add_index "posts", ["author_id", "root_guid"], :name => "index_posts_on_author_id_and_root_guid", :unique => true

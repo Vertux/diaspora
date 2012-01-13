@@ -4,7 +4,7 @@
 #
 
 class Notification < ActiveRecord::Base
-  include Api::V0::Notification
+  include Api::Models::Notification
 
   belongs_to :recipient, :class_name => 'User'
   has_many :notification_actors, :dependent => :destroy

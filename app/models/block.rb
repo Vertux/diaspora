@@ -1,3 +1,7 @@
+#   Copyright (c) 2011, Diaspora Inc.  This file is
+#   licensed under the Affero General Public License version 3 or later.  See
+#   the COPYRIGHT file.
+
 class Block < ActiveRecord::Base
   belongs_to :person
   belongs_to :user
