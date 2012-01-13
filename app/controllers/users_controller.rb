@@ -48,8 +48,6 @@ class UsersController < ApplicationController
       elsif u[:show_community_spotlight_in_stream] || u[:getting_started]
         if @user.update_attributes(u)
           flash[:notice] = I18n.t 'users.update.settings_updated'
-          redirect_to multi_path
-          return
         else
           flash[:notice] = I18n.t 'users.update.settings_not_updated'
         end
@@ -67,6 +65,12 @@ class UsersController < ApplicationController
           flash[:notice] = I18n.t 'users.update.unconfirmed_email_changed'
         else
           flash[:error] = I18n.t 'users.update.unconfirmed_email_not_changed'
+        end
+      elsif u[:auto_follow_back]
+        if  @user.update_attributes(u)
+          flash[:notice] = I18n.t 'users.update.follow_settings_changed'
+        else
+          flash[:error] = I18n.t 'users.update.follow_settings_not_changed'
         end
       end
     elsif aspect_order = params[:reorder_aspects]

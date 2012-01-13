@@ -90,6 +90,29 @@
   %br
   %hr
   %br
+  
+  %h3#auto-follow-back-preferences
+    = t('.following')
+  = form_for current_user, :url => user_path, :html => { :method => :put } do |f|
+    = f.error_messages
+  
+    %p.checkbox_select
+      = f.label :auto_follow_back, t('.auto_follow_back')
+      = f.check_box :auto_follow_back
+    %br
+    %p.checkbox_select
+      %span{:style => "color: #999"}
+        = t('.auto_follow_aspect')
+      = f.select :auto_follow_back_aspect_id, aspect_options_for_select(current_user.aspects)
+    
+    %br
+    = f.submit t('.change'), :class => 'button'
+
+  %br
+  %br
+  %hr
+  %br
+
 
   %h3#getting-started-preferences
     = t('.show_getting_started') 
@@ -166,7 +189,7 @@
   .span-5.last
     %h3
       = t('.close_account_text')
-    =link_to 'Close Account', '#close_account_pane', :rel => 'facebox', :class => "button"
+    =link_to t('.close_account_text'), '#close_account_pane', :rel => 'facebox', :class => "button"
 
     .hidden#close_account_pane{:rel => 'facebox'}
       #inner_account_delete

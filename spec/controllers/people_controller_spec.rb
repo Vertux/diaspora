@@ -211,12 +211,6 @@ describe PeopleController do
         get :show, :id => @user.person.id
         response.should be_success
       end
-
-      it 'passes through the includes option for json requests' do
-        json = @user.person.as_json
-        Person.any_instance.should_receive(:as_json).with(:includes => "horses").and_return(json)
-        get :show, :format => :json, :id => @user.person.id, :includes => "horses"
-      end
     end
 
     context "with no user signed in" do
@@ -393,8 +387,8 @@ describe PeopleController do
   end
 
   describe '#webfinger' do
-    it 'enqueues a webfinger job' do
-      Resque.should_receive(:enqueue).with(Jobs::SocketWebfinger, @user.id, @user.diaspora_handle, anything).once
+    it 'calls Webfinger.new' do
+      Webfinger.should_receive(:new).with(@user.diaspora_handle, anything).once
       get :retrieve_remote, :diaspora_handle => @user.diaspora_handle
     end
   end

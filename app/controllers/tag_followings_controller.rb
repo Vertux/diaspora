@@ -7,15 +7,22 @@ require File.join(Rails.root, 'lib', 'stream', 'followed_tag')
 class TagFollowingsController < ApplicationController
   before_filter :authenticate_user!
 
+  respond_to :html, :json
+
   def index
-    default_stream_action(Stream::FollowedTag)
+    stream_klass = Stream::FollowedTag
+
+    respond_with do |format|
+      format.html{ default_stream_action(stream_klass) }
+      format.json{ stream_json(stream_klass) }
+    end
   end
 
   # POST /tag_followings
   # POST /tag_followings.xml
   def create
     name_normalized = ActsAsTaggableOn::Tag.normalize(params['name'])
-    
+
     if name_normalized.nil? || name_normalized.empty?
       flash[:error] = I18n.t('tag_followings.create.none')
     else

@@ -3,6 +3,7 @@
 #   the COPYRIGHT file.
 
 
+
 eo:
   devise:
     confirmations:
@@ -30,36 +31,25 @@ eo:
       hello: "Saluton, %{email}!"
       invitation_instructions:
         accept: "Akcepti inviton"
-        arrived: "The social network you have been waiting for has arrived. Revamped, more secure, and more fun, %{strong_diaspora} is ready to help you share and explore the web in a whole new way."
-        be_yourself: "Be Yourself"
         be_yourself_paragraph: "La interreto keris unikajn rimedojn por sin esprimi. %{strong_diaspora} kapabligas vin esti vi mem kaj komunigi kiel vi volas, kun aŭ sen via vera nomo."
-        cubbies: Cubbi.es
         displaying_correctly: "Email not displaying correctly? %{link} in your browser"
-        email_address: questions@joindiaspora.com
-        email_us: "For general inquiries or support with your Diaspora account, please email us at %{email}."
         finally: "Finfine - ĝi alvenis"
         friends_saying: "Kion viaj amikoj diras..."
-        get_connected: "Konektiĝu"
-        get_connected_paragraph: "An international movement with a shared vision for a better web, %{strong_diaspora}'s #1 feature is its community. Meet new people, connect with friends, and join the fun."
-        have_fun: "Amuziĝu"
-        have_fun_paragraph: "%{strong_diaspora} is all about discovering amazing new content and people online. %{link}, the world's first %{strong_diaspora} application is just the begining. Collect and share the web in all of its glory."
+        get_connected: Konektiĝu
+        have_fun: Amuziĝu
         help_fund: "subteni Diaspora"
         here: "ĉi tie"
         ignore: "Se vi ne volas akcepti tiun inviton, bonvolu ignori ĉi tiun retpoŝton"
         join_team: "Angiu nian teamon"
         love: "Amo,"
         made_by_people: "%{strong_diaspora} kreiĝis de homoj kiuj amas la interreton same kiel vi. %{jointeam}, aŭ %{helpfund}!"
-        more_people: "Even more people are excited to see you!"
         no_account_till: "Via konto ne kreiĝos ĝis vi iras al la supra ligilo kaj enskribiĝas."
-        or: "aŭ"
+        or: aŭ
         sign_up_now: "Enskribiĝi nun &rarr;"
         subject: "Vi invitiĝis aniĝi al DIASPORA*!"
-        team_diaspora: "Team Diaspora"
-        unsubscribe: "To unsubscribe please click %{link}."
         view_in: "Rigardi en"
       inviter:
         accept_at: "ĉe %{url}, vi povas akcepti ĝin per la suba ligilo."
-        has_invited_you: "%{name}"
         have_invited_you: "%{names} invitis vin aniĝi je DIASPORA*"
       reset_password_instructions:
         change: "Ŝanĝi mian pasvorton"
@@ -91,12 +81,12 @@ eo:
         alpha_software: "Vi estas uzonta alfaprogramaron."
         bugs_and_feedback: "Memoru, vi trovos erarojn. Bonvolu uzi la „Feedback“ butonon dekstre por informi nin pri iuj ajn eraroj!  Ni tre rapide laboros, por ke ni riparu la erarojn, pri kiuj vi informis nin."
         bugs_and_feedback_mobile: "Memoru, vi trovos erarojn.  Bonvolu informi nin pri iuj ajn eraroj!  Ni tre rapide laboros, por ke ni riparu la erarojn, pri kiuj vi informis nin."
-        login: "Kontonomo"
+        login: Kontonomo
         modern_browsers: "nur funkcias per modernaj retumiloj"
-        password: "Pasvorto"
+        password: Pasvorto
         remember_me: "Memori min"
-        sign_in: "Ensaluti"
-        username: "Uzantnomo"
+        sign_in: Ensaluti
+        username: Uzantnomo
       signed_in: "Sukcese ensalutis."
       signed_out: "Sukcese elsalutis."
     shared:
@@ -104,8 +94,8 @@ eo:
         forgot_your_password: "Ĉu vi forgesis vian pasvorton?"
         receive_confirmation: "Ĉu vi ne ricevis instruojn por konfirmi?"
         receive_unlock: "Ĉu vi ne ricevis instruojn por malŝlosi?"
-        sign_in: "Ensaluti"
-        sign_up: "Enskribiĝi"
+        sign_in: Ensaluti
+        sign_up: Enskribiĝi
         sign_up_closed: "Nun ne estas libera registrado."
       mail_signup_form:
         sign_up_for_an_invite: "Petu inviton!"

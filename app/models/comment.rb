@@ -1,7 +1,6 @@
 #   Copyright (c) 2010-2011, Diaspora Inc.  This file is
 #   licensed under the Affero General Public License version 3 or later.  See
 #   the COPYRIGHT file.
-require File.join(Rails.root, 'lib/diaspora/web_socket')
 
 class Comment < ActiveRecord::Base
   include ROXML
@@ -9,7 +8,7 @@ class Comment < ActiveRecord::Base
   include Diaspora::Webhooks
   include Diaspora::Guid
   include Diaspora::Relayable
-  include Diaspora::Socketable
+
   include Diaspora::Taggable
   include Diaspora::Likeable
   include Api::V0::Comment
@@ -17,6 +16,16 @@ class Comment < ActiveRecord::Base
   acts_as_taggable_on :tags
   extract_tags_from :text
   before_create :build_tags
+
+  # NOTE API V1 to be extracted
+  acts_as_api
+  api_accessible :backbone do |t|
+    t.add :id
+    t.add :guid
+    t.add :text
+    t.add :author
+    t.add :created_at
+  end
 
   xml_attr :text
   xml_attr :diaspora_handle

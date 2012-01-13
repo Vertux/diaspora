@@ -3,6 +3,7 @@
 #   the COPYRIGHT file.
 
 
+
 nn:
   devise:
     confirmations:
@@ -25,41 +26,18 @@ nn:
     mailer:
       confirmation_instructions:
         confirm: "Stadfest kontoen min"
-        subject: "Stadfestingsrettleiing"
+        subject: Stadfestingsrettleiing
         you_can_confirm: "Du kan stadfesta kontoen din ved å nytta lenkja nedanfor:"
       hello: "Hei %{email}."
       invitation_instructions:
         accept: "Godta invitasjonen"
-        arrived: "The social network you have been waiting for has arrived. Revamped, more secure, and more fun, %{strong_diaspora} is ready to help you share and explore the web in a whole new way."
-        be_yourself: "Be Yourself"
-        be_yourself_paragraph: "The Internet has created unique new ways for us to express ourselves. %{strong_diaspora} lets you be yourself and share however you want, with or without your real name."
-        cubbies: Cubbi.es
         displaying_correctly: "Email not displaying correctly? %{link} in your browser"
-        email_address: questions@joindiaspora.com
-        email_us: "For general inquiries or support with your Diaspora account, please email us at %{email}."
-        finally: "Finally - it's here"
-        friends_saying: "What your friends are saying..."
-        get_connected: "Get Connected"
-        get_connected_paragraph: "An international movement with a shared vision for a better web, %{strong_diaspora}'s #1 feature is its community. Meet new people, connect with friends, and join the fun."
-        have_fun: "Have Fun"
-        have_fun_paragraph: "%{strong_diaspora} is all about discovering amazing new content and people online. %{link}, the world's first %{strong_diaspora} application is just the begining. Collect and share the web in all of its glory."
-        help_fund: "help fund Diaspora"
-        here: "here"
         ignore: "Om du ikkje ønskjer å godta invitasjonen, lèt du berre vera å svara på meldinga."
-        join_team: "Join our Team"
-        love: "Love,"
-        made_by_people: "%{strong_diaspora} is made by people who love the Internet as much as you do. %{jointeam}, or %{helpfund}!"
-        more_people: "Even more people are excited to see you!"
         no_account_till: "Kontoen din vil ikkje verta oppretta før du nyttar lenkja ovanfor og loggar deg på."
-        or: "or"
-        sign_up_now: "Sign up now &rarr;"
         subject: "Du er vorten invitert til å vera med i Diaspora."
-        team_diaspora: "Team Diaspora"
-        unsubscribe: "To unsubscribe please click %{link}."
         view_in: "View in"
       inviter:
         accept_at: "på %{url}, du kan godta det gjennom lenkja nedanfor."
-        has_invited_you: "%{name}"
         have_invited_you: "%{names} har invitert deg til å verta med i Diaspora"
       reset_password_instructions:
         change: "Endra passordet mitt"
@@ -70,7 +48,7 @@ nn:
       unlock_instructions:
         account_locked: "Kontoen din er låst grunna for mange mislykka påloggingsforsøk."
         click_to_unlock: "Klikk på lenkja nedanfor for å låsa opp kontoen din:"
-        subject: "Opplåsingsrettleiing"
+        subject: Opplåsingsrettleiing
         unlock: "Lås opp kontoen min"
       welcome: "Velkomen %{email}."
     passwords:
@@ -91,12 +69,12 @@ nn:
         alpha_software: "Du er på veg til å ta i bruk alfa-program."
         bugs_and_feedback: "Ver merksam på at du vil oppleva feil. Vi ber deg om å rapportera dei til oss ved å nytta tilbakemeldingsknappen på nettlesaren si høgre side. Så skal vi prøva å ordna dei så fort råd er."
         bugs_and_feedback_mobile: "Ver merksam på at du vil oppleva feil. Vi ber deg om å rapportera dei til oss. Så skal vi prøva å ordna dei så fort råd er."
-        login: "Pålogging"
+        login: Pålogging
         modern_browsers: "kan berre nytta moderne nettlesarar."
-        password: "Passord"
+        password: Passord
         remember_me: "Hugs meg"
         sign_in: "Logg på"
-        username: "Brukarnamn"
+        username: Brukarnamn
       signed_in: "Er pålogga."
       signed_out: "Er utlogga."
     shared:
@@ -105,7 +83,7 @@ nn:
         receive_confirmation: "Har du ikkje fått stadfestingsrettleiinga?"
         receive_unlock: "Fekk du ikkje nullstillingsrettleiinga?"
         sign_in: "Logg på"
-        sign_up: "Påmelding"
+        sign_up: Påmelding
         sign_up_closed: "Du kan ikkje melda deg på no."
       mail_signup_form:
         sign_up_for_an_invite: "Meld deg på for å få ein invitasjon."

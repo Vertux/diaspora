@@ -5,7 +5,15 @@
 require File.join(Rails.root, 'lib','stream', 'mention')
 
 class MentionsController < ApplicationController
+
+  respond_to :html, :json
+
   def index
-    default_stream_action(Stream::Mention)
+    stream_klass = Stream::Mention
+
+    respond_with do |format|
+      format.html{ default_stream_action(stream_klass) }
+      format.json{ stream_json(stream_klass) }
+    end
   end
 end

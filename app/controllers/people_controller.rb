@@ -123,17 +123,10 @@ class PeopleController < ApplicationController
       end
     end
 
-    if params[:only_posts]
-      render :partial => 'shared/stream', :locals => {:posts => @stream.stream_posts}
-    else
-      respond_to do |format|
-        format.all { respond_with @person, :locals => {:post_type => :all} }
-        format.json {
-          render :json => @person.to_json(:includes => params[:includes])
-        }
-      end
+    respond_to do |format|
+      format.all { respond_with @person, :locals => {:post_type => :all} }
+      format.json{ render_for_api :backbone, :json => @stream.stream_posts, :root => :posts }
     end
-
   end
 
   def retrieve_remote
@@ -168,6 +161,7 @@ class PeopleController < ApplicationController
       @contact = current_user.contact_for(@person) || Contact.new
       render :partial => 'aspect_membership_dropdown', :locals => {:contact => @contact, :person => @person, :hang => 'left'}
     end
+    Webfinger.new(account, opts)
   end
 
   def diaspora_id?(query)
@@ -176,7 +170,7 @@ class PeopleController < ApplicationController
 
   private
   def webfinger(account, opts = {})
-    Resque.enqueue(Jobs::SocketWebfinger, current_user.id, account, opts)
+    Webfinger.new(account, opts)
   end
 
   def remote_profile_with_no_user_session?

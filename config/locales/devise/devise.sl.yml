@@ -3,6 +3,7 @@
 #   the COPYRIGHT file.
 
 
+
 sl:
   devise:
     confirmations:
@@ -33,25 +34,21 @@ sl:
         arrived: "Socialno omrežje, ki ste ga že čakali je prispelo. Prenovljeno, varnejše in bolj zabavo, %{strong_diaspora} je pripravljena, da vam pomaga deliti in raziskati splet na povsem nov način."
         be_yourself: "Bodi to kar si"
         be_yourself_paragraph: "Internet je ustvaril edinstvene nove načine za nas, da se izražamo. %{strong_diaspora} vam omogoča, da ste to kar ste in da delite kakor sami želite z ali brez vašega pravega imena."
-        cubbies: Cubbi.es
         displaying_correctly: "E-pošta se ne prikazuje pravilno? %{link} v vašem brskalniku"
-        email_address: questions@joindiaspora.com
         email_us: "Za splošna vprašanja ali pomoč z računom Diaspore, nam pišite na %{email}."
         finally: "Končno je tukaj"
         friends_saying: "Kar vaši prijatelji pravijo ..."
         get_connected: "Povežite se"
-        get_connected_paragraph: "An international movement with a shared vision for a better web, %{strong_diaspora}'s #1 feature is its community. Meet new people, connect with friends, and join the fun."
-        have_fun: "Uživajte"
+        have_fun: Uživajte
         have_fun_paragraph: "%{strong_diaspora} je vse o odkrivanju nove vsebine in ljudi na spletu.%{link}, prva aplikacija %{strong_diaspora} je šele začetek. Zberite in delite splet v vsej njeni slavi."
         help_fund: "pomagaj pri financiranju Diaspore"
-        here: "tukaj"
+        here: tukaj
         ignore: "Če povabila ne želite sprejeti, prosimo jemljite to e-pošto kot brezpredmetno."
         join_team: "Pridruži se našemu timu"
-        love: "Love,"
         made_by_people: "%{strong_diaspora} je narejena s pomočjo ljudi, ki ljubijo internet toliko kot ti. %{jointeam}, ali %{helpfund}!"
         more_people: "Celo več ljudi je navdušenih, da te vidijo!"
         no_account_till: "Vaš račun ne bo ustvarjen, dokler ne boste obiskali  povezave zgoraj in se vpisali."
-        or: "ali"
+        or: ali
         sign_up_now: "Registriraj se zdaj &rarr;"
         subject: "Povabljeni ste, da se pridružite omrežju Diaspora!"
         team_diaspora: "Tim Diaspore"
@@ -59,7 +56,6 @@ sl:
         view_in: "Poglej v"
       inviter:
         accept_at: "na %{url}, sprejmete lahko preko spodnje povezave."
-        has_invited_you: "%{name}"
         have_invited_you: "%{names} so vas povabili v omrežje Diaspora"
       reset_password_instructions:
         change: "Spremeni geslo"
@@ -91,9 +87,9 @@ sl:
         alpha_software: "Uporabili boste alpha različico programa."
         bugs_and_feedback: "Opozarjamo vas, da lahko naletite na hrošče. Veseli bomo vsake prijavljene napake, ki jo lahko oddate s pomočjo 'Feedback' gumba na desni strani spletnega brskalnika. Po najboljših močeh se bomo potrudili, da prijavljeno napako obravnavamo in odpravimo v najkrajšem možnem času."
         bugs_and_feedback_mobile: "Opozarjamo vas, da lahko naletite na napake.  Veseli bomo vsake vaše prijavljene napake, ki jo bomo poskusili obravnavati in rešiti v najkrajšem možnem času."
-        login: "Prijava"
+        login: Prijava
         modern_browsers: "podpira le novejše spletne brskalnike."
-        password: "Geslo"
+        password: Geslo
         remember_me: "Zapomni si me"
         sign_in: "Prijavi se"
         username: "Uporabniško ime"
@@ -104,8 +100,8 @@ sl:
         forgot_your_password: "Ste pozabili geslo?"
         receive_confirmation: "Ste prejeli navodila za potrditev uporabniškega računa?"
         receive_unlock: "Ste prejeli navodila za odklepanje uporabniškega računa?"
-        sign_in: "Prijava"
-        sign_up: "Vpis"
+        sign_in: Prijava
+        sign_up: Vpis
         sign_up_closed: "Vpis trenutno ni omogočen."
       mail_signup_form:
         sign_up_for_an_invite: "Prijava na čakalno listo za povabila!"

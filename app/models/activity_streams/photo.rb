@@ -1,10 +1,8 @@
 #   Copyright (c) 2010-2011, Diaspora Inc.  This file is
 #   licensed under the Affero General Public License version 3 or later.  See
 #   the COPYRIGHT file.
-require File.join(Rails.root, 'lib/diaspora/web_socket')
 
 class ActivityStreams::Photo < Post
-  include Diaspora::Socketable
   include Api::V0::ActivityStreams::Photo
 
   xml_name self.name.underscore.gsub!('/', '-')
@@ -20,18 +18,6 @@ class ActivityStreams::Photo < Post
                         :provider_display_name,
                         :actor_url,
                         :objectId
-
-  # This wrapper around {Diaspora::Socketable#socket_to_user} adds aspect_ids to opts if they are not there.
-  def socket_to_user(user_or_id, opts={})
-    unless opts[:aspect_ids]
-      user_id = user_or_id.instance_of?(Fixnum) ? user_or_id : user_or_id.id
-      aspect_ids = AspectMembership.connection.select_values(
-        AspectMembership.joins(:contact).where(:contacts => {:user_id => user_id, :person_id => self.author_id}).select('aspect_memberships.aspect_id').to_sql
-      )
-      opts.merge!(:aspect_ids => aspect_ids)
-    end
-    super(user_or_id, opts)
-  end
 
   # This creates a new ActivityStreams::Photo from a json hash.
   # Right now, it is only used by Cubbi.es, but there will be objects for all the AS types.

@@ -10,7 +10,7 @@
    var uploader = new qq.FileUploaderBasic({
        element: document.getElementById('file-upload'),
        params: {'photo' : {'pending' : 'true', 'aspect_ids' : aspectIds}, 'set_profile_image' : "#{set_profile_image if defined?(set_profile_image)}"},
-       allowedExtensions: ['jpg', 'jpeg', 'png', 'gif'],
+       allowedExtensions: ['jpg', 'jpeg', 'png', 'gif', 'tiff'],
        action: "#{photos_path}",
        debug: true,
        button: document.getElementById('file-upload'),
@@ -72,10 +72,6 @@
                               if ( $('.publisher_photo').length  == 0){
                                 textarea.removeClass("with_attachments");
                                 textarea.css('paddingBottom', '');
-
-                                if( $('#status_message_text').attr("value") == ""){
-                                  Publisher.close()
-                                }
                               }
                             });
                           }

@@ -1,7 +1,6 @@
 #   Copyright (c) 2010-2011, Diaspora Inc.  This file is
 #   licensed under the Affero General Public License version 3 or later.  See
 #   the COPYRIGHT file.
-require File.join(Rails.root, 'lib/diaspora/web_socket')
 
 class Like < ActiveRecord::Base
   include ROXML
@@ -11,8 +10,18 @@ class Like < ActiveRecord::Base
 
   xml_attr :target_type
   include Diaspora::Relayable
-  include Diaspora::Socketable
+
   include Api::V0::Like
+
+  # NOTE API V1 to be extracted
+  acts_as_api
+  api_accessible :backbone do |t|
+    t.add :id
+    t.add :guid
+    t.add :author
+    t.add :created_at
+  end
+>>>>>>> master
 
   xml_attr :positive
   xml_attr :diaspora_handle

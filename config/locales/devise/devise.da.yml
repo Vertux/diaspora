@@ -3,6 +3,7 @@
 #   the COPYRIGHT file.
 
 
+
 da:
   devise:
     confirmations:
@@ -25,7 +26,7 @@ da:
     mailer:
       confirmation_instructions:
         confirm: "Bekræft min konto"
-        subject: "Bekræftelsesinstruktioner"
+        subject: Bekræftelsesinstruktioner
         you_can_confirm: "Du kan bekræfte din konto via nedenstående link:"
       hello: "Hej %{email}!"
       invitation_instructions:
@@ -33,9 +34,7 @@ da:
         arrived: "Det sociale netværk du har ventet på, er kommet. Ombygget, sikrere og sjovere, er %{strong_diaspora} klar til at hjælpe dig med at dele og udforske web på en helt ny måde."
         be_yourself: "Vær dig selv"
         be_yourself_paragraph: "Internettet har skabt nye unikke måder vi kan udtrykke os på. %{strong_diaspora} lader dig være dig selv og dele som du ønsker det, med eller uden dit rigtige navn."
-        cubbies: Cubbi.es
         displaying_correctly: "Ser e-mailen forkert ud? %{link}"
-        email_address: questions@joindiaspora.com
         email_us: "For generelle spørgsmål eller hjælp med din Diaspora-konto, send venligst en email til os på %{email}."
         finally: "Endelig er det her"
         friends_saying: "Hvad dine venner siger..."
@@ -44,22 +43,20 @@ da:
         have_fun: "Hav det sjovt"
         have_fun_paragraph: "%{strong_diaspora} handler om at opdage nyt fantastisk indhold og nye mennesker online. %{link}, verdens første %{strong_diaspora} program er kun begyndelsen. Saml og del med hele det utrolige web."
         help_fund: "støt Diaspora økonomisk"
-        here: "her"
+        here: her
         ignore: "Hvis du ikke vil acceptere invitationen skal du blot ignorere denne mail."
         join_team: "Kom med på holdet"
         love: "Kærlig hilsen,"
         made_by_people: "%{strong_diaspora} er skabt af folk der elsker internettet lige så meget som du gør. %{jointeam}, eller %{helpfund}!"
         more_people: "Endnu flere vil gerne møde dig!"
         no_account_till: "Din konto vil ikke blive oprettet før du har klikket ind på ovenstående link, og skriver dig op."
-        or: "eller"
+        or: eller
         sign_up_now: "Tilmeld dig nu &rarr;"
         subject: "Du er blevet inviteret til at bruge Diaspora!"
-        team_diaspora: "Team Diaspora"
         unsubscribe: "Hvis du gerne vil holde op med at få e-mails som denne, klik %{link}."
         view_in: "Se den i din browser."
       inviter:
         accept_at: "på %{url}, du kan acceptere ved at følge linket nedenunder."
-        has_invited_you: "%{name}"
         have_invited_you: "%{names} har inviteret dig til at deltage i Diaspora."
       reset_password_instructions:
         change: "Skift min adgangskode"
@@ -70,7 +67,7 @@ da:
       unlock_instructions:
         account_locked: "Din konto er blevet låst på grund af en stor mængde mislykkede log ind forsøg."
         click_to_unlock: "Klik på linket nedenfor for at aktivere din konto:"
-        subject: "Aktiveringsinstruktioner"
+        subject: Aktiveringsinstruktioner
         unlock: "Aktivér min konto"
       welcome: "Velkommen %{email}!"
     passwords:
@@ -93,10 +90,10 @@ da:
         bugs_and_feedback_mobile: "Vær opmærksom på at du vil opleve fejl. Vi opfordrer dig til at melde enhver fejl du støder på. Vi vil arbejde så hurtigt som muligt for at løse ethvert problem du melder."
         login: "Log ind"
         modern_browsers: "understøtter kun nyere browsere."
-        password: "Adgangskode"
+        password: Adgangskode
         remember_me: "Husk mig"
         sign_in: "Log ind"
-        username: "Brugernavn"
+        username: Brugernavn
       signed_in: "Du er nu logget ind."
       signed_out: "Du er nu logget ud."
     shared:

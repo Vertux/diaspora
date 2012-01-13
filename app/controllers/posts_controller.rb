@@ -35,12 +35,13 @@ class PostsController < ApplicationController
       respond_to do |format|
         format.xml{ render :xml => @post.to_diaspora_xml }
         format.mobile{render 'posts/show.mobile.haml'}
+        format.json{ render :json => {:posts => @post.as_api_response(:backbone)}, :status => 201 }
         format.any{render 'posts/show.html.haml'}
       end
 
     else
       user_id = (user_signed_in? ? current_user : nil)
-      Rails.logger.info(:event => :link_to_nonexistent_post, :ref => request.env['HTTP_REFERER'], :user_id => user_id, :post_id => params[:id])
+      Rails.logger.info(":event => :link_to_nonexistent_post, :ref => #{request.env['HTTP_REFERER']}, :user_id => #{user_id}, :post_id => #{params[:id]}")
       flash[:error] = I18n.t('posts.show.not_found')
       redirect_to :back
     end
@@ -52,6 +53,7 @@ class PostsController < ApplicationController
       current_user.retract(@post)
       respond_to do |format|
         format.js {render 'destroy'}
+        format.json { render :nothing => true, :status => 204 }
         format.all {redirect_to multi_path}
       end
     else

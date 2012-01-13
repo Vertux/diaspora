@@ -4,7 +4,6 @@
 require File.join(Rails.root, 'lib/diaspora/web_socket')
 
 class StatusMessage < Post
-  include Diaspora::Socketable
   include Diaspora::Taggable
   include Api::V0::StatusMessage
 
@@ -20,22 +19,21 @@ class StatusMessage < Post
 
   has_many :photos, :dependent => :destroy, :foreign_key => :status_message_guid, :primary_key => :guid
 
-  # TODO: disabling presence_of_content() (and its specs in status_message_controller_spec.rb:125) is a quick and dirty fix for federation
   # a StatusMessage is federated before its photos are so presence_of_content() fails erroneously if no text is present
-  #validate :presence_of_content
+  # therefore, we put the validation in a before_destory callback instead of a validation
+  before_destroy :presence_of_content
 
   attr_accessible :text, :provider_display_name
   attr_accessor :oembed_url
 
   after_create :create_mentions
-
   after_create :queue_gather_oembed_data, :if => :contains_oembed_url_in_text?
 
   #scopes
   scope :where_person_is_mentioned, lambda { |person|
     joins(:mentions).where(:mentions => {:person_id => person.id})
   }
-  
+
   scope :commented_by, lambda { |person|
     select('DISTINCT posts.*').joins(:comments).where(:comments => {:author_id => person.id})
   }
@@ -43,6 +41,10 @@ class StatusMessage < Post
   scope :liked_by, lambda { |person|
     joins(:likes).where(:likes => {:author_id => person.id})
   }
+
+  def photos_count
+    self.photos.size
+  end
 
   def self.guids_for_author(person)
     Post.connection.select_values(Post.where(:author_id => person.id).select('posts.guid').to_sql)
@@ -69,9 +71,9 @@ class StatusMessage < Post
   def raw_message=(text)
     write_attribute(:text, text)
   end
-  
+
   def nsfw?
-    self.raw_message.include?('#nsfw')
+    self.raw_message.match(/#nsfw/i)
   end
 
   def formatted_message(opts={})
@@ -146,17 +148,6 @@ class StatusMessage < Post
     XML
   end
 
-  def socket_to_user(user_or_id, opts={})
-    unless opts[:aspect_ids]
-      user_id = user_or_id.instance_of?(Fixnum) ? user_or_id : user_or_id.id
-      aspect_ids = AspectMembership.connection.select_values(
-        AspectMembership.joins(:contact).where(:contacts => {:user_id => user_id, :person_id => self.author_id}).select('aspect_memberships.aspect_id').to_sql
-      )
-      opts.merge!(:aspect_ids => aspect_ids)
-    end
-    super(user_or_id, opts)
-  end
-
   def after_dispatch sender
     unless self.photos.empty?
       self.photos.update_all(:pending => false, :public => self.public)
@@ -179,18 +170,23 @@ class StatusMessage < Post
 
   def queue_gather_oembed_data
     Resque.enqueue(Jobs::GatherOEmbedData, self.id, self.oembed_url)
-  end 
-  
+  end
+
   def contains_oembed_url_in_text?
     require 'uri'
     urls = URI.extract(self.raw_message, ['http', 'https'])
     self.oembed_url = urls.find{|url| ENDPOINT_HOSTS_STRING.match(URI.parse(url).host)}
   end
 
+  def update_photos_counter
+    StatusMessage.where(:id => self.id).
+      update_all(:photos_count => self.photos.count)
+  end
+
   protected
   def presence_of_content
-    if text_and_photos_blank?
-      errors[:base] << 'Status message requires a message or at least one photo'
+    unless text_and_photos_blank?
+      errors[:base] << "Cannot destory a StatusMessage with text and/or photos present"
     end
   end
 

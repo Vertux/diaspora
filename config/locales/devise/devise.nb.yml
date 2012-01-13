@@ -3,6 +3,7 @@
 #   the COPYRIGHT file.
 
 
+
 nb:
   devise:
     confirmations:
@@ -25,7 +26,7 @@ nb:
     mailer:
       confirmation_instructions:
         confirm: "Bekreft kontoen min"
-        subject: "Bekreftelsesinstrukser"
+        subject: Bekreftelsesinstrukser
         you_can_confirm: "Du kan bekrefte kontoen via linken nedenfor:"
       hello: "Hei %{email}!"
       invitation_instructions:
@@ -33,33 +34,27 @@ nb:
         arrived: "Det sosiale nettverket som du har ventet på har kommet. Med nytt utseende, bedre sikkerhet, og mer moro - %{strong_diaspora} er klar for å hjelpe deg dele og utforske nettet på en hel ny måte."
         be_yourself: "Vær deg selv"
         be_yourself_paragraph: "Nettet har gitt oss enestående nye måter for å uttrykke oss selv på. %{strong_diaspora} lar deg være deg selv og dele akkurat som du vil det, med eller uten ditt ekte navn."
-        cubbies: Cubbi.es
         displaying_correctly: "E-post vises ikke riktig? %{link} i din browser"
-        email_address: questions@joindiaspora.com
         email_us: "For generelle spørsmål eller hjelp med din Diaspora-konto, send oss en e-post på %{email}."
         finally: "Endelig - det er her"
         friends_saying: "Det vennene dine sier..."
-        get_connected: "Get Connected"
         get_connected_paragraph: "Som en internasjonal bevegelse som deler en visjon om et bedre internett, %{strong_diaspora}'s #1 egenskap er felleskapet. Møt nye mennesker, finn vennene dine, og bli med på moroa. "
         have_fun: "Ha det gøy"
         have_fun_paragraph: "%{strong_diaspora} handler om å finne utrolig nytt innhold og nye mennesker online. %{link}, den første %{strong_diaspora} applikasjonen i verden, er bare begynnelsen. Finn og del alt som gjør nettet til et fantastisk sted."
         help_fund: "hjelp med å finansiere Diaspora"
-        here: "her"
+        here: her
         ignore: "Hvis du ikke ønsker å godta invitasjonen, kan du se bort fra denne e-posten."
         join_team: "Bli med på laget"
         love: "Hilsen,"
         made_by_people: "%{strong_diaspora} er lagd av folk som er like glade i Internet som du er. %{jointeam}, eller %{helpfund}!"
         more_people: "Enda flere mennesker er glade for å se deg!"
         no_account_till: "Brukeren din vil ikke opprettes før du besøker lenken over og registrerer deg."
-        or: "eller"
+        or: eller
         sign_up_now: "Registrer deg nå &rarr;"
         subject: "Du har blitt invitert til Diaspora!"
-        team_diaspora: "Team Diaspora"
         unsubscribe: "For å avregistrere deg klikk på %{link}."
         view_in: "Se i"
       inviter:
-        accept_at: "at %{url}, you can accept it through the link below."
-        has_invited_you: "%{name}"
         have_invited_you: "%{names} har invitert deg til Diaspora"
       reset_password_instructions:
         change: "Endre passordet mitt"
@@ -93,10 +88,10 @@ nb:
         bugs_and_feedback_mobile: "Vær advart, du vil oppleve bugs. Vi oppfordrer deg til å rapportere feil! Vi vil arbeide så fort vi kan for å løse eventuelle problemer du rapporterer."
         login: "Logg inn"
         modern_browsers: "støtter bare moderne nettlesere."
-        password: "Passord"
+        password: Passord
         remember_me: "Husk meg"
         sign_in: "Logg inn"
-        username: "Brukernavn"
+        username: Brukernavn
       signed_in: "Innlogginga var vellykka."
       signed_out: "Utlogginga var vellykka."
     shared:

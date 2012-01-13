@@ -4,7 +4,6 @@
 
 module Diaspora
   module Shareable
-    require File.join(Rails.root, 'lib/diaspora/web_socket')
     include Diaspora::Webhooks
 
     def self.included(model)
@@ -107,6 +106,11 @@ module Diaspora
       end
     end
 
+    # @return [Integer]
+    def update_reshares_counter
+      self.class.where(:id => self.id).
+        update_all(:reshares_count => self.reshares.count)
+    end
 
     protected
 

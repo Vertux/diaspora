@@ -3,14 +3,15 @@
 #   the COPYRIGHT file.
 
 
+
 en_1337:
-  _applications: "4PPL1C4710N5"
-  _comments: "5P4M"
-  _contacts: "N00B5"
+  _applications: 4PPL1C4710N5
+  _comments: 5P4M
+  _contacts: N00B5
   _home: "127.0.0.1"
-  _photos: "P1CZ"
-  _services: "53RV1C35"
-  account: "4CC0UN7"
+  _photos: P1CZ
+  _services: 53RV1C35
+  account: 4CC0UN7
   activerecord:
     errors:
       models:
@@ -18,10 +19,6 @@ en_1337:
           attributes:
             person_id:
               taken: "MU57 B3 UN1QU3!"
-        person:
-          attributes:
-            diaspora_handle:
-              taken: "is already taken."
         request:
           attributes:
             from_id:
@@ -48,7 +45,6 @@ en_1337:
       video_title:
         unknown: "UNK0WN PR0N 717L3"
   are_you_sure: "4R3 U 5UR3?"
-  are_you_sure_delete_account: "Are you sure you want to close your account? This can't be undone!"
   aspect_memberships:
     destroy:
       failure: "F41L3D 2 PWN 7H47 N00B!"
@@ -62,12 +58,7 @@ en_1337:
       done_editing: "D0N3 3D171NG!"
     aspect_listings:
       add_an_aspect: "+ 4DD 4N 45P3C7"
-      deselect_all: "Deselect all"
       edit_aspect: "3D17 %{name}"
-      select_all: "Select all"
-    aspect_stream:
-      stay_updated: "Stay Updated"
-      stay_updated_explanation: "Your main stream is populated with all of your contacts, tags you follow, and posts from some creative members of the community."
     contacts_not_visible: "N00B5 1N 7H15 45P3C7 W0N7 KN0W 34CH 07H3R!"
     contacts_visible: "N00B5 1N 7H15 45P3C7 W1LL KN0W 34CH 07H3R!"
     create:
@@ -81,22 +72,21 @@ en_1337:
       aspect_list_is_not_visible: "45P3C7 L157 15 H1DD3N 2 07H3R5 1N 45P3C7!"
       aspect_list_is_visible: "45P3C7 L157 15 V151BL3 2 07H3R5 1N 45P3C7!"
       confirm_remove_aspect: 5UR3?
-      done: "K"
+      done: K
       make_aspect_list_visible: "M4K3 N00B5 V151BL3 2 34CH 07H3R?"
       remove_aspect: "D3L373 7H15 45P3C7!"
-      rename: "R3N4M3"
-      update: "UPD473"
+      rename: R3N4M3
+      update: UPD473
       updating: UPD471NG...
     few: "%{count} 45P3C75"
     helper:
       are_you_sure: 5UR3?
       aspect_not_empty: "45P3C7 N07 3MP7Y!"
-      remove: "R3M0V3"
+      remove: R3M0V3
     index:
       cubbies:
         explanation: "CUBB1.35 15 7H3 F1R57 4PP F0R D*!"
         heading: "C0NN3C7 70 CUBB1.35"
-        learn_more: "Learn more"
       diaspora_id:
         content_1: "Y0UR D* 1D 15:"
         content_2: "G1V3 7H3M 2 N00B5 4ND 7H3Y W1LL F1ND U!"
@@ -115,13 +105,7 @@ en_1337:
         tag_bug: "#bug"
         tag_feature: "#feature"
         tag_question: "#question"
-        tutorials_wiki_and_forum: "%{tutorial} & %{wiki} & %{forum}: Community-powered tutorials, how-to, and news"
-      introduce_yourself: "This is your stream.  Jump in and introduce yourself."
       keep_us_running: "K33P %{pod} UP BY D0N471NG 3V3RY M0N7H!"
-      new_here:
-        follow: "Follow %{link} and welcome new users to Diaspora*!"
-        learn_more: "Learn more"
-        title: "Welcome New Users"
       no_contacts: "N0 N00B5"
       no_tags: "+ F1ND 4 #74G 2 F0LL0W"
       people_sharing_with_you: "N00B5 5H4R1NG W17H U!"
@@ -130,7 +114,6 @@ en_1337:
         content: "U C4N C0NN3C7 7H3 F0LL0W1NG 53RV1C35 2 D*:"
         heading: "C0NN3C7 53RV1C35"
       unfollow_tag: "570P F0LL0W1NG #%{tag}"
-      welcome_to_diaspora: "Welcome to Diaspora, %{name}!"
       your_aspects: "Y0UR 45P3C75"
     many: "%{count} 45P3C75"
     move_contact:
@@ -138,11 +121,9 @@ en_1337:
       failure: "PWND %{inspect}"
       success: "N00B M0V3D 2 N3W 45P3C7!"
     new:
-      create: "CR3473"
+      create: CR3473
       name: "N4M3 (JU57 F0R U)"
     no_contacts_message:
-      community_spotlight: "community spotlight"
-      or_spotlight: "Or you can share with %{link}"
       try_adding_some_more_contacts: "U C4N 534RCH (70P) 0R 1NV173 50M3 N00B5 (R1GH7)"
       you_should_add_some_more_contacts: "U 5H0ULD G37 50M3 N00B5!"
     no_posts_message:
@@ -150,14 +131,13 @@ en_1337:
     one: "1 45P3C7"
     other: "%{count} 45P3C75"
     seed:
-      acquaintances: "PR05"
-      family: "RL"
-      friends: "N00B5"
+      acquaintances: PR05
+      family: RL
+      friends: N00B5
       work: RL-N00B5
     selected_contacts:
       manage_your_aspects: "M4N4G3 Y0UR 45P3C75!"
       no_contacts: "U D0N7 H4V3 4NY N00B5 H3R3!"
-      view_all_community_spotlight: "See all community spotlight"
       view_all_contacts: "V13W 4LL N00B5!"
     show:
       edit_aspect: "3D17 45P3C7"
@@ -171,25 +151,18 @@ en_1337:
       no_applications: "U H4V3N7 R3G1573R3D 4NY 4PP Y37!"
       revoke_access: "R3V0K3 4CC355"
   back: <-
-  blocks:
-    create:
-      failure: "I couldn't ignore that user.  #evasion"
-      success: "Alright, you won't see that user in your stream again. #silencio!"
-    destroy:
-      failure: "I couldn't stop ignoring that user.  #evasion"
-      success: "Let's see what they have to say! #sayhello"
   bookmarklet:
     explanation: "5P4M FR0M 4NYWH3R3, 4NY71M3! %{link}."
     explanation_link_text: "7H15 L1NK"
-    heading: "B00KM4RKL37"
+    heading: B00KM4RKL37
     post_something: "5P4M 50M37H1NG 2 D*"
     post_success: "5P4MM3D! CL051NG!"
-  cancel: "C4NC3L"
+  cancel: C4NC3L
   comments:
     few: "%{count} 5P4M5"
     many: "%{count} 5P4M5"
     new_comment:
-      comment: "5P4M"
+      comment: 5P4M
       commenting: 5P4MM1NG...
     one: "1 5P4M"
     other: "%{count} 5P4M5"
@@ -210,17 +183,15 @@ en_1337:
       only_sharing_with_me: "0NLY 5H4R1NG W17H U"
       remove_person_from_aspect: "R3M0V3 %{person_name} FR0M \"%{aspect_name}\""
       start_a_conversation: "574R7 4 N3W C0NV3R54710N!"
-      title: "N00B5"
+      title: N00B5
       your_contacts: "Y0UR N00B5"
     many: "%{count} N00B5"
     one: "1 N00B"
     other: "%{count} N00B5"
     sharing:
       people_sharing: "N00B5 5H4R1NG W17H U:"
-    spotlight:
-      community_spotlight: "Community Spotlight"
     two: "%{count} N00B5"
-    zero: "N00B5"
+    zero: N00B5
   conversations:
     create:
       fail: "1NV4L1D M3554G3!"
@@ -237,30 +208,25 @@ en_1337:
         zero: "N0 N3W M3554G35"
     index:
       create_a_new_message: "5P4M 50M30N3!"
-      inbox: "1NB0X"
+      inbox: 1NB0X
       message_inbox: "M3554G3 1NB0X"
       new_message: "N3W 5P4M"
       no_conversation_selected: "N0 C0NV3R54710N 53L3C73D!"
       no_messages: "N0 5P4M5"
     new:
       abandon_changes: "D0N7 54V3?"
-      send: "5P4M"
+      send: 5P4M
       sending: 5P4MM1NG...
-      subject: "N00B"
+      subject: N00B
       to: "2"
     new_message:
       fail: "1NV4L1D M3554G3!"
     show:
       delete: "PWN 7H47 C0NV3R54710N!"
-      reply: "R3PLY"
+      reply: R3PLY
       replying: R3PLY1NG...
-  date:
-    formats:
-      birthday: "%B %d"
-      birthday_with_year: "%B %d %Y"
-      fullmonth_day: "%B %d"
-  delete: "D3L373"
-  email: "M41L"
+  delete: D3L373
+  email: M41L
   error_messages:
     helper:
       correct_the_following_errors_and_try_again: "C0RR3C7 Y0UR 3RR0R5 4ND 7RY 4G41N!"
@@ -271,14 +237,14 @@ en_1337:
   home:
     show:
       already_account: "4LR34DY H4V3 4N 4CC0UN7?"
-      choice: "CH01C3"
+      choice: CH01C3
       choice_explanation: "D* L375 U 50R7 Y0UR N00B5 1N GR0UP5 C4LL3D 45P3C75! UN1QU3 70 D*, 45P3C75 3N5UR3 7H47 Y0UR 74RG375, J0K35 4ND PR0N 4R3 5H4R3D 0NLY W17H 7H3 N00B5 U W4N7 2!"
       learn_about_host: "L34RN 4B0U7 H0W 2 H057 Y0UR 0WN D* 53RV3R!"
       login_here: "L0G 1N H3R3!"
       ownership: 0WN(3R5H1P)
       ownership_explanation: "U 0WN Y0UR PR0N, 4ND U 5H0ULDN7 H4V3 2 G1V3 7H47 UP JU57 2 5H4R3 17! U M41N741N 0WN3R5H1P 0N 3V3RY7H1NG U 5H4R3 0N D*, G1V1NG U FULL C0N7R0L 0V3R H0W 175 C0N7R1BU73D!"
       share_what_you_want: "5P4M WH0 U W4N7, W17H WH47 U W4N7!"
-      simplicity: "51MPL1C17Y"
+      simplicity: 51MPL1C17Y
       simplicity_explanation: "D* M4K35 5H4R1NG CL34N 4ND 345Y F0R N00B5 – 4ND 7H15 G035 F0R PR1V4CY 2! 1NH3R3N7LY PR1V473, D* D035N7 M4K3 U W4D3 7HR0UGH P5G35 0F 53771NG5 4ND 0P710N5 JU57 2 K33P Y0UR PR0F1L3 53CUR3!"
       tagline_first_half: "5P4M WH0 U W4N7,"
       tagline_second_half: "W17H WH47 U W4N7!"
@@ -298,16 +264,15 @@ en_1337:
       your_account_awaits: "Y0UR 4CC0UN7 W4175!"
     new:
       already_invited: "7H3 F0LL0W1NG N00B5 F4C3P4LM3D 7H3M53LV35:"
-      aspect: "45P3C7"
+      aspect: 45P3C7
       comma_seperated_plz: "U C4N 5P4M MUL71PL3 M41L5, 53P3R473 7H3M BY 4 C0MM4!"
       if_they_accept_info: "1F 7H3Y 4CC3P7, 7H3Y W1LL B3 4DD3D 2 7H3 45P3C7 U 1NV173D 7H3M!"
       invite_someone_to_join: "5P4M 50M30N3 2 J01N D*!"
-      language: "Language"
       personal_message: "P3R50N4L M3554G3"
       resend: R35P4M!
       send_an_invitation: "53ND 4 5P4M!"
       send_invitation: "53ND 5P4M!"
-      to: "7o"
+      to: 7o
   layouts:
     application:
       powered_by: "P0W3R3D BY D*"
@@ -317,13 +282,13 @@ en_1337:
       your_aspects: "Y0UR 45P3C75"
     header:
       admin: G0DM0D3!
-      blog: "BL0G"
-      code: "C0D3"
+      blog: BL0G
+      code: C0D3
       login: "L0G 1N"
-      logout: "K7HXB41"
-      profile: "PR0F1L3"
+      logout: K7HXB41
+      profile: PR0F1L3
       recent_notifications: "R3C3N7 N071F1C4710N5!"
-      settings: "53771NG5"
+      settings: 53771NG5
       view_all: "V13W 4LL!"
   likes:
     likes:
@@ -348,9 +313,9 @@ en_1337:
         other: "%{count} <3"
         two: "%{count} <3"
         zero: "N0 <3"
-  limited: "V1P"
-  more: "M0R3"
-  next: "N3X7"
+  limited: V1P
+  more: M0R3
+  next: N3X7
   no_results: "N07H1NG F0UND!"
   notifications:
     also_commented:
@@ -383,7 +348,7 @@ en_1337:
         two: "%{count} N3W N071F1C4710N5"
         zero: "N0 N3W N071F1C4710N5"
     index:
-      and: "4ND"
+      and: 4ND
       and_others:
         few: "4ND %{count} 07H3R5"
         many: "4ND %{count} 07H3R5"
@@ -392,7 +357,7 @@ en_1337:
         two: "4ND %{count} 07H3R5"
         zero: "4ND N0B0DY 3l53"
       mark_all_as_read: "M4RK 4LL 45 R34D"
-      notifications: "N071F1C4710N5"
+      notifications: N071F1C4710N5
     liked:
       few: "%{actors} H45 JU57 <3 Y0UR %{post_link}."
       many: "%{actors} H45 JU57 <3 Y0UR %{post_link}."
@@ -421,7 +386,6 @@ en_1337:
       other: "%{actors} M3N710N3D U 1N 4 D3L373D P057."
       two: "%{actors} M3N710N3D U 1N 4 D3L373D P057."
       zero: "%{actors} M3N710N3D U 1N 4 D3L373D P057."
-    post: "post"
     private_message:
       few: "%{actors} 53N7 U 4 M3554G3."
       many: "%{actors} 53N7 U 4 M3554G3."
@@ -457,7 +421,6 @@ en_1337:
       reply: "R3PLY 0R V13W %{name}'s 5P4M >"
     confirm_email:
       click_link: "2 4C71V473 Y0UR N3W M41L %{unconfirmed_email}, PLZ F0LL0W 7H15 L1NK:"
-      subject: "Please activate your new email address %{unconfirmed_email}"
     email_sent_by_diaspora: "7H15 M41L W45 53N7 BY D*!  1F U W0ULD L1K3 2 510P G3771NG M41L5 L1K3 7H15,"
     hello: "H3LL0 %{name}!"
     liked:
@@ -480,8 +443,8 @@ en_1337:
       view_profile: "V13W %{name}'s PR0F1L3"
     thanks: "7HX, "
     to_change_your_notification_settings: "2 CH4NG3 Y0UR N071F1C4710N 53771NG5"
-  ok: "K"
-  or: "0R"
+  ok: K
+  or: 0R
   password: "*****"
   password_confirmation: "***** C0NF1RM4710N"
   people:
@@ -495,7 +458,6 @@ en_1337:
       results_for: " R35UL75 F0R %{params}"
     index:
       couldnt_find_them_send_invite: "C0ULDN7 F1ND 7H3M?  53ND 4N 1NV173 5P4M!"
-      looking_for: "Looking for posts tagged %{tag_link}?"
       no_one_found: "...4ND N0 0N3 W45 F0UND!"
       no_results: "H3Y! U N33D 2 534RCH F0R 50M37H1NG!"
       results_for: "534RCH R35UL75 F0R"
@@ -508,22 +470,20 @@ en_1337:
       pending_request: "P3ND1NG R3QU357"
       thats_you: "7H475 U!"
     profile_sidebar:
-      bio: "B10"
+      bio: B10
       born: B-D4Y
       edit_my_profile: "3D17 MY PR0F1L3"
-      gender: "G3ND3R"
+      gender: G3ND3R
       in_aspects: "1N 45P3C75"
-      location: "1P"
+      location: 1P
       remove_contact: "PWN N00B"
       remove_from: "R3M0V3 %{name} FR0M %{aspect}?"
     show:
-      closed_account: "This account has been closed."
       does_not_exist: "N00B != 3X1571NG"
       has_not_shared_with_you_yet: "%{name} H45 N07 5H4R3D 4NY 5P4M W17H U!"
-      ignoring: "You are ignoring all posts from %{name}."
       incoming_request: "%{name} W4N75 2 5H4R3 W17H U!"
-      mention: "M3N710N"
-      message: "5P4M"
+      mention: M3N710N
+      message: 5P4M
       not_connected: "U 4R3 N07 5H4R1NG W17H 7H15 P3R50N!"
       recent_posts: "R3C3N7 5P4M"
       recent_public_posts: "R3C3N7 PUBL1C 5P4M"
@@ -533,7 +493,7 @@ en_1337:
       to_accept_or_ignore: "2 4CC3P7 0R PWN 7H15 N00B"
     sub_header:
       add_some: "4DD 50M3"
-      edit: "3D17"
+      edit: 3D17
       you_have_no_tags: "U H4V3 N0 74G5!"
     two: "%{count} N00B5"
     webfinger:
@@ -548,7 +508,7 @@ en_1337:
     destroy:
       notice: "PR0N D3L373D!"
     edit:
-      editing: "3D171NG"
+      editing: 3D171NG
     new:
       back_to_list: "B4CK 2 L157"
       new_photo: "N3W PH070!"
@@ -558,14 +518,13 @@ en_1337:
       invalid_ext: "{file} H45 1NV4L1D 3X73N510N! 0NLY {extensions} 4R3 4LL0W3D!"
       size_error: "{file} 15 2 L4RG3, M4X1MUM F1L3 51Z3 15 {sizeLimit}."
     new_profile_photo:
-      or_select_one_existing: "or select one from your already existing %{photos}"
       upload: "UPL04D 4 N3W PR0F1L3 P1C!"
     photo:
       view_all: "V13W 4LL 0F %{name}'s PR0N"
     show:
       collection_permalink: "C0LL3C710N P3RM4L1NK"
       delete_photo: "D3L373 P1C"
-      edit: "3D17"
+      edit: 3D17
       edit_delete_photo: "3D17 P1C D35CR1P710N / D3L373 P1C"
       make_profile_photo: "M4K3 PR0F1L3 P1C"
       show_original_post: "5H0W 0R1G1N4L 5P4M!"
@@ -575,13 +534,11 @@ en_1337:
       notice: "P1C 5UCC35FULLY UPD473D!"
   posts:
     show:
-      destroy: "D3L373"
+      destroy: D3L373
       not_found: "50RRY, W3 C0ULDN7 F1ND 7H47 5P4M!"
-      permalink: "P3RM4L1NK"
-  previous: "PR3V10U5"
-  privacy: "Privacy"
-  privacy_policy: "Privacy Policy"
-  profile: "PR0F1L3"
+      permalink: P3RM4L1NK
+  previous: PR3V10U5
+  profile: PR0F1L3
   profiles:
     edit:
       allow_search: "4LL0W N00B5 2 534RCH F0R U!"
@@ -602,7 +559,7 @@ en_1337:
     update:
       failed: "F41L3D 2 UPD473 PR0F1L3!"
       updated: "PR0F1L3 UPD473D"
-  public: "PUBL1C"
+  public: PUBL1C
   reactions:
     few: "%{count} R34C710N5"
     many: "%{count} R34C710N5"
@@ -620,7 +577,7 @@ en_1337:
       leave_blank: "(L34V3 BL4NK 1F U D0N7 W4N7 2 CH4NG3 17)"
       password_to_confirm: "(W3 N33D Y0UR CURR3N7 ***** 2 C0NF1RM CH4NG35!)"
       unhappy: UNH4PPY?
-      update: "UPD473"
+      update: UPD473
     new:
       create_my_account: "CR3473 MY 4CC0UN7!"
       enter_email: "3N73R 4N 3M41L!"
@@ -631,7 +588,7 @@ en_1337:
       sign_up_message: "Social Networking with a <3"
   requests:
     create:
-      sending: "5P4MM1NG"
+      sending: 5P4MM1NG
       sent: "U H4V3 45K3D 2 5H4R3 W17H %{name}.  7H3Y 50ULD 533 17 N3X7 71M3 7H3Y V1517 D*!"
     destroy:
       error: "PL3453 53L3C7 4N 45P3C7!"
@@ -662,30 +619,27 @@ en_1337:
         one: "1 R35P4M"
         other: "%{count} R35P4M5"
         two: "%{count} R35P4M5"
-        zero: "R35P4M"
+        zero: R35P4M
       reshare_confirmation: "R35P4M %{author}'s 5P4M?"
       reshare_original: "R35P4M 0R1G1N4L"
       reshared_via: "R35P4MM3D V14"
       show_original: "5H0W 0R1G1N4L"
-  search: "534RCH"
+  search: 534RCH
   services:
     create:
-      already_authorized: "A user with diaspora id %{diaspora_id} already authorized that %{service_name} account."
-      failure: "Authentication failed."
       success: "4U7H3N71F1C4710N 5UCC355FULL"
     destroy:
       success: "5UCC35FULLY D3L373D 4U7H3N71F1C4710N!"
     failure:
       error: "3RR0R C0NN3C71NG 7H47 53RV1C3!"
     finder:
-      fetching_contacts: "Diaspora is populating your %{service} friends please check back in a few minutes."
       no_friends: "N0 FB N00B5 F0UND!"
       service_friends: "%{service} N00B5"
     index:
       connect_to_facebook: "C0NN3C7 2 FB"
       connect_to_tumblr: "C0NN3C7 2 7UMBLR"
       connect_to_twitter: "C0NN3C7 2 7W1773R"
-      disconnect: "D15C0NN3C7"
+      disconnect: D15C0NN3C7
       edit_services: "3D17 53RV1C35!"
       logged_in_as: "L0GG3D 1N 45"
       no_services: "U H4V3 N07 C0NN3C73D 4NY 53RV1C35 Y37!"
@@ -694,14 +648,10 @@ en_1337:
       click_link_to_accept_invitation: "F0LL0W 7H15 L1NK 2 4CC3P7 Y0UR 1NV174710N!"
       join_me_on_diaspora: "J01N M3 0N D*"
     remote_friend:
-      invite: "1NV173"
+      invite: 1NV173
       not_on_diaspora: "N07 Y37 0N D*!"
-      resend: "R35P4M"
-  settings: "53771NG5"
-  share_visibilites:
-    update:
-      post_hidden_and_muted: "%{name}'s post has been hidden, and notifications have been muted."
-      see_it_on_their_profile: "If you want to see updates on this post, visit %{name}'s profile page."
+      resend: R35P4M
+  settings: 53771NG5
   shared:
     add_contact:
       add_new_contact: "4DD 4 N3W N00B"
@@ -731,49 +681,36 @@ en_1337:
       invitations_left: "%{count} L3F7"
       invite_someone: "1NV173 50M30N3!"
       invite_your_friends: "1NV173 Y0UR FR13ND5!"
-      invites: "1NV1735"
+      invites: 1NV1735
       invites_closed: "1NV1735 4R3 CURR3N7LY CL053D 0N 7H15 P0D!"
     notification:
       new: "N3W %{type} FR0M %{from}"
     public_explain:
-      control_your_audience: "Control your Audience"
       logged_in: "L0GG3D 1N 2 %{service}"
       manage: "M4N4G3 C0NN3C73D 53RV1C35"
-      new_user_welcome_message: "Use #hashtags to classify your posts and find people who share your interests.  Call out awesome people with @Mentions"
       outside: "PUBL1C 5P4M5 W1LL B3 4V14BL3 2 07H3R5 0U751D3 0F D* 2 533!"
-      share: "Share"
       title: "537 UP C0NN3C73D 53RV1C35"
-      visibility_dropdown: "Use this dropdown to change visibility of your post.  (We suggest you make this first one public.)"
     publisher:
-      all: "4LL"
+      all: 4LL
       all_contacts: "4LL N00B5"
       discard_post: "D15C4RD P057"
       make_public: "M4K3 PUBL1C"
       new_user_prefill:
-        hello: "Hey everyone, I'm #%{new_user_tag}. "
         i_like: "I'm interested in %{tags}."
-        invited_by: "Thanks for the invite, "
-        newhere: "NewHere"
       post_a_message_to: "5P4M 7H15 45P3C7: %{aspect}"
       posting: 5P4MM1NG...
       publishing_to: "PUBL15H1NG 2: "
-      share: "5P4M"
+      share: 5P4M
       share_with: "5H4R3 W17H"
       upload_photos: "UPL04D P1C5"
       whats_on_your_mind: "WH475 0N Y0UR M1ND?"
     reshare:
-      reshare: "R35P4M"
+      reshare: R35P4M
     stream_element:
-      connect_to_comment: "Connect to this user to comment on their post"
-      currently_unavailable: "commenting currently unavailable"
-      dislike: "PWN"
+      dislike: PWN
       hide_and_mute: "H1D3 4ND PWN"
-      ignore_user: "Ignore %{name}"
-      ignore_user_description: "Ignore and remove user from all aspects?"
       like: <3
-      nsfw: "This post has been flagged as NSFW by its author. %{link}"
       shared_with: "5H4R3D W17H: %{aspect_names}"
-      show: "show"
       unlike: </3
       via: "V14 %{link}"
       viewable_to_anyone: "7H15 5P4M 15 V13W4BL3 2 4NY0N3 1N 7H3 W3B!"
@@ -803,43 +740,15 @@ en_1337:
       two: "Show two more comments"
       zero: "No more comments"
   streams:
-    aspects:
-      title: "Your Aspects"
-    aspects_stream: "Aspects"
-    comment_stream:
-      contacts_title: "People whose posts you commented on"
-      title: "Commented Posts"
-    commented_on: "commented on"
-    community_spotlight_stream: "Community Spotlight"
-    followed_tag:
-      add_a_tag: "Add a tag"
-      contacts_title: "People who dig these tags"
-      follow: "Follow"
-      title: "#Followed Tags"
-    followed_tags_stream: "#Followed Tags"
-    like_stream:
-      contacts_title: "People whose posts you like"
-      title: "Like Stream"
-    mentioned_stream: "@Mentions"
     mentions:
       contacts_title: "N00B5 WH0 M3N710N3D U"
       title: "Y0UR M3N710N5"
-    multi:
-      contacts_title: "People in your Stream"
-      title: "Stream"
-    posted: "posted"
-    public:
-      contacts_title: "Recent Posters"
-      title: "Public Activity"
-    recently: "recently:"
     tags:
       contacts_title: "N00B5 WH0 D1G 7H353 74G5"
-      tag_prefill_text: "The thing about %{tag_name} is... "
       title: "5P4M 74GG3D: %{tags}"
   tag_followings:
     create:
       failure: "F41L3D 2 F0LL0W: #%{name}"
-      none: "You cannot follow a blank tag!"
       success: "5UCC35FULLY F0LL0W1NG: #%{name}"
     destroy:
       failure: "F41L3D 2 570P F0LL0W1NG: #%{name}"
@@ -847,14 +756,11 @@ en_1337:
   tags:
     show:
       follow: "F0LL0W #%{tag}"
-      followed_by: "followed by"
       following: "F0LL0W1NG #%{tag}"
       nobody_talking: "N0B0DY 5P4MM3D 4B0U7 %{tag} Y37!"
-      none: "The empty tag does not exist!"
       people_tagged_with: "N00B5 74GG3D W17H %{tag}"
       posts_tagged_with: "5P4M 74GG3D W17H #%{tag}"
       stop_following: "570P F0LL0W1NG #%{tag}"
-  terms_and_conditions: "Terms and Conditions"
   tokens:
     show:
       connect_to_cubbies: "C0NN3C7 2 CUBB1.35!"
@@ -868,31 +774,18 @@ en_1337:
       via: "(V14 %{link})"
       what_is_cubbies: "CUBB135 15 7H3 W0RLD5 F1R57 D* 4PPL1C4710N! 175 4L50 7H3 B357 W4Y 2 C0LL3C7 P1C5 0NL1N3!"
   undo: UND0?
-  username: "N1CKN4M3"
+  username: N1CKN4M3
   users:
     confirm_email:
       email_confirmed: "M41L %{email} 4C71V473D!"
       email_not_confirmed: "M41L C0ULD N07 B3 4C71V473D, WR0NG L1NK?"
-    destroy:
-      no_password: "Please enter your current password to close your account."
-      success: "Your account has been locked.  It may take 20 minutes for us to finish closing your account.  Thank you for trying Diaspora."
-      wrong_password: "The entered password didn't match your current password."
     edit:
       also_commented: "...50M30N3 4L50 5P4M5 0N 4 N00B5 5P4M?"
-      change: "CH4NG3"
+      auto_follow_back: "Automatically follow back if a someone follows you"
+      change: CH4NG3
       change_email: "CH4NG3 M41L"
       change_language: "CH4NG3 L4NGU4G3"
       change_password: "CH4NG3 *****"
-      close_account:
-        dont_go: "Hey, please don't go!"
-        if_you_want_this: "If you really want this, type in your password below and click 'Close Account'"
-        lock_username: "This will lock your username if you decided to sign back up."
-        locked_out: "You will get signed out and locked out of your account."
-        make_diaspora_better: "We want you to help us make Diaspora better, so you should help us out instead of leaving. If you do want to leave, we want you to know what happens next."
-        mr_wiggles: "Mr Wiggles will be sad to see you go"
-        no_turning_back: "Currently, there is no turning back."
-        what_we_delete: "We delete all of your posts, profile data, as soon as humanly possible. Your comments will hang around, but be associated with your Diaspora Handle."
-      close_account_text: "Close Account"
       comment_on_post: "...50M30N3 5P4M5 Y0UR 5P4M?"
       current_password: "CURR3N7 *****"
       download_photos: "D0WNL04D MY PR0N"
@@ -900,42 +793,25 @@ en_1337:
       edit_account: "H4CK Y0UR 4CC0UN7"
       email_awaiting_confirmation: "4C71V4510N L1NK 53N7 2 %{unconfirmed_email}. UN71L U F0LL0W 7H3 L1NK W3 W1LL C0N71NU3 2 U53 Y0UR 0R1G1N4L M41L %{email}."
       export_data: "3XP0R7 D474"
-      getting_started: "New User Prefrences"
       liked: "...50M30N3 L1K35 Y0UR 5P4M?"
       mentioned: "...U 4R3 M3N710N3D 1N 4 5P4M?"
       new_password: "N3W *****"
-      photo_export_unavailable: "Photo exporting currently unavailable"
       private_message: "...U R3C13V3 4 PN?"
       receive_email_notifications: "R3C13V3 5P4M WH3N..."
       reshared: "...50M30N3 R35H4R35 Y0UR 5P4M?"
-      show_community_spotlight: "Show Community Spotlight in Stream?"
-      show_getting_started: "Re-enable Getting Started"
       started_sharing: "...50M30N3 574R75 5H4R1NG W17H U?"
-      stream_preferences: "Stream Preferences"
       your_email: "Y0UR M41L"
       your_handle: "Y0UR D* 1D"
     getting_started:
-      awesome_take_me_to_diaspora: "Awesome! Take me to Diaspora*"
       community_welcome: "7H3 D* C0MMUN17Y 15 H4PPY 2 H4V3 U 4B04RD!"
       hashtag_explanation: "H45H74G5 4LL0W U 2 74LK 4B0U7 4ND F0LL0W Y0UR 1N73R3575! 7H3YR3 4L50 4 GR347 W4Y 2 F1ND N3W N00B5 0N D*!"
-      hashtag_suggestions: "Try following tags like #art, #movies, #gif, etc."
-      hooking_up_fb: "hooking up your Facebook account"
-      saved: Saved!
-      we_can_speed_things_up: "We can speed things up a bit by"
-      well_hello_there: "Well, hello there!"
-      what_are_you_in_to: "What are you into?"
       what_facebook_does: "to Diaspora. This will pull your name and photo, and enable cross-positng."
-      who_are_you: "Who are you?"
     logged_out:
       go_mobile: "N0W G0 M0B1L3!"
       on_your_mobile_device: "0N Y0UR M0B1L3 D3V1C3 2 4CC355 D* M0B1L3!"
       signed_out: "U H4V3 51GN3D 0U7 0F D*!"
       simply_visit: "51MPLY V1517"
       works_on_modern: "W0RK5 0N 4LL M0D3RN 5M4R7PH0N35!"
-    privacy_settings:
-      ignored_users: "Ignored Users"
-      stop_ignoring: "Stop ignoring"
-      title: "Privacy Settings"
     public:
       does_not_exist: "U53R %{username} D035 N07 3X157!"
     update:
@@ -944,8 +820,6 @@ en_1337:
       language_not_changed: "7URN 0FF 1337? -> F41L!"
       password_changed: "***** CH4NG3D!"
       password_not_changed: "***** CH4NG3 F41L3D!"
-      settings_not_updated: "Settings update failed"
-      settings_updated: "Settings updated"
       unconfirmed_email_changed: "M41L CH4NG3D, N33D5 4C71V4710N!"
       unconfirmed_email_not_changed: "M41L CH4NG3 F41L3D!"
   webfinger:
@@ -954,7 +828,3 @@ en_1337:
     no_person_constructed: "N0 P3R50N C0ULD B3 C0N57RUC73D FR0M 7H15 HC4RD!"
     not_enabled: "W3BF1NG3R D035 N07 533M 70 B3 3N4BL3D F0R %{account}'s H057!"
     xrd_fetch_failed: "3RR0R G3771NG XRD F0R %{account}!"
-  welcome: Welcome!
-  will_paginate:
-    next_label: "next &raquo;"
-    previous_label: "&laquo; previous"
