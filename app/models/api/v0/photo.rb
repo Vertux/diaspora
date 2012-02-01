@@ -7,6 +7,7 @@ module Api::V0::Photo
   included do
     api_accessible :v0_private_photo_info do |tpl|
       tpl.add :id
+      tpl.add :guid
       tpl.add :diaspora_handle
       tpl.add :public
       tpl.add :api_v0_type, :as => :type

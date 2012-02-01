@@ -29,6 +29,7 @@ describe "API V0 posts" do
       it "returns the right info" do
         res = parse_json(response.body)
         {:id => @post.id,
+         :guid => @post.guid,
          :diaspora_handle => @post.diaspora_handle,
          :public => @post.public,
          :provider_display_name => @post.provider_display_name,
@@ -55,6 +56,7 @@ describe "API V0 posts" do
   
     res = parse_json(response.body)
     {:id => msg.id,
+     :guid => msg.guid,
      :diaspora_handle => msg.diaspora_handle,
      :public => msg.public,
      :provider_display_name => msg.provider_display_name,
@@ -75,6 +77,7 @@ describe "API V0 posts" do
     
     response.body.should be_json_eql({
       :id => msg.id,
+      :guid => msg.guid,
       :diaspora_handle => msg.diaspora_handle,
       :public => msg.public,
       :provider_display_name => msg.provider_display_name,
@@ -94,6 +97,7 @@ describe "API V0 posts" do
     
     response.body.should be_json_eql({
       :id => reshare.id,
+      :guid => reshare.guid,
       :diaspora_handle => reshare.diaspora_handle,
       :public => reshare.public,
       :provider_display_name => reshare.provider_display_name,
@@ -113,6 +117,7 @@ describe "API V0 posts" do
   
     response.body.should be_json_eql({
       :id => photo.id,
+      :guid => photo.guid,
       :diaspora_handle => photo.diaspora_handle,
       :public => photo.public,
       :type => photo.api_v0_type,
@@ -130,6 +135,7 @@ describe "API V0 posts" do
     
     response.body.should be_json_eql({
       :id => photo.id,
+      :guid => photo.guid,
       :diaspora_handle => photo.diaspora_handle,
       :public => photo.public,
       :provider_display_name => photo.provider_display_name,
@@ -172,5 +178,11 @@ describe "API V0 posts" do
       res["id"].should == @id
       res["type"].should == @msg.type
     end
+  end
+  
+  it "allows querying via a guid" do
+    msg = Factory :status_message, :public => true
+    get "/api/v0/posts/#{msg.guid}", api_v0_params(:guid => true)
+    response.should be_success
   end
 end
