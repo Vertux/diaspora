@@ -111,7 +111,6 @@ pt-PT:
         have_a_question: "... uma %{link}?"
         here_to_help: "A comunidade do Diaspora está aqui!"
         need_help: "Precisa de ajuda?"
-        satisfaction: "%{link}: Apoio da comunidade"
         tag_feature: funcionalidade
         tag_question: questão
         tutorials_wiki_and_forum: "%{tutorial} & %{wiki} & %{forum}: Tutoriais, Como Fazer e Notícias desenvolvidos pela comunidade"
@@ -200,7 +199,6 @@ pt-PT:
       add_a_new_aspect: "Adicionar um novo aspecto"
       add_to_aspect: "Adicionar contactos a %{name}"
       all_contacts: "Todos os Contactos"
-      check_out: Veja
       many_people_are_you_sure: "Tem a certeza de que deseja começar um conversa privada com mais de %{suggested_limit} contactos? Publicar para este aspecto pode ser uma forma melhor de os contactar."
       my_contacts: "Os Meus Contactos"
       no_contacts: "Parece que precisa de adicionar alguns contactos."
@@ -571,6 +569,13 @@ pt-PT:
     show:
       destroy: Apagar
       not_found: "Lamentamos muito, mas não foi possível encontrar essa publicação."
+      photos_by:
+        few: "%{count} photos by %{author}"
+        many: "%{count} photos by %{author}"
+        one: "One photo by %{author}"
+        other: "%{count} photos by %{author}"
+        two: "Two photos by %{author}"
+        zero: "No photos by %{author}"
   previous: anterior
   privacy: Privacidade
   privacy_policy: "Política de Privacidade"
@@ -798,7 +803,6 @@ pt-PT:
     comment_stream:
       contacts_title: "Pessoas cujos os posts você comentou"
       title: "Posts Comentados"
-    commented_on: "comentou no"
     community_spotlight_stream: "Destaque da Comunidade"
     followed_tag:
       add_a_tag: "Adicionar uma etiqueta"
@@ -815,11 +819,9 @@ pt-PT:
     multi:
       contacts_title: "Pessoas no seu Fluxo"
       title: Fluxo
-    posted: publicado
     public:
       contacts_title: "Cartazes Recentes"
       title: "Actividade Geral"
-    recently: "recentemente:"
     tags:
       contacts_title: "Pessoas que gostam desta etiqueta"
       tag_prefill_text: "O que acontece com %{tag_name} é... "

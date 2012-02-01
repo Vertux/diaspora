@@ -142,27 +142,13 @@ describe AppConfig do
       AppConfig.normalize_pod_url
       AppConfig[:pod_url].should == "https://example.org/"
     end
+
   end
 
-  context 'configurations which are arrays' do
-
-    it 'should be set to be admins or community_spotlight' do
-      AppConfig::ARRAY_VARS.should =~ [:community_spotlight, :admins]
-    end
-
-    context 'on heroku' do
-      before do
-        ENV['admins'] = "maxwell#{EnviromentConfiguration::ARRAY_SEPERATOR}daniel"
-        EnviromentConfiguration.stub(:heroku?).and_return(true)
-      end
-
-      after do
-        EnviromentConfiguration.stub(:heroku?).and_return(false)
-      end
-
-      it 'converts a string with ARRAY_SEPERATOR to an array' do
-        AppConfig[:admins].should be_a Array
-      end
+  describe '.bare_pod_uri' do
+    it 'is AppConfig[:pod_uri].authority stripping www.' do
+      AppConfig[:pod_url] = "https://www.example.org/"
+      AppConfig.bare_pod_uri.should == 'example.org'
     end
   end
 

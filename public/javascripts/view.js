@@ -7,11 +7,8 @@ var View = {
     /* Buttons */
     $("input:submit").addClass("button");
 
-    /* In field labels */
-    $("label").inFieldLabels();
-    $(document).bind('afterReveal.facebox', function() {
-      jQuery("#facebox label").inFieldLabels();
-    });
+    /* label placeholders */
+    $("input, textarea").placeholder();
 
     /* "Toggling" the search input */
     $(this.search.selector)
@@ -38,19 +35,6 @@ var View = {
     $("#new_tag_following .tag_input").bind('focus', function(evt){
       $(this).siblings("#tag_following_submit").removeClass('hidden');
     });
-
-    /* Autoexpand textareas */
-    var startAutoResize = function() {
-     if (arguments.length > 1){
-        target = $(Array.prototype.slice.call(arguments,1)).find('textarea');
-      }else{
-        target = $('textarea')
-      }
-      target.autoResize({
-                          'animate': false,
-                          'extraSpace': 5
-                        });
-    }
 
     /* photo exporting in the works */
     $("#photo-export-button").bind("click", function(evt){

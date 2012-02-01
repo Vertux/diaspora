@@ -28,6 +28,7 @@ fr:
       hide: "Cacher les commentaires"
       show: "Afficher tous les commentaires"
     confirm_dialog: "Êtes-vous sûr ?"
+    delete: Effacer
     failed_to_like: "Impossible d'aimer !"
     failed_to_post_message: "Impossible de partager le message !"
     getting_started:
@@ -35,6 +36,17 @@ fr:
       hey: "Hey, <%= name %> !"
       no_tags: "Hey, vous ne suivez aucun tag ! Continuer quand même ?"
       preparing_your_stream: "Préparation de votre flux personnalisé..."
+    header:
+      admin: Administration
+      home: Accueil
+      log_out: "Se déconnecter"
+      mark_all_as_read: "Tout marquer comme lu"
+      profile: Profil
+      recent_notifications: "Notifications récentes"
+      search: "Trouver des personnes ou #tags"
+      settings: Paramètres
+      view_all: "Tout afficher"
+    ignore: Ignorer
     infinite_scroll:
       no_more: "Pas d'autres messages."
     photo_uploader:
@@ -47,6 +59,37 @@ fr:
       duplicate: "C'est si bien que ça ? Vous avez déjà repartagé ce message !"
     search_for: "Chercher <%= name %>"
     show_more: "Voir plus"
+    stream:
+      comment: Commenter
+      hide: Masquer
+      like: J'aime
+      likes:
+        few: "<%= count %> J'aime"
+        many: "<%= count %> J'aime"
+        one: "<%= count %> J'aime"
+        other: "<%= count %> J'aime"
+        two: "<%= count %> J'aime"
+        zero: "<%= count %> J'aime"
+      limited: Limité
+      more_comments:
+        few: "Montrer <%= count %> commentaires en plus"
+        many: "Montrer <%= count %> commentaires en plus"
+        one: "Montrer <%= count %> commentaire en plus"
+        other: "Montrer <%= count %> commentaires en plus"
+        two: "Montrer <%= count %> commentaires en plus"
+        zero: "Montrer <%= count %> commentaires en plus"
+      nsfw: "Ce message a été marqué comme non sûr par son auteur."
+      original_post_deleted: "Le message original a été effacé par son auteur."
+      reshare: Repartager
+      reshares:
+        few: "<%= count %> repartages"
+        many: "<%= count %> repartages"
+        one: "<%= count %> repartage"
+        other: "<%= count %> repartages"
+        two: "<%= count %> Repartages"
+        zero: "<%= count %> repartages"
+      show: Montrer
+      unlike: "Je n'aime plus"
     tags:
       wasnt_that_interesting: "Ok, je suppose que #<%= tagName %> n'est pas la seule chose qui vous intéresse..."
     timeago:
@@ -68,5 +111,3 @@ fr:
     videos:
       unknown: "Type de vidéo inconnu"
       watch: "Voir cette vidéo sur <%= provider %>"
-    web_sockets:
-      disconnected: "Le WebSocket est fermé, les messages ne seront plus diffusés en direct."

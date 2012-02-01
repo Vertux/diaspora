@@ -4,114 +4,104 @@ describe("app.views.Stream", function(){
 
     this.posts = $.parseJSON(spec.readFixture("multi_stream_json"))["posts"];
 
-    this.collection = new app.collections.Stream(this.posts);
-    this.view = new app.views.Stream({collection : this.collection});
+    this.stream = new app.models.Stream();
+    this.stream.add(this.posts);
+
+    this.view = new app.views.Stream({model : this.stream});
+
+    app.stream.bind("fetched", this.collectionFetched, this); //untested
 
     // do this manually because we've moved loadMore into render??
     this.view.render();
-    _.each(this.view.collection.models, function(post){
-      this.view.addPost(post);
-    }, this);
-  })
+    _.each(this.view.collection.models, function(post){ this.view.addPost(post); }, this);
+  });
 
   describe("initialize", function(){
     it("binds an infinite scroll listener", function(){
       spyOn($.fn, "scroll");
-
-      new app.views.Stream();
-      expect($.fn.scroll).toHaveBeenCalled()
-    })
-  })
+      new app.views.Stream({model : this.stream});
+      expect($.fn.scroll).toHaveBeenCalled();
+    });
+  });
 
   describe("#render", function(){
     beforeEach(function(){
-      this.statusMessage = this.collection.models[0];
-      this.reshare = this.collection.models[1];
+      this.statusMessage = this.stream.posts.models[0];
+      this.reshare = this.stream.posts.models[1];
       this.statusElement = $(this.view.$("#" + this.statusMessage.get("guid")));
       this.reshareElement = $(this.view.$("#" + this.reshare.get("guid")));
-    })
+    });
 
-    context("when rendering a Status Mesasage", function(){
-      it("shows the status message in the content area", function(){
-        expect(this.statusElement.find(".post-content p").text()).toContain("you're gonna love this") //markdown'ed
-      })
-    })
-  })
+    context("when rendering a status message", function(){
+      it("shows the message in the content area", function(){
+        expect(this.statusElement.find(".post-content p").text()).toContain("LONG POST"); //markdown'ed
+      });
+    });
+  });
+
+  describe('clicking read more', function() {
+    var readMoreLink;
+
+    beforeEach(function() {
+      this.statusMessage = this.stream.posts.models[0];
+      this.statusElement = $(this.view.$("#" + this.statusMessage.get("guid")));
+      readMoreLink = this.statusElement.find('.read-more a');
+      readMoreLink.text("read more");
+    });
+
+    it('expands the post', function() {
+      expect(this.statusElement.find('.collapsible .details').attr('style')).toContain('display: none;');
+      readMoreLink.click();
+      expect(this.statusElement.find('.collapsible .details').attr('style')).not.toContain('display: none;');
+    });
+
+    it('removes the read-more div', function() {
+      expect(this.statusElement.find('.read-more').length).toEqual(1);
+      readMoreLink.click();
+      expect(this.statusElement.find('.read-more').length).toEqual(0);
+    });
+
+    it('collapses the p elements on webkit', function() {
+      // The expander plugin has different behavior on firefox and webkit >.<
+      expect(this.statusElement.find('.collapsible p').length).toEqual(2);
+      readMoreLink.click();
+      if(this.statusElement.find('.collapsible .summary').length > 0) {
+        // Firefox
+        expect(this.statusElement.find('.collapsible p').length).toEqual(2);
+      } else { 
+        // Chrome
+        expect(this.statusElement.find('.collapsible p').length).toEqual(1);
+      }
+    });
+  });
 
   describe("infScroll", function(){
     // NOTE: inf scroll happens at 500px
 
-    beforeEach(function(){
-      spyOn(this.view.collection, "fetch")
-    })
-
-    context("when the user is at the bottom of the page", function(){
-      beforeEach(function(){
-        spyOn($.fn, "height").andReturn(0)
-        spyOn($.fn, "scrollTop").andReturn(100)
-      })
-
-      it("calls fetch", function(){
-        spyOn(this.view, "isLoading").andReturn(false)
-
-        this.view.infScroll();
-        expect(this.view.collection.fetch).toHaveBeenCalled();
-      })
-
-      it("does not call fetch if the collection is loading", function(){
-        spyOn(this.view, "isLoading").andReturn(true)
-
-        this.view.infScroll();
-        expect(this.view.collection.fetch).not.toHaveBeenCalled();
-      })
-
-      it("does not call fetch if all content has been fetched", function(){
-        spyOn(this.view, "isLoading").andReturn(false)
-        this.view.allContentLoaded = true;
-
-        this.view.infScroll();
-        expect(this.view.collection.fetch).not.toHaveBeenCalled();
-      })
-    })
-
-    it("does not fetch new content when the user is not at the bottom of the page", function(){
-      spyOn(this.view, "isLoading").andReturn(false)
-
+    it("calls render when the user is at the bottom of the page", function(){
       spyOn($.fn, "height").andReturn(0);
-      spyOn($.fn, "scrollTop").andReturn(-500);
+      spyOn($.fn, "scrollTop").andReturn(100);
+      spyOn(this.view, "render");
 
       this.view.infScroll();
-      expect(this.view.collection.fetch).not.toHaveBeenCalled();
-    })
-  })
+      expect(this.view.render).toHaveBeenCalled();
+    });
+  });
 
-  describe("collectionFetched", function(){
-    context("unbinding scroll", function(){
-      beforeEach(function(){
-        spyOn($.fn, "unbind")
-      })
+  describe("removeLoader", function() {
+    it("emptys the pagination div when the stream is fetched", function(){
+      $("#jasmine_content").append($('<div id="paginate">OMG</div>'));
+      expect($("#paginate").text()).toBe("OMG");
+      this.view.stream.trigger("fetched");
+      expect($("#paginate")).toBeEmpty();
+    });
+  });
 
-      it("unbinds scroll if there are no more posts left to load", function(){
-        this.view.collectionFetched(this.collection, {posts : []})
-        expect($.fn.unbind).toHaveBeenCalled()
-      })
-
-      it("does not fetch new content when the user is fetching one post", function(){
-        this.view.collectionFetched(this.collection, {posts : {}})
-        expect($.fn.unbind).toHaveBeenCalled()
-      })
-    })
-
-    it("sets this.allContentLoaded if there are no more posts left to load", function(){
-      expect(this.view.allContentLoaded).toBe(false)
-      this.view.collectionFetched(this.collection, {posts : []})
-      expect(this.view.allContentLoaded).toBe(true)
-    })
-
-    it("does not set this.allContentLoaded if there was a non-empty response from the server", function(){
-      expect(this.view.allContentLoaded).toBe(false)
-      this.view.collectionFetched(this.collection, {posts : this.posts})
-      expect(this.view.allContentLoaded).toBe(false)
-    })
-  })
-})
+  describe("unbindInfScroll", function(){
+    it("unbinds scroll", function() {
+      spyOn($.fn, "unbind");
+      this.view.unbindInfScroll();
+      expect($.fn.unbind).toHaveBeenCalledWith("scroll");
+    });
+  });
+});

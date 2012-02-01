@@ -48,7 +48,7 @@ class Stream::Aspect < Stream::Base
 
   # @return [ActiveRecord::Association<Person>] AR association of people within stream's given aspects
   def people
-    @people ||= Person.all_from_aspects(aspect_ids, user).includes(:profile)
+    @people ||= Person.unique_from_aspects(aspect_ids, user).includes(:profile)
   end
 
   # @return [String] URL
@@ -63,16 +63,6 @@ class Stream::Aspect < Stream::Base
     if !for_all_aspects? || aspects.size == 1
       aspects.first
     end
-  end
-
-  # Only ajax in the stream if all aspects are present.
-  # In this case, we know we're on the first page of the stream,
-  # as the default view for aspects/index is showing posts from
-  # all a user's aspects.
-  #
-  # @return [Boolean] see #for_all_aspects?
-  def ajax_stream?
-    !AppConfig[:redis_cache] && for_all_aspects?
   end
 
   # The title that will display at the top of the stream's

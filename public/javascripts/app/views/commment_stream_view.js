@@ -1,6 +1,6 @@
 app.views.CommentStream = app.views.Base.extend({
 
-  template_name: "#comment-stream-template",
+  templateName: "comment-stream",
 
   className : "comment_stream",
 
@@ -15,8 +15,18 @@ app.views.CommentStream = app.views.Base.extend({
   },
 
   postRenderTemplate : function() {
-    this.$("label").inFieldLabels();
+    this.$("textarea").placeholder();
     this.model.comments.each(this.appendComment, this);
+
+    // add autoexpanders to new comment textarea
+    this.$("textarea").autoResize({'extraSpace' : 10});
+  },
+
+  presenter: function(){
+    return _.extend(this.defaultPresenter(), {
+      moreCommentsCount : (this.model.get("comments_count") - 3),
+      showExpandCommentsLink : (this.model.get("comments_count") > 3)
+    })
   },
 
   createComment: function(evt) {
@@ -26,11 +36,15 @@ app.views.CommentStream = app.views.Base.extend({
       "text" : this.$(".comment_box").val()
     });
 
-    this.$(".comment_box").val("");
+    this.$(".comment_box").val("")
     return this;
   },
 
   appendComment: function(comment) {
+    // Set the post as the comment's parent, so we can check
+    // on post ownership in the Comment view.
+    comment.set({parent : this.model.toJSON()})
+
     this.$("ul.comments").append(new app.views.Comment({
       model: comment
     }).render().el);

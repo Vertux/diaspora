@@ -1,4 +1,5 @@
 app.views.Post = app.views.StreamObject.extend({
+  legacyTemplate : true,
 
   template_name: "#stream-element-template",
 
@@ -28,19 +29,17 @@ app.views.Post = app.views.StreamObject.extend({
 
     //subviews
     this.commentStreamView = new app.views.CommentStream({ model : this.model});
-    this.likesInfoView = new app.views.LikesInfo({ model : this.model});
 
     return this;
   },
 
-  feedbackView : function(){
-    if(!window.app.user().current_user ) { return null }
-    var feedbackViewClass = this.resharedContent() ? app.views.ReshareFeedback : app.views.Feedback 
-    return new feedbackViewClass({model : this.model});
+  likesInfoView : function(){
+    return new app.views.LikesInfo({ model : this.model});
   },
 
-  resharedContent : function(){
-    return this.model.get('root')
+  feedbackView : function(){
+    if(!window.app.user()) { return null }
+    return new  app.views.Feedback({model : this.model});
   },
 
   postContentView: function(){
@@ -68,9 +67,9 @@ app.views.Post = app.views.StreamObject.extend({
       success : function(){
         if(!app.stream) { return }
 
-        _.each(app.stream.collection.models, function(model){
+        _.each(app.stream.posts.models, function(model){
           if(model.get("author").id == personId) {
-            app.stream.collection.remove(model);
+            app.stream.posts.remove(model);
           }
         })
       }

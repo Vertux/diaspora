@@ -6,9 +6,11 @@ require 'uri'
 require File.join(Rails.root, 'lib', 'enviroment_configuration')
 
 class AppConfig < Settingslogic
-  ARRAY_VARS = [:community_spotlight, :admins]
-
   def self.source_file_name
+    if ENV['application_yml'].present?
+      puts "using remote application.yml"
+      return ENV['application_yml']
+    end
     config_file = File.join(Rails.root, "config", "application.yml")
     if !File.exists?(config_file) && (Rails.env == 'test' || Rails.env.include?("integration") || EnviromentConfiguration.heroku?)
       config_file = File.join(Rails.root, "config", "application.yml.example")
@@ -74,6 +76,7 @@ HELP
     normalize_pod_url
     normalize_admins
     normalize_pod_services
+    deprecate_hoptoad_api_key
   end
 
   def self.config_file_is_old_style?
@@ -92,6 +95,10 @@ HELP
     File.exists?(File.join(Rails.root, "config", "app.yml")) || (File.exists?(File.join(Rails.root, "config", "app_config.yml")))
   end
 
+  def self.new_relic_app_name
+    self[:new_relic_app_name] || self[:pod_uri].host
+  end
+
   def self.normalize_pod_url
     unless self[:pod_url] =~ /^(https?:\/\/)/ # starts with http:// or https://
       self[:pod_url] = "http://#{self[:pod_url]}"
@@ -99,6 +106,10 @@ HELP
     unless self[:pod_url] =~ /\/$/ # ends with slash
       self[:pod_url] = "#{self[:pod_url]}/"
     end
+  end
+
+  def self.bare_pod_uri
+    self[:pod_uri].authority.gsub('www.', '')
   end
 
   def self.normalize_admins
@@ -117,20 +128,18 @@ HELP
     end
   end
 
+  def deprecate_hoptoad_api_key
+    if self[:hoptoad_api_key].present?
+      $stderr.puts "WARNING: Please change hoptoad_api_key to airbrake_api_key in your application.yml"
+      self[:airbrake_api_key] = self[:hoptoad_api_key]
+    end
+  end
+
   load!
 
   def self.[] (key)
     return self.pod_uri if key == :pod_uri
-    return fetch_from_env(key.to_s) if EnviromentConfiguration.heroku?
     super
-  end
-
-  def fetch_from_env(key)
-    if ARRAY_VARS.include?(key.to_sym)
-      ENV[key].split(EnviromentConfiguration::ARRAY_SEPERATOR)
-    else
-     ENV[key] if ENV[key] 
-    end
   end
 
   def self.[]= (key, value)

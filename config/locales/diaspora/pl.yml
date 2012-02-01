@@ -103,16 +103,15 @@ pl:
         content_2: "Dzięki temu każdy będzie mógł Cię znaleźć na Diasporze."
         heading: "Identyfikator Diaspory"
       donate: Wspomóż
-      handle_explanation: "Oto Twój identyfikator diaspory. Tak jak adres e-mail, możesz podawać go osobom które chcesz, aby nawiązały z Tobą kontakt."
+      handle_explanation: "Oto Twój identyfikator Diaspory. Tak jak adres e-mail, możesz podać go osobom, z którymi chcesz być w kontakcie."
       help:
         do_you: "Czy:"
-        email_feedback: "%{link} swoje zgłoszenie, jeśli chcesz"
+        email_feedback: "Wyślij %{link}, jeśli wolisz"
         feature_suggestion: "... masz propozycję (%{link})?"
         find_a_bug: "... znal@{m:azłeś|f:azłaś|n:eziono} %{link}?"
         have_a_question: "... masz %{link}?"
         here_to_help: "Społeczności Diaspory jest tutaj!"
         need_help: "Potrzebujesz pomocy?"
-        satisfaction: "%{link}: Strona wsparcia społeczności"
         tag_bug: błąd
         tag_feature: funkcja
         tag_question: pytanie
@@ -203,7 +202,6 @@ pl:
       add_a_new_aspect: "Dodaj aspekt"
       add_to_aspect: "dodaj kontakty do %{name}"
       all_contacts: "Wszystkie kontakty"
-      check_out: Zobacz
       many_people_are_you_sure: "Czy na pewno chcesz rozpocząć prywatną rozmowę z więcej niż %{suggested_limit} osobami? Możesz po prostu opublikować swoją wiadomość w tej grupie. "
       my_contacts: "Moje kontakty"
       no_contacts: "Wygląda na to, że musisz dodać kilka kontaktów!"
@@ -310,6 +308,7 @@ pl:
       to: Do
   layouts:
     application:
+      back_to_top: "Powrót na górę"
       powered_by: "NAPĘDZANE PRZEZ DIASPORĘ*"
       public_feed: "Publiczny kanał Diaspory użytkownika %{name}"
       toggle: "przełącz widok mobilny"
@@ -575,6 +574,14 @@ pl:
     show:
       destroy: Usuń
       not_found: "Nie można odnaleźć wskazanego wpisu."
+      photos_by:
+        few: "%{count} zdjęcia od %{author}"
+        many: "%{count} zdjęć od %{author}"
+        one: "Jedno zdjęcie od %{author}"
+        other: "%{count} zdjęcia od %{author}"
+        two: "Dwa zdjęcia od %{author}"
+        zero: "Brak zdjęć od %{author}"
+      reshare_by: "Przekazane dalej przez %{author}"
   previous: poprzedni
   privacy: Prywatność
   privacy_policy: "Polityka prywatności"
@@ -805,7 +812,6 @@ pl:
     comment_stream:
       contacts_title: "Osoby których wpisy zostały skomentowane przez Ciebie"
       title: "Skomentowane wpisy"
-    commented_on: komentowane
     community_spotlight_stream: "W centrum uwagi społeczności"
     followed_tag:
       add_a_tag: "Dodaj znacznik"
@@ -823,11 +829,9 @@ pl:
     multi:
       contacts_title: "Osoby w Twoim Strumieniu"
       title: Strumień
-    posted: opublikowane
     public:
       contacts_title: "Ostatnio dodawali"
       title: "Działalność publiczna"
-    recently: "ostatnio:"
     tags:
       contacts_title: "Osoby, które wykopały te tagi"
       tag_prefill_text: "Rzecz o %{tag_link} jest..."
@@ -889,7 +893,7 @@ pl:
         make_diaspora_better: "Pomóż nam uczynić Diasporę jeszcze lepszą, zamiast nas opuszczać. Jeśli chcesz odejść, chcielibyśmy się dowiedzieć dlaczego."
         mr_wiggles: "Pan Łaskotka będzie niepocieszony, widząc, że odchodzisz"
         no_turning_back: "Aktualnie, nie ma odwrotu."
-        what_we_delete: "Usuniemy wszystkie Twoje wpisy i dane profilu najszybciej jak tylko człowiek jest w stanie to zrobić. Twoje komentarze pozostaną tam gdzie były, ale będą skojarzone bezpośrednio z Diasporą."
+        what_we_delete: "Usuniemy wszystkie Twoje wpisy i dane profilu, najszybciej jak tylko człowiek jest w stanie to zrobić. Twoje komentarze pozostaną tam gdzie były, ale będą skojarzone bezpośrednio z Twoim Identyfikatorem Diaspory."
       close_account_text: "Zamknij konto"
       comment_on_post: "...ktoś dodał komentarz do mojego wpisu"
       current_password: "Bieżące hasło"
@@ -912,7 +916,7 @@ pl:
       started_sharing: "...ktoś zaczął mi coś udostępniać"
       stream_preferences: "Ustawienia Strumienia"
       your_email: "Adres e-mail"
-      your_handle: "Identyfikator Diaspory"
+      your_handle: "Twój Identyfikator Diaspory"
     getting_started:
       awesome_take_me_to_diaspora: "Świetnie! Zabierz mnie do Diaspory*"
       community_welcome: "Społeczności Diaspory cieszy się, że ​​jesteś na pokładzie!"

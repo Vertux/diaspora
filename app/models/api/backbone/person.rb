@@ -7,6 +7,7 @@ module Api::Backbone::Person
   included do
     api_accessible :backbone do |t|
       t.add :id
+      t.add :guid
       t.add :name
       t.add lambda { |person|
         person.diaspora_handle

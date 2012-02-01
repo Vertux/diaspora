@@ -1,5 +1,9 @@
+# Copyright (c) 2010-2011, Diaspora Inc.  This file is
+# licensed under the Affero General Public License version 3 or later.  See
+# the COPYRIGHT file.
+
 module EnviromentConfiguration
-  ARRAY_SEPERATOR = '%|%'
+
   def self.heroku?
     ENV['HEROKU']
   end
@@ -27,6 +31,13 @@ module EnviromentConfiguration
     else
       #do nothing
     end
+  end
+
+  def self.enforce_ssl?
+    return false unless Rails.env == 'production'
+    return false if ENV['NO_SSL'] 
+    return false if AppConfig[:circumvent_ssl_requirement].present?
+    true
   end
 
   def self.ca_cert_file_location

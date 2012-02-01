@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111217151409) do
+ActiveRecord::Schema.define(:version => 20120114191018) do
 
   create_table "account_deletions", :force => true do |t|
     t.string  "diaspora_handle"
@@ -319,9 +320,8 @@ ActiveRecord::Schema.define(:version => 20111217151409) do
     t.string   "status_message_guid"
     t.integer  "likes_count",                         :default => 0
     t.integer  "comments_count",                      :default => 0
-    t.integer  "o_embed_cache_id"
-    t.integer  "photos_count",                        :default => 0
     t.integer  "reshares_count",                      :default => 0
+    t.integer  "o_embed_cache_id"
   end
 
   add_index "posts", ["author_id", "root_guid"], :name => "index_posts_on_author_id_and_root_guid", :unique => true
@@ -469,6 +469,7 @@ ActiveRecord::Schema.define(:version => 20111217151409) do
     t.boolean  "show_community_spotlight_in_stream",                :default => true,  :null => false
     t.boolean  "auto_follow_back",                                  :default => false
     t.integer  "auto_follow_back_aspect_id"
+    t.text     "hidden_shareables"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email"

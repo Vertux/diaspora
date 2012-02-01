@@ -64,19 +64,19 @@ describe PhotosController do
 
   describe '#index' do
     it "succeeds without any available pictures" do
-      get :index, :person_id => Factory(:person).id.to_s
+      get :index, :person_id => Factory(:person).guid.to_s
 
       response.should be_success
     end
 
     it "displays the logged in user's pictures" do
-      get :index, :person_id => alice.person.id.to_s
+      get :index, :person_id => alice.person.guid.to_s
       assigns[:person].should == alice.person
       assigns[:posts].should == [@alices_photo]
     end
 
     it "displays another person's pictures" do
-      get :index, :person_id => bob.person.id.to_s
+      get :index, :person_id => bob.person.guid.to_s
       assigns[:person].should == bob.person
       assigns[:posts].should == [@bobs_photo]
     end
@@ -135,7 +135,7 @@ describe PhotosController do
       it "redirects to the aspects page if there's no referrer" do
         request.env.delete("HTTP_REFERER")
         get :show, :id => @photo.to_param
-        response.should redirect_to(aspects_path)
+        response.should redirect_to(root_path)
       end
       
       it 'redirects to the sign in page if not logged in' do
@@ -189,7 +189,7 @@ describe PhotosController do
 
     it "redirects when the user does not own the photo" do
       get :edit, :id => @bobs_photo.id
-      response.should redirect_to(:action => :index, :person_id => alice.person.id.to_s)
+      response.should redirect_to(:action => :index, :person_id => alice.person.guid.to_s)
     end
   end
 
@@ -230,7 +230,7 @@ describe PhotosController do
     end
 
     it "doesn't overwrite random attributes" do
-      new_user = Factory.create(:user)
+      new_user = Factory(:user)
       params = { :text => "now with lasers!", :author_id => new_user.id }
       put :update, :id => @alices_photo.id, :photo => params
       @alices_photo.reload.author_id.should == alice.person.id
@@ -239,7 +239,7 @@ describe PhotosController do
     it 'redirects if you do not have access to the post' do
       params = { :text => "now with lasers!" }
       put :update, :id => @bobs_photo.id, :photo => params
-      response.should redirect_to(:action => :index, :person_id => alice.person.id.to_s)
+      response.should redirect_to(:action => :index, :person_id => alice.person.guid.to_s)
     end
   end
 

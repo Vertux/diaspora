@@ -28,7 +28,7 @@ module Api::Backbone::Post
       t.add :user_like
       t.add :mentioned_people
       t.add lambda { |post|
-        if post.photos_count > 0
+        if post.respond_to?(:photos)
           post.photos
         else
           []

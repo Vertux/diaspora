@@ -9,7 +9,7 @@ es:
     aspect_dropdown:
       add_to_aspect: "Añadir contacto"
       all_aspects: "Todos los aspectos"
-      error: "No podría empezar a compartir con <%= name %>.  ¿Vas a ignonarl@?"
+      error: "No podrás compartir con <%= name %>. ¿Vas a ignonarle?"
       select_aspects: "Elige los aspectos"
       started_sharing_with: "¡Ahora sigues los mensajes públicos de <%= name %>!"
       stopped_sharing_with: "Ya no compartes más con <%= name %>."
@@ -28,6 +28,7 @@ es:
       hide: "ocultar comentarios"
       show: "ver todos los comentarios"
     confirm_dialog: "¿Estás seguro?"
+    delete: Borrar
     failed_to_like: "¡Ha fallado tu aprobación!"
     failed_to_post_message: "¡Fallo al publicar el mensaje!"
     getting_started:
@@ -35,6 +36,20 @@ es:
       hey: "¡Hola, <%= name %>!"
       no_tags: "¡Eih, aún no sigues ninguna etiqueta! ¿Quieres continuar de todas formas?"
       preparing_your_stream: "Preparando tus novedades personalizadas..."
+    header:
+      admin: Administrar
+      contacts: Contactos
+      home: Inicio
+      log_out: Salir
+      mark_all_as_read: "Marcar todo como leido"
+      messages: Mensajes
+      notifications: Notificaciones
+      profile: Perfil
+      recent_notifications: "Notificaciones recientes"
+      search: "Encuentra gente o #etiquetas"
+      settings: Ajustes
+      view_all: "Ver todo"
+    ignore: Ignorar
     infinite_scroll:
       no_more: "No hay más publicaciones."
     photo_uploader:
@@ -47,6 +62,38 @@ es:
       duplicate: "Que bien, ¿eh? ¡Has compartido esa publicación!"
     search_for: "Buscar a <%= name %>"
     show_more: "mostrar más"
+    stream:
+      comment: Comentar
+      hide: Ocultar
+      like: "Me gusta"
+      likes:
+        few: "le gusta a <%= count %> personas"
+        many: "le gusta a <%= count %> personas"
+        one: "le gusta a <%= count %> persona"
+        other: "le gusta a <%= count %> personas"
+        two: "le gusta a <%= count %> personas"
+        zero: "le gusta a <%= count %> personas"
+      limited: Restringido
+      more_comments:
+        few: "Mostrar <%= count %> comentarios más"
+        many: "Mostrar <%= count %> comentarios más"
+        one: "Mostrar <%= count %> comentario"
+        other: "Mostrar <%= count %> comentarios más"
+        two: "Mostrar <%= count %> comentarios más"
+        zero: "Mostrar <%= count %> comentarios más"
+      nsfw: "Esta publicación puede tener contenido ofensivo, pornográfico o violento #NSFW."
+      original_post_deleted: "Publicación original borrada por el autor."
+      public: Público
+      reshare: Compartir
+      reshares:
+        few: "Compartido <%= count %> veces"
+        many: "Compartido <%= count %> veces"
+        one: "Compartido <%= count %> vez"
+        other: "Compartido <%= count %> veces"
+        two: "Compartido <%= count %> veces"
+        zero: "Comparido <%= count %> veces"
+      show: Mostrar
+      unlike: "No me gusta"
     tags:
       wasnt_that_interesting: "OK, supongo que #<%= tagName %> no era tan interesante..."
     timeago:
@@ -68,5 +115,3 @@ es:
     videos:
       unknown: "Tipo de video desconocido"
       watch: "Ver este video con <%= provider %>"
-    web_sockets:
-      disconnected: "El canal está cerrado; las publicaciones no serán actualizadas al momento."

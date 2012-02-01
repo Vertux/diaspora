@@ -13,93 +13,108 @@ describe PeopleController do
 
   describe '#index (search)' do
     before do
-      @eugene = Factory.create(:person,
-        :profile => Factory.build(:profile, :first_name => "Eugene", :last_name => "w"))
-      @korth = Factory.create(:person,
-        :profile => Factory.build(:profile, :first_name => "Evan", :last_name => "Korth"))
+      @eugene = Factory(:person,
+                        :profile => Factory.build(:profile, :first_name => "Eugene", :last_name => "w"))
+      @korth = Factory(:person,
+                       :profile => Factory.build(:profile, :first_name => "Evan", :last_name => "Korth"))
     end
 
-    it 'responds with json' do
-      get :index, :q => "Korth", :format => 'json'
-      response.body.should == [@korth].to_json
+    describe 'via json' do
+      it 'succeeds' do
+        get :index, :q => "Korth", :format => 'json'
+        response.should be_success
+      end
+
+      it 'responds with json' do
+        get :index, :q => "Korth", :format => 'json'
+        response.body.should == [@korth].to_json
+      end
+
+      it 'does not assign hashes' do
+        get :index, :q => "Korth", :format => 'json'
+        assigns[:hashes].should be_nil
+      end
     end
 
-    it 'does not set @hashes in a json request' do
-      get :index, :q => "Korth", :format => 'json'
-      assigns[:hashes].should be_nil
-    end
+    describe 'via html' do
+      context 'query is a diaspora ID' do
+        before do
+          @unsearchable_eugene = Factory(:person, :diaspora_handle => "eugene@example.org",
+                                         :profile => Factory.build(:profile, :first_name => "Eugene",
+                                                                   :last_name => "w", :searchable => false))
+        end
+        it 'finds people even if they have searchable off' do
+          get :index, :q => "eugene@example.org"
+          assigns[:people][0].id.should == @unsearchable_eugene.id
+        end
 
-    it 'sets @hashes in an html request' do
-      get :index, :q => "Korth"
-      assigns[:hashes].should_not be_nil
-    end
+        it 'downcases the query term' do
+          get :index, :q => "Eugene@Example.ORG"
+          assigns[:people][0].id.should == @unsearchable_eugene.id
+        end
+      end
 
-    it "assigns people" do
-      eugene2 = Factory.create(:person,
-                               :profile => Factory.build(:profile, :first_name => "Eugene",
-                                                         :last_name => "w"))
-      get :index, :q => "Eug"
-      assigns[:people].map{|x| x.id}.should =~ [@eugene.id, eugene2.id]
-    end
+      context 'query is a tag' do
+        it 'goes to a tag page' do
+          get :index, :q => '#babies'
+          response.should redirect_to(tag_path('babies', :q => '#babies'))
+        end
 
-    it "excludes people that are not searchable" do
-      eugene2 = Factory.create(:person,
-                               :profile => Factory.build(:profile, :first_name => "Eugene",
-                                                         :last_name => "w", :searchable => false))
-      get :index, :q => "Eug"
-      assigns[:people].should_not =~ [eugene2]
-    end
+        it 'removes dots from the query' do
+          get :index, :q => '#babi.es'
+          response.should redirect_to(tag_path('babies', :q => '#babi.es'))
+        end
 
-    it "allows unsearchable people to be found by handle" do
-      eugene2 = Factory.create(:person, :diaspora_handle => "eugene@example.org",
-                               :profile => Factory.build(:profile, :first_name => "Eugene",
-                                                         :last_name => "w", :searchable => false))
-      get :index, :q => "eugene@example.org"
-      assigns[:people][0].id.should == eugene2.id
-    end
+        it 'stay on the page if you search for the empty hash' do
+          get :index, :q => '#'
+          flash[:error].should be_present
+        end
+      end
 
-    it "allows unsearchable people to be found by handle" do
-      d_id = "eugene@example.org"
-      @controller.should_receive(:diaspora_id?).with(d_id)
-      get :index, :q => d_id
-    end
+      context 'query is not a tag or a diaspora ID' do
+        it 'assigns hashes' do
+          get :index, :q => "Korth"
+          assigns[:hashes].should_not be_nil
+        end
 
-     it "downcases the handle before trying to find someone by it" do
-      eugene2 = Factory.create(:person, :diaspora_handle => "eugene@example.org",
-                               :profile => Factory.build(:profile, :first_name => "Eugene",
-                                                         :last_name => "w", :searchable => false))
-      get :index, :q => "Eugene@Example.ORG"
-      assigns[:people][0].id.should == eugene2.id
-    end
+        it "assigns people" do
+          eugene2 = Factory(:person,
+                            :profile => Factory.build(:profile, :first_name => "Eugene",
+                                                      :last_name => "w"))
+          get :index, :q => "Eug"
+          assigns[:people].map { |x| x.id }.should =~ [@eugene.id, eugene2.id]
+        end
+        
+        it "succeeds if there is exactly one match" do
+          get :index, :q => "Korth"
+          assigns[:people].length.should == 1
+          response.should be_success
+        end
 
-    it "does not redirect to person page if there is exactly one match" do
-      get :index, :q => "Korth"
-      response.should_not redirect_to @korth
-    end
+        it "succeeds if there are no matches" do
+          get :index, :q => "Korthsauce"
+          assigns[:people].length.should == 0
+          response.should be_success
+        end
 
-    it "does not redirect if there are no matches" do
-      get :index, :q => "Korthsauce"
-      response.should_not be_redirect
-    end
+        it 'succeeds if you search for the empty term' do
+          get :index, :q => ''
+          response.should be_success
+        end
 
-    it 'goes to a tag page if you search for a hash' do
-      get :index, :q => '#babies'
-      response.should redirect_to(tag_path('babies', :q => '#babies'))
-    end
+        it 'succeeds if you search for punctuation' do
+          get :index, :q => '+'
+          response.should be_success
+        end
 
-    it 'goes to a tag page if you search for a hash with dots' do
-      get :index, :q => '#babi.es'
-      response.should redirect_to(tag_path('babies', :q => '#babi.es'))
-    end
-
-    it 'stay on the page if you search for the empty hash' do
-      get :index, :q => '#'
-      flash[:error].should be_present
-    end
-
-    it 'does not fails if you search for the empty term' do
-      get :index, :q => ''
-      response.should be_success
+        it "excludes people who have searchable off" do
+          eugene2 = Factory(:person,
+                            :profile => Factory.build(:profile, :first_name => "Eugene",
+                                                      :last_name => "w", :searchable => false))
+          get :index, :q => "Eug"
+          assigns[:people].should_not =~ [eugene2]
+        end
+      end
     end
   end
 
@@ -124,7 +139,7 @@ describe PeopleController do
       @posts = []
       @users = []
       8.times do |n|
-        user = Factory.create(:user)
+        user = Factory(:user)
         @users << user
         aspect = user.aspects.create(:name => 'people')
         connect_users(@user, @user.aspects.first, user, aspect)
@@ -140,7 +155,7 @@ describe PeopleController do
 
     it 'takes time' do
       Benchmark.realtime {
-        get :show, :id => @user.person.id
+        get :show, :id => @user.person.to_param
       }.should < 1.0
     end
   end
@@ -152,7 +167,7 @@ describe PeopleController do
     end
 
     it "404s if no person is found via id" do
-      get :show, :id => 3920397846
+      get :show, :id => "3d920397846"
       response.code.should == "404"
     end
 
@@ -162,8 +177,8 @@ describe PeopleController do
     end
 
     it 'redirects home for closed account' do
-      @person = Factory.create(:person, :closed_account => true)
-      get :show, :id => @person.id
+      @person = Factory(:person, :closed_account => true)
+      get :show, :id => @person.to_param
       response.should be_redirect
       flash[:notice].should_not be_blank
     end
@@ -173,7 +188,7 @@ describe PeopleController do
       profile = user2.profile
       profile.first_name = "<script> alert('xss attack');</script>"
       profile.save
-      get :show, :id => user2.person.id
+      get :show, :id => user2.person.to_param
       response.should be_success
       response.body.match(profile.first_name).should be_false
     end
@@ -208,7 +223,7 @@ describe PeopleController do
       it "renders the comments on the user's posts" do
         message = @user.post :status_message, :text => 'test more', :to => @aspect.id
         @user.comment 'I mean it', :post => message
-        get :show, :id => @user.person.id
+        get :show, :id => @user.person.to_param
         response.should be_success
       end
     end
@@ -220,12 +235,12 @@ describe PeopleController do
       end
 
       it "succeeds" do
-        get :show, :id => @person.id
+        get :show, :id => @person.to_param
         response.status.should == 200
       end
 
       it 'succeeds on the mobile site' do
-        get :show, :id => @person.id, :format => :mobile
+        get :show, :id => @person.to_param, :format => :mobile
         response.should be_success
       end
 
@@ -242,25 +257,25 @@ describe PeopleController do
 
         it "posts include reshares" do
           reshare = @user.post(:reshare, :public => true, :root_guid => Factory(:status_message, :public => true).guid, :to => alice.aspects)
-          get :show, :id => @user.person.id
-          assigns[:stream].posts.map{|x| x.id}.should include(reshare.id)
+          get :show, :id => @user.person.to_param
+          assigns[:stream].posts.map { |x| x.id }.should include(reshare.id)
         end
 
         it "assigns only public posts" do
-          get :show, :id => @person.id
+          get :show, :id => @person.to_param
           assigns[:stream].posts.map(&:id).should =~ @public_posts.map(&:id)
         end
 
         it 'is sorted by created_at desc' do
-          get :show, :id => @person.id
-          assigns[:stream].stream_posts.should == @public_posts.sort_by{|p| p.created_at}.reverse
+          get :show, :id => @person.to_param
+          assigns[:stream].stream_posts.should == @public_posts.sort_by { |p| p.created_at }.reverse
         end
       end
 
       it 'throws 404 if the person is remote' do
         p = Factory(:person)
 
-        get :show, :id => p.id
+        get :show, :id => p.to_param
         response.status.should == 404
       end
     end
@@ -271,12 +286,12 @@ describe PeopleController do
       end
 
       it "succeeds" do
-        get :show, :id => @person.id
+        get :show, :id => @person.to_param
         response.should be_success
       end
 
       it 'succeeds on the mobile site' do
-        get :show, :id => @person.id, :format => :mobile
+        get :show, :id => @person.to_param, :format => :mobile
         response.should be_success
       end
 
@@ -291,14 +306,14 @@ describe PeopleController do
         posts_user_can_see << bob.post(:status_message, :text => "public", :to => 'all', :public => true)
         bob.reload.posts.length.should == 4
 
-        get :show, :id => @person.id
+        get :show, :id => @person.to_param
         assigns(:stream).posts.map(&:id).should =~ posts_user_can_see.map(&:id)
       end
 
       it "posts include reshares" do
         reshare = @user.post(:reshare, :public => true, :root_guid => Factory(:status_message, :public => true).guid, :to => alice.aspects)
-        get :show, :id => @user.person.id
-        assigns[:stream].posts.map{|x| x.id}.should include(reshare.id)
+        get :show, :id => @user.person.to_param
+        assigns[:stream].posts.map { |x| x.id }.should include(reshare.id)
       end
     end
 
@@ -308,12 +323,12 @@ describe PeopleController do
       end
 
       it "succeeds" do
-        get :show, :id => @person.id
+        get :show, :id => @person.to_param
         response.should be_success
       end
 
       it 'succeeds on the mobile site' do
-        get :show, :id => @person.id, :format => :mobile
+        get :show, :id => @person.to_param, :format => :mobile
         response.should be_success
       end
 
@@ -324,14 +339,14 @@ describe PeopleController do
         public_post = eve.post(:status_message, :text => "public", :to => 'all', :public => true)
         eve.reload.posts.length.should == 3
 
-        get :show, :id => @person.id
+        get :show, :id => @person.to_param
         assigns[:stream].posts.map(&:id).should =~ [public_post].map(&:id)
       end
 
       it "posts include reshares" do
         reshare = @user.post(:reshare, :public => true, :root_guid => Factory(:status_message, :public => true).guid, :to => alice.aspects)
-        get :show, :id => @user.person.id
-        assigns[:stream].posts.map{|x| x.id}.should include(reshare.id)
+        get :show, :id => @user.person.to_param
+        assigns[:stream].posts.map { |x| x.id }.should include(reshare.id)
       end
     end
   end
@@ -340,7 +355,7 @@ describe PeopleController do
     it 'assigns the contacts of a person' do
       contact = alice.contact_for(bob.person)
       contacts = contact.contacts
-      get :contacts, :person_id => bob.person.id
+      get :contacts, :person_id => bob.person.to_param
       assigns(:contacts_of_contact).should =~ contacts
       response.should be_success
     end
@@ -383,13 +398,6 @@ describe PeopleController do
 
     it 'returns false for invalid usernames' do
       @controller.diaspora_id?("ilya_2%3@joindiaspora.com").should be_false
-    end
-  end
-
-  describe '#webfinger' do
-    it 'calls Webfinger.new' do
-      Webfinger.should_receive(:new).with(@user.diaspora_handle, anything).once
-      get :retrieve_remote, :diaspora_handle => @user.diaspora_handle
     end
   end
 end

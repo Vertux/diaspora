@@ -8,12 +8,10 @@ GIT
       nokogiri (>= 1.3.3)
 
 GIT
-  remote: git://github.com/MikeSofaer/vanna.git
-  revision: 334eec220dbfddcc6bd3108e6e6c77fec8484dc4
+  remote: git://github.com/binarylogic/settingslogic.git
+  revision: 4884d455bf18d92723cb8190cfd2dbf87f3aafd5
   specs:
-    vanna (0.1.1)
-      json
-      rails (>= 3.0.0)
+    settingslogic (2.0.8)
 
 GIT
   remote: git://github.com/diaspora/acts-as-taggable-on.git
@@ -35,11 +33,12 @@ GIT
       sinatra
 
 GIT
-  remote: git://github.com/iain/http_accept_language.git
-  revision: 0b78aa7849fc90cf9e12586af162fa4c408a795d
-  ref: 0b78aa7849fc90cf9e12
+  remote: https://github.com/socialcast/resque-ensure-connected.git
+  revision: 8ac0f9e4658495097fb333a93db81d54ba9a5311
   specs:
-    http_accept_language (1.0.1)
+    resque-ensure-connected (0.2.0)
+      activerecord (>= 2.3.5)
+      resque (>= 1.10.0)
 
 GEM
   remote: http://rubygems.org/
@@ -63,6 +62,7 @@ GEM
       rack-mount (~> 0.6.14)
       rack-test (~> 0.5.7)
       tzinfo (~> 0.3.23)
+    active_reload (0.6.1)
     activemodel (3.0.11)
       activesupport (= 3.0.11)
       builder (~> 2.1.2)
@@ -72,9 +72,9 @@ GEM
       activesupport (= 3.0.11)
       arel (~> 2.0.10)
       tzinfo (~> 0.3.23)
-    activerecord-import (0.2.8)
-      activerecord (~> 3.0pre)
-      activerecord (~> 3.0pre)
+    activerecord-import (0.2.9)
+      activerecord (~> 3.0)
+      activerecord (~> 3.0)
     activeresource (3.0.11)
       activemodel (= 3.0.11)
       activesupport (= 3.0.11)
@@ -84,6 +84,9 @@ GEM
       activesupport (>= 3.0.0)
       rack (>= 1.1.0)
     addressable (2.2.4)
+    airbrake (3.0.9)
+      activesupport
+      builder
     archive-tar-minitar (0.5.2)
     arel (2.0.10)
     bcrypt-ruby (2.1.4)
@@ -107,7 +110,7 @@ GEM
     carrierwave (0.5.8)
       activesupport (~> 3.0)
     cgi_multipart_eof_fix (2.5.0)
-    childprocess (0.2.8)
+    childprocess (0.3.0)
       ffi (~> 1.0.6)
     chronic (0.6.6)
     client_side_validations (3.1.4)
@@ -123,8 +126,8 @@ GEM
       capybara (>= 1.1.2)
       cucumber (>= 1.1.3)
       nokogiri (>= 1.5.0)
-    daemons (1.1.5)
-    database_cleaner (0.7.0)
+    daemons (1.1.6)
+    database_cleaner (0.7.1)
     devise (1.3.4)
       bcrypt-ruby (~> 2.1.2)
       orm_adapter (~> 0.0.3)
@@ -138,16 +141,16 @@ GEM
     erubis (2.6.6)
       abstract (>= 1.0.0)
     eventmachine (0.12.10)
-    excon (0.9.4)
-    factory_girl (2.3.2)
+    excon (0.9.5)
+    factory_girl (2.5.0)
       activesupport
-    factory_girl_rails (1.4.0)
-      factory_girl (~> 2.3.0)
+    factory_girl_rails (1.6.0)
+      factory_girl (~> 2.5.0)
       railties (>= 3.0.0)
-    faraday (0.7.0)
-      addressable (~> 2.2.4)
-      multipart-post (~> 1.1.0)
-      rack (>= 1.1.0, < 2)
+    faraday (0.7.6)
+      addressable (~> 2.2)
+      multipart-post (~> 1.1)
+      rack (~> 1.1)
     faraday-stack (0.1.4)
       faraday (>= 0.6, < 0.8)
     fastercsv (1.5.4)
@@ -168,7 +171,7 @@ GEM
       ruby-hmac
     foreigner (1.1.1)
       activerecord (>= 3.0.0)
-    foreman (0.27.0)
+    foreman (0.34.1)
       term-ansicolor (~> 1.0.5)
       thor (>= 0.13.6)
     formatador (0.2.1)
@@ -177,7 +180,7 @@ GEM
       rspec-instafail (~> 0.1.8)
       ruby-progressbar (~> 0.0.10)
     gem_plugin (0.2.3)
-    gherkin (2.7.2)
+    gherkin (2.7.4)
       json (>= 1.4.6)
     haml (3.1.4)
     hashie (1.2.0)
@@ -186,10 +189,12 @@ GEM
       rest-client (~> 1.6.1)
       rubyzip
       term-ansicolor (~> 1.0.5)
-    highline (1.6.9)
-    hoptoad_notifier (2.4.11)
-      activesupport
-      builder
+    heroku_san (1.3.0)
+      heroku (>= 2)
+      rails (>= 2)
+    highline (1.6.11)
+    hodel_3000_compliant_logger (0.1.0)
+    http_accept_language (1.0.2)
     i18n (0.5.0)
     i18n-inflector (2.6.3)
       i18n (>= 0.4.1)
@@ -199,6 +204,10 @@ GEM
       railties (~> 3.0)
     jammit (0.6.5)
       yui-compressor (>= 0.9.3)
+    jammit-s3 (0.6.0.2)
+      jammit (>= 0.5.4)
+      mimemagic (>= 0.1.7)
+      s3 (>= 0.3.7)
     jasmine (1.1.2)
       jasmine-core (>= 1.1.0)
       rack (>= 1.1)
@@ -211,6 +220,7 @@ GEM
       rspec (~> 2.0)
     jwt (0.1.4)
       json (>= 1.2.4)
+    kgio (2.7.0)
     launchy (2.0.3)
     linecache (0.46)
       rbx-require-relative (> 0.0.4)
@@ -221,11 +231,12 @@ GEM
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
-    messagebus_ruby_api (1.0.1)
+    messagebus_ruby_api (1.0.3)
     mime-types (1.17.2)
-    mini_magick (3.3)
-      subexec (~> 0.1.0)
-    mobile-fu (0.3.0)
+    mimemagic (0.1.8)
+    mini_magick (3.4)
+      subexec (~> 0.2.1)
+    mobile-fu (1.0.0)
       rack-mobile-detect
       rails
     mock_redis (0.3.0)
@@ -236,12 +247,12 @@ GEM
       gem_plugin (>= 0.2.3)
     multi_json (1.0.4)
     multipart-post (1.1.4)
-    mysql2 (0.2.17)
+    mysql2 (0.2.18)
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
     net-sftp (2.0.5)
       net-ssh (>= 2.0.9)
-    net-ssh (2.2.2)
+    net-ssh (2.3.0)
     net-ssh-gateway (1.1.0)
       net-ssh (>= 1.99.1)
     newrelic_rpm (3.3.1)
@@ -253,6 +264,9 @@ GEM
     oauth2-provider (0.0.19)
       activesupport (~> 3.0)
       addressable (~> 2.2)
+    oink (0.9.3)
+      activerecord
+      hodel_3000_compliant_logger
     omniauth (1.0.1)
       hashie (~> 1.2)
       rack
@@ -270,11 +284,12 @@ GEM
       omniauth-oauth (~> 1.0)
     open4 (1.3.0)
     orm_adapter (0.0.6)
-    parallel (0.5.11)
-    parallel_tests (0.6.14)
+    parallel (0.5.12)
+    parallel_tests (0.6.16)
       parallel
     pg (0.12.2)
     polyglot (0.3.3)
+    proxies (0.2.1)
     rack (1.2.5)
     rack-google-analytics (0.10.0)
     rack-mobile-detect (0.3.0)
@@ -282,6 +297,9 @@ GEM
     rack-mount (0.6.14)
       rack (>= 1.0.0)
     rack-piwik (0.1.2)
+    rack-rewrite (1.2.1)
+    rack-ssl (1.3.2)
+      rack
     rack-test (0.5.7)
       rack (>= 1.0)
     rails (3.0.11)
@@ -300,6 +318,7 @@ GEM
       rake (>= 0.8.7)
       rdoc (~> 3.4)
       thor (~> 0.14.4)
+    raindrops (0.8.0)
     rake (0.9.2.2)
     rbx-require-relative (0.0.5)
     rdoc (3.12)
@@ -313,13 +332,13 @@ GEM
       redis-namespace (~> 1.0.2)
       sinatra (>= 0.9.2)
       vegas (~> 0.1.2)
-    resque-ensure-connected (0.2.0)
-      activerecord (>= 2.3.5)
-      resque (>= 1.10.0)
     resque-timeout (1.0.0)
       resque (~> 1.0)
-    rest-client (1.6.1)
+    rest-client (1.6.7)
       mime-types (>= 1.16)
+    rpm_contrib (2.1.7)
+      newrelic_rpm (>= 3.1.1)
+      newrelic_rpm (>= 3.1.1)
     rspec (2.8.0)
       rspec-core (~> 2.8.0)
       rspec-expectations (~> 2.8.0)
@@ -353,19 +372,20 @@ GEM
     ruby_core_source (0.1.5)
       archive-tar-minitar (>= 0.5.2)
     rubyzip (0.9.5)
+    s3 (0.3.11)
+      proxies (~> 0.2.0)
     sass (3.1.12)
     selenium-webdriver (2.16.0)
       childprocess (>= 0.2.5)
       ffi (~> 1.0.9)
       multi_json (~> 1.0.4)
       rubyzip
-    settingslogic (2.0.6)
     simple_oauth (0.1.5)
     sinatra (1.2.8)
       rack (~> 1.1)
       tilt (>= 1.2.2, < 2.0)
     sqlite3 (1.3.5)
-    subexec (0.1.0)
+    subexec (0.2.1)
     term-ansicolor (1.0.7)
     thin (1.3.1)
       daemons (>= 1.0.9)
@@ -385,8 +405,11 @@ GEM
     typhoeus (0.3.3)
       mime-types
     tzinfo (0.3.31)
-    vegas (0.1.8)
-      rack (>= 1.0.0)
+    unicorn (4.1.1)
+      kgio (~> 2.4)
+      rack
+      raindrops (~> 0.6)
+    vegas (0.1.11)
     warden (1.0.6)
       rack (>= 1.0)
     webmock (1.6.2)
@@ -407,10 +430,12 @@ PLATFORMS
 
 DEPENDENCIES
   SystemTimer (= 1.2.3)
+  active_reload
   activerecord-import
   acts-as-taggable-on!
   acts_as_api (~> 0.3.11)
   addressable (= 2.2.4)
+  airbrake
   bundler (>= 1.0.0)
   capistrano (~> 2.9.0)
   capistrano-ext (= 1.2.1)
@@ -419,7 +444,7 @@ DEPENDENCIES
   carrierwave (= 0.5.8)
   client_side_validations
   cucumber-rails (= 1.2.1)
-  database_cleaner (= 0.7.0)
+  database_cleaner (= 0.7.1)
   devise (~> 1.3.1)
   devise_invitable (= 0.5.0)
   diaspora-client!
@@ -431,28 +456,29 @@ DEPENDENCIES
   fixture_builder (= 0.3.1)
   fog
   foreigner (~> 1.1.0)
-  foreman (= 0.27.0)
+  foreman (= 0.34.1)
   fuubar (= 0.0.6)
   haml
   heroku
-  hoptoad_notifier
-  http_accept_language!
+  heroku_san
+  http_accept_language (~> 1.0.2)
   i18n-inflector-rails (~> 1.0)
-  jammit (= 0.6.5)
+  jammit-s3
   jasmine (~> 1.1.2)
   json
   json_spec
   jwt
   linecache (= 0.46)
-  messagebus_ruby_api (= 1.0.1)
-  mini_magick (= 3.3)
+  messagebus_ruby_api (= 1.0.3)
+  mini_magick (= 3.4)
   mobile-fu
   mock_redis
   mongrel
-  mysql2 (= 0.2.17)
+  mysql2 (= 0.2.18)
   newrelic_rpm
   nokogiri (~> 1.5.0)
   oauth2-provider (= 0.0.19)
+  oink
   omniauth (= 1.0.1)
   omniauth-facebook
   omniauth-tumblr
@@ -461,14 +487,17 @@ DEPENDENCIES
   pg
   rack-google-analytics
   rack-piwik
+  rack-rewrite (~> 1.2.1)
+  rack-ssl
   rails (= 3.0.11)
   rails-i18n
   redcarpet (= 2.0.1)
   resque (= 1.19.0)
-  resque-ensure-connected
+  resque-ensure-connected!
   resque-timeout (= 1.0.0)
-  rest-client (= 1.6.1)
+  rest-client (= 1.6.7)
   roxml!
+  rpm_contrib (~> 2.1.7)
   rspec (>= 2.0.0)
   rspec-core (~> 2.8.0)
   rspec-instafail (>= 0.1.7)
@@ -478,13 +507,13 @@ DEPENDENCIES
   ruby-oembed
   sass
   selenium-webdriver (~> 2.16.0)
-  settingslogic (= 2.0.6)
+  settingslogic!
   sqlite3
   thin (~> 1.3.1)
   timecop
   twitter (= 2.0.2)
   typhoeus
-  vanna!
+  unicorn (~> 4.1.1)
   webmock
   whenever
   will_paginate

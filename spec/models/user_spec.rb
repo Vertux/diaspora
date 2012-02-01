@@ -58,10 +58,80 @@ describe User do
     end
   end
 
+  describe 'hidden_shareables' do
+    before do
+      @sm = Factory(:status_message)
+      @sm_id = @sm.id.to_s
+      @sm_class = @sm.class.base_class.to_s
+    end
+
+    it 'is a hash' do
+      alice.hidden_shareables.should == {}
+    end
+
+    describe '#add_hidden_shareable' do
+      it 'adds the share id to an array which is keyed by the objects class' do
+        alice.add_hidden_shareable(@sm_class, @sm_id)
+        alice.hidden_shareables['Post'].should == [@sm_id]
+      end
+
+      it 'handles having multiple posts' do
+        sm2 = Factory(:status_message)
+        alice.add_hidden_shareable(@sm_class, @sm_id)
+        alice.add_hidden_shareable(sm2.class.base_class.to_s, sm2.id.to_s)
+
+        alice.hidden_shareables['Post'].should =~ [@sm_id, sm2.id.to_s]
+      end
+
+      it 'handles having multiple shareable types' do
+        photo = Factory(:photo)
+        alice.add_hidden_shareable(photo.class.base_class.to_s, photo.id.to_s)
+        alice.add_hidden_shareable(@sm_class, @sm_id)
+
+        alice.hidden_shareables['Photo'].should == [photo.id.to_s]
+      end
+    end
+
+    describe '#remove_hidden_shareable' do
+      it 'removes the id from the hash if it is there'  do
+        alice.add_hidden_shareable(@sm_class, @sm_id)
+        alice.remove_hidden_shareable(@sm_class, @sm_id)
+        alice.hidden_shareables['Post'].should == []
+      end
+    end
+
+    describe 'toggle_hidden_shareable' do
+      it 'calls add_hidden_shareable if the key does not exist, and returns true' do
+        alice.should_receive(:add_hidden_shareable).with(@sm_class, @sm_id)
+        alice.toggle_hidden_shareable(@sm).should be_true
+      end
+
+      it 'calls remove_hidden_shareable if the key exists' do
+        alice.should_receive(:remove_hidden_shareable).with(@sm_class, @sm_id)
+        alice.add_hidden_shareable(@sm_class, @sm_id)
+        alice.toggle_hidden_shareable(@sm).should be_false
+      end
+    end
+
+    describe '#is_shareable_hidden?' do
+      it 'returns true if the shareable is hidden' do
+        post = Factory(:status_message)
+        bob.toggle_hidden_shareable(post)
+        bob.is_shareable_hidden?(post).should be_true
+      end
+
+      it 'returns false if the shareable is not present' do
+        post = Factory(:status_message)
+        bob.is_shareable_hidden?(post).should be_false
+      end
+    end
+  end
+
+
   describe 'overwriting people' do
     it 'does not overwrite old users with factory' do
       lambda {
-        new_user = Factory.create(:user, :id => alice.id)
+        new_user = Factory(:user, :id => alice.id)
       }.should raise_error ActiveRecord::StatementInvalid
     end
 
@@ -111,7 +181,7 @@ describe User do
       end
 
       it 'requires uniqueness also amount Person objects with diaspora handle' do
-        p = Factory(:person, :diaspora_handle => "jimmy@#{AppConfig[:pod_uri].host}")
+        p = Factory(:person, :diaspora_handle => "jimmy#{User.diaspora_id_host}")
         alice.username = 'jimmy'
         alice.should_not be_valid
 
@@ -297,7 +367,7 @@ describe User do
     end
 
     describe "with malicious params" do
-      let(:person) {Factory.create :person}
+      let(:person) {Factory :person}
       before do
         @invalid_params = {:username => "ohai",
                   :email => "ohai@example.com",
@@ -510,18 +580,16 @@ describe User do
   end
 
   describe '#update_post' do
-    it 'sends a notification to aspects' do
-      m = mock()
-      m.should_receive(:post)
-      Postzord::Dispatcher.should_receive(:build).and_return(m)
+    it 'should dispatch post' do
       photo = alice.build_post(:photo, :user_file => uploaded_photo, :text => "hello", :to => alice.aspects.first.id)
+      alice.should_receive(:dispatch_post).with(photo)
       alice.update_post(photo, :text => 'hellp')
     end
   end
 
   describe '#notify_if_mentioned' do
     before do
-      @post = Factory.create(:status_message, :author => bob.person)
+      @post = Factory(:status_message, :author => bob.person)
     end
 
     it 'notifies the user if the incoming post mentions them' do
@@ -539,7 +607,7 @@ describe User do
     end
 
     it 'does not notify the user if the post author is not a contact' do
-      @post = Factory.create(:status_message, :author => eve.person)
+      @post = Factory(:status_message, :author => eve.person)
       @post.stub(:mentions?).and_return(true)
       @post.should_not_receive(:notify_person)
 
@@ -548,29 +616,6 @@ describe User do
   end
 
   describe 'account deletion' do
-    describe '#remove_all_traces' do
-      it 'should disconnect everyone' do
-        alice.should_receive(:disconnect_everyone)
-        alice.remove_all_traces
-      end
-
-      it 'should remove mentions' do
-        alice.should_receive(:remove_mentions)
-        alice.remove_all_traces
-      end
-
-      it 'should remove person' do
-        alice.should_receive(:remove_person)
-        alice.remove_all_traces
-      end
-
-      it 'should remove all aspects' do
-        lambda {
-          alice.remove_all_traces
-        }.should change{ alice.aspects(true).count }.by(-1)
-      end
-    end
-
     describe '#destroy' do
       it 'removes invitations from the user' do
         Factory(:invitation, :sender => alice)
@@ -592,75 +637,6 @@ describe User do
           alice.destroy
         }.should change {
           alice.services.count
-        }.by(-1)
-      end
-    end
-
-    describe '#remove_person' do
-      it 'should remove the person object' do
-        person = alice.person
-        alice.remove_person
-        person.reload
-        person.should be_nil
-      end
-
-      it 'should remove the posts' do
-        message = alice.post(:status_message, :text => "hi", :to => alice.aspects.first.id)
-        alice.reload
-        alice.remove_person
-        expect { message.reload }.to raise_error ActiveRecord::RecordNotFound
-      end
-    end
-
-    describe '#remove_mentions' do
-      it 'should remove the mentions' do
-        person = alice.person
-        sm =  Factory(:status_message)
-        mention  = Mention.create(:person => person, :post=> sm)
-        alice.reload
-        alice.remove_mentions
-        expect { mention.reload }.to raise_error ActiveRecord::RecordNotFound
-      end
-    end
-
-    describe '#disconnect_everyone' do
-      it 'has no error on a local friend who has deleted his account' do
-        d = Factory(:account_deletion, :person => alice.person)
-        Jobs::DeleteAccount.perform(d.id)
-        lambda {
-          bob.disconnect_everyone
-        }.should_not raise_error
-      end
-
-      it 'has no error when the user has sent local requests' do
-        alice.share_with(eve.person, alice.aspects.first)
-        lambda {
-          alice.disconnect_everyone
-        }.should_not raise_error
-      end
-
-      it 'sends retractions to remote poeple' do
-        person = eve.person
-        eve.delete
-        person.owner_id = nil
-        person.save
-        alice.contacts.create(:person => person, :aspects => [alice.aspects.first])
-
-        alice.should_receive(:disconnect).once
-        alice.disconnect_everyone
-      end
-
-      it 'disconnects local people' do
-        lambda {
-          alice.remove_all_traces
-        }.should change{bob.reload.contacts.count}.by(-1)
-      end
-
-      it 'removes all contacts' do
-        lambda {
-          alice.disconnect_everyone
-        }.should change {
-          alice.contacts.count
         }.by(-1)
       end
     end
@@ -706,34 +682,6 @@ describe User do
 
       it 'returns true if they are already in the aspect' do
         alice.add_contact_to_aspect(@contact, @original_aspect).should be_true
-      end
-    end
-
-    context 'moving and removing posts' do
-      describe 'User#move_contact' do
-        it 'should be able to move a contact from one of users existing aspects to another' do
-          alice.move_contact(bob.person, @new_aspect, @original_aspect)
-
-          @original_aspect.contacts(true).include?(@contact).should be_false
-          @new_aspect.contacts(true).include?(@contact).should be_true
-        end
-
-        it "should not move a person who is not a contact" do
-          non_contact = eve.person
-
-          expect {
-            alice.move_contact(non_contact, @new_aspect, @original_aspect)
-          }.to raise_error
-
-          @original_aspect.contacts.where(:person_id => non_contact.id).should be_empty
-          @new_aspect.contacts.where(:person_id => non_contact.id).should be_empty
-        end
-
-        it 'does not try to delete if add person did not go through' do
-          alice.should_receive(:add_contact_to_aspect).and_return(false)
-          alice.should_not_receive(:delete_person_from_aspect)
-          alice.move_contact(bob.person, @new_aspect, @original_aspect)
-        end
       end
     end
   end
@@ -906,7 +854,7 @@ describe User do
   describe "#accept_invitation!" do
     before do
       fantasy_resque do
-        @invitation = Factory.create(:invitation, :sender => eve, :identifier => 'invitee@example.org', :aspect => eve.aspects.first)
+        @invitation = Factory(:invitation, :sender => eve, :identifier => 'invitee@example.org', :aspect => eve.aspects.first)
       end
 
       @invitation.reload
@@ -1000,7 +948,7 @@ describe User do
       user.should_not_receive(:generate_reset_password_token)
       user.send_reset_password_instructions
     end
-    
+
     it "queues up a job to send the reset password instructions" do
       user = Factory :user
       Resque.should_receive(:enqueue).with(Jobs::ResetPassword, user.id)
@@ -1053,7 +1001,7 @@ describe User do
 
     describe "#clearable_attributes" do
       it 'returns the clearable fields' do
-        user = Factory.create :user
+        user = Factory :user
         user.send(:clearable_fields).sort.should == %w{
           language
           invitation_token
@@ -1065,6 +1013,7 @@ describe User do
           current_sign_in_at
           last_sign_in_at
           current_sign_in_ip
+          hidden_shareables
           last_sign_in_ip
           invitation_service
           invitation_identifier

@@ -21,11 +21,24 @@ factory = {
     return _.extend(defaultAttrs, overrides)
   },
 
+  comment : function(overrides) {
+    var defaultAttrs = {
+      "created_at" : "2012-01-04T00:55:30Z",
+      "author" : this.author(),
+      "guid" : this.guid(),
+      "id" : this.id.next(),
+      "text" : "This is a comment!"
+    }
+    
+    return new app.models.Comment(_.extend(defaultAttrs, overrides))
+  },
+
   userAttrs : function(overrides){
     var id = this.id.next()
       var defaultAttrs = {
         "name":"Awesome User" + id,
         "id": id,
+        "diaspora_id": "bob@bob.com",
         "avatar":{
           "large":"http://localhost:3000/images/user/uma.jpg",
           "medium":"http://localhost:3000/images/user/uma.jpg",
@@ -53,11 +66,22 @@ factory = {
       "root" : null,
       "post_type" : "StatusMessage",
       "likes_count" : 0,
-      "comments_count" : 0,
-      "photos_count" : 0
+      "comments_count" : 0
     }
 
     return new app.models.Post(_.extend(defaultAttrs, overrides))
+  },
+
+  comment: function(overrides) {
+    var defaultAttrs = {
+      "text" : "This is an awesome comment!",
+      "created_at" : "2012-01-03T19:53:13Z",
+      "author" : this.author(),
+      "guid" : this.guid(),
+      "id": this.id.next()
+    }
+
+    return new app.models.Comment(_.extend(defaultAttrs, overrides))
   }
 }
 

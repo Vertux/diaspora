@@ -111,7 +111,6 @@ eo:
         have_a_question: "... havas %{link}n?"
         here_to_help: "Jen la DIASPORA* komunumo!"
         need_help: "Ĉu Vi Bezonas Helpon?"
-        satisfaction: "%{link}: Komunuma helpo"
         tag_bug: cimo
         tag_feature: trajto
         tag_question: demando
@@ -203,7 +202,6 @@ eo:
       add_a_new_aspect: "Aldoni novan aspekton"
       add_to_aspect: "aldoni kontaktojn al %{name}"
       all_contacts: "Ĉiuj kontaktoj"
-      check_out: Vidu
       many_people_are_you_sure: "Ĉu vi certas, ke vi volas mesaĝi pli ol {suggested_limit} homojn? Afiŝi al tiu ĉi aspekto eble estas pli bona metodo kontakti ilin."
       my_contacts: "Miaj kontaktoj"
       no_contacts: "Vi bezonos aldoni iujn kontaktojn!"
@@ -572,6 +570,13 @@ eo:
       destroy: Forlasi
       not_found: "Ni bedaŭras, sed ni ne povis trovi tiun afiŝon."
       permalink: malŝanĝantligilo
+      photos_by:
+        few: "%{count} photos by %{author}"
+        many: "%{count} photos by %{author}"
+        one: "One photo by %{author}"
+        other: "%{count} photos by %{author}"
+        two: "Two photos by %{author}"
+        zero: "No photos by %{author}"
   previous: antaŭa
   privacy: Privateco
   profile: Profilo
@@ -794,7 +799,6 @@ eo:
     aspects:
       title: "Viaj Aspektoj"
     aspects_stream: Aspektoj
-    commented_on: "komentis pri"
     community_spotlight_stream: "Komunuma Reflektoro"
     followed_tag:
       add_a_tag: "Aldoni etikedon"
@@ -809,11 +813,9 @@ eo:
     multi:
       contacts_title: "Homoj en via Torento"
       title: Torento
-    posted: afiŝis
     public:
       contacts_title: "ĵusaj afiŝintoj"
       title: "publika aktiveco"
-    recently: "freŝdate:"
     tags:
       contacts_title: "Homoj, al kiuj tiuj ĉi etikedoj plaĉas"
       tag_prefill_text: "La afero pri %{tag_name} estas... "
@@ -863,6 +865,8 @@ eo:
       change_email: "Redakti retpoŝtadreso"
       change_language: "Ŝanĝi lingvon"
       change_password: "Ŝanĝi pasvorton"
+      close_account:
+        what_we_delete: "We delete all of your posts, profile data, as soon as humanly possible. Your comments will hang around, but be associated with your Diaspora Handle."
       comment_on_post: "...iu komentas pri via afiŝo?"
       current_password: "Nuna pasvorto"
       download_photos: "elŝuti miajn bildojn"

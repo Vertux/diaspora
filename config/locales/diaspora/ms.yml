@@ -132,7 +132,6 @@ ms:
       add_a_new_aspect: "Tambah aspek baru"
       add_to_aspect: "menambah kenalan ke %{name}"
       all_contacts: "Semua Kenalan"
-      check_out: "Daftar keluar"
       many_people_are_you_sure: "Adakah anda pasti anda mahu untuk memulakan perbualan peribadi dengan lebih daripada% {suggested_limit} kenalan? Posting ke aspek ini mungkin cara yang lebih baik untuk menghubungi mereka."
       my_contacts: "Kenalan Saya"
       only_sharing_with_me: "Hanya berkongsi dengan saya"
@@ -364,6 +363,15 @@ ms:
     create:
       integrity_error: "\"Upload\" foto gagal. Adakah anda pasti itu adalah imej?"
       runtime_error: "\"Upload\" foto gagal. Adakah anda pasti bahawa tali pinggang keledar anda telah diikat?"
+  posts:
+    show:
+      photos_by:
+        few: "%{count} photos by %{author}"
+        many: "%{count} photos by %{author}"
+        one: "One photo by %{author}"
+        other: "%{count} photos by %{author}"
+        two: "Two photos by %{author}"
+        zero: "No photos by %{author}"
   reactions:
     few: "%{count} reactions"
     many: "%{count} reactions"
@@ -414,3 +422,8 @@ ms:
       other: "Show %{count} more comments"
       two: "Show two more comments"
       zero: "No more comments"
+  users:
+    edit:
+      close_account:
+        what_we_delete: "We delete all of your posts, profile data, as soon as humanly possible. Your comments will hang around, but be associated with your Diaspora Handle."
+      your_handle: "Your diaspora id"

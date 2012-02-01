@@ -111,7 +111,6 @@ de:
         have_a_question: "… eine %{link}?"
         here_to_help: "Die Diaspora-Gemeinschaft ist für dich da!"
         need_help: "Benötigst du Hilfe?"
-        satisfaction: "%{link}: Unterstützung durch die Gemeinschaft"
         tag_bug: problem
         tag_feature: verbesserung
         tag_question: frage
@@ -201,11 +200,14 @@ de:
     index:
       add_a_new_aspect: "Einen neuen Aspekt hinzufügen"
       add_to_aspect: "Füge Kontakte zu %{name} hinzu"
+      add_to_aspect_link: "füge Kontakte zu »%{name}« hinzu"
       all_contacts: "Alle Kontakte"
-      check_out: Abmelden
+      community_spotlight: Gemeinschafts-Schaukasten
       many_people_are_you_sure: "Bist du dir sicher, dass du eine private Unterhaltung mit mehr als %{suggested_limit} Kontakten beginnen möchtest? Einen Beitrag in diesen Aspekt zu schreiben könnte ein besserer Weg sein, um sie zu kontaktieren."
       my_contacts: "Meine Kontakte"
       no_contacts: "Sieht so aus, als müsstest du einige Kontakte hinzufügen!"
+      no_contacts_message: "Guck’ in den %{community_spotlight}"
+      no_contacts_message_with_aspect: "Guck’ in den %{community_spotlight} oder %{add_to_aspect_link}"
       only_sharing_with_me: "Nur mit dir Teilende"
       remove_person_from_aspect: "Entferne %{person_name} aus \"%{aspect_name}\""
       start_a_conversation: "Beginne eine Unterhaltung"
@@ -309,6 +311,7 @@ de:
       to: An
   layouts:
     application:
+      back_to_top: "Zurück zum Anfang"
       powered_by: "BETRIEBEN MIT DIASPORA*"
       public_feed: "Öffentlicher Diaspora Feed von %{name}"
       toggle: "Mobile Ansicht umschalten"
@@ -576,13 +579,21 @@ de:
       destroy: Löschen
       not_found: "Entschuldige, wir konnten den Beitrag leider nicht finden."
       permalink: Permanentlink
+      photos_by:
+        few: "%{count} Fotos von %{author}"
+        many: "%{count} Fotos von %{author}"
+        one: "Ein Foto von %{author}"
+        other: "%{count} Fotos von %{author}"
+        two: "Zwei Fotos von %{author}"
+        zero: "Keine Fotos von %{author}"
+      reshare_by: "Weitergesagt von %{author}"
   previous: Vorherige
   privacy: Privatsphäre
   privacy_policy: Datenschutzrichtlinien
   profile: Profil
   profiles:
     edit:
-      allow_search: "Erlaube anderen auf Diaspora nach dir zu suchen"
+      allow_search: "Anderen erlauben, auf Diaspora nach dir zu suchen"
       edit_profile: "Profil bearbeiten"
       first_name: Vorname
       last_name: Nachname
@@ -734,6 +745,7 @@ de:
     notification:
       new: "Neue %{type} von %{from}"
     public_explain:
+      atom_feed: Atom-Feed
       control_your_audience: "Kontrolliere deine Zielgruppe"
       logged_in: "Eingeloggt in %{service}"
       manage: "Verbundene Dienste verwalten"
@@ -769,6 +781,7 @@ de:
       ignore_user: "%{name} ignorieren"
       ignore_user_description: "Diesen Benutzer ignorieren und aus allen Aspekten entfernen?"
       like: "Gefällt mir"
+      nsfw: "Dieser Post wurde vom Autor als NSFW markiert. %{link}"
       shared_with: "Geteilt mit: %{aspect_names}"
       show: zeigen
       unlike: "Gefällt mir nicht mehr"
@@ -805,7 +818,6 @@ de:
     comment_stream:
       contacts_title: "Leute, deren Beiträge du kommentiert hast"
       title: "Kommentierte Beiträge"
-    commented_on: kommentiert
     community_spotlight_stream: Gemeinschafts-Schaukasten
     followed_tag:
       add_a_tag: "Füge einen Tag hinzu"
@@ -815,17 +827,16 @@ de:
     followed_tags_stream: "#Tags, denen du folgst"
     like_stream:
       contacts_title: "Leute, deren Beiträge du magst"
+      title: "\"Gefällt mir\"-Stream"
     mentioned_stream: "@Erwähnungen"
     mentions:
       contacts_title: "Personen, die dich erwähnt haben"
       title: "@Erwähnungen"
     multi:
       contacts_title: "Personen in deinem Stream"
-    posted: veröffentlicht
     public:
       contacts_title: "Aktuelle Poster"
       title: "Öffentliche Aktivität"
-    recently: "zuletzt:"
     tags:
       contacts_title: "Personen, die diesen Tag nutzen"
       tag_prefill_text: "Das Interessante an %{tag_name} ist, dass …"

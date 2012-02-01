@@ -60,9 +60,8 @@ describe Post do
       end
 
       it 'calls excluding_blocks if a user is present' do
-        user = stub
-        Post.should_receive(:excluding_blocks).with(user)
-        Post.for_a_stream(stub, stub, user)
+        Post.should_receive(:excluding_blocks).with(alice).and_return(Post)
+        Post.for_a_stream(stub, stub, alice)
       end
     end
 
@@ -84,6 +83,28 @@ describe Post do
 
       it 'returns posts if you dont have any blocks' do
         Post.excluding_blocks(alice).count.should == 2
+      end
+    end
+
+    describe '.excluding_hidden_shareables' do
+      before do
+        @post = Factory(:status_message, :author => alice.person)
+        @other_post = Factory(:status_message, :author => eve.person)
+        bob.toggle_hidden_shareable(@post)
+      end
+      it 'excludes posts the user has hidden' do
+        Post.excluding_hidden_shareables(bob).should_not include(@post)
+      end
+      it 'includes posts the user has not hidden' do
+        Post.excluding_hidden_shareables(bob).should include(@other_post)
+      end
+    end
+
+    describe '.excluding_hidden_content' do
+      it 'calls excluding_blocks and excluding_hidden_shareables' do
+        Post.should_receive(:excluding_blocks).and_return(Post)
+        Post.should_receive(:excluding_hidden_shareables)
+        Post.excluding_hidden_content(bob)
       end
     end
 
@@ -148,7 +169,7 @@ describe Post do
 
   describe 'deletion' do
     it 'should delete a posts comments on delete' do
-      post = Factory.create(:status_message, :author => @user.person)
+      post = Factory(:status_message, :author => @user.person)
       @user.comment "hey", :post => post
       post.destroy
       Post.where(:id => post.id).empty?.should == true
@@ -191,36 +212,6 @@ describe Post do
       post = @user.post :status_message, :text => "hello", :to => @aspect.id, :public => true
 
       post.subscribers(@user).to_set.should == @user.contact_people.to_set
-    end
-  end
-
-  describe '#comments' do
-    it 'returns the comments of a post in created_at order' do
-      post = bob.post :status_message, :text => "hello", :to => 'all'
-      created_at = Time.now - 100
-
-      # Posts are created out of time order.
-      # i.e. id order is not created_at order
-      alice.comment 'comment a', :post => post, :created_at => created_at + 10
-      eve.comment   'comment d', :post => post, :created_at => created_at + 50
-      bob.comment   'comment b', :post => post, :created_at => created_at + 30
-      alice.comment 'comment e', :post => post, :created_at => created_at + 90
-      eve.comment   'comment c', :post => post, :created_at => created_at + 40
-
-      post.comments.map(&:text).should == [
-        'comment a',
-        'comment b',
-        'comment c',
-        'comment d',
-        'comment e',
-      ]
-      post.comments.map(&:author).should == [
-        alice.person,
-        bob.person,
-        eve.person,
-        eve.person,
-        alice.person,
-      ]
     end
   end
 
@@ -400,7 +391,7 @@ describe Post do
     describe 'when post has been reshared exactly 1 time' do
       before :each do
         @post.reshares.size.should == 0
-        @reshare = Factory.create(:reshare, :root => @post)
+        @reshare = Factory(:reshare, :root => @post)
         @post.reload
         @post.reshares.size.should == 1
       end
@@ -413,9 +404,9 @@ describe Post do
     describe 'when post has been reshared more than once' do
       before :each do
         @post.reshares.size.should == 0
-        Factory.create(:reshare, :root => @post)
-        Factory.create(:reshare, :root => @post)
-        Factory.create(:reshare, :root => @post)
+        Factory(:reshare, :root => @post)
+        Factory(:reshare, :root => @post)
+        Factory(:reshare, :root => @post)
         @post.reload
         @post.reshares.size.should == 3
       end

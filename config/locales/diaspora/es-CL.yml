@@ -110,7 +110,6 @@ es-CL:
         have_a_question: "... tienes una %{link}?"
         here_to_help: "La comunidad de Diaspora esta aquí!"
         need_help: "Necesitas ayuda?"
-        satisfaction: "%{link}: Soporte impulsado por la comunidad"
         tag_feature: idea
         tag_question: pregunta
         tutorials_wiki_and_forum: "%{tutorial} & %{wiki} & %{forum}: Tutoriales hechos por la comunidad, how-to, y noticias"
@@ -201,7 +200,6 @@ es-CL:
       add_a_new_aspect: "Agregar un nuevo aspecto"
       add_to_aspect: "Añadir contactos a %{name}"
       all_contacts: "Todos los Contactos"
-      check_out: Desmarcar
       many_people_are_you_sure: "Estas seguro que quieres iniciar una conversación privada con más de %{suggested_limit} contactos? Postear algo en este aspecto quizás sea una mejor manera de contactarte con ellos."
       my_contacts: "Mis Contactos"
       no_contacts: "Parece que necesitas agregar algunos contactos!"
@@ -565,6 +563,13 @@ es-CL:
     show:
       destroy: ELiminar
       not_found: "Lo sentimos, no pudimos encontrar ese post."
+      photos_by:
+        few: "%{count} photos by %{author}"
+        many: "%{count} photos by %{author}"
+        one: "One photo by %{author}"
+        other: "%{count} photos by %{author}"
+        two: "Two photos by %{author}"
+        zero: "No photos by %{author}"
   previous: Anterior
   privacy: Privacidad
   profile: Perfil
@@ -791,7 +796,6 @@ es-CL:
     comment_stream:
       contacts_title: "Gente cuyas publicaciones comentaste"
       title: Comentado
-    commented_on: comentado
     community_spotlight_stream: "Comunidad Creativa"
     followed_tag:
       add_a_tag: "Añadir un tag"
@@ -808,11 +812,9 @@ es-CL:
       title: "@Menciones"
     multi:
       contacts_title: "Gente en tu Stream"
-    posted: publicado
     public:
       contacts_title: "Posters recientes"
       title: "Actividad publica"
-    recently: "recientemente:"
     tags:
       contacts_title: "Gente que usa este tag"
       tag_prefill_text: "La cosa sobre %{tag_name} es... "
@@ -860,6 +862,8 @@ es-CL:
       change_email: "Cambiar email"
       change_language: "Cambiar Idioma"
       change_password: "Cambiar Contraseña"
+      close_account:
+        what_we_delete: "We delete all of your posts, profile data, as soon as humanly possible. Your comments will hang around, but be associated with your Diaspora Handle."
       comment_on_post: "...alguien comenta en tu post?"
       current_password: "Contraseña actual"
       download_photos: "descargar mis fotos"

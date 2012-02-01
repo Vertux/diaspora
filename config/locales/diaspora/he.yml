@@ -114,7 +114,6 @@ he:
         have_a_question: "? %{link}יש לך  "
         here_to_help: "קהילת דיאספורה לרשותך!"
         need_help: "?צריך עזרה "
-        satisfaction: "עזרה בתמיכת הקהילה %{link}"
         tag_bug: תקלה
         tag_feature: מאפיין
         tag_question: שאלה
@@ -208,7 +207,6 @@ he:
       add_a_new_aspect: "הוספת היבט חדש"
       add_to_aspect: " %{name}הוסף אנשי קשר ל"
       all_contacts: "כל אנשי הקשר"
-      check_out: יציאה
       many_people_are_you_sure: "האם אכן ברצונך לפתוח בשיחה פרטית עם למעלה מ־%{suggested_limit} אנשי קשר? פרסום להיבט זה הוא רעיון מוצלח יותר ליצירת קשר אתם."
       my_contacts: "אנשי הקשר שלי"
       no_contacts: "נראה כאילו עליך להוסיף עוד קצת אנשי קשר!"
@@ -583,6 +581,13 @@ he:
       destroy: מחיקה
       not_found: "לא ניתן למצוא רשומה זו, עמך הסליחה."
       permalink: "קישור קבוע"
+      photos_by:
+        few: "%{count} photos by %{author}"
+        many: "%{count} photos by %{author}"
+        one: "One photo by %{author}"
+        other: "%{count} photos by %{author}"
+        two: "Two photos by %{author}"
+        zero: "No photos by %{author}"
   previous: הקודמת
   privacy: פרטיות
   privacy_policy: "מדיניות פרטיות"
@@ -819,7 +824,6 @@ he:
     comment_stream:
       contacts_title: "אנשים שהגבת על הרשומה שלהם"
       title: "רשומות עם תגובות"
-    commented_on: "הגיב על"
     community_spotlight_stream: "דברים חשובים בקהילה"
     followed_tag:
       add_a_tag: "הוסף תגית"
@@ -837,11 +841,9 @@ he:
     multi:
       contacts_title: "אנשים בחדשות שלך"
       title: חדשות
-    posted: נרשם
     public:
       contacts_title: "מודעות חדשות"
       title: "פעילות ציבורית"
-    recently: ":לאחרונה"
     tags:
       contacts_title: "אנשים ששותפים לתגית הזו"
       tag_prefill_text: " %{tag_name} העניין בקשר ל"

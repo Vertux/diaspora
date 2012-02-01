@@ -28,7 +28,7 @@ describe Notification do
 
   describe '.for' do
     it 'returns all of a users notifications' do
-      user2 = Factory.create(:user)
+      user2 = Factory(:user)
       4.times do
         Notification.create(@opts)
       end
@@ -40,6 +40,21 @@ describe Notification do
     end
   end
 
+  describe 'set_read_state method' do
+    it "should set an unread notification to read" do
+      @note.unread = true
+      @note.set_read_state( true )
+      @note.unread.should == false
+    end
+    it "should set an read notification to unread" do
+      @note.unread = false
+      @note.set_read_state( false )
+      @note.unread.should == true
+    end
+
+  end
+
+
   describe '.concatenate_or_create' do
     it 'creates a new notificiation if the notification does not exist, or if it is unread' do
       @note.unread = false
@@ -50,18 +65,6 @@ describe Notification do
     end
   end
   describe '.notify' do
-    it 'does not call Notification.create if the object does not have a notification_type' do
-      Notification.should_not_receive(:make_notificatin)
-      Notification.notify(@user, @sm, @person)
-    end
-
-    it 'does not create a notification if the post visibility is hidden' do
-      Notification.stub(:share_visiblity_is_hidden).and_return(true)
-      expect{
-        Notification.notify(@user, @sm, @person)
-      }.to change(Notification, :count).by(0)
-    end
-
     context 'with a request' do
       before do
         @request = Request.diaspora_initialize(:from => @user.person, :to => @user2.person, :into => @aspect)

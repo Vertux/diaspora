@@ -111,7 +111,6 @@ es:
         have_a_question: "- Realices alguna %{link}."
         here_to_help: "¡La comunidad Diaspora está aquí!"
         need_help: Ayuda
-        satisfaction: "%{link}: Soporte de la Comunidad"
         tag_bug: error
         tag_feature: idea
         tag_question: pregunta
@@ -203,10 +202,12 @@ es:
       add_a_new_aspect: "Añade un nuevo aspecto"
       add_to_aspect: "añade contactos a %{name}"
       all_contacts: "Todos los contactos"
-      check_out: "Echa un vistazo a la"
+      community_spotlight: "Comunidad Creativa"
       many_people_are_you_sure: "¿Estás seguro que quieres comenzar una conversación privada con más de %{suggested_limit} contactos? Publicar en sus aspectos podría ser mejor para contactar con ellos."
       my_contacts: "Mis Contactos"
       no_contacts: "¡Parece que necesitas añadir algunos contactos!"
+      no_contacts_message: "Echa un vistazo a %{community_spotlight}"
+      no_contacts_message_with_aspect: "Echa un vistazo a %{community_spotlight} o %{add_to_aspect_link}"
       only_sharing_with_me: "Solo compartiendo conmigo"
       remove_person_from_aspect: "Eliminar a %{person_name} de \"%{aspect_name}\""
       start_a_conversation: "Inicia una conversación"
@@ -309,6 +310,7 @@ es:
       to: Para
   layouts:
     application:
+      back_to_top: "Volver arriba"
       powered_by: "IMPULSADO POR DIASPORA*"
       public_feed: "Canal público de %{name} "
       toggle: "cambiar al sitio móvil"
@@ -575,6 +577,14 @@ es:
       destroy: Eliminar
       not_found: "Lo sentimos, no podemos encontrar ese comentario."
       permalink: "enlace permanente"
+      photos_by:
+        few: "%{count} fotos por %{author}"
+        many: "%{count} fotos por %{author}"
+        one: "Una foto por %{author}"
+        other: "%{count} fotos por %{author}"
+        two: "Dos fotos por %{author}"
+        zero: "Ninguna foto por %{author}"
+      reshare_by: "Vuelto a compartir por %{author}"
   previous: anterior
   privacy: Privacidad
   privacy_policy: "Política de Privacidad"
@@ -732,6 +742,7 @@ es:
     notification:
       new: "Nuevo %{type} de %{from}"
     public_explain:
+      atom_feed: "fuentes Atom"
       control_your_audience: "Controla tu Audiencia"
       logged_in: "conectado a %{service}"
       manage: "gestión de servicios conectados"
@@ -805,7 +816,6 @@ es:
     comment_stream:
       contacts_title: "Gente cuyas publicaciones comentaste"
       title: Comentado
-    commented_on: comentado
     community_spotlight_stream: "Comunidad Creativa"
     followed_tag:
       add_a_tag: "Añade una etiqueta"
@@ -823,11 +833,9 @@ es:
     multi:
       contacts_title: "Gente en tu Entrada"
       title: Entrada
-    posted: publicado
     public:
       contacts_title: "Publicadores recientes"
       title: "Actividad Pública"
-    recently: "recientemente:"
     tags:
       contacts_title: "Gente que sigue esta etiqueta"
       tag_prefill_text: "Sobre %{tag_name}..."
@@ -889,7 +897,7 @@ es:
         make_diaspora_better: "Queremos que nos ayudes a hacer Diaspora mejor, podrías hacerlo. Si te vas, queremos que sepas que pasa después."
         mr_wiggles: "El Tío la Vara estará triste si te vas"
         no_turning_back: "Actualmente, no hay vuelta atrás."
-        what_we_delete: "Eliminamos todas tus publicaciones y datos del perfil, tan pronto como humanamente posible. Tus comentarios seguirán subidos, pero se asocian a tu servidor Diaspora."
+        what_we_delete: "Eliminamos todas tus publicaciones y datos del perfil, tan pronto como es humanamente posible. Tus comentarios seguirán en línea, pero asociados a tu dirección Diaspora*."
       close_account_text: "Eliminar Cuenta"
       comment_on_post: "...alguien comenta en tu publicación?"
       current_password: "Contraseña actual"

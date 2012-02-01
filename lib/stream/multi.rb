@@ -2,7 +2,7 @@ class Stream::Multi < Stream::Base
 
   # @return [String] URL
   def link(opts)
-    Rails.application.routes.url_helpers.multi_path(opts)
+    Rails.application.routes.url_helpers.multi_stream_path(opts)
   end
 
   # @return [String]
@@ -16,16 +16,7 @@ class Stream::Multi < Stream::Base
   end
 
   def posts
-    @posts ||= lambda do
-      post_ids = aspects_post_ids + followed_tags_post_ids + mentioned_post_ids
-      post_ids += community_spotlight_post_ids if include_community_spotlight?
-      Post.where(:id => post_ids)
-    end.call
-  end
-
-  # @return [Boolean]
-  def ajax_stream?
-    false
+    @posts ||= Diaspora::EvilQuery::MultiStream.new(user, order, max_time, include_community_spotlight?).make_relation!
   end
 
   #emits an enum of the groups which the post appeared
@@ -88,34 +79,4 @@ class Stream::Multi < Stream::Base
   def include_community_spotlight?
     AppConfig[:community_spotlight].present? && user.show_community_spotlight_in_stream?
   end
-
-  def aspects_post_ids
-    @aspects_post_ids ||= user.visible_shareable_ids(Post, :limit => 15, :order => "#{order} DESC", :max_time => max_time, :all_aspects? => true, :by_members_of => aspect_ids)
-  end
-
-  def followed_tags_post_ids
-    @followed_tags_ids ||= ids(StatusMessage.public_tag_stream(tag_ids))
-  end
-
-  def mentioned_post_ids
-    @mentioned_post_ids ||= ids(StatusMessage.where_person_is_mentioned(user.person))
-  end
-
-  def community_spotlight_post_ids
-    @community_spotlight_post_ids ||= ids(Post.all_public.where(:author_id => community_spotlight_person_ids))
-  end
-
-  #worthless helpers
-  def community_spotlight_person_ids
-    @community_spotlight_person_ids ||= Person.community_spotlight.select('id').map{|x| x.id}
-  end
-
-  def tag_ids
-    user.followed_tags.map{|x| x.id}
-  end
-
-  def ids(query)
-    Post.connection.select_values(query.for_a_stream(max_time, order).select('posts.id').to_sql)
-  end
-
 end

@@ -28,6 +28,7 @@ ru:
       hide: "скрыть комментарии"
       show: "Показать все комментарии"
     confirm_dialog: "Вы уверены? "
+    delete: Удалить
     failed_to_like: "Не удалось!"
     failed_to_post_message: "Не удалось отправить сообщение!"
     getting_started:
@@ -35,6 +36,20 @@ ru:
       hey: "Привет, <%= name %>!"
       no_tags: "Вы не следите ни за одной меткой! Все равно продолжить?"
       preparing_your_stream: "Подготовка вашего личного потока..."
+    header:
+      admin: Администратор
+      contacts: Контакты
+      home: Главная
+      log_out: Выйти
+      mark_all_as_read: "Пометить как прочитанные"
+      messages: Сообщения
+      notifications: Уведомления
+      profile: Профиль
+      recent_notifications: "Последние уведомления"
+      search: "Поиск людей или #меток"
+      settings: Настройки
+      view_all: "Посмотреть все"
+    ignore: Блокировать
     infinite_scroll:
       no_more: "Сообщений больше нет."
     photo_uploader:
@@ -47,6 +62,38 @@ ru:
       duplicate: "Настолько круто, да? Вы уже поделились этой записью!"
     search_for: "Искать <%= name %>"
     show_more: "показать больше"
+    stream:
+      comment: Комментировать
+      hide: Скрыть
+      like: Нравится
+      likes:
+        few: "Понравилось: <%= count %>"
+        many: "Понравилось: <%= count %>"
+        one: "Понравилось: <%= count %>"
+        other: "Понравилось: <%= count %>"
+        two: "Понравилось: <%= count %>"
+        zero: "Понравилось: <%= count %>"
+      limited: Ограниченная
+      more_comments:
+        few: "Показать остальные комментарии (<%= count %>)"
+        many: "Показать остальные комментарии (<%= count %>)"
+        one: "Показать остальные комментарии (<%= count %>)"
+        other: "Показать остальные комментарии (<%= count %>)"
+        two: "Показать остальные комментарии (<%= count %>)"
+        zero: "Показать остальные комментарии (<%= count %>)"
+      nsfw: "Эта запись была помечена автором как \"18+\"."
+      original_post_deleted: "Исходная запись удалена автором."
+      public: Публичная
+      reshare: Поделиться
+      reshares:
+        few: "Поделились: <%= count %>"
+        many: "Поделились: <%= count %>"
+        one: "Поделились: <%= count %>"
+        other: "Поделились: <%= count %>"
+        two: "Поделились: <%= count %>"
+        zero: "Поделились: <%= count %>"
+      show: Показать
+      unlike: "Не нравится"
     tags:
       wasnt_that_interesting: "Что ж, видимо, метка #<%= tagName %> была не такой уж интересной..."
     timeago:
@@ -67,5 +114,3 @@ ru:
     videos:
       unknown: "Неизвестный видеоформат"
       watch: "Смотреть это видео на <%= provider %>"
-    web_sockets:
-      disconnected: "WebSocket закрыт; сообщения больше не будут транслироваться в прямом эфире."

@@ -1,6 +1,5 @@
 app.views.StreamFaces = app.views.Base.extend({
-
-  template_name : "#stream-faces-template",
+  templateName : "stream-faces",
 
   className : "stream-faces",
 
@@ -8,7 +7,7 @@ app.views.StreamFaces = app.views.Base.extend({
 
   initialize : function(){
     this.updatePeople()
-    this.collection.bind("add", this.updatePeople, this)
+    app.stream.posts.bind("add", this.updatePeople, this)
   },
 
   presenter : function() {

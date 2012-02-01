@@ -20,17 +20,18 @@ module Api::V0::Post
   def self.api_v0_find_visible_by_type(user, id, type=nil)
     if user
       post = user.find_visible_shareable_by_id(::Post, id, :key => :id)
-      if type == 'photo' ||
-        (post.blank? && type.blank?)
+      if type == 'photo' || (post.blank? && type.blank?)
         post = user.find_visible_shareable_by_id(::Photo, id, :key => :id)
       end
-    else
+    end
+    
+    unless post
       post = ::Post.where(:id => id, :public => true).first
-      if type == 'photo' ||
-        (post.blank? && type.blank?)
+      if type == 'photo' || (post.blank? && type.blank?)
         ::Photo.where(:id => id, :public => true).first
       end
     end
+    
     post
   end
 end

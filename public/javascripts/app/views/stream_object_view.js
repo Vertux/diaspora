@@ -1,7 +1,6 @@
 app.views.StreamObject = app.views.Base.extend({
   initialize: function(options) {
-    this.model.bind('remove', this.remove, this);
-    this.model.bind('change', this.render, this);
+    this.setupRenderEvents();
   },
 
   postRenderTemplate : function(){
@@ -9,8 +8,19 @@ app.views.StreamObject = app.views.Base.extend({
     this.$(".collapsible").expander({
       slicePoint: 400,
       widow: 12,
+      expandPrefix: "",
       expandText: Diaspora.I18n.t("show_more"),
-      userCollapse: false
+      userCollapse: false,
+      beforeExpand: function() {
+        var readMoreDiv = $(this).find('.read-more');
+        var lastParagraphBeforeReadMore = readMoreDiv.prev();
+        var firstParagraphAfterReadMore = $(readMoreDiv.next().find('p')[0]);
+
+        lastParagraphBeforeReadMore.append(firstParagraphAfterReadMore.text());
+
+        firstParagraphAfterReadMore.remove();
+        readMoreDiv.remove();
+      }
     });
   },
 

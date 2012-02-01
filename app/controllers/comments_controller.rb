@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
   end
 
   def create
-    target = current_user.find_visible_shareable_by_id Post, params[:post_id]
+    target = current_user.find_visible_shareable_by_id(Post, params[:post_id])
     text = params[:text]
 
     if target
@@ -24,7 +24,7 @@ class CommentsController < ApplicationController
       if @comment.save
         Rails.logger.info("event => :create, :type => :comment, :user => #{current_user.diaspora_handle},
                           :status => :success, :comment => #{@comment.id}, :chars => #{params[:text].length}")
-        Postzord::Dispatcher.build(current_user, @comment).post
+        current_user.dispatch_post(@comment)
 
         respond_to do |format|
           format.json{ render :json => @comment.as_api_response(:backbone), :status => 201 }
@@ -51,23 +51,27 @@ class CommentsController < ApplicationController
     else
       respond_to do |format|
         format.mobile {redirect_to :back}
-        format.js {render :nothing => true, :status => 403}
-        format.json { render :nothing => true, :status => 403 }
+        format.any(:js, :json) {render :nothing => true, :status => 403}
       end
     end
+  end
+
+  def new
+    render :layout => false
   end
 
   def index
     if user_signed_in?
       @post = current_user.find_visible_shareable_by_id(Post, params[:post_id])
     else
-      @post = Post.where(:id => params[:post_id], :public => true).includes(:author, :comments => :author).first
+      @post = Post.find_by_id_and_public(params[:post_id], true)
     end
 
     if @post
-      @comments = @post.comments.includes(:author => :profile).order('created_at ASC')
+      @comments = @post.comments.for_a_stream
       respond_with do |format|
-        format.json  { render :json => @post.comments.as_api_response(:backbone), :status => 200 }
+        format.json  { render :json => @comments.as_api_response(:backbone), :status => 200 }
+        format.mobile{render :layout => false}
       end
     else
       raise ActiveRecord::RecordNotFound.new

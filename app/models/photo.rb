@@ -18,7 +18,8 @@ class Photo < ActiveRecord::Base
   xml_attr :text
   xml_attr :status_message_guid
 
-  belongs_to :status_message, :foreign_key => :status_message_guid, :primary_key => :guid, :counter_cache => :photos_count
+  belongs_to :status_message, :foreign_key => :status_message_guid, :primary_key => :guid
+  validates_associated :status_message
 
   attr_accessible :text, :pending
   validate :ownership_of_status_message
@@ -28,14 +29,6 @@ class Photo < ActiveRecord::Base
 
   after_create do
     queue_processing_job if self.author.local?
-  end
-
-  after_save do
-    self.status_message.update_photos_counter if status_message
-  end
-
-  after_destroy do
-    self.status_message.update_photos_counter if status_message
   end
 
   def clear_empty_status_message

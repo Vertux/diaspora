@@ -3,10 +3,10 @@ source 'http://rubygems.org'
 gem 'rails', '3.0.11'
 
 gem 'bundler', '>= 1.0.0'
-gem 'foreman', '0.27.0'
+gem 'foreman', '0.34.1'
 gem 'whenever'
 
-gem 'thin', '~> 1.3.1', :require => false
+gem 'thin', '~> 1.3.1',    :require => false
 
 # authentication
 
@@ -24,12 +24,14 @@ gem 'twitter', '2.0.2'
 
 # mail
 
-gem 'messagebus_ruby_api', '1.0.1'
+gem 'messagebus_ruby_api', '1.0.3'
+gem 'airbrake'
+gem 'newrelic_rpm'
+gem "rpm_contrib", "~> 2.1.7"
 
 group :production do # we don't install these on travis to speed up test runs
-  # reporting
-  gem 'hoptoad_notifier'
-  gem 'newrelic_rpm'
+  gem 'rack-ssl', :require => 'rack/ssl'
+  gem 'rack-rewrite', '~> 1.2.1', :require => false
   gem 'rack-google-analytics', :require => 'rack/google-analytics'
   gem 'rack-piwik', :require => 'rack/piwik'
 end
@@ -38,14 +40,15 @@ end
 
 group :heroku do
   gem 'pg'
+  gem 'unicorn', '~> 4.1.1', :require => false
 end
 
-gem 'settingslogic', '2.0.6'
+gem 'settingslogic', :git => 'git://github.com/binarylogic/settingslogic.git'
 # database
 
 gem 'activerecord-import'
 gem 'foreigner', '~> 1.1.0'
-gem 'mysql2', '0.2.17' if ENV['DB'].nil? || ENV['DB'] == 'all' || ENV['DB'] == 'mysql'
+gem 'mysql2', '0.2.18' if ENV['DB'].nil? || ENV['DB'] == 'all' || ENV['DB'] == 'mysql'
 gem 'pg' if ENV['DB'] == 'all' || ENV['DB'] == 'postgres'
 gem 'sqlite3' if ENV['DB'] == 'all' || ENV['DB'] == 'sqlite'
 
@@ -54,15 +57,14 @@ gem 'sqlite3' if ENV['DB'] == 'all' || ENV['DB'] == 'sqlite'
 gem 'carrierwave', '0.5.8'
 gem 'fog'
 gem 'fastercsv', '1.5.4', :require => false
-gem 'mini_magick', '3.3'
-gem 'rest-client', '1.6.1'
+gem 'mini_magick', '3.4'
+gem 'rest-client', '1.6.7'
 
-gem 'jammit', '0.6.5'
+gem 'jammit-s3'
 
 # JSON and API
 
 gem 'json'
-gem 'vanna', :git => 'git://github.com/MikeSofaer/vanna.git'
 gem 'acts_as_api', '~> 0.3.11'
 
 # localization
@@ -80,7 +82,7 @@ gem 'ruby-oembed'
 # queue
 
 gem 'resque', '1.19.0'
-gem 'resque-ensure-connected'
+gem 'resque-ensure-connected', :git => 'https://github.com/socialcast/resque-ensure-connected.git'
 gem 'resque-timeout', '1.0.0'
 gem 'SystemTimer', '1.2.3', :platforms => :ruby_18
 
@@ -91,7 +93,7 @@ gem 'acts-as-taggable-on', :git => 'git://github.com/diaspora/acts-as-taggable-o
 # URIs and HTTP
 
 gem 'addressable', '2.2.4', :require => 'addressable/uri'
-gem 'http_accept_language', :git => 'git://github.com/iain/http_accept_language.git', :ref => '0b78aa7849fc90cf9e12'
+gem 'http_accept_language', '~> 1.0.2'
 gem 'typhoeus'
 
 # views
@@ -116,11 +118,10 @@ gem 'jasmine', '~> 1.1.2'
 
 group :test do
   gem 'capybara', '~> 1.1.2'
-  gem 'cucumber-rails', '1.2.1'
-  gem 'database_cleaner', '0.7.0'
+  gem 'cucumber-rails', '1.2.1', :require => false
+  gem 'database_cleaner', '0.7.1'
   gem 'diaspora-client', :git => 'git://github.com/diaspora/diaspora-client.git', :branch => 'oauth_scopes'
                          #:path => '~/projects/diaspora/client'
-
   gem 'timecop'
   gem 'factory_girl_rails'
   gem 'fixture_builder', '0.3.1'
@@ -139,6 +140,7 @@ end
 
 group :development do
   gem 'heroku'
+  gem 'heroku_san'
   gem 'capistrano', '~> 2.9.0', :require => false
   gem 'capistrano_colors', :require => false
   gem 'capistrano-ext', '1.2.1', :require => false
@@ -148,4 +150,10 @@ group :development do
   gem 'ruby-debug19', :platforms => :ruby_19
   gem 'ruby-debug', :platforms => :mri_18
   gem 'yard', :require => false
+
+  # speed up development requests (already pulled into rails 3.2)
+  gem 'active_reload'
+
+  # for tracing AR object instantiation and memory usage per request
+  gem 'oink'
 end

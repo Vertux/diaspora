@@ -1,12 +1,17 @@
 var app = {
   collections: {},
   models: {},
+  helpers: {},
   views: {},
 
   user: function(user) {
-    if(user) { return this._user = user; }
+    if(user) { return this._user = user }
+    return this._user || false
+  },
 
-    return this._user || {current_user : false};
+  baseImageUrl: function(baseUrl){
+    if(baseUrl) { return this._baseImageUrl = baseUrl }
+    return this._baseImageUrl || ""
   },
 
   initialize: function() {
@@ -31,4 +36,14 @@ var app = {
   }
 };
 
-$(function() { app.initialize(); });
+$(function() { 
+  Handlebars.registerHelper('t', function(scope, values) {
+    return Diaspora.I18n.t(scope, values.hash)
+  })
+
+  Handlebars.registerHelper('imageUrl', function(path){
+    return app.baseImageUrl() + path;
+  })
+
+  app.initialize();
+});

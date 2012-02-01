@@ -107,7 +107,6 @@ bg:
         have_a_question: "... имате %{link}?"
         here_to_help: "Общността е готова да помогне!"
         need_help: "Нуждаете се от помощ?"
-        satisfaction: "%{link}: Поддръжка осигурена от общността"
         tag_bug: бъг
         tag_feature: функция
         tag_question: въпрос
@@ -197,7 +196,6 @@ bg:
       add_a_new_aspect: "Създаване на аспект"
       add_to_aspect: "добавете някой от контактите си към \"%{name}\""
       all_contacts: "Всички контакти"
-      check_out: Прегледайте
       many_people_are_you_sure: "Наистина ли желаете да започнете частен разговор с повече от %{suggested_limit} контакта? Публикация в аспекта е по-подходящ начин за свързване с толкова хора."
       my_contacts: "Моите контакти"
       no_contacts: "Изглежда трябва да добавите контакти!"
@@ -568,6 +566,13 @@ bg:
       destroy: Изтриване
       not_found: "За съжаление публикацията не може да бъде намерена."
       permalink: "постоянен адрес"
+      photos_by:
+        few: "%{count} photos by %{author}"
+        many: "%{count} photos by %{author}"
+        one: "One photo by %{author}"
+        other: "%{count} photos by %{author}"
+        two: "Two photos by %{author}"
+        zero: "No photos by %{author}"
   previous: предишна
   privacy: Поверителност
   privacy_policy: "Декларация за поверителност"
@@ -793,7 +798,6 @@ bg:
     comment_stream:
       contacts_title: "Хора, чиито публикации сте коментирали"
       title: "Коментирани публикации"
-    commented_on: коментирани
     community_spotlight_stream: "От \"В центъра на вниманието\""
     followed_tag:
       add_a_tag: "Добавете още"
@@ -811,11 +815,9 @@ bg:
     multi:
       contacts_title: "Хора от потока ви"
       title: Поток
-    posted: публикувани
     public:
       contacts_title: "Скоро публикували"
       title: "Публична активност"
-    recently: "наскоро:"
     tags:
       contacts_title: "Хора, които харесват марката"
       tag_prefill_text: "Мисля, че %{tag_name}..."

@@ -12,7 +12,7 @@ app.views.Publisher = Backbone.View.extend({
   },
 
   initialize : function(){
-    this.collection = this.collection || new app.collections.Stream;
+    this.collection = this.collection //takes a Posts collection
     return this;
   },
 
@@ -31,8 +31,9 @@ app.views.Publisher = Backbone.View.extend({
       "photos" : serializedForm["photos[]"],
       "services" : serializedForm["services[]"]
     }, {
+      url : "/status_messages",
       success : function() {
-        app.stream.collection.add(statusMessage.toJSON());
+        app.stream.posts.add(statusMessage.toJSON());
       }
     });
 
@@ -48,12 +49,12 @@ app.views.Publisher = Backbone.View.extend({
 
     // remove photos
     this.$("#photodropzone").find('li').remove();
+    this.$("input[name='photos[]']").remove();
 
     // close publishing area (CSS)
     this.close();
 
-    // clear mentions (TO BE REMOVED!!)
-    Publisher.autocompletion.mentionList.clear()
+    Publisher.clear()
 
     return this;
   },
