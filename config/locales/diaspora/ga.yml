@@ -527,6 +527,8 @@ ga:
       two: "Show two more comments"
       zero: "No more comments"
   streams:
+    aspects:
+      title: "Your Aspects"
     mentions:
       title: "Your Mentions"
     tags:

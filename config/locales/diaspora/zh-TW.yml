@@ -131,7 +131,6 @@ zh-TW:
         heading: 連結服務
       unfollow_tag: "停止追蹤 #%{tag}"
       welcome_to_diaspora: "歡迎來到 Diaspora, %{name}!"
-      your_aspects: 你的面向
     many: "%{count}個面向"
     move_contact:
       error: "聯絡人移動錯誤: %{inspect}"

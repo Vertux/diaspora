@@ -35,6 +35,8 @@ el:
       hey: "Γεια σου, {{name}}!"
       no_tags: "Γεια, δεν ακολουθείς ακόμα καμία ετικέτα! Συνεχίζουμε παρ' όλ' αυτά;"
       preparing_your_stream: "Ετοιμάζεται η προσωπική σας ροή..."
+    header:
+      search: "Find people or #tags"
     infinite_scroll:
       no_more: "Δεν υπάρχουν άλλες δημοσιεύσεις."
     photo_uploader:

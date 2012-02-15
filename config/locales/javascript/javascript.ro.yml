@@ -35,6 +35,8 @@ ro:
       hey: "Salutare, {{name}}!"
       no_tags: "Hopa, nu urmati nicio eticheta! Continuati si asa ?"
       preparing_your_stream: "Se pregateste fluxul personalizat pentru dvs..."
+    header:
+      search: "Find people or #tags"
     infinite_scroll:
       no_more: "Nu mai sunt posturi."
     photo_uploader:

@@ -35,6 +35,8 @@ ka:
       hey: "ჰეი, {{name}}!"
       no_tags: "ჰეი, თქვენ არ მიყვებით არცერთ ტეგს! მაინც გსურთ გაგრძელება?"
       preparing_your_stream: "თქვენი პერსონალიზებული ნაკადი მზადდება..."
+    header:
+      search: "Find people or #tags"
     infinite_scroll:
       no_more: "მეტი პოსტი არ არის."
     photo_uploader:

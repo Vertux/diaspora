@@ -86,7 +86,6 @@ ms:
         tag_question: "#question"
       unfollow_tag: "berhenti mengikut #%{tag}"
       welcome_to_diaspora: "Selamat datang ke Diaspora, %{name}!"
-      your_aspects: "Aspek Anda"
     many: "%{count} aspek"
     move_contact:
       error: "Ralat memindah kenalan: %{inspect}"
@@ -422,6 +421,9 @@ ms:
       other: "Show %{count} more comments"
       two: "Show two more comments"
       zero: "No more comments"
+  streams:
+    aspects:
+      title: "Your Aspects"
   users:
     edit:
       close_account:

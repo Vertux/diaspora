@@ -4,8 +4,8 @@ var app = {
   helpers: {},
   views: {},
 
-  user: function(user) {
-    if(user) { return this._user = user }
+  user: function(userAttrs) {
+    if(userAttrs) { return this._user = new app.models.User(userAttrs) }
     return this._user || false
   },
 
@@ -37,13 +37,5 @@ var app = {
 };
 
 $(function() { 
-  Handlebars.registerHelper('t', function(scope, values) {
-    return Diaspora.I18n.t(scope, values.hash)
-  })
-
-  Handlebars.registerHelper('imageUrl', function(path){
-    return app.baseImageUrl() + path;
-  })
-
   app.initialize();
 });

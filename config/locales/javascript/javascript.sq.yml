@@ -35,6 +35,8 @@ sq:
       hey: "Hej, {{name}}!"
       no_tags: "Hej, nuk jeni duke ndjekur ndonjë etiketë!  Të vazhdohet, sido qoftë?"
       preparing_your_stream: "Po përgatitet rrëkeja juaj e personalizuar..."
+    header:
+      search: "Find people or #tags"
     infinite_scroll:
       no_more: "Nuk ka më postime."
     photo_uploader:

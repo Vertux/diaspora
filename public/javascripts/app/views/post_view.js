@@ -1,13 +1,14 @@
 app.views.Post = app.views.StreamObject.extend({
-  legacyTemplate : true,
 
-  template_name: "#stream-element-template",
+  templateName: "stream-element",
 
   className : "stream_element loaded",
 
   events: {
     "click .focus_comment_textarea": "focusCommentTextarea",
-    "click .shield a": "removeNsfwShield",
+    "click .show_nsfw_post": "removeNsfwShield",
+    "click .toggle_nsfw_state": "toggleNsfwState",
+
     "click .remove_post": "destroyModel",
     "click .hide_post": "hidePost",
     "click .block_user": "blockUser"
@@ -48,12 +49,26 @@ app.views.Post = app.views.StreamObject.extend({
     return new postClass({ model : this.model });
   },
 
+  presenter : function() {
+    return _.extend(this.defaultPresenter(), {
+      authorIsCurrentUser : this.authorIsCurrentUser(),
+      showPost : this.showPost()
+    })
+  },
+
+  showPost : function() {
+    return (app.user() && app.user().get("showNsfw")) || !this.model.get("nsfw")
+  },
+
   removeNsfwShield: function(evt){
     if(evt){ evt.preventDefault(); }
+    this.model.set({nsfw : false})
+    this.render();
+  },
 
-    $(evt.target).parent(".shield").remove();
-
-    return this;
+  toggleNsfwState: function(evt){
+    if(evt){ evt.preventDefault(); }
+    app.user().toggleNsfwState();
   },
 
   blockUser: function(evt){
@@ -97,5 +112,9 @@ app.views.Post = app.views.StreamObject.extend({
     this.$(".comment_box").focus();
 
     return this;
+  },
+
+  authorIsCurrentUser : function() {
+    return this.model.get("author").id != (!!app.user() && app.user().id)
   }
 });

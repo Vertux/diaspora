@@ -29,7 +29,7 @@ pl:
       show: "wyświetl wszystkie komentarze"
     confirm_dialog: "Czy @{m,f:jesteś|n:na}{ pew}{m:ien|f:na|n:no}?"
     delete: Usuń
-    failed_to_like: "Nie udało się polubić!"
+    failed_to_like: "Nie udało się pulubić!"
     failed_to_post_message: "Nie można wysłać wiadomości!"
     getting_started:
       alright_ill_wait: "Dobrze, poczekam."
@@ -46,12 +46,14 @@ pl:
       notifications: Powiadomienia
       profile: Profil
       recent_notifications: "Ostatnie powiadomienia"
-      search: "Szukaj osób luz #znaczników"
+      search: Szukaj
       settings: Ustawienia
       view_all: "Wyświetl wszystko"
     ignore: Ignoruj
     infinite_scroll:
       no_more: "Nie ma więcej wpisów."
+    my_activity: "Moja aktywność"
+    my_stream: Strumień
     photo_uploader:
       looking_good: "O rety! Świetnie wyglądasz!"
     publisher:
@@ -64,15 +66,16 @@ pl:
     show_more: "wyświetl więcej"
     stream:
       comment: Skomentuj
+      follow: Obserwuj
       hide: Ukryj
       like: "Lubię to!"
       likes:
-        few: "Polubiono: <%= count %>"
-        many: "Polubiono: <%= count %>"
-        one: "<%= count %> lubi"
-        other: "<%= count %> os. to lubi"
-        two: "<%= count %> osoby to lubią"
-        zero: "<%= count %> osób to lubi"
+        few: "Przypięć: <%= count %>"
+        many: "Przypięć: <%= count %>"
+        one: "<%= count %> przypięcie"
+        other: "<%= count %> przypięć"
+        two: "<%= count %> przypięcia"
+        zero: "<%= count %> przypięć"
       limited: Ograniczone
       more_comments:
         few: "Wyświetl <%= count %> więcej komentarzy"
@@ -81,7 +84,6 @@ pl:
         other: "Wyświetl <%= count %> więcej komentarzy"
         two: "Wyświetl <%= count %> komentarze więcej"
         zero: "Wyświetl <%= count %> komentarzy więcej"
-      nsfw: "Ten wpis został oznaczony przez autora jako NSFW."
       original_post_deleted: "Oryginalny wpis został usunięty przez autora."
       public: Publiczny
       reshare: "Przekaż dalej"
@@ -92,8 +94,8 @@ pl:
         other: "<%= count %> razy przekazano dalej"
         two: "<%= count %> razy przekazano dalej"
         zero: "<%= count %> razy przekazano dalej"
-      show: Wyświetl
-      unlike: "Nie lubię"
+      unfollow: "Nie obserwuj"
+      unlike: Odepnij
     tags:
       wasnt_that_interesting: "OK, przypuszczam, że #<%= tagName %> nie był, aż tak interesujący..."
     timeago:

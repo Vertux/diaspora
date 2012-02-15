@@ -115,7 +115,6 @@ ar:
         content: "يمكنك وصل حساب ديسبورا الخاص بك بالخدمات الآتية:"
         heading: "صل حسابك بالخدمات"
       unfollow_tag: "أَوقِف متابعة #%{tag}"
-      your_aspects: فئاتك
     many: "%{count} فئات"
     move_contact:
       error: "خطأ خلال تحريك عضو: %{inspect}"
@@ -753,6 +752,8 @@ ar:
       two: "Show two more comments"
       zero: "No more comments"
   streams:
+    aspects:
+      title: "Your Aspects"
     mentions:
       title: "Your Mentions"
     tags:

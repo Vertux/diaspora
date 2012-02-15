@@ -127,7 +127,6 @@ sv:
         heading: "Ihopkopplade tjänster"
       unfollow_tag: "Sluta följa #%{tag}"
       welcome_to_diaspora: "Välkommen till Diaspora, %{name}!"
-      your_aspects: "Dina aspekter"
     many: "%{count} aspekter"
     move_contact:
       error: "Kunde inte flytta kontakt: %{inspect}"

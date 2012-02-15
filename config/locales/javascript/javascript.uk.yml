@@ -35,6 +35,8 @@ uk:
       hey: "Привіт, {{name}}!"
       no_tags: "Ви не стежите ні за однією міткою! Все одно продовжити?"
       preparing_your_stream: "Підготовка вашого особистого потоку..."
+    header:
+      search: "Find people or #tags"
     infinite_scroll:
       no_more: "Повідомлень більше немає."
     photo_uploader:

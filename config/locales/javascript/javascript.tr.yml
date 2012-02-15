@@ -35,6 +35,8 @@ tr:
       hey: "Merhaba, {{name}}!"
       no_tags: "Hey, hiç etiket takip etmiyorsunuz! Gerçekten devam etmek istiyor musun?"
       preparing_your_stream: "Kişiselleştirilmiş akışınız hazırlanıyor..."
+    header:
+      search: "Find people or #tags"
     infinite_scroll:
       no_more: "Daha fazla gönderi yok."
     photo_uploader:

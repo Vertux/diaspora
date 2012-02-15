@@ -27,6 +27,8 @@ zh-CN:
     getting_started:
       hey: "Hey, {{name}}!"
       preparing_your_stream: "Preparing your personialized stream..."
+    header:
+      search: "Find people or #tags"
     infinite_scroll:
       no_more: 没有更多的内容了。
     publisher:

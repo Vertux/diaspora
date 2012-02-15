@@ -127,7 +127,6 @@ fi:
         heading: "Yhdistä palveluihin"
       unfollow_tag: "Lopeta tagin #%{tag} seuraaminen"
       welcome_to_diaspora: "Tervetuloa Diasporaan, %{name}!"
-      your_aspects: Näkymäsi
     many: "%{count} näkymää"
     move_contact:
       error: "Virhe siirrettäessä kontaktia: %{inspect}"

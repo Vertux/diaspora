@@ -117,7 +117,6 @@ nb:
         content: "Du kan koble følgende tjenester til Diaspora:"
         heading: "Koble til tjenester"
       welcome_to_diaspora: "Velkommen til Diaspora, %{name}!"
-      your_aspects: "Dine aspekter"
     many: "%{count} aspekter"
     move_contact:
       error: "Feil ved flytting av kontakt: %{inspect}"
@@ -747,6 +746,8 @@ nb:
       two: "Show two more comments"
       zero: "No more comments"
   streams:
+    aspects:
+      title: "Your Aspects"
     comment_stream:
       contacts_title: "Personer hvis poster du har kommentert"
     followed_tag:

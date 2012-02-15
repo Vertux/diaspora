@@ -111,6 +111,7 @@ cs:
       keep_us_running: "Pomozte %{pod} udržet rychlý, kupte našim serverům dávku kávy."
       new_here:
         learn_more: "Zjistit více"
+        title: "Přivítejte nové uživatele"
       no_contacts: "Žádné kontakty"
       no_tags: "+ Najít nějaký štítek ke sledování"
       people_sharing_with_you: "Lidé, kteří s vámi sdílí"
@@ -119,7 +120,7 @@ cs:
         content: "Můžete připojit následující služby na Diasporu:"
         heading: "Připojit služby"
       unfollow_tag: "Přestat sledovat #%{tag}"
-      your_aspects: "Vaše aspekty"
+      welcome_to_diaspora: "Vítejte na Diaspoře, %{name}!"
     many: "%{count} aspektů"
     move_contact:
       error: "Chyba při přesunu kontaktu: %{inspect}"
@@ -689,6 +690,7 @@ cs:
     public_explain:
       logged_in: "přihlášen do %{service}"
       manage: "upravit připojené služby"
+      new_user_welcome_message: "Používejte #štítky k označení vašich zpráv a hledání lídí se stejnými zájmy. K oslovení lidí používejte @Zmínky."
       outside: "Veřejné příspěvky budou dostupné pro ostatní mimo Diasporu."
       share: Sdílet
       title: "Nastavit související služby"
@@ -758,6 +760,7 @@ cs:
   tag_followings:
     create:
       failure: "Nepodařilo se následovat: #%{name}"
+      none: "Nemůžete sledovat prázdný štítek!"
       success: "Začal jste sledovat: #%{name}"
     destroy:
       failure: "Nepodařilo se ukončit sledování: #%{name}"
@@ -814,6 +817,7 @@ cs:
       your_handle: "Vaše Diaspora ID"
     getting_started:
       hashtag_explanation: "Štítky vám dovolují sledovat, o co se zajímáte, a diskutovat. Je to také skvělý způsob, jak najít nové lidi na Diaspoře."
+      hashtag_suggestions: "Zkuste sledovat třeba štítky #art, #movies, #gif, atd."
       saved: Uloženo!
       what_facebook_does: "to Diaspora. This will pull your name and photo, and enable cross-positng."
     privacy_settings:

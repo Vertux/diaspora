@@ -35,6 +35,8 @@ zh-TW:
       hey: "嘿, {{name}}!"
       no_tags: "嘿, 你還沒有追蹤任何標籤! 要往下一步嗎?"
       preparing_your_stream: 整理你個人的流水帳中...
+    header:
+      search: "Find people or #tags"
     infinite_scroll:
       no_more: 沒有貼文了.
     photo_uploader:

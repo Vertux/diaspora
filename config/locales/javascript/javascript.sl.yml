@@ -35,6 +35,8 @@ sl:
       hey: "Hej, {{name}}!"
       no_tags: "Hej, niste sledili nobeni oznaki! Vseeno nadaljuj?"
       preparing_your_stream: "Pripravljanje vašega osebnega toka ..."
+    header:
+      search: "Find people or #tags"
     infinite_scroll:
       no_more: "Konec objav."
     photo_uploader:

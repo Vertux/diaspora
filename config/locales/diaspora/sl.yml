@@ -126,7 +126,6 @@ sl:
         heading: "Povežite storitve"
       unfollow_tag: "Nehaj slediti #%{tag}"
       welcome_to_diaspora: "Dobrodošli v Diaspori, %{name}!"
-      your_aspects: "Vaši pogledi"
     many: "%{count} pogledov"
     move_contact:
       error: "Prestavljanje stika neuspešno: %{inspect}"

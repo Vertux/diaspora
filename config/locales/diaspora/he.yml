@@ -133,7 +133,6 @@ he:
         heading: "שירותים מקושרים"
       unfollow_tag: "הפסקת המעקב אחר #%{tag}"
       welcome_to_diaspora: " !%{name}ברוך הבא לדיאספורה"
-      your_aspects: "ההיבטים שלך"
     many: "%{count} היבטים"
     move_contact:
       error: " %{inspect}שגיאה בהעברת איש הקשר ל  "

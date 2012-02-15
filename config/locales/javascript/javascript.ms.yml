@@ -35,6 +35,8 @@ ms:
       hey: "Hei, {{name}}!"
       no_tags: "Hei, anda tidak mengikuti mana-mana tag! Teruskan juga?"
       preparing_your_stream: "Menyediakan strim peribadi anda..."
+    header:
+      search: "Find people or #tags"
     infinite_scroll:
       no_more: "Tiada lagi pos."
     photo_uploader:

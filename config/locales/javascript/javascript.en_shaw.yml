@@ -27,6 +27,8 @@ en_shaw:
     getting_started:
       hey: "Hey, {{name}}!"
       preparing_your_stream: "Preparing your personialized stream..."
+    header:
+      search: "Find people or #tags"
     infinite_scroll:
       no_more: "𐑯𐑴 𐑥𐑹 𐑐𐑴𐑕𐑑𐑕."
     publisher:

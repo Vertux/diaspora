@@ -35,6 +35,8 @@ nb:
       hey: "Hei, {{name}}!"
       no_tags: "Hei, du har ikke fulgt noen tagger! Fortsett likevel?"
       preparing_your_stream: "Preparing your personialized stream..."
+    header:
+      search: "Find people or #tags"
     infinite_scroll:
       no_more: "Ingen flere innlegg."
     photo_uploader:

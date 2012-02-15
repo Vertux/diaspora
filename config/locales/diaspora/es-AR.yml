@@ -130,7 +130,6 @@ es-AR:
         heading: "Conectar Servicios"
       unfollow_tag: "Dejar de seguir #%{tag}"
       welcome_to_diaspora: "¡Bienvenid@ a Diaspora, %{name}!"
-      your_aspects: "Tus Aspectos"
     many: "%{count} aspectos"
     move_contact:
       error: "Se produjo un error al mover el contacto: %{inspect}"

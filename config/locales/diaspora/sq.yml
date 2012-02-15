@@ -130,7 +130,6 @@ sq:
         heading: "Shërbime Lidhjesh"
       unfollow_tag: "Resht së ndjekuri #%{tag}"
       welcome_to_diaspora: "Mirë se vini te Diaspora, %{name}!"
-      your_aspects: "Aspektet tuaja"
     many: "%{count} aspekte"
     move_contact:
       error: "Gabim gjatë lëvizjes së kontaktit: %{inspect}"
@@ -635,6 +634,9 @@ sq:
       other: "Show %{count} more comments"
       two: "Show two more comments"
       zero: "No more comments"
+  streams:
+    aspects:
+      title: "Your Aspects"
   terms_and_conditions: "Terma dhe Kushte"
   undo: "Të zhbëhet?"
   username: "Emër përdoruesi"

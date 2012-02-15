@@ -13,6 +13,7 @@ module Api::Backbone::Post
       }, :as => :text
       t.add :public
       t.add :created_at
+      t.add :interacted_at
       t.add :comments_count
       t.add :likes_count
       t.add :reshares_count
@@ -20,20 +21,15 @@ module Api::Backbone::Post
       t.add :provider_display_name
       t.add :author
       t.add :post_type
-      t.add :photos_count
       t.add :image_url
       t.add :object_url
       t.add :root
       t.add :o_embed_cache
       t.add :user_like
+      t.add :user_participation
       t.add :mentioned_people
-      t.add lambda { |post|
-        if post.respond_to?(:photos)
-          post.photos
-        else
-          []
-        end
-      }, :as => :photos
+      t.add :photos
+      t.add :nsfw
     end
   end
 end

@@ -35,6 +35,8 @@ he:
       hey: "שלום, {{name}}!"
       no_tags: "?היי, לא עקבת אחרי אף תגית! לאן אתה רוצה להמשיך"
       preparing_your_stream: "החדשות האישיות שלך בשלבי הכנה"
+    header:
+      search: "Find people or #tags"
     infinite_scroll:
       no_more: "אין רשומות נוספות"
     photo_uploader:

@@ -11,7 +11,7 @@ describe("app.views.Post", function(){
         }
       }})
 
-      var posts = $.parseJSON(spec.readFixture("multi_stream_json"))["posts"];
+      var posts = $.parseJSON(spec.readFixture("stream_json"))["posts"];
 
       this.collection = new app.collections.Posts(posts);
       this.statusMessage = this.collection.models[0];
@@ -22,16 +22,15 @@ describe("app.views.Post", function(){
       this.statusMessage.set({reshares_count : 2})
       var view = new app.views.Post({model : this.statusMessage}).render();
 
-      expect(view.$(".post_initial_info").html()).toContain(Diaspora.I18n.t('stream.reshares', {count: 2}))
+      expect($(view.el).html()).toContain(Diaspora.I18n.t('stream.reshares', {count: 2}))
     })
 
     it("does not display a reshare count for 'zero'", function(){
       this.statusMessage.set({reshares_count : 0})
       var view = new app.views.Post({model : this.statusMessage}).render();
 
-      expect(view.$(".post_initial_info").html()).not.toContain("0 Reshares")
+      expect($(view.el).html()).not.toContain("0 Reshares")
     })
-
 
     context("embed_html", function(){
       it("provides oembed html from the model response", function(){
@@ -62,23 +61,40 @@ describe("app.views.Post", function(){
     })
 
     context("NSFW", function(){
+      beforeEach(function(){
+        this.statusMessage.set({nsfw: true});
+        this.view = new app.views.Post({model : this.statusMessage}).render();
+
+        this.hiddenPosts = function(){
+           return this.view.$(".nsfw-shield")
+         }
+      });
+
       it("contains a shield element", function(){
-        this.statusMessage.set({text : "this is safe for work. #sfw"});
+        expect(this.hiddenPosts().length).toBe(1)
+      });
 
-        var view = new app.views.Post({model : this.statusMessage}).render();
-        var statusElement = $(view.el)
-
-        expect(statusElement.find(".shield").html()).toBeNull();
+      it("does not contain a shield element when nsfw is false", function(){
+        this.statusMessage.set({nsfw: false});
+        this.view.render();
+        expect(this.hiddenPosts()).not.toExist();
       })
 
-      it("does not contain a shield element", function(){
-        this.statusMessage.set({text : "nudie magazine day! #nsfw"});
+      context("showing a single post", function(){
+        it("removes the shields when the post is clicked", function(){
+          expect(this.hiddenPosts()).toExist();
+          this.view.$(".nsfw-shield .show_nsfw_post").click();
+          expect(this.hiddenPosts()).not.toExist();
+        });
+      });
 
-        var view = new app.views.Post({model : this.statusMessage}).render();
-        var statusElement = $(view.el)
-
-        expect(statusElement.find(".shield").html()).toNotBe(null);
+      context("clicking the toggle nsfw link toggles it on the user", function(){
+        it("calls toggleNsfw on the user", function(){
+          spyOn(app.user(), "toggleNsfwState")
+          this.view.$(".toggle_nsfw_state").first().click();
+          expect(app.user().toggleNsfwState).toHaveBeenCalled();
+        });
       })
     })
   })
-})
+});

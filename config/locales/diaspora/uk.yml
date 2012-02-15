@@ -127,7 +127,6 @@ uk:
         heading: "Підключення служб"
       unfollow_tag: "Не стежити за міткою #%{tag}"
       welcome_to_diaspora: "Ласкаво просимо в Діаспору %{name}!"
-      your_aspects: "Ваші аспекти"
     many: "%{count} аспект[-и, -ів]"
     move_contact:
       error: "Помилка при переміщенні контакту : %{inspect}"

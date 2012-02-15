@@ -10,7 +10,10 @@ class Post < ActiveRecord::Base
   include Diaspora::Shareable
   include Api::Models::Post
 
-  attr_accessor :user_like
+  has_many :participations, :dependent => :delete_all, :as => :target
+
+  attr_accessor :user_like,
+                :user_participation
 
   xml_attr :provider_display_name
 
@@ -21,10 +24,21 @@ class Post < ActiveRecord::Base
 
   belongs_to :o_embed_cache
 
-  after_create :cache_for_author
+  after_create do
+    self.touch(:interacted_at)
+  end
 
   #scopes
   scope :includes_for_a_stream, includes(:o_embed_cache, {:author => :profile}, :mentions => {:person => :profile}) #note should include root and photos, but i think those are both on status_message
+
+
+  scope :commented_by, lambda { |person|
+    select('DISTINCT posts.*').joins(:comments).where(:comments => {:author_id => person.id})
+  }
+
+  scope :liked_by, lambda { |person|
+    joins(:likes).where(:likes => {:author_id => person.id})
+  }
 
   def post_type
     self.class.name
@@ -32,6 +46,7 @@ class Post < ActiveRecord::Base
 
   def raw_message; ""; end
   def mentioned_people; []; end
+  def photos; []; end
 
   def self.excluding_blocks(user)
     people = user.blocks.map{|b| b.person_id}
@@ -93,18 +108,7 @@ class Post < ActiveRecord::Base
     I18n.t('notifier.a_post_you_shared')
   end
 
-  # @return [Boolean]
-  def cache_for_author
-    if self.should_cache_for_author?
-      cache = RedisCache.new(self.author.owner, 'created_at')
-      cache.add(self.created_at.to_i, self.id)
-    end
-    true
-  end
-
-  # @return [Boolean]
-  def should_cache_for_author?
-    self.triggers_caching? && RedisCache.configured? &&
-      RedisCache.acceptable_types.include?(self.type) && user = self.author.owner
+  def nsfw
+    self.author.profile.nsfw?
   end
 end

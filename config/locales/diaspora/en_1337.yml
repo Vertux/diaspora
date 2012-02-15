@@ -113,7 +113,6 @@ en_1337:
         content: "U C4N C0NN3C7 7H3 F0LL0W1NG 53RV1C35 2 D*:"
         heading: "C0NN3C7 53RV1C35"
       unfollow_tag: "570P F0LL0W1NG #%{tag}"
-      your_aspects: "Y0UR 45P3C75"
     many: "%{count} 45P3C75"
     move_contact:
       error: "3RR0R M0V1NG N00B: %{inspect}"
@@ -745,6 +744,8 @@ en_1337:
       two: "Show two more comments"
       zero: "No more comments"
   streams:
+    aspects:
+      title: "Your Aspects"
     mentions:
       contacts_title: "N00B5 WH0 M3N710N3D U"
       title: "Y0UR M3N710N5"

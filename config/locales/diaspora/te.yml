@@ -313,6 +313,9 @@ te:
       other: "Show %{count} more comments"
       two: "Show two more comments"
       zero: "No more comments"
+  streams:
+    aspects:
+      title: "Your Aspects"
   terms_and_conditions: "నియమాలు మరియు నిబంధనలు"
   users:
     edit:

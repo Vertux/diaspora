@@ -55,7 +55,6 @@ cy:
       keep_us_running: "Keep %{pod} running fast, buy our servers their monthly coffee fix!"
       no_contacts: "Dim cysylltiadau"
       no_tags: "No tags"
-      your_aspects: "Eich Agweddau"
     many: "%{count} agweddau"
     move_contact:
       success: "Unigolyn wedi symud i agwedd newydd"

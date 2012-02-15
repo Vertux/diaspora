@@ -106,7 +106,6 @@ nn:
         content: "Du kan kopla desse tenestene til Diaspora:"
         heading: "Kopla tenester"
       unfollow_tag: "Slutt å følgja #%{tag}"
-      your_aspects: "Aspekta dine"
     many: "%{count} aspekt"
     move_contact:
       error: "Klarte ikkje å flytta kontakten: %{inspect}"
@@ -717,6 +716,8 @@ nn:
       two: "Show two more comments"
       zero: "No more comments"
   streams:
+    aspects:
+      title: "Your Aspects"
     mentions:
       title: "@Nemningar"
     tags:

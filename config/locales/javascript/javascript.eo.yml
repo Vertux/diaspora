@@ -35,6 +35,8 @@ eo:
       hey: "Hej, {{name}}!"
       no_tags: "Hej, vi ne sekvas iun etikedon! Ĉu tamen daŭrigi?"
       preparing_your_stream: "Preparante vian personan torenton..."
+    header:
+      search: "Find people or #tags"
     infinite_scroll:
       no_more: "Neniu plua afiŝo."
     photo_uploader:

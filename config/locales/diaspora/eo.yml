@@ -49,6 +49,7 @@ eo:
       video_title:
         unknown: "Nekonata video-titolo"
   are_you_sure: "Ĉu vi certas?"
+  are_you_sure_delete_account: "Ĉu vi certas, ke vi volas forigi vian konton?  Ĉi tion oni ne povas malfari!"
   aspect_memberships:
     destroy:
       failure: "Forigi personon el aspekto malsukcesis"
@@ -102,7 +103,7 @@ eo:
         content_2: "Donu ĝin al iu ajn, kaj tiu povos trovi vin ĉe DIASPORA*."
         heading: "DIASPORA* uzantnomo"
       donate: Donaci
-      handle_explanation: "Tiu ĉi estas via DIASPORA* uzantnomo. Kiel retpoŝtadreso, vi povas doni tiun ĉi al homoj, por ke ili vin kontaktu."
+      handle_explanation: "Tiu ĉi estas via DIASPORA* legitimilo. Kiel retpoŝtadreso, tiel vi povas doni tiun ĉi al homoj, por ke ili vin kontaktu."
       help:
         do_you: "Ĉu vi:"
         email_feedback: "%{link} viajn respondojn, se vi volas"
@@ -130,7 +131,6 @@ eo:
         heading: "Konekti Servojn"
       unfollow_tag: "Ne plu abonas #%{tag}."
       welcome_to_diaspora: "Bonvenon al Diaspora, %{name}!"
-      your_aspects: "Viaj Aspektoj"
     many: "%{count} aspektoj"
     move_contact:
       error: "Ne povis movi kontakton: %{inspect}"
@@ -201,6 +201,7 @@ eo:
     index:
       add_a_new_aspect: "Aldoni novan aspekton"
       add_to_aspect: "aldoni kontaktojn al %{name}"
+      add_to_aspect_link: "aldoni kontaktojn al %{name}"
       all_contacts: "Ĉiuj kontaktoj"
       many_people_are_you_sure: "Ĉu vi certas, ke vi volas mesaĝi pli ol {suggested_limit} homojn? Afiŝi al tiu ĉi aspekto eble estas pli bona metodo kontakti ilin."
       my_contacts: "Miaj kontaktoj"
@@ -571,12 +572,12 @@ eo:
       not_found: "Ni bedaŭras, sed ni ne povis trovi tiun afiŝon."
       permalink: malŝanĝantligilo
       photos_by:
-        few: "%{count} photos by %{author}"
-        many: "%{count} photos by %{author}"
-        one: "One photo by %{author}"
-        other: "%{count} photos by %{author}"
-        two: "Two photos by %{author}"
-        zero: "No photos by %{author}"
+        few: "%{count} bildoj de %{author}"
+        many: "%{count} bildoj de %{author}"
+        one: "Unu bildo de %{author}"
+        other: "%{count} bildoj de %{author}"
+        two: "Du bildoj de %{author}"
+        zero: "Neniuj bildoj de %{author}"
   previous: antaŭa
   privacy: Privateco
   profile: Profilo
@@ -732,6 +733,7 @@ eo:
     notification:
       new: "Nova %{type} de %{from}"
     public_explain:
+      atom_feed: "Atom abonrilato"
       control_your_audience: "Kontrolu vian spektantaron"
       logged_in: "ensalutinta al %{service}"
       manage: "administri ligitajn servojn"
@@ -766,6 +768,7 @@ eo:
       ignore_user: "Ignori %{name}"
       ignore_user_description: "Ignori kaj forigi uzanton de ĉiuj aspektoj?"
       like: Ŝati
+      nsfw: "Ĉi tiun afiŝon signigis la aŭtoro kiel NSFW. %{link}"
       shared_with: "Partoprenita kun: %{aspect_names}"
       unlike: "Ne plu ŝati"
       via: "per %{link}"
@@ -887,7 +890,7 @@ eo:
       started_sharing: "...iu komencis konigi kun vi?"
       stream_preferences: "Torentaj agordoj"
       your_email: "Via retpoŝtadreso"
-      your_handle: "Via DIASPORA* uzantnomo"
+      your_handle: "Via DIASPORA* legitimilo"
     getting_started:
       awesome_take_me_to_diaspora: "Malaĉe! Gvidu min al Diaspora*"
       community_welcome: "La komunumo de DIASPORA* feliĉas, ke vi aniĝis!"

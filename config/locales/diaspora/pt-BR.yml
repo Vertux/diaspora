@@ -129,7 +129,6 @@ pt-BR:
         heading: "Conectar Serviços"
       unfollow_tag: "Parar de seguir #%{tag}"
       welcome_to_diaspora: "Bem vindo ao Diaspora, %{name}!"
-      your_aspects: "Seus Grupos"
     many: "%{count} grupos"
     move_contact:
       error: "Não foi possível mover o contato: %{inspect}"

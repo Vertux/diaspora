@@ -2,15 +2,17 @@
 #   licensed under the Affero General Public License version 3 or later.  See
 #   the COPYRIGHT file.
 
-require File.join(Rails.root, 'lib/diaspora/user')
 require File.join(Rails.root, 'lib/salmon/salmon')
 require File.join(Rails.root, 'lib/postzord/dispatcher')
 require 'rest-client'
 
 class User < ActiveRecord::Base
-  include Diaspora::UserModules
   include Encryptor::Private
   include Api::Models::User
+
+  include Connecting
+  include Querying
+  include SocialActions
 
   devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
@@ -34,20 +36,27 @@ class User < ActiveRecord::Base
   serialize :hidden_shareables, Hash
 
   has_one :person, :foreign_key => :owner_id
-  delegate :public_key, :posts, :photos, :owns?, :diaspora_handle, :name, :public_url, :profile, :first_name, :last_name, :to => :person
+  delegate :public_key, :posts, :photos, :owns?, :diaspora_handle, :name, :public_url, :profile, :first_name, :last_name, :participations, :to => :person
 
   has_many :invitations_from_me, :class_name => 'Invitation', :foreign_key => :sender_id
   has_many :invitations_to_me, :class_name => 'Invitation', :foreign_key => :recipient_id
   has_many :aspects, :order => 'order_id ASC'
   belongs_to  :auto_follow_back_aspect, :class_name => 'Aspect'
   has_many :aspect_memberships, :through => :aspects
+
   has_many :contacts
   has_many :contact_people, :through => :contacts, :source => :person
+
   has_many :services
+
   has_many :user_preferences
+
   has_many :tag_followings
   has_many :followed_tags, :through => :tag_followings, :source => :tag, :order => 'tags.name'
+
   has_many :blocks
+  has_many :ignored_people, :through => :blocks, :source => :person
+
   has_many :notifications, :foreign_key => :recipient_id
 
   has_many :authorizations, :class_name => 'OAuth2::Provider::Models::ActiveRecord::Authorization', :foreign_key => :resource_owner_id
@@ -72,6 +81,22 @@ class User < ActiveRecord::Base
 
   def self.all_sharing_with_person(person)
     User.joins(:contacts).where(:contacts => {:person_id => person.id})
+  end
+
+  def self.monthly_actives(start_day = Time.now)
+    logged_in_since(start_day - 1.month)
+  end
+
+  def self.yearly_actives(start_day = Time.now)
+    logged_in_since(start_day - 1.year)
+  end
+
+  def self.daily_actives(start_day = Time.now)
+    logged_in_since(start_day - 1.day)
+  end
+
+  def self.logged_in_since(time)
+    where('last_sign_in_at > ?', time)
   end
 
   # @return [User]
@@ -276,23 +301,6 @@ class User < ActiveRecord::Base
 
   def salmon(post)
     Salmon::EncryptedSlap.create_by_user_and_activity(self, post.to_diaspora_xml)
-  end
-
-  def build_relayable(model, options = {})
-    r = model.new(options.merge(:author_id => self.person.id))
-    r.set_guid
-    r.initialize_signatures
-    r
-  end
-
-  ######## Commenting  ########
-  def build_comment(options = {})
-    build_relayable(Comment, options)
-  end
-
-  ######## Liking  ########
-  def build_like(options = {})
-    build_relayable(Like, options)
   end
 
   # Check whether the user has liked a post.

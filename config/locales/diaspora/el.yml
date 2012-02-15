@@ -127,7 +127,6 @@ el:
         heading: "Συνδέστε Υπηρεσίες"
       unfollow_tag: "Σταματήστε να ακολουθείτε την ετικέτα #%{tag}"
       welcome_to_diaspora: "Καλωσήρθες στο Diaspora, %{name}!"
-      your_aspects: "Οι Πτυχές σας"
     many: "%{count} πτυχές"
     move_contact:
       error: "Σφάλμα μεταφοράς επαφής: %{inspect}"

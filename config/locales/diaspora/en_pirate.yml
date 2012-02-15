@@ -52,7 +52,6 @@ en_pirate:
         here_to_help: "Diaspora community is here to help!"
       keep_us_running: "Keep %{pod} running fast, buy our servers their monthly coffee fix!"
       no_contacts: "No mateys"
-      your_aspects: "Yer Crews"
     many: "%{count} crews"
     new:
       name: Name
@@ -320,6 +319,8 @@ en_pirate:
       two: "Show two more comments"
       zero: "No more comments"
   streams:
+    aspects:
+      title: "Your Aspects"
     mentions:
       title: "Your Mentions"
     tags:

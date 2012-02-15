@@ -128,7 +128,6 @@ es-CL:
         heading: "Servicios que puedes enlazar"
       unfollow_tag: "Dejar de seguir #%{tag}"
       welcome_to_diaspora: "Bienvenido a Diaspora, %{name}!"
-      your_aspects: "Tus Aspectos"
     many: "%{count} aspectos"
     move_contact:
       error: "Error al mover el contacto: %{inspect}"

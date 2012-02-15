@@ -128,7 +128,6 @@ vi:
         heading: "Kết nối dịch vụ"
       unfollow_tag: "Ngừng theo dõi #%{tag}"
       welcome_to_diaspora: "Chào mừng đến với Diaspora, %{name}!"
-      your_aspects: "Các mối quan hệ"
     many: "%{count} mối quan hệ"
     move_contact:
       error: "Lỗi khi dời liên lạc: %{inspect}"
@@ -535,6 +534,8 @@ vi:
       two: "Show two more comments"
       zero: "No more comments"
   streams:
+    aspects:
+      title: "Your Aspects"
     mentions:
       title: "Tin của bạn"
     tags:

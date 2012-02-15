@@ -126,7 +126,6 @@ da:
         heading: "Tilslut tjenester"
       unfollow_tag: "Hold op med at følge #%{tag}"
       welcome_to_diaspora: "Velkommen til Diaspora %{name}!"
-      your_aspects: "Dine aspekter"
     many: "%{count} aspekter"
     move_contact:
       error: "Kunne ikke flytte kontaktperson: %{inspect}"
@@ -292,6 +291,7 @@ da:
     new:
       already_invited: "Følgende personer har ikke accepteret din invitation:"
       aspect: Aspekt
+      check_out_diaspora: "Check Diaspora ud!"
       comma_seperated_plz: "Du kan indtaste flere e-mailadresser adskilt med komma."
       if_they_accept_info: "hvis de accepterer, vil de blive tilføjet til det aspekt du inviterede dem til."
       invite_someone_to_join: "Invitér en person til Diaspora!"
@@ -325,12 +325,12 @@ da:
         two: "%{count} synes ikke om"
         zero: "ingen synes ikke om"
       people_like_this:
-        few: "%{count} synes om"
-        many: "%{count} synes om"
-        one: "Én synes om"
-        other: "%{count} synes om"
-        two: "%{count} synes om"
-        zero: "ingen synes om"
+        few: "%{count} likes"
+        many: "%{count} likes"
+        one: "%{count} like"
+        other: "%{count} likes"
+        two: "%{count} likes"
+        zero: "no likes"
       people_like_this_comment:
         few: "%{count} synes om"
         many: "%{count} synes om"
@@ -763,11 +763,9 @@ da:
       hide_and_mute: "Skjul indlægget og dets kommentarer"
       ignore_user: "Ignorer %{name}"
       ignore_user_description: "Ignorer og fjern bruger fra alle aspekter?"
-      like: "Synes om"
       nsfw: "Dette indlæg er markeret af forfatteren som 'uegnet til arbejdsvisning'. %{link}"
       shared_with: "Delt med: %{aspect_names}"
       show: vis
-      unlike: "Synes ikke om"
       viewable_to_anyone: "Dette indlæg er synlig for alle på internettet"
   status_messages:
     create:
@@ -816,8 +814,8 @@ da:
       contacts_title: "Personer der har nævnt dig"
       title: "Dine omtaler"
     multi:
-      contacts_title: "Personer i din Strøm"
-      title: Strøm
+      contacts_title: "Personer i din Udforskningsstrøm"
+      title: Udforsk
     public:
       contacts_title: "Seneste indlæg"
       title: "Offentlig Aktivitet"

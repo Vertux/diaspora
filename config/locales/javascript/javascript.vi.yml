@@ -35,6 +35,8 @@ vi:
       hey: "Này, {{name}}!"
       no_tags: "Bạn chưa theo dõi thẻ nào cả! Tiếp tục?"
       preparing_your_stream: "Đang chuẩn bị luồng cho bạn..."
+    header:
+      search: "Find people or #tags"
     infinite_scroll:
       no_more: "Không còn bài đăng nào nữa."
     photo_uploader:

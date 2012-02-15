@@ -126,7 +126,6 @@ bg:
         heading: "Свързване към услуги"
       unfollow_tag: "Прекратяване следенето на #%{tag}"
       welcome_to_diaspora: "Добре дошли в Diaspora, %{name}!"
-      your_aspects: "Вашите аспекти"
     many: "%{count} аспекта"
     move_contact:
       error: "Грешка при преместване на контакт: %{inspect}"
@@ -199,6 +198,8 @@ bg:
       many_people_are_you_sure: "Наистина ли желаете да започнете частен разговор с повече от %{suggested_limit} контакта? Публикация в аспекта е по-подходящ начин за свързване с толкова хора."
       my_contacts: "Моите контакти"
       no_contacts: "Изглежда трябва да добавите контакти!"
+      no_contacts_message: "Проверете %{community_spotlight}"
+      no_contacts_message_with_aspect: "Проверете %{community_spotlight} или %{add_to_aspect_link}"
       only_sharing_with_me: "Само споделящите с мен"
       remove_person_from_aspect: "Премахване на %{person_name} от \"%{aspect_name}\""
       start_a_conversation: "Начало на разговор"
@@ -301,6 +302,7 @@ bg:
       to: До
   layouts:
     application:
+      back_to_top: Нагоре
       powered_by: "Благодарение на DIASPORA*"
       public_feed: "Публична емисия от Diaspora за %{name}"
       toggle: "вкл./изкл. на мобилния изглед"
@@ -567,12 +569,12 @@ bg:
       not_found: "За съжаление публикацията не може да бъде намерена."
       permalink: "постоянен адрес"
       photos_by:
-        few: "%{count} photos by %{author}"
-        many: "%{count} photos by %{author}"
-        one: "One photo by %{author}"
-        other: "%{count} photos by %{author}"
-        two: "Two photos by %{author}"
-        zero: "No photos by %{author}"
+        few: "%{count} снимки от %{author}"
+        many: "%{count} снимки от %{author}"
+        one: "1 снимка от %{author}"
+        other: "%{count} снимки от %{author}"
+        two: "2 снимки от %{author}"
+        zero: "Няма снимки от %{author}"
   previous: предишна
   privacy: Поверителност
   privacy_policy: "Декларация за поверителност"
@@ -865,7 +867,6 @@ bg:
       wrong_password: "Въведената парола не съвпада с текущата парола на акаунта."
     edit:
       also_commented: "...някой коментира публикация на ваш контакт?"
-      auto_follow_back: "Automatically follow back if a someone follows you"
       change: Промяна
       change_email: "Промяна на ел. поща"
       change_language: "Промяна на езика"
@@ -887,6 +888,7 @@ bg:
       edit_account: "Настройки на акаунта"
       email_awaiting_confirmation: "Изпратена е връзка за активиране до %{unconfirmed_email}. Докато не я активирате ще бъде ползвана старата ел. поща (%{email})."
       export_data: "Сваляне на..."
+      following: "Следните настройки"
       liked: "...някой хареса ваша публикация?"
       mentioned: "...бъдете споменат в публикация?"
       new_password: "Нова парола"
@@ -935,3 +937,6 @@ bg:
       unconfirmed_email_changed: "Ел. поща е променена. Необходимо е да я активирате."
       unconfirmed_email_not_changed: "Ел. поща не бе променена"
   welcome: "Привет от Diaspora,"
+  will_paginate:
+    next_label: "следваща &raquo;"
+    previous_label: "&laquo; предишна"

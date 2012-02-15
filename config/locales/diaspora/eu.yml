@@ -127,7 +127,6 @@ eu:
         heading: "Zerbitzuak Lotu"
       unfollow_tag: "#%{tag} jarraitzeari utzi"
       welcome_to_diaspora: "Ongietorri Diasporara, %{name}!"
-      your_aspects: "Zure Alderdiak"
     many: "%{count} arlo"
     move_contact:
       error: "Huts laguna mugitzean: %{inspect}"

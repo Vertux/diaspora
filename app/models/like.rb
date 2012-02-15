@@ -2,25 +2,18 @@
 #   licensed under the Affero General Public License version 3 or later.  See
 #   the COPYRIGHT file.
 
-class Like < ActiveRecord::Base
-  include ROXML
+class Like < Federated::Relayable
+  class Generator < Federated::Generator
+    def self.federated_class
+      Like
+    end
 
-  include Diaspora::Webhooks
-  include Diaspora::Guid
-
-  xml_attr :target_type
-  include Diaspora::Relayable
+    def relayable_options
+      {:target => @target, :positive => true}
+    end
+  end
 
   include Api::Models::Like
-
-  xml_attr :positive
-  xml_attr :diaspora_handle
-
-  belongs_to :target, :polymorphic => true
-  belongs_to :author, :class_name => 'Person'
-
-  validates_uniqueness_of :target_id, :scope => [:target_type, :author_id]
-  validates :parent, :presence => true #should be in relayable (pending on fixing Message)
 
   after_create do
     self.parent.update_likes_counter
@@ -30,25 +23,8 @@ class Like < ActiveRecord::Base
     self.parent.update_likes_counter
   end
 
-  def diaspora_handle
-    self.author.diaspora_handle
-  end
+  xml_attr :positive
 
-  def diaspora_handle= nh
-    self.author = Webfinger.new(nh).fetch
-  end
-
-  def parent_class
-    self.target_type.constantize
-  end
-
-  def parent
-    self.target
-  end
-
-  def parent= parent
-    self.target = parent
-  end
 
   def notification_type(user, person)
     #TODO(dan) need to have a notification for likes on comments, until then, return nil

@@ -115,6 +115,7 @@ Feature: oauth
 
     Then I should be on "/account" on Chubbies
     And I should have 1 user on Chubbies
+    When I change the app_host to Diaspora
 
   Scenario: App registers with username and password
     When I register Chubbies with username and password

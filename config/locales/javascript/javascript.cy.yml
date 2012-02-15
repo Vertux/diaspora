@@ -35,6 +35,8 @@ cy:
       hey: "Hei, {{name}}!"
       no_tags: "Hei, dydych chi ddim yn dilyn unrhyw tagiau! Dal ymlaen beth bynnag?"
       preparing_your_stream: "Preparing your personalised stream..."
+    header:
+      search: "Find people or #tags"
     infinite_scroll:
       no_more: "Dim mwy o swyddi."
     photo_uploader:

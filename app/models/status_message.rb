@@ -33,14 +33,6 @@ class StatusMessage < Post
     joins(:mentions).where(:mentions => {:person_id => person.id})
   }
 
-  scope :commented_by, lambda { |person|
-    select('DISTINCT posts.*').joins(:comments).where(:comments => {:author_id => person.id})
-  }
-
-  scope :liked_by, lambda { |person|
-    joins(:likes).where(:likes => {:author_id => person.id})
-  }
-
   def self.guids_for_author(person)
     Post.connection.select_values(Post.where(:author_id => person.id).select('posts.guid').to_sql)
   end
@@ -72,9 +64,8 @@ class StatusMessage < Post
     self.photos << Photo.where(:id => photo_ids, :author_id => self.author_id).all
   end
 
-
-  def nsfw?
-    self.raw_message.match(/#nsfw/i)
+  def nsfw
+    self.raw_message.match(/#nsfw/i) || super
   end
 
   def formatted_message(opts={})
@@ -156,14 +147,15 @@ class StatusMessage < Post
   end
 
   def update_and_dispatch_attached_photos(sender)
-    unless self.photos.empty?
-      self.photos.update_all(:pending => false, :public => self.public)
-      for photo in self.photos
+    if self.photos.any?
+      self.photos.update_all(:public => self.public)
+      self.photos.each do |photo|
         if photo.pending
           sender.add_to_streams(photo, self.aspects)
           sender.dispatch_post(photo)
         end
       end
+      self.photos.update_all(:pending => false)
     end
   end
 

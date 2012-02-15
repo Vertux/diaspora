@@ -121,14 +121,13 @@ it:
         title: "Saluta i nuovi arrivati"
       no_contacts: "Nessun contatto"
       no_tags: "+ Cerca tag da seguire"
-      people_sharing_with_you: "Persone in condivisione con te"
+      people_sharing_with_you: "Persone che condividono con te"
       post_a_message: "invia un messaggio >>"
       services:
         content: "Puoi collegare i seguenti servizi a Diaspora:"
         heading: "Servizi connessi"
       unfollow_tag: "Smetti di seguire #%{tag}"
       welcome_to_diaspora: "Diaspora ti dà il benvenuto, %{name}!"
-      your_aspects: "I tuoi aspetti"
     many: "%{count} aspetti"
     move_contact:
       error: "Errore nello spostare il contatto: %{inspect}"
@@ -198,10 +197,14 @@ it:
     index:
       add_a_new_aspect: "Aggiungi un aspetto"
       add_to_aspect: "aggiungi i contatti a %{name}"
+      add_to_aspect_link: "aggiungi contatti a %{name}"
       all_contacts: "Tutti i contatti"
+      community_spotlight: "in evidenza"
       many_people_are_you_sure: "Stai inviando un messaggio privato a più di %{suggested_limit} contatti. Vuoi farlo davvero? Forse potrebbe essere più opportuno pubblicarlo su un aspetto!"
       my_contacts: "I miei contatti"
       no_contacts: "Probabilmente devi aggiungere qualche contatto!"
+      no_contacts_message: "Guarda gli utenti %{community_spotlight}"
+      no_contacts_message_with_aspect: "Guarda gli utenti %{community_spotlight} oppure %{add_to_aspect_link}"
       only_sharing_with_me: "Condividono con me"
       remove_person_from_aspect: "Rimuovi %{person_name} da \"%{aspect_name}\""
       start_a_conversation: "Inizia una conversazione"
@@ -293,6 +296,7 @@ it:
     new:
       already_invited: "Le seguenti persone non hanno accettato il tuo invito:"
       aspect: Aspetto
+      check_out_diaspora: "Prova Diaspora!"
       comma_seperated_plz: "Puoi inserire più indirizzi email separati da virgole."
       if_they_accept_info: "se accettano, saranno aggiunti all'aspetto in cui li hai invitati."
       invite_someone_to_join: "Invita qualcuno ad entrare in Diaspora!"
@@ -304,6 +308,7 @@ it:
       to: A
   layouts:
     application:
+      back_to_top: "Torna all'inizio"
       powered_by: "CREATO CON DIASPORA*"
       public_feed: "Feed pubblici Diaspora di %{name}"
       toggle: "attiva/disattiva versione mobile"
@@ -327,12 +332,12 @@ it:
         two: "%{count} non mi piace"
         zero: "0 Non mi piace"
       people_like_this:
-        few: "%{count} Mi piace"
-        many: "%{count} Mi piace"
-        one: "%{count} Mi piace"
-        other: "%{count} Mi piace"
+        few: "%{count} mi piace"
+        many: "%{count} mi piace"
+        one: "%{count} mi piace"
+        other: "%{count} mi piace"
         two: "%{count} mi piace"
-        zero: "0 Mi piace"
+        zero: "0 mi piace"
       people_like_this_comment:
         few: "%{count} mi piace"
         many: "%{count} mi piace"
@@ -393,12 +398,12 @@ it:
       two: "A %{actors} piace il tuo %{post_link}."
       zero: "A %{actors} piace il tuo %{post_link}."
     liked_post_deleted:
-      few: "A %{actors} piaceva il messaggio che hai eliminato."
-      many: "A %{actors} piaceva il messaggio che hai eliminato."
-      one: "A %{actors} piaceva il messaggio che hai eliminato."
-      other: "A %{actors} piaceva il messaggio che hai eliminato."
+      few: "A %{actors} piaceva il post che hai eliminato."
+      many: "A %{actors} piaceva il post che hai eliminato."
+      one: "A %{actors} piaceva il post che hai eliminato."
+      other: "A %{actors} piaceva il post che hai eliminato."
       two: "A %{actors} piaceva il post che hai eliminato."
-      zero: "A %{actors} piaceva il messaggio che hai eliminato."
+      zero: "A %{actors} piaceva il post che hai eliminato."
     mentioned:
       few: "%{actors} ti hanno menzionato in un %{post_link}."
       many: "%{actors} ti hanno menzionato in un %{post_link}."
@@ -471,6 +476,7 @@ it:
       view_profile: "Guarda il profilo di %{name}"
     thanks: "Grazie,"
     to_change_your_notification_settings: "per cambiare le opzioni delle notifiche"
+  nsfw: "NSFW (non adatto ad un luogo di lavoro)"
   or: o
   password_confirmation: "Conferma password"
   people:
@@ -583,6 +589,8 @@ it:
       first_name: Nome
       last_name: Cognome
       update_profile: "Aggiorna Profilo"
+      you_are_nsfw: "Hai impostato tutti i tuoi messaggi come non adatti ad un luogo di lavoro (NSFW), i tuoi contenuti non compariranno alle persone che non vogliono ricevere materiale sconveniente."
+      you_are_safe_for_work: "Hai impostato il tuo utente come \"sicuro\", cioè i contenuti che invierai rispetteranno le linee guida della comunità."
       your_bio: "La tua biografia"
       your_birthday: "Il tuo compleanno"
       your_gender: Sesso
@@ -764,10 +772,10 @@ it:
       ignore_user: "Ignora %{name}"
       ignore_user_description: "Vuoi ignorare questo utente e rimuoverlo da tutti gli aspetti?"
       like: "Mi piace"
-      nsfw: "Questo post è stato marcato dall'autore come non adatto a un luogo di lavoro (NSFW). %{link}"
+      nsfw: "Questo post è stato dichiarato dal suo autore non adatto a un luogo di lavoro (NSFW). %{link}"
       shared_with: "Condiviso con: %{aspect_names}"
       show: mostra
-      unlike: Annulla
+      unlike: "Non mi piace più"
       viewable_to_anyone: "Questo post è visibile a tutti sul web"
   status_messages:
     create:
@@ -796,7 +804,7 @@ it:
       zero: "Nessun altro commento"
   streams:
     aspects:
-      title: "I tuoi aspetti"
+      title: Aspetti
     aspects_stream: Aspetti
     comment_stream:
       contacts_title: "Persone a cui hai commentato i post"
@@ -809,14 +817,14 @@ it:
       title: "#Tag che segui"
     followed_tags_stream: "#Tag che segui"
     like_stream:
-      contacts_title: "Persone di cui ti piacciono i post"
-      title: "Post preferiti"
+      contacts_title: "Autori dei post che ti piacciono"
+      title: "Post che ti piacciono"
     mentioned_stream: "@Menzioni"
     mentions:
       contacts_title: "Persone che ti hanno menzionato"
       title: "@Menzioni"
     multi:
-      contacts_title: "Persone nel tuo stream"
+      contacts_title: Persone
     public:
       contacts_title: "Chi ha postato di recente"
       title: "Attività pubblica"

@@ -260,6 +260,9 @@ ka:
       other: "Show %{count} more comments"
       two: "Show two more comments"
       zero: "No more comments"
+  streams:
+    aspects:
+      title: "Your Aspects"
   users:
     edit:
       change_language: "ენის შეცვლა"

@@ -111,7 +111,6 @@ ur-PK:
         content: "آپ ڈایسپورا کے لئے مندرجہ ذیل خدمات شامل کر سکتے ہیں :"
         heading: "خدمات کو جوڑیے"
       unfollow_tag: "پیروی بند کیجیے #%{tag}"
-      your_aspects: "آپکے پہلو"
     many: "%{count} پہلو"
     move_contact:
       error: "رابطہ منتقلی میں خرابی: %{inspect}"
@@ -385,6 +384,8 @@ ur-PK:
       two: "Show two more comments"
       zero: "No more comments"
   streams:
+    aspects:
+      title: "Your Aspects"
     mentions:
       title: "Your Mentions"
     tags:

@@ -24,6 +24,8 @@ te:
       show: "అన్ని వ్యాఖ్యలను చూపించు"
     getting_started:
       hey: "ఓయ్, {{name}}!"
+    header:
+      search: "Find people or #tags"
     infinite_scroll:
       no_more: "ఇంక టపాలు లేవు."
     reshares:

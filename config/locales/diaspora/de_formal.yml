@@ -128,7 +128,6 @@ de_formal:
         heading: "Verbinde Dienste"
       unfollow_tag: "#%{tag} nicht mehr folgen"
       welcome_to_diaspora: "Willkommen bei Diaspora, %{name}!"
-      your_aspects: "Ihre Aspekte"
     many: "%{count} Aspekte"
     move_contact:
       error: "Fehler beim Verschieben des Kontakts: %{inspect}"
