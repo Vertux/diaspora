@@ -13,14 +13,25 @@ describe Api::V0::StreamsController do
     @stream_stub.stub!(:stream_posts)
   end
 
-  describe "#main" do
+  describe "#stream" do
     it "succeeds" do
-      get :main, api_v0_params
+      get :stream, api_v0_params
     end
     
     it "calls the multi stream" do
       Stream::Multi.should_receive(:new).with(alice, opts).and_return(@stream_stub)
-      get :main, api_v0_params(opts)
+      get :stream, api_v0_params(opts)
+    end
+  end
+
+  describe "#activity" do
+    it "succeeds" do
+      get :activity, api_v0_params
+    end
+    
+    it "calls the activity stream" do
+      Stream::Activity.should_receive(:new).with(alice, opts).and_return(@stream_stub)
+      get :activity, api_v0_params(opts)
     end
   end
 

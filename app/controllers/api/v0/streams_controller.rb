@@ -2,12 +2,13 @@
 #   licensed under the Affero General Public License version 3 or later.  See
 #   the COPYRIGHT file.
 
-require File.join(Rails.root, 'lib', 'stream', 'multi')
 require File.join(Rails.root, "lib", 'stream', "aspect")
+require File.join(Rails.root, 'lib', 'stream', 'multi')
 require File.join(Rails.root, 'lib','stream', 'comments')
 require File.join(Rails.root, 'lib','stream', 'likes')
 require File.join(Rails.root, 'lib','stream', 'mention')
 require File.join(Rails.root, 'lib', 'stream', 'followed_tag')
+require File.join(Rails.root, "lib", "stream", "activity")
 require File.join(Rails.root, 'lib', 'stream', 'tag')
 
 class Api::V0::StreamsController < Api::V0::ApplicationController
@@ -15,13 +16,17 @@ class Api::V0::StreamsController < Api::V0::ApplicationController
     ensure_permission!(:posts, :read)
   end
   
-  def main
+  def stream
     stream_action(Stream::Multi)
   end
 
   def aspects
     aspect_ids = (params[:aspect_ids]) ? params[:aspect_ids].split(",") : []
     stream_action(Stream::Aspect, :second_param => aspect_ids)
+  end
+  
+  def activity
+    stream_action(Stream::Activity)
   end
 
   def commented
