@@ -11,7 +11,7 @@ module Api::V0::User
       tpl.add "profile.birthday", :as => :birthday
     end
     
-    api_accessible :v0_private_user_info do |tpl|
+    api_accessible :v0_public_user_info do |tpl|
       tpl.add "person.diaspora_handle", :as => :diaspora_id
       tpl.add "profile.first_name", :as => :first_name
       tpl.add "profile.last_name", :as => :last_name

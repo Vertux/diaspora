@@ -5,6 +5,10 @@
 require 'spec_helper'
 
 describe Api::V0::UsersController do
+  before do
+    request.env['oauth2'] = FakeOAuth2.new
+  end
+
   describe '#show' do
     it 'succeeds' do
       get :show, api_v0_params(:username => 'alice')

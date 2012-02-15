@@ -3,8 +3,6 @@
 #   the COPYRIGHT file.
 
 class Api::V0::UsersController < Api::V0::ApplicationController
-  skip_before_filter :oauth_authenticate!, :only => :show #temp
-  
   def me
     respond_to do |format|
       format.any { render_for_api :v0_me_info, :json => current_user }
@@ -13,7 +11,7 @@ class Api::V0::UsersController < Api::V0::ApplicationController
   
   def show
     if user = User.find_by_username(params[:username])
-      respond_with user, :api_template => :v0_private_user_info
+      respond_with user, :api_template => :v0_public_user_info
     else
       head :not_found
     end

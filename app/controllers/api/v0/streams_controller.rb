@@ -12,7 +12,7 @@ require File.join(Rails.root, 'lib', 'stream', 'tag')
 
 class Api::V0::StreamsController < Api::V0::ApplicationController
   before_filter do
-    ensure_permission!(:post, :read)
+    ensure_permission!(:posts, :read)
   end
   
   def main
@@ -45,6 +45,7 @@ class Api::V0::StreamsController < Api::V0::ApplicationController
   end
   
   private
+  
   def stream_action(stream_class, opts={})
     opts = {:max_time => max_time, :sort_order => sort_order}.merge(opts)
     if second_param = opts.delete(:second_param)

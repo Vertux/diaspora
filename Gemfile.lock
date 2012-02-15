@@ -245,7 +245,7 @@ GEM
       fastthread (>= 1.0.1)
       gem_plugin (>= 0.2.3)
     multi_json (1.0.4)
-    multipart-post (1.1.4)
+    multipart-post (1.1.5)
     mysql2 (0.2.18)
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
