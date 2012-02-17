@@ -26,13 +26,13 @@ Diaspora::Application.routes.draw do
     get "participate" => :activity # legacy
     get "explore" => :multi # legacy
 
-    get :stream
     get :activity,                :as => "activity_stream"
     get :public,                  :as => "public_stream"
     get :followed_tags,           :as => "followed_tags_stream"
     get :liked,                   :as => "liked_stream"
     get :commented,               :as => "commented_stream"
     get :aspects,                 :as => "aspects_stream"
+    get "stream" => :multi,       :as => "stream"
     get "mentions" => :mentioned, :as => "mentioned_stream"
   end
 
