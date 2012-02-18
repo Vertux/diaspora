@@ -6,6 +6,7 @@ module Api::V0::Person
   extend ActiveSupport::Concern
   included do
     api_accessible :v0_public_person_info do |tpl|
+      tpl.add :guid
       tpl.add :diaspora_handle
       tpl.add :first_name
       tpl.add :last_name

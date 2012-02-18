@@ -15,16 +15,17 @@ describe "API V0 people" do
   
   context "unauthenticated" do
     it "fails" do
-      get "/api/v0/people/#{@searchable.id}", :format => :json
+      get "/api/v0/people/#{@searchable.guid}", :format => :json
       response.should_not be_success
     end
   end
   
   context "authenticated" do
-    context "requesting via id" do
+    context "requesting via guid" do
       it "returns the right informations for a searchable person" do
-        get "/api/v0/people/#{@searchable.id}", api_v0_params
+        get "/api/v0/people/#{@searchable.guid}", api_v0_params
         response.body.should be_json_eql({
+          :guid => @searchable.guid,
           :diaspora_handle => @searchable.diaspora_handle,
           :first_name => @searchable.first_name,
           :last_name => @searchable.last_name,
@@ -33,8 +34,9 @@ describe "API V0 people" do
       end
       
       it "returns the right informations for a sharing contact" do
-        get "/api/v0/people/#{@contact.person.id}", api_v0_params(:user => @user)
+        get "/api/v0/people/#{@contact.person.guid}", api_v0_params(:user => @user)
         response.body.should be_json_eql({
+          :guid => @contact.person.guid,
           :diaspora_handle => @contact.person.diaspora_handle,
           :first_name => @contact.person.first_name,
           :last_name => @contact.person.last_name,
@@ -47,7 +49,7 @@ describe "API V0 people" do
       end
       
       it "returns a 404 for a not searchable person" do
-        get "/api/v0/people/#{@unsearchable.id}", api_v0_params
+        get "/api/v0/people/#{@unsearchable.guid}", api_v0_params
         response.status.should == 404
       end
     end
@@ -57,6 +59,7 @@ describe "API V0 people" do
         username, pod = @searchable.diaspora_handle.split("@")
         get "/api/v0/people/#{pod}/#{username}", api_v0_params
         response.body.should be_json_eql({
+          :guid => @searchable.guid,
           :diaspora_handle => @searchable.diaspora_handle,
           :first_name => @searchable.first_name,
           :last_name => @searchable.last_name,
@@ -68,6 +71,7 @@ describe "API V0 people" do
         username, pod = @contact.person.diaspora_handle.split("@")
         get "/api/v0/people/#{pod}/#{username}", api_v0_params(:user => @user)
         response.body.should be_json_eql({
+          :guid => @contact.person.guid,
           :diaspora_handle => @contact.person.diaspora_handle,
           :first_name => @contact.person.first_name,
           :last_name => @contact.person.last_name,
