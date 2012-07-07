@@ -2,6 +2,8 @@
 #   licensed under the Affero General Public License version 3 or later.  See
 #   the COPYRIGHT file.
 
+require Rails.root.join('lib', 'gpio')
+
 class ApplicationController < ActionController::Base
   has_mobile_fu
   protect_from_forgery :except => :receive
@@ -11,6 +13,15 @@ class ApplicationController < ActionController::Base
   before_filter :set_git_header if (AppConfig[:git_update] && AppConfig[:git_revision])
   before_filter :set_grammatical_gender
   before_filter :mobile_switch
+  before_filter :blink_led
+
+  def blink_led
+    Thread.new do
+      GPIO.on
+      sleep 0.2
+      GPIO.off
+    end
+  end
 
   inflection_method :grammatical_gender => :gender
 
