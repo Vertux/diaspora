@@ -1,6 +1,6 @@
 #!/bin/bash
 
-logdirname="worker"
+log_directory_name="foreman"
 
 cd "$(dirname $(readlink -e $0))/../.."
 source ./common_log.sh

@@ -1,9 +1,8 @@
 #!/bin/bash
 
-ABSOLUTE_PATH=$(dirname $(readlink -e $0))
-cd  $ABSOLUTE_PATH/..
+cd  "$(dirname $(readlink -e $0))/.."
 source ./common.sh
 
-export QUEUE='*' VERBOSE=true
+export QUEUE='*'
 
-exec setuidgid $DIASPORA_USER bundle exec rake resque:work
+exec setuidgid "$DIASPORA_USER" bundle exec rake resque:work

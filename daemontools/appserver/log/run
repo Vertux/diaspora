@@ -1,9 +1,6 @@
 #!/bin/bash
 
-ABSOLUTE_PATH=$(dirname $(readlink -e $0))
-cd $ABSOLUTE_PATH/../..
-source ./common.sh
+logdirname="appserver"
 
-cd $ABSOLUTE_PATH
-
-exec setuidgid $DIASPORA_USER multilog t ./appserver
+cd "$(dirname $(readlink -e $0))/../.."
+source ./common_log.sh
