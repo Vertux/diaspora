@@ -1,6 +1,0 @@
-#!/bin/bash
-
-logdirname="worker"
-
-cd "$(dirname $(readlink -e $0))/../.."
-source ./common_log.sh
