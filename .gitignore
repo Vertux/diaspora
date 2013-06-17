@@ -69,3 +69,7 @@ dump.rdb
 # Ignore precompiled assets
 # Heroku or Capistrano can and should regenerate them on every deploy
 public/assets
+
+#Daemontools stuff
+daemontools/*/log/*/*
+daemontools/*/supervise
