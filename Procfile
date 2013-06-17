@@ -1,2 +1,2 @@
-web: bundle exec unicorn_rails -c config/unicorn.rb -p $PORT
+web: bundle exec puma -b unix:///var/run/diaspora/diaspora.sock -e $RAILS_ENV
 sidekiq: bundle exec sidekiq
