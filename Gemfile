@@ -4,7 +4,7 @@ gem 'rails', '3.2.13'
 
 # Appserver
 
-gem 'unicorn', '4.6.2', :require => false
+gem 'puma', '2.0.1', :require => false
 
 # API and JSON
 
