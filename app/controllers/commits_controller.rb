@@ -19,7 +19,7 @@ class CommitsController < ApplicationController
     message_lines << "New push to **#{branch}** at [#{repository.capitalize}](#{repository_url})" << ""
     
     payload['commits'].reverse.each do |commit|
-      first_line, *commit_lines = commit['message'].strip.split('\n').reject(&:empty?)
+      first_line, *commit_lines = commit['message'].strip.split("\n")
       
       message_lines << "* [Commit](#{commit['url']}): #{first_line} by *#{commit['author']['name']}*"
       message_lines.concat commit_lines.map {|line| "  #{line}" }
