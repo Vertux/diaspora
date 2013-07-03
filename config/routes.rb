@@ -216,5 +216,5 @@ Diaspora::Application.routes.draw do
   get 'protocol' => redirect("http://wiki.diasporafoundation.org/Federation_Protocol_Overview")
 
   # Startpage
-  root :to => 'home#show'
+  root :to => 'streams#multi'
 end
