@@ -98,8 +98,8 @@
       position: absolute;
       right: 10px;
       bottom: 10px;
-      font-size: 11px; 
-      line-height: 16px; 
+      font-size: 11px;
+      line-height: 16px;
       padding: 5px 9px;
     }
   }
@@ -200,9 +200,12 @@
     color: #99CCFF
   }
 
-  time {
-    color: #666;
+  .info {
     font-size: smaller;
+
+    time {
+      color: #666;
+    }
   }
 
   .controls {
