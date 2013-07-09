@@ -1,14 +1,23 @@
 # Head
 
 ## Refactor
+* Background actual mailing when sending invitations [#4069](https://github.com/diaspora/diaspora/issues/4069)
+* Set the current user on the client side through gon [#4028](https://github.com/diaspora/diaspora/issues/4028)
 
 ## Bug fixes
 * Don't focus comment form on 'show n more comments' [#4265](https://github.com/diaspora/diaspora/issues/4265)
 * Do not render mobile photo view for none-existing photos [#4194](https://github.com/diaspora/diaspora/issues/4194)
+* Render markdown content for prettier email subjects and titles [#4182](https://github.com/diaspora/diaspora/issues/4182)
+* Disable invite button after sending invite [#4173](https://github.com/diaspora/diaspora/issues/4173)
+* Fix pagination for people list on the tag stream page [#4245](https://github.com/diaspora/diaspora/pull/4245)
+* Fix missing timeago tooltip in conversations [#4257](https://github.com/diaspora/diaspora/issues/4257)
+* Fix link to background image [#4289](https://github.com/diaspora/diaspora/pull/4289)
 
 ## Features
 * Admin: add option to find users under 13 (COPPA) [#4252](https://github.com/diaspora/diaspora/pull/4252)
 * Show the user if a contact is sharing with them when viewing their profile page [#2948](https://github.com/diaspora/diaspora/issues/2948)
+* Made Unicorn timeout configurable and increased the default to 90 seconds
+* Follow DiasporaHQ upon account creation is now configurable to another account [#4278](https://github.com/diaspora/diaspora/pull/4278)
 
 # 0.1.1.0
 
@@ -42,6 +51,7 @@
 * Leaving the `to` field blank when sending a private message causes a server error [#4227](https://github.com/diaspora/diaspora/issues/4227)
 * Fix hashtags that start a line when posting to Facebook or Twitter [#3768](https://github.com/diaspora/diaspora/issues/3768) [#4154](https://github.com/diaspora/diaspora/issues/4154)
 * Show avatar of recent user in conversation list [#4237](https://github.com/diaspora/diaspora/issues/4237)
+* Private message fails if contact not entered correctly [#4210](https://github.com/diaspora/diaspora/issues/4210)
 
 ## Features
 
