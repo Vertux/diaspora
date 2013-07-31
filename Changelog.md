@@ -1,8 +1,12 @@
 # Head
 
+**Attention:** This release includes a potentially long running migration! However it should be safe to run this while keeping your application servers on.
+
 ## Refactor
 * Background actual mailing when sending invitations [#4069](https://github.com/diaspora/diaspora/issues/4069)
 * Set the current user on the client side through gon [#4028](https://github.com/diaspora/diaspora/issues/4028)
+* Update sign out route to a DELETE request [#4068](https://github.com/diaspora/diaspora/issues/4068)
+* Convert all ActivityStreams::Photo to StatusMessages and drop ActivityStreams::Photo [#4144](https://github.com/diaspora/diaspora/issues/4144)
 
 ## Bug fixes
 * Don't focus comment form on 'show n more comments' [#4265](https://github.com/diaspora/diaspora/issues/4265)
@@ -12,18 +16,24 @@
 * Fix pagination for people list on the tag stream page [#4245](https://github.com/diaspora/diaspora/pull/4245)
 * Fix missing timeago tooltip in conversations [#4257](https://github.com/diaspora/diaspora/issues/4257)
 * Fix link to background image [#4289](https://github.com/diaspora/diaspora/pull/4289)
+* Fix Facebox icons 404s when called from Backbone
+* Fix deleting a post from Facebook [#4290](https://github.com/diaspora/diaspora/pull/4290)
+* Display notices a little bit longer to help on sign up errors [#4274](https://github.com/diaspora/diaspora/issues/4274)
+* Fix user contact sharing/receiving [#4163](https://github.com/diaspora/diaspora/issues/4163)
 
 ## Features
 * Admin: add option to find users under 13 (COPPA) [#4252](https://github.com/diaspora/diaspora/pull/4252)
 * Show the user if a contact is sharing with them when viewing their profile page [#2948](https://github.com/diaspora/diaspora/issues/2948)
 * Made Unicorn timeout configurable and increased the default to 90 seconds
 * Follow DiasporaHQ upon account creation is now configurable to another account [#4278](https://github.com/diaspora/diaspora/pull/4278)
+* Use first header as title in the single post view, when possible [#4256](https://github.com/diaspora/diaspora/pull/4256)
+* Close publisher when clicking on the page outside of it [#4282](https://github.com/diaspora/diaspora/pull/4282)
 
 # 0.1.1.0
 
 ## Refactor
 
-* Refactored config/ directory [#4145](https://github.com/diaspora/diaspora/pull/4145).
+* Refactored config/ directory [#4144](https://github.com/diaspora/diaspora/pull/4145).
 * Drop misleading fallback donation form. [Proposal](https://www.loomio.org/discussions/1045?proposal=2722)
 * Update Typhoeus to 0.6.3 and refactor HydraWrapper. [#4162](https://github.com/diaspora/diaspora/pull/4162)
 * Bump recomended Ruby version to 1.9.3-p448, see [Ruby news](http://www.ruby-lang.org/en/news/2013/06/27/hostname-check-bypassing-vulnerability-in-openssl-client-cve-2013-4073/).
