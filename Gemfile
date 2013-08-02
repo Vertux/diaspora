@@ -4,7 +4,7 @@ gem 'rails', '3.2.13'
 
 # Appserver
 
-gem 'puma', '2.3.2', :require => false
+gem 'puma', '2.4.0', :require => false
 
 # API and JSON
 
@@ -178,7 +178,7 @@ group :test do
 
   gem 'capybara',           '2.1.0'
   gem 'database_cleaner',   '1.1.0'
-  gem 'selenium-webdriver', '1.33.0'
+  gem 'selenium-webdriver', '2.33.0'
 
   # General helpers
 
