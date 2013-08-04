@@ -59,11 +59,17 @@ gem 'messagebus_ruby_api', '1.0.3'
 
 # Parsing
 
-gem 'nokogiri',       '1.6.0'
-gem 'rails_autolink', '1.1.0'
-gem 'redcarpet',      '3.0.0'
-gem 'roxml',          '3.1.6'
-gem 'ruby-oembed',    '0.8.8'
+gem 'nokogiri',         '1.6.0'
+gem 'rails_autolink',   '1.1.0'
+gem 'redcarpet',        '3.0.0'
+gem 'roxml',            '3.1.6'
+gem 'ruby-oembed',      '0.8.8'
+gem 'opengraph_parser', '0.2.3'
+
+
+# Please remove when migrating to Rails 4
+gem 'strong_parameters'
+
 
 # Services
 
@@ -170,9 +176,10 @@ end
 group :test do
   # RSpec (unit tests, some integration tests)
 
-  gem 'fixture_builder', '0.3.6'
-  gem 'fuubar',          '1.1.1'
-  gem 'rspec-instafail', '0.2.4', :require => false
+  gem 'fixture_builder',   '0.3.6'
+  gem 'fuubar',            '1.1.1'
+  gem 'rspec-instafail',   '0.2.4', :require => false
+  gem 'test_after_commit', '0.2.0'
 
   # Cucumber (integration tests)
 

@@ -7,6 +7,7 @@
 * Set the current user on the client side through gon [#4028](https://github.com/diaspora/diaspora/issues/4028)
 * Update sign out route to a DELETE request [#4068](https://github.com/diaspora/diaspora/issues/4068)
 * Convert all ActivityStreams::Photo to StatusMessages and drop ActivityStreams::Photo [#4144](https://github.com/diaspora/diaspora/issues/4144)
+* Port the Rails application to strong_parameters in preparation to the upgrade to Rails 4 [#4143](https://github.com/diaspora/diaspora/issues/4143)
 
 ## Bug fixes
 * Don't focus comment form on 'show n more comments' [#4265](https://github.com/diaspora/diaspora/issues/4265)
@@ -20,6 +21,7 @@
 * Fix deleting a post from Facebook [#4290](https://github.com/diaspora/diaspora/pull/4290)
 * Display notices a little bit longer to help on sign up errors [#4274](https://github.com/diaspora/diaspora/issues/4274)
 * Fix user contact sharing/receiving [#4163](https://github.com/diaspora/diaspora/issues/4163)
+* Change image to ajax-loader when closing lightbox [#3229](https://github.com/diaspora/diaspora/issues/3229)
 
 ## Features
 * Admin: add option to find users under 13 (COPPA) [#4252](https://github.com/diaspora/diaspora/pull/4252)
@@ -28,6 +30,8 @@
 * Follow DiasporaHQ upon account creation is now configurable to another account [#4278](https://github.com/diaspora/diaspora/pull/4278)
 * Use first header as title in the single post view, when possible [#4256](https://github.com/diaspora/diaspora/pull/4256)
 * Close publisher when clicking on the page outside of it [#4282](https://github.com/diaspora/diaspora/pull/4282)
+* Deleting a post deletes it from Tumblr too [#4331](https://github.com/diaspora/diaspora/pull/4331)
+* OpenGraph support [#4215](https://github.com/diaspora/diaspora/pull/4215)
 
 # 0.1.1.0
 
