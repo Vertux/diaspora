@@ -20,6 +20,9 @@
 ## - Replace the dots with underscores: environment_s3_enable
 ## - Upcase everything: ENVIRONMENT_S3_ENABLE
 ## - Specify lists/arrays as comma separated values
+##
+## - For example, on Heroku:
+##   heroku config:set SERVICES_FACEBOOK_APP_ID=whateeryourappid SERVICES_FACEBOOK_SECRET=whateeryourappsecret
 
 configuration: ## Section
   
@@ -233,6 +236,11 @@ configuration: ## Section
     ## we kindly ask your users to donate to the Diaspora Foundation :)
     #paypal_hosted_button_id: ""
     
+    ## Bitcoin donations
+    ## You can provide the bitcoin address here to kindly ask
+    ## your users for donations to run their pod.
+    #bitcoin_wallet_id: ""
+    
     ## Community Spotlight
     ## The community spotlight gives new users a starting point on who
     ## could be interesting Diasporas community. To add a person
@@ -327,6 +335,12 @@ configuration: ## Section
     tumblr: ## Section
       #enable: true
       #key: 'abcdef'
+      #secret: 'changeme'
+      
+    ## OAuth credentials for Wordpress
+    wordpress: ## Section
+      #enable: true
+      #client_id: 'abcdef'
       #secret: 'changeme'
   
   ## Settings relevant to administrators

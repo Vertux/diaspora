@@ -208,7 +208,7 @@ end
 When /^I search for "([^\"]*)"$/ do |search_term|
   fill_in "q", :with => search_term
   find_field("q").native.send_key(:enter)
-  find(".tags_people")
+  find("#leftNavBar")
 end
 
 Then /^the "([^"]*)" field(?: within "([^"]*)")? should be filled with "([^"]*)"$/ do |field, selector, value|
@@ -278,11 +278,11 @@ Then /^I should not see ajax loader on deletion link place$/ do
 end
 
 Then /^I should see a flash message indicating success$/ do
-  flash_message_success?
+  flash_message_success?.should be_true
 end
 
 Then /^I should see a flash message indicating failure$/ do
-  flash_message_failure?
+  flash_message_failure?.should be_true
 end
 
 Then /^I should see a flash message containing "(.+)"$/ do |text|
@@ -303,4 +303,16 @@ end
 
 When /^I take the screenshots while logged in$/ do
   take_screenshots_with_login
+end
+
+When /^I focus the "([^"]+)" field$/ do |field|
+  find_field(field).click
+end
+
+Given /^I have configured a Bitcoin wallet$/ do
+  AppConfig.settings.bitcoin_wallet_id = "AAAAAA"
+end
+
+Then /^I should see the Bitcoin wallet ID$/ do
+  find("#bitcoin_address")['value'].should == "AAAAAA"
 end

@@ -13,7 +13,7 @@ gem 'json',        '1.8.0'
 
 # Authentication
 
-gem 'devise', '2.1.3'
+gem 'devise', '3.0.2'
 
 # Background processing
 
@@ -78,6 +78,7 @@ gem 'omniauth-facebook', '1.4.1'
 gem 'omniauth-tumblr',   '1.1'
 gem 'omniauth-twitter',  '1.0.0'
 gem 'twitter',           '4.8.1'
+gem 'omniauth-wordpress','0.2.0'
 
 # Tags
 
@@ -185,7 +186,7 @@ group :test do
 
   gem 'capybara',           '2.1.0'
   gem 'database_cleaner',   '1.1.0'
-  gem 'selenium-webdriver', '2.33.0'
+  gem 'selenium-webdriver', '2.34.0'
 
   # General helpers
 
