@@ -81,6 +81,7 @@ class PeopleController < ApplicationController
     @aspect = :profile
     @stream = Stream::Person.new(current_user, @person, :max_time => max_time)
     @profile = @person.profile
+    @photos = photos_from(@person)
 
     unless params[:format] == "json" # hovercard
       if current_user
@@ -142,6 +143,7 @@ class PeopleController < ApplicationController
       @contact = current_user.contact_for(@person)
       @aspect = :profile
       @contacts_of_contact = @contact.contacts.paginate(:page => params[:page], :per_page => (params[:limit] || 15))
+      @contacts_of_contact_count = @contact.contacts.count
       @hashes = hashes_for_people @contacts_of_contact, @aspects
     else
       flash[:error] = I18n.t 'people.show.does_not_exist'
@@ -187,5 +189,15 @@ class PeopleController < ApplicationController
 
   def remote_profile_with_no_user_session?
     @person.try(:remote?) && !user_signed_in?
+  end
+
+  def photos_from(person)
+    photos = if user_signed_in?
+      current_user.photos_from(person)
+    else
+      Photo.where(author_id: person.id, public: true)
+    end
+
+    photos.order('created_at desc')
   end
 end

@@ -586,16 +586,18 @@ en:
     profile_sidebar:
       remove_contact: "remove contact"
       edit_my_profile: "Edit my profile"
-      bio: "bio"
-      location: "location"
-      gender: "gender"
-      born: "birthday"
+      bio: "Bio"
+      location: "Location"
+      gender: "Gender"
+      born: "Birthday"
+      photos: "Photos"
       in_aspects: "in aspects"
       remove_from: "Remove %{name} from %{aspect}?"
     helper:
       results_for: " results for %{params}"
       people_on_pod_are_aware_of: " people on pod are aware of"
       is_sharing: "%{name} is sharing with you"
+      is_not_sharing: "%{name} is not sharing with you"
     aspect_list:
       edit_membership: "edit aspect membership"
     add_contact_small:

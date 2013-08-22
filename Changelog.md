@@ -11,6 +11,9 @@
 * Port the Rails application to strong_parameters in preparation to the upgrade to Rails 4 [#4143](https://github.com/diaspora/diaspora/issues/4143)
 * Refactor left bar side menu, improve tag autosuggestion design [#4271](https://github.com/diaspora/diaspora/issues/4271), [#4316](https://github.com/diaspora/diaspora/pull/4316)
 * Extract and factorize the header css in a new file, fix ugly header in registration [#4389](https://github.com/diaspora/diaspora/pull/4389)
+* Move contact list on profile to profile information, show user his own contacts on profile [#4360](https://github.com/diaspora/diaspora/pull/4360)
+* Refactor metas, HTML is now valid [#4356](https://github.com/diaspora/diaspora/pull/4356)
+* Improve sharing message and mention/message buttons on profile [#4374](https://github.com/diaspora/diaspora/pull/4374)
 
 ## Bug fixes
 * Check twitter write access before adding/authorizing it for a user. [#4124](https://github.com/diaspora/diaspora/issues/4124)
@@ -39,6 +42,8 @@
 * Problems with layout the registration page for mobile. [#4396](https://github.com/diaspora/diaspora/issues/4396)
 * Do not display photos in the background in the SPV [#4407](https://github.com/diaspora/diaspora/pull/4407)
 * Fix mobile view of deleted reshares [#4397](https://github.com/diaspora/diaspora/issues/4397)
+* Fix the overlapping of embedded youtube videos [#2943](https://github.com/diaspora/diaspora/issues/2943)
+* Fix opacity of control icons [#4414](https://github.com/diaspora/diaspora/issues/4414/)
 
 ## Features
 * Admin: add option to find users under 13 (COPPA) [#4252](https://github.com/diaspora/diaspora/pull/4252)
@@ -54,7 +59,8 @@
 * Uncheck 'make contacts visible to each other' by default when adding new aspect. [#4343](https://github.com/diaspora/diaspora/issues/4343)
 * Add possibility to ask for Bitcoin donations [#4375](https://github.com/diaspora/diaspora/pull/4375)
 * Remove posts, comments and private conversations from the mobile site. [#4408](https://github.com/diaspora/diaspora/pull/4408) [#4409](https://github.com/diaspora/diaspora/pull/4409)
-
+* Added a link to user photos and thumbnails are shown in the left side bar [#4347](https://github.com/diaspora/diaspora/issues/4347)
+* Rework the single post view
 
 # 0.1.1.0
 
