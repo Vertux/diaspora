@@ -61,10 +61,10 @@ Diaspora::Application.routes.draw do
 
   get 'bookmarklet' => 'status_messages#bookmarklet'
 
-  resources :photos, :except => [:index] do
+  resources :photos, :except => [:index, :show] do
     put :make_profile_photo
   end
-	
+
 	#Search
 	get 'search' => "search#search"
 
@@ -209,6 +209,25 @@ Diaspora::Application.routes.draw do
   # Mobile site
 
   get 'mobile/toggle', :to => 'home#toggle_mobile', :as => 'toggle_mobile'
+
+  # Help
+  get 'help' => 'help#getting_help', :as => 'faq_getting_help'
+  
+  scope path: "/help/faq", :controller => :help, :as => 'faq' do
+    get :account_and_data_management
+    get :aspects
+    get :mentions
+    get :miscellaneous
+    get :pods
+    get :posts_and_posting
+    get :private_posts
+    get :private_profiles
+    get :public_posts
+    get :public_profiles
+    get :resharing_posts
+    get :sharing
+    get :tags
+  end
 
   #Protocol Url
   get 'protocol' => redirect("http://wiki.diasporafoundation.org/Federation_Protocol_Overview")

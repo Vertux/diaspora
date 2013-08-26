@@ -44,6 +44,9 @@
 * Fix mobile view of deleted reshares [#4397](https://github.com/diaspora/diaspora/issues/4397)
 * Fix the overlapping of embedded youtube videos [#2943](https://github.com/diaspora/diaspora/issues/2943)
 * Fix opacity of control icons [#4414](https://github.com/diaspora/diaspora/issues/4414/)
+* Add hover state to header icons [#4436](https://github.com/diaspora/diaspora/pull/4436)
+* Fix check icon regression on contacts page [#4440](https://github.com/diaspora/diaspora/pull/4440)
+* Do not leak non public photos
 
 ## Features
 * Admin: add option to find users under 13 (COPPA) [#4252](https://github.com/diaspora/diaspora/pull/4252)
@@ -61,6 +64,58 @@
 * Remove posts, comments and private conversations from the mobile site. [#4408](https://github.com/diaspora/diaspora/pull/4408) [#4409](https://github.com/diaspora/diaspora/pull/4409)
 * Added a link to user photos and thumbnails are shown in the left side bar [#4347](https://github.com/diaspora/diaspora/issues/4347)
 * Rework the single post view
+* Add aspect modification on contacts page, close [#4397](https://github.com/diaspora/diaspora/issues/4397)
+* Add help page [#4405](https://github.com/diaspora/diaspora/issues/4405)
+
+## Gem updates
+
+* Added entypo-rails, mini_portile, multi_test, omniauth-wordpress, opengraph_parser, strong_parameters, test_after_commit
+* addressable 2.3.4 -> 2.3.5
+* asset_sync 0.5.4 -> 1.0.0
+* bcrypt-ruby 3.0.1 -> 3.1.1
+* capybara 1.1.3 -> 2.1.0
+* carrierwave 0.8.0 -> 0.9.0
+* coffee-script-source 1.6.2 -> 1.6.3
+* cucumber 1.3.2 -> 1.3.5
+* database_cleaner 1.0.1 -> 1.1.0
+* devise 2.1.3 -> 3.0.2
+* excon 0.23.0 -> 0.25.3
+* faraday 0.8.7 -> 0.8.8
+* fixture_builder 0.3.5 -> 0.3.6
+* fog 1.12.1 -> 1.14.0
+* font-awesome-rails 3.1.1.3 -> 3.2.1.2
+* foreigner 1.4.1 -> 1.4.2
+* guard 1.8.0 -> 1.8.2
+* guard-rspec 3.0.1 -> 3.0.2
+* guard-spork 1.5.0 -> 1.5.1
+* i18n-inflector 2.6.6 -> 2.6.7
+* listen 1.2.0 -> 1.2.2
+* lumberjack 1.0.3 -> 1.0.4
+* method_source 0.8.1 -> 0.8.2
+* multi_json 1.7.6 -> 1.7.8
+* mysql2 0.3.11 -> 0.3.13
+* net-scp 1.1.1 -> 1.1.2
+* net-ssh 2.6.7 -> 2.6.8
+* nokogiri 1.5.9 -> 1.6.0
+* omniauth-twitter 0.0.16 -> 1.0.0
+* pg 0.15.1 -> 0.16.0
+* rails-i18n 0.7.3 -> 0.7.4
+* rake 10.0.4 -> 10.1.0
+* redcarpet 2.3.0 -> 3.0.0
+* remotipart 1.0.5 -> 1.2.1
+* safe_yaml 0.9.3 -> 0.9.5
+* sass 3.2.9 -> 3.2.10
+* selenium-webdriver 2.32.1 -> 2.34.0
+* sinon-rails 1.4.2.1 -> 1.7.3
+* slop 3.4.5 -> 3.4.6
+* temple 0.6.5 -> 0.6.6
+* twitter 4.7.0 -> 4.8.1
+* uglifier 2.1.1 -> 2.1.2
+* unicorn 4.6.2 -> 4.6.3
+* warden 1.2.1 -> 1.2.3
+* webmock 1.11.0 -> 1.13.0
+* xpath 0.1.4 -> 2.0.0
+
 
 # 0.1.1.0
 
