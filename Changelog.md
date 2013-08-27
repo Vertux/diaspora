@@ -1,5 +1,17 @@
 # Head
 
+## Refactor
+Move non-model federation stuff into lib/ [#4363](https://github.com/diaspora/diaspora/pull/4363)
+
+## Bug fixes
+Highlight down arrow at the user menu on hover [#4441](https://github.com/diaspora/diaspora/pull/4441)
+Make invite code input width consistent across borwsers [#4448](https://github.com/diaspora/diaspora/pull/4448)
+
+## Features
+Add oEmbed content to the mobile view [#4343](https://github.com/diaspora/diaspora/pull/4353)
+
+# 0.2.0.0
+
 **Attention:** This release includes a potentially long running migration! However it should be safe to run this while keeping your application servers on.
 
 ## Refactor
@@ -47,6 +59,7 @@
 * Add hover state to header icons [#4436](https://github.com/diaspora/diaspora/pull/4436)
 * Fix check icon regression on contacts page [#4440](https://github.com/diaspora/diaspora/pull/4440)
 * Do not leak non public photos
+* Fix check icon alignment in aspect dropdown [#4443](https://github.com/diaspora/diaspora/pull/4443)
 
 ## Features
 * Admin: add option to find users under 13 (COPPA) [#4252](https://github.com/diaspora/diaspora/pull/4252)
