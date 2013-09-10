@@ -1,10 +1,9 @@
 @import 'bootstrap';
 @import 'bootstrap-responsive';
+@import "colors";
 @import "_mixins.css.scss";
 @import 'vendor/autoSuggest';
 @import '_flash_messages.scss';
-
-$blue: #3f8fba;
 
 a {
   color: #2489ce;
@@ -144,7 +143,7 @@ body {
   margin-bottom: 10px;
 
   border: 1px solid #bbb;
-  border-top: 1px solid #ddd;
+  border-top: 1px solid $border-grey;
   border-bottom: 1px solid #aaa;
 }
 
@@ -188,7 +187,7 @@ body {
   }
 
   h1 {
-    color: #999;
+    color: $text-grey;
     padding: 20px;
     text-shadow: 0 2px 0 #fff; } }
 
@@ -211,7 +210,7 @@ body {
 
 .comment {
   .time {
-    color: #777; } }
+    color: $text-dark-grey; } }
 
 .info {
   margin: {
@@ -304,7 +303,7 @@ body {
     font: {
       weight: normal;
       size: small; };
-    color: #999999; } }
+    color: $text-grey; } }
 
 .right {
   float: right; }
@@ -366,7 +365,7 @@ body {
   top: 1px;
   padding: 0 2px;
     padding-bottom: 1px;
-  background-color: #a40802;
+  background-color: $red;
   line-height: 12px;
   color: white;
   font-size: smaller;
@@ -393,7 +392,7 @@ footer {
   text-align: center;
   a,
   a:visited {
-    color: #999;
+    color: $text-grey;
     margin: 10px;
   }
   padding: {
@@ -409,13 +408,13 @@ footer {
   position: relative;
   padding: 10px;
   padding-top: 8px;
-  background: #eee;
+  background: $background-grey;
 
   margin: {
     top: 10px; };
 
   border: {
-    top: 1px solid #ddd;
+    top: 1px solid $border-grey;
   };
 
   min-height: 22px;
@@ -423,7 +422,7 @@ footer {
   > a,
   .show_comments {
     @include transition(color);
-    color: #999;
+    color: $text-grey;
     font-weight: bold;
   }
 
@@ -434,7 +433,7 @@ footer {
   }
 
   a.show_comments {
-    color: #999;
+    color: $text-grey;
 
     &.active:not(.bottom_collapse) {
       color: #444;
@@ -575,7 +574,7 @@ footer {
     background-color: #fff;
     padding: 5px;
     border: {
-      bottom: 1px solid #999;
+      bottom: 1px solid $border-dark-grey;
     }
     .counter {
       font-size: 14px;
@@ -616,12 +615,12 @@ select {
   z-index: 2;
 
   span {
-    color: #666;
+    color: $text-dark-grey;
     font-weight: bold;
     padding: 2px 7px;
     margin: 5px 6px;
     background: {
-      color: #eee;
+      color: $background-grey;
     }
   }
 }
@@ -655,7 +654,7 @@ select {
     span {
       padding: 2px 10px;
       font-weight: bold;
-      color: #999;
+      color: $text-grey;
       background: {
         color: #fff;
       }
@@ -698,13 +697,13 @@ select {
     height: 100%;
     margin-right: 5px;
     margin-top: 3px;
-display: inline-block;	
+display: inline-block;
 }
 
 #header-nav a {
     padding: 0 10px;
     width: 100%;
-    color: #939393;
+    color: $text-grey;
 }
 
 #header-nav > div {
@@ -800,7 +799,7 @@ textarea#message_text {
 
 form#new_conversation.new_conversation {
   background-color: #FFFFFF;
-  border-bottom: 1px solid #999999;
+  border-bottom: 1px solid $border-dark-grey;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
   margin: 5px 0 5px 15px;
@@ -1090,7 +1089,7 @@ select#aspect_ids_ {
   font-size: 14px;
   line-height: 18px;
   color: inherit;
-  background-color: #EEE;
+  background-color: $background-grey;
     -webkit-border-radius: 6px;
     -moz-border-radius: 6px;
   border-radius: 10px;
@@ -1117,7 +1116,7 @@ input#q.search {
       vertical-align: bottom;
     }
     &:hover {
-      color: #666;
+      color: $text-dark-grey;
       cursor: pointer;
 
       img {
@@ -1126,7 +1125,7 @@ input#q.search {
     }
     &:active {
       color: #444;
-      text-shadow: 0 1px 0 #fafafa;
+      text-shadow: 0 1px 0 $highlight-white;
 
       img  {
         @include opacity(1);
@@ -1156,7 +1155,7 @@ input#q.search {
   background: #fff;
 
   &.active {
-    border: 1px solid #999;
+    border: 1px solid $border-dark-grey;
   }
   position: relative;
   padding-right: 10px;
@@ -1258,8 +1257,8 @@ input#q.search {
     text-decoration: none;
     color: #000;
     margin: 5px 0px 5px 0px;
-    border-top: solid 1px #DDD;
-    border-bottom: solid 1px #DDD;
+    border-top: solid 1px $border-grey;
+    border-bottom: solid 1px $border-grey;
     padding: 5px 0px 2px 0px;
     overflow: hidden;
     img {

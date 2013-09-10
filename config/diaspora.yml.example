@@ -148,10 +148,6 @@ configuration: ## Section
     #stderr_log: '/usr/local/app/diaspora/log/unicorn-stderr.log'
     #stdout_log: '/usr/local/app/diaspora/log/unicorn-stdout.log'
     
-    ## The database type the server should use by default.
-    ## Valid choices are 'mysql' and 'postgres'
-    #database: 'mysql'
-    
     ## Number of Unicorn worker processes, increase this if
     ## you have many users
     #unicorn_worker: 2
@@ -237,9 +233,9 @@ configuration: ## Section
     #paypal_hosted_button_id: ""
     
     ## Bitcoin donations
-    ## You can provide the bitcoin address here to kindly ask
+    ## You can provide a bitcoin address here to kindly ask
     ## your users for donations to run their pod.
-    #bitcoin_wallet_id: ""
+    #bitcoin_address: ""
     
     ## Community Spotlight
     ## The community spotlight gives new users a starting point on who
