@@ -96,7 +96,10 @@ en:
     correlations:
       correlations_count: "Correlations with Sign In Count:"
     user_search:
-      you_currently: "you currently have %{user_invitation} invites left %{link}"
+      you_currently:
+        zero: "you currently have no invites left %{link}"
+        one: "you currently have one invite left %{link}"
+        other: "you currently have %{count} invites left %{link}"
       add_invites: "add invites"
       email_to: "Email to Invite"
       under_13: "Show users that are under 13 (COPPA)"
@@ -240,7 +243,7 @@ en:
         tag_bug: "bug"
         feature_suggestion: "... have a %{link} suggestion?"
         tag_feature: "feature"
-        tutorials_and_wiki: "%{tutorial} & %{wiki}: Help for your first steps."
+        tutorials_and_wiki: "%{faq}, %{tutorial} & %{wiki}: Help for your first steps."
         tutorial_link_text: "Tutorials"
         email_feedback: "%{link} your feedback, if you prefer"
         email_link: "Email"
@@ -793,7 +796,6 @@ en:
       edit_membership: "edit aspect membership"
     add_contact_small:
       add_contact_from_tag: "add contact from tag"
-    last_post: "Last Post"
     add_contact:
       invited_by: "you were invited by"
 
@@ -894,6 +896,7 @@ en:
       password: "PASSWORD"
       password_confirmation: "PASSWORD CONFIRMATION"
       continue: "Continue"
+      submitting: "Submitting..."
     create:
       success: "You've joined Diaspora!"
     edit:
@@ -946,6 +949,7 @@ en:
       connect_to_twitter: "Connect to Twitter"
       connect_to_facebook: "Connect to Facebook"
       connect_to_tumblr: "Connect to Tumblr"
+      connect_to_wordpress: "Connect to Wordpress"
       edit_services: "Edit services"
       no_services: 'You have not connected any services yet.'
       services_explanation: 'Connecting to services gives you the ability to publish your posts to them as you write them in Diaspora.'
