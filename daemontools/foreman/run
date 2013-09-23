@@ -5,4 +5,4 @@ source ./common.sh
 
 [ -f "${run_directory}/diaspora.sock" ] && rm "${run_directory}/diaspora.sock"
 
-exec setuidgid "${diaspora_user}" bundle exec foreman start -m "web=1,sidekiq=${workers}" -p "${port}"
+exec setuidgid "${diaspora_user}" /bin/bash -lc "bundle exec foreman start -m 'web=1,sidekiq=${workers}' -p '${port}'"

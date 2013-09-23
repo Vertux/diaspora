@@ -4,7 +4,7 @@ exec 2>&1
 
 diaspora_user="$(stat -c "%U" $(readlink -e './common.sh'))"
 export HOME="$(getent passwd "${diaspora_user}" | cut -d: -f6)"
-rvm_path="${HOME}/.rvm"
+source "$HOME/.bashrc"
 
 cd ..
 echo "Switched to app root: $(pwd)"
@@ -14,14 +14,9 @@ mkdir -p "${run_directory}"
 chown "${diaspora_user}" "${run_directory}"
 echo "Created ${run_directory}"
 
-if [ -e "${rvm_path}" ]; then
-  source "${rvm_path}/scripts/rvm"
-  rvm rvmrc load
-fi
+export RAILS_ENV="$(ruby ./script/get_config.rb server.rails_environment)"
 
-export RAILS_ENV="$(bundle exec ruby ./script/get_config.rb server.rails_environment)"
-
-eval $(bundle exec ruby ./script/get_config.rb \
+eval $(ruby ./script/get_config.rb \
   port=server.port \
   db=server.database \
   workers=server.sidekiq_workers \
