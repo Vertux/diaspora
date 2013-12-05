@@ -14,6 +14,7 @@
 * Refactor MessagesController#create, move stuff to User model [#4556](https://github.com/diaspora/diaspora/pull/4556)
 * Reorder the left bar side menu to put the stream first [#4569](https://github.com/diaspora/diaspora/pull/4569)
 * Improve notifications and conversations views design on mobile [#4593](https://github.com/diaspora/diaspora/pull/4593)
+* Slight redesign of mobile publisher [#4604](https://github.com/diaspora/diaspora/pull/4604)
 
 ## Bug fixes
 * Highlight down arrow at the user menu on hover [#4441](https://github.com/diaspora/diaspora/pull/4441)
@@ -37,6 +38,9 @@
 * Fix getting started page for mobile [#4536](https://github.com/diaspora/diaspora/pull/4536)
 * Refactor mobile header, fix [#4579](https://github.com/diaspora/diaspora/issues/4579)
 * Fix avatar display on mobile profile [#4591](https://github.com/diaspora/diaspora/pull/4591)
+* Add lightbox to unauthenticated header, fix [#4432](https://github.com/diaspora/diaspora/issues/4432)
+* Fix "more picture" indication (+n) on mobile by adding a link on the indication [#4592](https://github.com/diaspora/diaspora/pull/4592)
+* Display errors when photo upload fails [#4509](https://github.com/diaspora/diaspora/issues/4509)
 
 ## Features
 * Add oEmbed content to the mobile view [#4343](https://github.com/diaspora/diaspora/pull/4353)
@@ -44,9 +48,15 @@
 * Disable "mark all as read" link if all notifications are read [#4463](https://github.com/diaspora/diaspora/pull/4463)
 * Collapse aspect list and tag followings list when switching to other views [#4462](https://github.com/diaspora/diaspora/pull/4462)
 * Highlight current stream in left sidebar [#4445](https://github.com/diaspora/diaspora/pull/4445)
-* Added ignore user icon [#4417](https://github.com/diaspora/diaspora/pull/4417)
+* Added ignore user icon on user profile [#4417](https://github.com/diaspora/diaspora/pull/4417)
 * Improve the management of the contacts visibility settings in an aspect [#4567](https://github.com/diaspora/diaspora/pull/4567)
+* Add actions on aspects on the contact page [#4570](https://github.com/diaspora/diaspora/pull/4570)
+* Added a statistics route with general pod information, and if enabled in pod settings, total user, half year/monthly active users and local post counts [#4602](https://github.com/diaspora/diaspora/pull/4602)
 
+# 0.2.0.1
+
+* Bump rails to version 3.2.16, fixes several security issues, see http://weblog.rubyonrails.org/2013/12/3/Rails_3_2_16_and_4_0_2_have_been_released/
+* Bump recommended Ruby version to 1.9.3-p484, see https://www.ruby-lang.org/en/news/2013/11/22/heap-overflow-in-floating-point-parsing-cve-2013-4164/
 
 # 0.2.0.0
 
@@ -114,7 +124,7 @@
 * Add possibility to ask for Bitcoin donations [#4375](https://github.com/diaspora/diaspora/pull/4375)
 * Remove posts, comments and private conversations from the mobile site. [#4408](https://github.com/diaspora/diaspora/pull/4408) [#4409](https://github.com/diaspora/diaspora/pull/4409)
 * Added a link to user photos and thumbnails are shown in the left side bar [#4347](https://github.com/diaspora/diaspora/issues/4347)
-* Rework the single post view
+* Rework the single post view [#4410](https://github.com/diaspora/diaspora/pull/4410)
 * Add aspect modification on contacts page, close [#4397](https://github.com/diaspora/diaspora/issues/4397)
 * Add help page [#4405](https://github.com/diaspora/diaspora/issues/4405)
 
