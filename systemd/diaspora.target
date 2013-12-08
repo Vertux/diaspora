@@ -1,0 +1,9 @@
+[Unit]
+Description=Diaspora social network
+# For MySQL/MariaDB use mysqld.service
+Wants=redis.service postgresql.service
+After=redis.service postgresql.service
+StopWhenUnneeded=true
+
+[Install]
+WantedBy=multi-user.target
