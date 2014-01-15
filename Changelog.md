@@ -1,6 +1,23 @@
 # Head
 
+## Pod statistics
+A new feature [has been added](https://github.com/diaspora/diaspora/pull/4602) to allow pods to report extra statistics. Automatically after this code change, the route /statistics.json contains some basic data that was also available before via page headers (pod name, version, status of signups). But also, optionally podmins can enable user and post counts in the diaspora.yml configuration file. The counts are by default switched off, so if you want to report the total user, active user and local post counts, please edit your diaspora.yml configuration with the example values in diaspora.yml.example and uncomment the required lines as indicated.
+
+## Ruby 2.0
+
+We now recommend using Ruby 2.0 with Diaspora. If you're using RVM make sure to run:
+```bash
+rvm get stable
+rvm install 2.0.0
+cd ~/diaspora
+git pull
+cd - && cd ..
+```
+
+For more details see https://wiki.diasporafoundation.org/Updating
+
 ## Refactor
+* Remove old SPV code [#4612](https://github.com/diaspora/diaspora/pull/4612)
 * Move non-model federation stuff into lib/ [#4363](https://github.com/diaspora/diaspora/pull/4363)
 * Build a color palette to uniform color usage [#4437](https://github.com/diaspora/diaspora/pull/4437) [#4469](https://github.com/diaspora/diaspora/pull/4469) [#4479](https://github.com/diaspora/diaspora/pull/4479)
 * Rename bitcoin_wallet_id setting to bitcoin_address [#4485](https://github.com/diaspora/diaspora/pull/4485)
@@ -15,6 +32,8 @@
 * Reorder the left bar side menu to put the stream first [#4569](https://github.com/diaspora/diaspora/pull/4569)
 * Improve notifications and conversations views design on mobile [#4593](https://github.com/diaspora/diaspora/pull/4593)
 * Slight redesign of mobile publisher [#4604](https://github.com/diaspora/diaspora/pull/4604)
+* Port conversations to Bootstrap [#4622](https://github.com/diaspora/diaspora/pull/4622)
+* Remove participants popover and improve conversations menu [#4644](https://github.com/diaspora/diaspora/pull/4644)
 
 ## Bug fixes
 * Highlight down arrow at the user menu on hover [#4441](https://github.com/diaspora/diaspora/pull/4441)
@@ -41,6 +60,12 @@
 * Add lightbox to unauthenticated header, fix [#4432](https://github.com/diaspora/diaspora/issues/4432)
 * Fix "more picture" indication (+n) on mobile by adding a link on the indication [#4592](https://github.com/diaspora/diaspora/pull/4592)
 * Display errors when photo upload fails [#4509](https://github.com/diaspora/diaspora/issues/4509)
+* Fix posting to Twitter by correctly catching exception [#4627](https://github.com/diaspora/diaspora/issues/4627)
+* Change "Show n more comments"-link, fix [#3119](https://github.com/diaspora/diaspora/issues/3119)
+* Specify Firefox version for Travis-CI [#4623](https://github.com/diaspora/diaspora/pull/4623)
+* Remove location when publisher is cleared by user
+* On signup form errors, don't empty previous values by user, fix [#4663](https://github.com/diaspora/diaspora/issues/4663)
+* Remove background from badges in header [#4692](https://github.com/diaspora/diaspora/issues/4692)
 
 ## Features
 * Add oEmbed content to the mobile view [#4343](https://github.com/diaspora/diaspora/pull/4353)
@@ -52,6 +77,11 @@
 * Improve the management of the contacts visibility settings in an aspect [#4567](https://github.com/diaspora/diaspora/pull/4567)
 * Add actions on aspects on the contact page [#4570](https://github.com/diaspora/diaspora/pull/4570)
 * Added a statistics route with general pod information, and if enabled in pod settings, total user, half year/monthly active users and local post counts [#4602](https://github.com/diaspora/diaspora/pull/4602)
+* Add indication about markdown formatting in the publisher [#4589](https://github.com/diaspora/diaspora/pull/4589)
+* Add captcha to signup form [#4659](https://github.com/diaspora/diaspora/pull/4659)
+
+## Gem updates
+* selenium-webdriver 2.34.0 -> 2.39.0
 
 # 0.2.0.1
 
