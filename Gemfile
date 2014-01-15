@@ -4,7 +4,7 @@ gem 'rails', '3.2.16'
 
 # Appserver
 
-gem 'puma', '2.6.0', :require => false
+gem 'puma', '2.7.1', :require => false
 
 # API and JSON
 
