@@ -101,6 +101,7 @@ gem 'gon',                     '4.1.1'
 gem 'haml',                    '4.0.5'
 gem 'mobile-fu',               '1.2.2'
 gem 'will_paginate',           '3.0.5'
+gem 'rails-timeago'
 
 # Workarounds
 # https://github.com/rubyzip/rubyzip#important-note
@@ -172,7 +173,6 @@ group :development do
   gem 'rmagick', '2.13.2', :require => false
 
   # Automatic test runs
-
   gem 'guard-cucumber', '1.4.1'
   gem 'guard-rspec',    '4.2.4'
   gem 'rb-fsevent',     '0.9.4', :require => false
