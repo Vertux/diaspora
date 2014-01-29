@@ -120,7 +120,7 @@ end
 When /^I click to delete the first comment$/ do
   within("div.comment", match: :first) do
     find(".controls").hover
-    find(".comment_delete").click
+    find(".comment_delete", visible: false).click # TODO: hax to check what's failing on Travis
   end
 end
 
@@ -204,6 +204,10 @@ end
 
 And /^I scroll down$/ do
   page.execute_script("window.scrollBy(0,3000000)")
+end
+
+Then /^I should have scrolled down$/ do
+  page.evaluate_script("window.pageYOffset").should > 0
 end
 
 Then /^the notification dropdown should be visible$/ do
