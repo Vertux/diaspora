@@ -26,6 +26,18 @@ $(document).ready(function(){
          .toggleClass('inactive');
   };
 
+  /* Drawer menu */
+  $('#menu_badge').bind("tap click", function(evt){
+    evt.preventDefault();
+    $("#app").toggleClass('draw');
+  });
+  
+  /* Show / hide aspects in the drawer */
+  $('#all_aspects').bind("tap click", function(evt){
+    evt.preventDefault();
+    $("#all_aspects + li").toggleClass('hide');
+  });  
+
   /* Heart toggle */
   $(".like_action", ".stream").bind("tap click", function(evt){
     evt.preventDefault();
@@ -126,10 +138,12 @@ $(document).ready(function(){
             link.addClass('active');
             existingCommentsContainer.show();
             scrollToOffset(parent, commentsContainer());
+            commentsContainer().find('time.timeago').timeago();
           }
         });
       } else {
         existingCommentsContainer.show();
+        existingCommentsContainer.find('time.timeago').timeago();
       }
 
       link.addClass('active');
@@ -141,10 +155,10 @@ $(document).ready(function(){
           parent.append(data);
           link.addClass('active');
           scrollToOffset(parent, commentsContainer());
+          commentsContainer().find('time.timeago').timeago();
         }
       });
     }
-
   });
 
   var scrollToOffset = function(parent, commentsContainer){
@@ -232,6 +246,7 @@ $(document).ready(function(){
       reactionLink.text(reactionLink.text().replace(/(\d+)/, function(match){ return parseInt(match) + 1; }));
       commentCount.text(commentCount.text().replace(/(\d+)/, function(match){ return parseInt(match) + 1; }));
       commentActionLink.addClass("inactive");
+      bottomBar.find('time.timeago').timeago();
     }, 'html');
   });
 
@@ -267,7 +282,7 @@ $(document).ready(function(){
       );
     }
   });
-  
+
   $("#submit_new_message").bind("tap click", function(evt){
     evt.preventDefault();
     $("#new_status_message").submit();

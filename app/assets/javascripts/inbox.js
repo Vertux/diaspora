@@ -24,6 +24,16 @@ $(document).ready(function(){
     jqe.attr('title', '');
   });
 
+  $('.stream_element.conversation').hover(
+    function(){
+      $(this).find('.participants').slideDown('300');
+    },
+    
+    function(){
+      $(this).find('.participants').slideUp('300');
+    }
+  );
+
   $('.conversation-wrapper').live('click', function(){
     var conversation_path = $(this).data('conversation-path');
 
@@ -34,7 +44,7 @@ $(document).ready(function(){
     history.pushState(null, "", conversation_path);
 
     var conv = $(this).children('.stream_element'),
-        cBadge = $("#message_inbox_badge .badge_count");
+        cBadge = $("#conversations_badge .badge_count");
     if(conv.hasClass('unread') ){
       conv.removeClass('unread');
     }

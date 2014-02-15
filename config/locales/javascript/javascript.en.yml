@@ -31,6 +31,7 @@ en:
       months: "%d months"
       year: "about a year"
       years: "%d years"
+      wordSeparator: " "
 
     my_activity: "My Activity"
     my_stream: "Stream"
@@ -111,6 +112,7 @@ en:
       hide_nsfw_posts: "Hide #nsfw posts"
       follow: "Follow"
       unfollow: "Unfollow"
+      via: "via <%= provider %>"
 
       likes:
         zero: "<%= count %> Likes"
@@ -148,7 +150,7 @@ en:
       log_out: "Log out"
 
       notifications: "Notifications"
-      messages: "Messages"
+      conversations: "Conversations"
 
       search: "Search"
 
