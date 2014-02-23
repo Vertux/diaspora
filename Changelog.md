@@ -15,11 +15,13 @@
 ## Bug fixes
 * Improve time agos by updating the plugin [#4280](https://github.com/diaspora/diaspora/issues/4280)
 * Do not add a space after adding a mention [#4767](https://github.com/diaspora/diaspora/issues/4767)
+* Fix active user statistics by saving a last seen timestamp for users [#4734](https://github.com/diaspora/diaspora/issues/4734)
 
 ## Features
 * You can report a single post by clicking the correct icon in the controler section [#4517](https://github.com/diaspora/diaspora/pull/4517)
 * Add permalinks for comments [#4577](https://github.com/diaspora/diaspora/pull/4577)
 * New menu for the mobile version [#4673](https://github.com/diaspora/diaspora/pull/4673)
+* Added comment count to statistic to enable calculations of posts/comments ratios [#4799](https://github.com/diaspora/diaspora/pull/4799)
 
 # 0.3.0.3
 
@@ -74,6 +76,7 @@ For more details see https://wiki.diasporafoundation.org/Updating
 * Slight redesign of mobile publisher [#4604](https://github.com/diaspora/diaspora/pull/4604)
 * Port conversations to Bootstrap [#4622](https://github.com/diaspora/diaspora/pull/4622)
 * Remove participants popover and improve conversations menu [#4644](https://github.com/diaspora/diaspora/pull/4644)
+* Refactor right side bar [#4793](https://github.com/diaspora/diaspora/pull/4793)
 
 ## Bug fixes
 * Highlight down arrow at the user menu on hover [#4441](https://github.com/diaspora/diaspora/pull/4441)
@@ -120,6 +123,7 @@ For more details see https://wiki.diasporafoundation.org/Updating
 * Add indication about markdown formatting in the publisher [#4589](https://github.com/diaspora/diaspora/pull/4589)
 * Add captcha to signup form [#4659](https://github.com/diaspora/diaspora/pull/4659)
 * Update Underscore.js 1.3.1 to 1.5.2, update Backbone.js 0.9.2 to 1.1.0 [#4662](https://github.com/diaspora/diaspora/pull/4662)
+* Display more than 8 pictures on a post [#4796](https://github.com/diaspora/diaspora/pull/4796)
 
 ## Gem updates
 Added:
