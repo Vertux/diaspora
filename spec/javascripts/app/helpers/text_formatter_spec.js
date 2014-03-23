@@ -240,10 +240,22 @@ describe("app.helpers.textFormatter", function(){
       })
 
       it("doesn't create tag if the text is a link", function(){
-        var link = $('<a/>', { href: 'http://me.co' }).html('#me')[0].outerHTML;
-        var result = this.formatter.hashtagify(link);
+        var tags = ['diaspora', 'twitter', 'hrabrahabr'];
 
-        expect(result).toEqual(link);
+        var text = $('<a/>', { href: 'http://me.co' }).html('#me')[0].outerHTML;
+        _.each(tags, function(tagName){
+          text += ' #'+tagName+',';
+        });
+        text += 'I love';
+
+        var formattedText = this.formatter.hashtagify(text);
+        var wrapper = $('<div>').html(formattedText);
+
+        expect(wrapper.find("a[href='http://me.co']").text()).toContain('#me');
+        _.each(tags, function(tagName){
+          expect(wrapper.find("a[href='/tags/"+tagName+"']").text()).toContain('#'+tagName);
+        });
+
       })
     })
   })

@@ -108,16 +108,15 @@ $(function() {
   };
 
   textFormatter.hashtagify = function hashtagify(text){
-    var utf8WordCharcters =/(\s|^|>)#([\u0080-\uFFFF|\w|-]+|&lt;3)/g;
-    var linkRegex = /<a[^>]*>(.*?)<\/a>/g;
+    var utf8WordCharcters =/(<a[^>]*>.*?<\/a>)|(\s|^|>)#([\u0080-\uFFFF|\w|-]+|&lt;3)/g;
 
-    if(text.match(linkRegex))
-      return text;
-    else 
-      return text.replace(utf8WordCharcters, function(hashtag, preceeder, tagText) {
+    return text.replace(utf8WordCharcters, function(result, linkTag, preceeder, tagText) {
+      if(linkTag)
+        return linkTag;
+      else
         return preceeder + "<a href='/tags/" + tagText.toLowerCase() +
-                           "' class='tag'>#" + tagText + "</a>"
-      });
+                           "' class='tag'>#" + tagText + "</a>";
+    });
   };
 
   textFormatter.mentionify = function mentionify(text, mentions) {

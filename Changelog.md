@@ -14,6 +14,7 @@
 * Update to jQuery 10
 * Port publisher and bookmarklet to Bootstrap [#4678](https://github.com/diaspora/diaspora/pull/4678)
 * Improve search page, add better indications [#4794](https://github.com/diaspora/diaspora/pull/4794)
+* Port notifications and hovercards to Bootstrap [#4814](https://github.com/diaspora/diaspora/pull/4814)
 
 ## Bug fixes
 * Improve time agos by updating the plugin [#4280](https://github.com/diaspora/diaspora/issues/4280)
@@ -24,14 +25,16 @@
 * Fixed Atom Feed Error if reshared Post is deleted [#4638] (https://github.com/diaspora/diaspora/issues/4638)
 * Show hovercards in the notification drop-down for users on the same pod [#4843](https://github.com/diaspora/diaspora/pull/4843)
 * The photo stream no longer repeats after the last photo [#4726](https://github.com/diaspora/diaspora/issues/4726)
-* Stop parsing hashtags inside markdown links [#3692](https://github.com/diaspora/diaspora/issues/3692)
 * Fix hovercards in the notificaitons dropdown [#4693](https://github.com/diaspora/diaspora/issues/4693)
+* Do not parse hashtags inside Markdown links [#3692](https://github.com/diaspora/diaspora/issues/3692)
 
 ## Features
 * You can report a single post by clicking the correct icon in the controler section [#4517](https://github.com/diaspora/diaspora/pull/4517)
 * Add permalinks for comments [#4577](https://github.com/diaspora/diaspora/pull/4577)
 * New menu for the mobile version [#4673](https://github.com/diaspora/diaspora/pull/4673)
 * Added comment count to statistic to enable calculations of posts/comments ratios [#4799](https://github.com/diaspora/diaspora/pull/4799)
+* Add filters to notifications controller [#4814](https://github.com/diaspora/diaspora/pull/4814)
+* Activate hovercards in SPV and conversations [#4870](https://github.com/diaspora/diaspora/pull/4870)
 
 # 0.3.0.3
 
