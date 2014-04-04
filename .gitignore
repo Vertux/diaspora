@@ -73,3 +73,6 @@ public/assets
 #Daemontools stuff
 daemontools/*/log/
 daemontools/*/supervise
+
+#IDE
+diaspora.iml
