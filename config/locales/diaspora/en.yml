@@ -99,7 +99,7 @@ en:
       user_search: "User Search"
       weekly_user_stats: "Weekly User Stats"
       pod_stats: "Pod Stats"
-      post_report: "Reported Posts"
+      report: "Reports"
       correlations: "Correlations"
       sidekiq_monitor: "Sidekiq monitor"
     correlations:
@@ -736,9 +736,26 @@ en:
     confirm_email:
         subject: "Please activate your new email address %{unconfirmed_email}"
         click_link: "To activate your new email address %{unconfirmed_email}, please follow this link:"
-    post_report_email:
-        subject: "A new post was marked as offensive"
-        body: "Please review as soon as possible!"
+    report_email:
+        type:
+          post: "post"
+          comment: "comment"
+        subject: "A new %{type} was marked as offensive"
+        body: |-
+          Hello,
+
+          the %{type} with ID %{id} was marked as offensive.
+
+          [%{url}][1]
+
+          Please review as soon as possible!
+
+
+          Cheers,
+
+          The diaspora* email robot!
+
+          [1]: %{url}
     accept_invite: "Accept Your diaspora* invite!"
     invited_you: "%{name} invited you to diaspora*"
     invite:
@@ -868,13 +885,16 @@ en:
         other: "%{count} photos by %{author}"
       reshare_by: "Reshare by %{author}"
 
-  post_report:
-    title: "Marked Reports Overview"
+  report:
+    title: "Reports Overview"
     post_label: "<b>Post</b>: %{title}"
+    comment_label: "<b>Comment</b>:<br>%{data}"
     reported_label: "<b>Reported by</b> %{person}"
     reason_label: "Reason: %{text}"
     review_link: "Mark as reviewed"
-    delete_link: "Delete post"
+    delete_link: "Delete item"
+    confirm_deletion: "Are you sure to delete the item?"
+    not_found: "<u>The post/comment was not found. It seams that it was deleted by the user!</u>"
     status:
       marked: "The report was marked as reviewed"
       destroyed: "The post was destroyed"
@@ -902,7 +922,7 @@ en:
       your_bio: "Your bio"
       your_location: "Your location"
       your_photo: "Your photo"
-      update_profile: "Update Profile"
+      update_profile: "Update profile"
       allow_search: "Allow for people to search for you within diaspora*"
       edit_profile: "Edit profile"
       nsfw_explanation: "NSFW (‘not safe for work’) is diaspora*’s self-governing community standard for content which may not be suitable to view while at work. If you plan to share such material frequently, please check this option so that everything you share will be hidden from people’s streams unless they choose to view them."
@@ -1189,9 +1209,9 @@ en:
       title: "My Activity"
   users:
     edit:
-      export_data: "Export Data"
+      export_data: "Export data"
       photo_export_unavailable: "Photo exporting currently unavailable"
-      close_account_text: "Close Account"
+      close_account_text: "Close account"
       change_language: "Change language"
       change_password: "Change password"
       change_email: "Change email"
@@ -1204,23 +1224,24 @@ en:
       your_handle: "Your diaspora* ID"
       your_email: "Your email"
       edit_account: "Edit account"
-      receive_email_notifications: "Receive email notifications when..."
-      also_commented: "...someone also comments on your contact's post?"
-      comment_on_post: "...someone comments on your post?"
-      mentioned: "...you are mentioned in a post?"
-      started_sharing: "...someone starts sharing with you?"
-      private_message: "...you receive a private message?"
-      liked: "...someone likes your post?"
-      reshared: "...someone reshares your post?"
+      receive_email_notifications: "Receive email notifications when:"
+      started_sharing: "someone starts sharing with you"
+      someone_reported: "someone sent a report"
+      mentioned: "you are mentioned in a post"
+      liked: "someone likes your post"
+      reshared: "someone reshares your post"
+      comment_on_post: "someone comments on your post"
+      also_commented: "someone comments on a post you've commented on"
+      private_message: "you receive a private message"
       change: "Change"
       email_awaiting_confirmation: "We have sent you an activation link to %{unconfirmed_email}. Until you follow this link and activate the new address, we will continue to use your original address %{email}."
-      stream_preferences: "Stream Preferences"
-      show_community_spotlight: "Show Community Spotlight in Stream?"
-      show_getting_started: 'Re-enable Getting Started'
-      getting_started: 'New User Prefrences'
-      following: "Following Settings"
-      auto_follow_back: "Automatically follow back if someone follows you"
-      auto_follow_aspect: "Aspect for automatically followed users:"
+      stream_preferences: "Stream preferences"
+      show_community_spotlight: "Show Community Spotlight in stream"
+      show_getting_started: 'Show Getting Started hints'
+      getting_started: 'New user preferences'
+      following: "Sharing settings"
+      auto_follow_back: "Automatically share with users who start sharing with you"
+      auto_follow_aspect: "Aspect for automatically added contacts:"
 
       close_account:
         dont_go: "Hey, please don't go!"

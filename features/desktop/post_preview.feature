@@ -16,20 +16,17 @@ Feature: preview posts in the stream
 
     Scenario: preview and post a text-only message
       Given I expand the publisher
-      When I fill in the following:
-          | status_message_fake_text    | I am eating yogurt    |
+      When I write the status message "I am eating yogurt"
       And I press "Preview"
       Then "I am eating yogurt" should be post 1
       And the first post should be a preview
 
-      When I fill in the following:
-          | status_message_fake_text    | This preview rocks    |
+      When I write the status message "This preview rocks"
       And I press "Preview"
       Then "This preview rocks" should be post 1
       And I should not see "I am eating a yogurt"
 
-      When I fill in the following:
-          | status_message_fake_text    | I like rocks    |
+      When I write the status message "I like rocks"
       And I press "Share"
       Then "I like rocks" should be post 1
       And I should not see "This preview rocks"
@@ -76,6 +73,7 @@ Feature: preview posts in the stream
       When I fill in the following:
           | status_message_fake_text    | I am eating yogurt    |
       And I press the element "#poll_creator"
+      And I press the element ".add-answer .button.creation"
       When I fill in the following:
           | status_message_fake_text    | I am eating yogurt |
           | poll_question               | What kind of yogurt do you like? |

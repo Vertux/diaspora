@@ -39,6 +39,12 @@ describe("app.views.Publisher", function() {
         this.view.open($.Event());
         expect($(this.view.el)).not.toHaveClass("closed");
       });
+
+      it("won't open when disabled", function() {
+        this.view.disabled = true;
+        this.view.open($.Event());
+        expect($(this.view.el)).toHaveClass("closed");
+      });
     });
 
     describe("#close", function() {
@@ -122,6 +128,36 @@ describe("app.views.Publisher", function() {
         this.view.createStatusMessage($.Event());
         expect(this.view.handleTextchange).toHaveBeenCalled();
       })
+    });
+
+    describe('#setText', function() {
+      it('sets the content text', function() {
+        this.view.setText('FOO bar');
+
+        expect(this.view.el_input.val()).toEqual('FOO bar');
+        expect(this.view.el_hiddenInput.val()).toEqual('FOO bar');
+      });
+    });
+
+    describe('#setEnabled', function() {
+      it('disables the publisher', function() {
+        expect(this.view.disabled).toBeFalsy();
+        this.view.setEnabled(false);
+
+        expect(this.view.disabled).toBeTruthy();
+        expect(this.view.el_input.prop('disabled')).toBeTruthy();
+        expect(this.view.el_hiddenInput.prop('disabled')).toBeTruthy();
+      });
+
+      it("disables submitting", function() {
+        this.view.setText('TESTING');
+        expect(this.view.el_submit.prop('disabled')).toBeFalsy();
+        expect(this.view.el_preview.prop('disabled')).toBeFalsy();
+
+        this.view.setEnabled(false);
+        expect(this.view.el_submit.prop('disabled')).toBeTruthy();
+        expect(this.view.el_preview.prop('disabled')).toBeTruthy();
+      });
     });
 
     describe("publishing a post with keyboard", function(){
@@ -275,40 +311,6 @@ describe("app.views.Publisher", function() {
       });
     });
 
-  });
-
-  context("poll", function(){
-    beforeEach(function() {
-      loginAs({name: "alice", avatar : {small : "http://avatar.com/photo.jpg"}});
-      spec.loadFixture("aspects_index");
-      $("#poll_creator_wrapper").hide(); //css not loaded? :-/
-      this.view = new app.views.Publisher();
-    });
-
-    describe('#showPollCreator', function(){
-      it("Shows the poll creator", function(){
-        expect($("#poll_creator_wrapper").is(":visible")).toBe(false);
-        this.view.showPollCreator();
-        expect($("#poll_creator_wrapper").is(":visible")).toBe(true);
-      })
-    });
-
-    describe("#addPollAnswer", function(){
-      it("should add a poll answer if clicked", function(){
-        expect($("#poll_creator_wrapper .poll_answer").length).toBe(2);
-        this.view.addPollAnswer();
-        expect($("#poll_creator_wrapper .poll_answer").length).toBe(3);
-      })
-    });
-
-    describe("#removePollAnswer", function(){
-      it("should remove a poll answer if clicked", function(){
-        var answer_count = $('.poll_answer').length;
-        var evt = {'currentTarget' : $("#poll_creator_wrapper .poll_answer:first .remove_poll_answer")};
-        this.view.removePollAnswer(evt);
-        expect($("#poll_creator_wrapper .poll_answer").length).toBe(answer_count-1);
-      })
-    });
   });
 
   context("locator", function() {

@@ -6,11 +6,15 @@
 en:
   javascripts:
     confirm_dialog: "Are you sure?"
-    post_report_prompt: "Please enter a reason:"
-    post_report_prompt_default: "offensive content"
     delete: "Delete"
     ignore: "Ignore"
-    post_report: "Report"
+    report:
+      prompt: "Please enter a reason:"
+      prompt_default: "offensive content"
+      name: "Report"
+      status:
+        created: "The report was successfully created"
+        exists: "The report already exists"
     ignore_user: "Ignore this user?"
     and: "and"
     comma: ","
@@ -46,6 +50,10 @@ en:
       limited: "Limited - your post will only be seen by people you are sharing with"
       public: "Public - your post will be visible to everyone and found by search engines"
       near_from: "Posted from: <%= location %>"
+    bookmarklet:
+      post_submit: "Submitting post..."
+      post_success: "Posted! Closing popup window..."
+      post_error: "An error occurred, try again later."
     infinite_scroll:
       no_more: "No more posts."
       no_more_contacts: "No more contacts."
@@ -101,6 +109,11 @@ en:
     notifications:
       mark_read: "Mark read"
       mark_unread: "Mark unread"
+
+    publisher:
+      option: "Option <%= nr %>"
+      add_option: "Add option"
+      question: "Question"
 
     stream:
       hide: "Hide"
