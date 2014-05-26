@@ -108,6 +108,7 @@ app.views.Publisher = Backbone.View.extend({
     this.view_poll_creator = new app.views.PublisherPollCreator({
       el: this.$('#publisher-poll-creator')
     });
+    this.view_poll_creator.on('change', this.checkSubmitAvailability, this);
     this.view_poll_creator.render();
 
   },
@@ -201,7 +202,7 @@ app.views.Publisher = Backbone.View.extend({
   },
 
   togglePollCreator: function(){
-    this.view_poll_creator.$el.toggleClass('active');
+    this.view_poll_creator.$el.toggle();
     this.el_input.focus();
   },
 
@@ -359,11 +360,6 @@ app.views.Publisher = Backbone.View.extend({
     return this;
   },
 
-  clearPollForm : function(){
-    this.$('#poll_question').val('');
-    this.$('.poll_answer_input').val('');
-  },
-
   tryClose : function(){
     // if it is not submittable, close it.
     if( !this._submittable() ){
@@ -421,9 +417,13 @@ app.views.Publisher = Backbone.View.extend({
   // determine submit availability
   _submittable: function() {
     var onlyWhitespaces = ($.trim(this.el_input.val()) === ''),
-        isPhotoAttached = (this.el_photozone.children().length > 0);
+        isPhotoAttached = (this.el_photozone.children().length > 0),
+        isValidPoll = this.view_poll_creator.isValidPoll();
 
-    return (!onlyWhitespaces || isPhotoAttached) && !this.disabled;
+    // show poll errors
+    this.view_poll_creator.validatePoll();
+
+    return (!onlyWhitespaces || isPhotoAttached) && isValidPoll && !this.disabled;
   },
 
   handleTextchange: function() {

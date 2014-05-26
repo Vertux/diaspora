@@ -1,5 +1,11 @@
 # Head
 
+## Ensure account deletions are run
+
+A regression caused accounts deletions to not properly perform in some cases, see [#4792](https://github.com/diaspora/diaspora/issues/4792).
+To ensure these are reexecuted properly, please run `RAILS_ENV=production bundle exec rake accounts:run_deletions`
+after you've upgraded.
+
 ## Change in guid generation
 
 This version will break federation to pods running on versions prior 0.1.1.0.
@@ -47,6 +53,9 @@ Read more in [#4249](https://github.com/diaspora/diaspora/pull/4249) and [#4883]
 * Do not replace earlier appearances of the name while mentioning somebody [#4868](https://github.com/diaspora/diaspora/issues/4868)
 * Catch exceptions when trying to decode an invalid URI [#4874](https://github.com/diaspora/diaspora/issues/4874)
 * Redirect to the stream when switching the mobile publisher to desktop [#4806](https://github.com/diaspora/diaspora/issues/4806)
+* Parsing mention witch contain in username special characters [#4919](https://github.com/diaspora/diaspora/pull/4919)
+* Do not show your own hovercard [#4724](https://github.com/diaspora/diaspora/issues/4724)
+* Hit Nominatim via https [#4967](https://github.com/diaspora/diaspora/issues/4967)
 
 ## Features
 * You can report a single post or comment by clicking the correct icon in the controler section [#4517](https://github.com/diaspora/diaspora/pull/4517) [#4781](https://github.com/diaspora/diaspora/pull/4781)
