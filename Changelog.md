@@ -6,6 +6,13 @@
 
 ## Features
 
+# 0.4.0.1
+
+## Bug fixes
+
+* Fix performance regression on stream loading with MySQL/MariaDB database backends [#5014](https://github.com/diaspora/diaspora/issues/5014)
+* Fix issue with post reporting [#5017](https://github.com/diaspora/diaspora/issues/5017)
+
 # 0.4.0.0
 
 ## Ensure account deletions are run
