@@ -1,10 +1,17 @@
 # Head
 
 ## Refactor
+* Port help pages to Bootstrap [#5050](https://github.com/diaspora/diaspora/pull/5050)
+* Refactor Notification#notify [#4945](https://github.com/diaspora/diaspora/pull/4945)
 
 ## Bug fixes
+* Fix hiding of poll publisher on close [#5029](https://github.com/diaspora/diaspora/issues/5029)
+* Fix padding in user menu [#5047](https://github.com/diaspora/diaspora/pull/5047)
+* Fix self-XSS when renaming an aspect [#5048](https://github.com/diaspora/diaspora/pull/5048)
+* Fix live updating when renaming an aspect [#5049](https://github.com/diaspora/diaspora/pull/5049)
 
 ## Features
+* Port admin pages to bootstrap, polish user search results, allow accounts to be closed from the backend [#5046](https://github.com/diaspora/diaspora/pull/5046)
 
 # 0.4.0.1
 
