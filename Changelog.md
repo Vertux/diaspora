@@ -3,15 +3,30 @@
 ## Refactor
 * Port help pages to Bootstrap [#5050](https://github.com/diaspora/diaspora/pull/5050)
 * Refactor Notification#notify [#4945](https://github.com/diaspora/diaspora/pull/4945)
+* Port getting started to Bootstrap [#5057](https://github.com/diaspora/diaspora/pull/5057)
+* Port people search page to Bootstrap [#5077](https://github.com/diaspora/diaspora/pull/5077)
+* Clarify explanations and defaults in diaspora.yml.example [#5088](https://github.com/diaspora/diaspora/pull/5088)
+* Consistent header spacing on Bootstrap pages [#5108](https://github.com/diaspora/diaspora/pull/5108)
 
 ## Bug fixes
 * Fix hiding of poll publisher on close [#5029](https://github.com/diaspora/diaspora/issues/5029)
 * Fix padding in user menu [#5047](https://github.com/diaspora/diaspora/pull/5047)
 * Fix self-XSS when renaming an aspect [#5048](https://github.com/diaspora/diaspora/pull/5048)
 * Fix live updating when renaming an aspect [#5049](https://github.com/diaspora/diaspora/pull/5049)
+* Use double quotes when embedding translations into Javascript [#5055](https://github.com/diaspora/diaspora/issues/5055)
+* Fix regression in mobile sign-in ([commit](https://github.com/diaspora/diaspora/commit/4a2836b108f8a9eb6f46ca58cfcb7b23f40bb076))
+* Fit pod name to page size on the sign in page [#5056](https://github.com/diaspora/diaspora/pull/5056)
+* Set mention notification as read when viewing post [#5006](https://github.com/diaspora/diaspora/pull/5006)
+* Set sharing notification as read when viewing profile [#5009](https://github.com/diaspora/diaspora/pull/5009)
+* Ensure a consistent border on text input elements [#5069](https://github.com/diaspora/diaspora/pull/5069)
 
 ## Features
 * Port admin pages to bootstrap, polish user search results, allow accounts to be closed from the backend [#5046](https://github.com/diaspora/diaspora/pull/5046)
+* Reference Salmon endpoint in Webfinger XRD to aid discovery by alternative implementations [#5062](https://github.com/diaspora/diaspora/pull/5062)
+* Change minimal birth year for the birthday field to 1910 [#5083](https://github.com/diaspora/diaspora/pull/5083)
+* Add scrolling thumbnail switcher in the lightbox [#5102](https://github.com/diaspora/diaspora/pull/5102)
+* Add help section about keyboard shortcuts [#5100](https://github.com/diaspora/diaspora/pull/5100)
+* Automatically add poll answers as needed [#5109](https://github.com/diaspora/diaspora/pull/5109)
 
 # 0.4.0.1
 

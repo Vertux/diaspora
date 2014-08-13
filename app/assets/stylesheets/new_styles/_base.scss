@@ -5,6 +5,7 @@ body {
 }
 
 body {
+  margin-top: 40px;
   padding : none;
 
   &.lock {
@@ -146,9 +147,21 @@ $bring-dark-accent-forward-color: #DDD;
   }
 }
 
-/* padder helper to push content below the header, to be removed when porting to bootstrap is complete */
-.bootstrap_header_padding {
-  padding-top: 40px;
+#back-to-top {
+  display: block;
+  color: white;
+  position: fixed;
+  z-index: 49;
+  right: 20px;
+  bottom: 20px;
+  opacity: 0;
+  font-size: 2.9em;
+  padding: 0 12px 0 12px;
+  border-radius: 10px;
+  background-color: #aaa;
+  &:hover { opacity: 0.85 !important; }
+  &.visible { opacity: 0.5; }
+  line-height: 1.5;
 }
 
 /* responsive */
