@@ -21,6 +21,9 @@
 
 @import 'new_styles/forms';
 
+/* profile and settings pages */
+@import 'new_styles/settings';
+
 /* new SPV */
 @import 'header';
 @import 'footer';
@@ -55,3 +58,6 @@
 
 /* stream */
 @import 'tag';
+
+/* contacts */
+@import 'contacts';
