@@ -46,6 +46,7 @@ en:
   no_results: "No Results Found"
   _contacts: "Contacts"
   welcome: "Welcome!"
+  _terms: "terms"
 
   #for reference translation, the real activerecord english transations are actually
   #in en-US, en-GB, and en-AU yml files
@@ -708,6 +709,7 @@ en:
     index:
       notifications: "Notifications"
       mark_all_as_read: "Mark all as read"
+      mark_all_shown_as_read: "Mark all shown as read"
       mark_read: "Mark read"
       mark_unread: "Mark unread"
       show_all: "show all"
@@ -976,6 +978,8 @@ en:
       password_confirmation: "PASSWORD CONFIRMATION"
       continue: "Continue"
       submitting: "Submitting..."
+      terms: "By creating an account you accept the %{terms_link}."
+      terms_link: "terms of service"
     create:
       success: "You've joined diaspora*!"
     edit:

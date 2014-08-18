@@ -79,9 +79,12 @@ Diaspora::Application.routes.draw do
     delete 'visibility' => 'conversation_visibilities#destroy'
   end
 
-  get 'notifications/read_all' => 'notifications#read_all'
   resources :notifications, :only => [:index, :update] do
+    collection do
+      get :read_all
+    end
   end
+  
 
   resources :tags, :only => [:index]
 
@@ -193,10 +196,6 @@ Diaspora::Application.routes.draw do
       match ':provider/callback' => :create
       match :failure
     end
-    scope 'services' do
-      match 'inviter/:provider' => :inviter, :as => 'service_inviter'
-      match 'finder/:provider'  => :finder,  :as => 'friend_finder'
-    end
   end
 
   scope 'api/v0', :controller => :apis do
@@ -226,6 +225,11 @@ Diaspora::Application.routes.draw do
 
   #Statistics
   get :statistics, controller: :statistics
+  
+  # Terms
+  if AppConfig.settings.terms.enable?
+    get 'terms' => 'terms#index'
+  end
 
   # Startpage
   root :to => 'streams#multi'

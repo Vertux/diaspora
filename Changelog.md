@@ -9,6 +9,7 @@
 * Consistent header spacing on Bootstrap pages [#5108](https://github.com/diaspora/diaspora/pull/5108)
 * Port settings pages (account, profile, privacy, services) to Bootstrap [#5039](https://github.com/diaspora/diaspora/pull/5039)
 * Port contacts and community spotlight pages to Bootstrap [#5118](https://github.com/diaspora/diaspora/pull/5118)
+* Redesign login page [#5112](https://github.com/diaspora/diaspora/pull/5112)
 
 ## Bug fixes
 * Fix hiding of poll publisher on close [#5029](https://github.com/diaspora/diaspora/issues/5029)
@@ -29,6 +30,11 @@
 * Add scrolling thumbnail switcher in the lightbox [#5102](https://github.com/diaspora/diaspora/pull/5102)
 * Add help section about keyboard shortcuts [#5100](https://github.com/diaspora/diaspora/pull/5100)
 * Automatically add poll answers as needed [#5109](https://github.com/diaspora/diaspora/pull/5109)
+* Add Terms of Service as an option for podmins, includes base template [#5104](https://github.com/diaspora/diaspora/pull/5104)
+* Add rake task to send a mail to all users [#5111](https://github.com/diaspora/diaspora/pull/5111)
+* Expose which services are configured in /statistics.json [#5121](https://github.com/diaspora/diaspora/pull/5121)
+* In filtered notification views, replace "Mark all as read" with "Mark shown as read" [#5122](https://github.com/diaspora/diaspora/pull/5122)
+* When ignoring a user remove his posts from the stream instantly [#5127](https://github.com/diaspora/diaspora/pull/5127)
 
 # 0.4.0.1
 
