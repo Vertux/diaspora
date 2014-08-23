@@ -1,0 +1,6 @@
+[Unit]
+Description=Diaspora social network
+StopWhenUnneeded=true
+
+[Install]
+WantedBy=multi-user.target
