@@ -1,5 +1,27 @@
 # Head
 
+## Rails 4 - Manual action required
+Please edit `config/initializers/secret_token.rb`, replacing `secret_token` with
+`secret_key_base`.
+
+```ruby
+# Old
+Rails.application.config.secret_token = '***********...'
+
+# New
+Diaspora::Application.config.secret_key_base = '*************...'
+```
+
+
+## Refactor
+
+## Bug fixes
+
+## Features
+* Don't pull jQuery from a CDN by default [#5105](https://github.com/diaspora/diaspora/pull/5105)
+
+# 0.4.1.0
+
 ## Refactor
 * Port help pages to Bootstrap [#5050](https://github.com/diaspora/diaspora/pull/5050)
 * Refactor Notification#notify [#4945](https://github.com/diaspora/diaspora/pull/4945)
@@ -10,6 +32,7 @@
 * Port settings pages (account, profile, privacy, services) to Bootstrap [#5039](https://github.com/diaspora/diaspora/pull/5039)
 * Port contacts and community spotlight pages to Bootstrap [#5118](https://github.com/diaspora/diaspora/pull/5118)
 * Redesign login page [#5112](https://github.com/diaspora/diaspora/pull/5112)
+* Change mark read link on notifications page [#5141](https://github.com/diaspora/diaspora/pull/5141)
 
 ## Bug fixes
 * Fix hiding of poll publisher on close [#5029](https://github.com/diaspora/diaspora/issues/5029)
