@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20140824230505) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "account_deletions", force: true do |t|
     t.string   "diaspora_handle"
     t.integer  "person_id"
@@ -72,7 +75,7 @@ ActiveRecord::Schema.define(version: 20140824230505) do
     t.string   "commentable_type",        limit: 60, default: "Post", null: false
   end
 
-  add_index "comments", ["author_id"], name: "index_comments_on_author_id", using: :btree
+  add_index "comments", ["author_id"], name: "index_comments_on_person_id", using: :btree
   add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type", using: :btree
   add_index "comments", ["guid"], name: "index_comments_on_guid", unique: true, using: :btree
 
@@ -95,10 +98,6 @@ ActiveRecord::Schema.define(version: 20140824230505) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "conversation_visibilities", ["conversation_id", "person_id"], name: "index_conversation_visibilities_usefully", unique: true, using: :btree
-  add_index "conversation_visibilities", ["conversation_id"], name: "index_conversation_visibilities_on_conversation_id", using: :btree
-  add_index "conversation_visibilities", ["person_id"], name: "index_conversation_visibilities_on_person_id", using: :btree
 
   create_table "conversations", force: true do |t|
     t.string   "subject"
@@ -150,15 +149,15 @@ ActiveRecord::Schema.define(version: 20140824230505) do
   add_index "likes", ["author_id"], name: "likes_author_id_fk", using: :btree
   add_index "likes", ["guid"], name: "index_likes_on_guid", unique: true, using: :btree
   add_index "likes", ["target_id", "author_id", "target_type"], name: "index_likes_on_target_id_and_author_id_and_target_type", unique: true, using: :btree
-  add_index "likes", ["target_id"], name: "index_likes_on_target_id", using: :btree
+  add_index "likes", ["target_id"], name: "index_likes_on_post_id", using: :btree
 
   create_table "locations", force: true do |t|
     t.string   "address"
     t.string   "lat"
     t.string   "lng"
     t.integer  "status_message_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
   create_table "mentions", force: true do |t|
@@ -214,7 +213,7 @@ ActiveRecord::Schema.define(version: 20140824230505) do
     t.text   "data",              null: false
   end
 
-  add_index "o_embed_caches", ["url"], name: "index_o_embed_caches_on_url", length: {"url"=>255}, using: :btree
+  add_index "o_embed_caches", ["url"], name: "index_o_embed_caches_on_url", using: :btree
 
   create_table "open_graph_caches", force: true do |t|
     t.string "title"
@@ -300,8 +299,8 @@ ActiveRecord::Schema.define(version: 20140824230505) do
     t.string   "guid"
     t.text     "author_signature"
     t.text     "parent_author_signature"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   add_index "poll_participations", ["poll_id"], name: "index_poll_participations_on_poll_id", using: :btree
@@ -311,8 +310,8 @@ ActiveRecord::Schema.define(version: 20140824230505) do
     t.integer  "status_message_id", null: false
     t.boolean  "status"
     t.string   "guid"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
   add_index "polls", ["status_message_id"], name: "index_polls_on_status_message_id", using: :btree
@@ -339,9 +338,9 @@ ActiveRecord::Schema.define(version: 20140824230505) do
     t.string   "provider_display_name"
     t.string   "actor_url"
     t.string   "objectId"
-    t.string   "root_guid"
     t.string   "status_message_guid"
     t.integer  "likes_count",                      default: 0
+    t.string   "root_guid"
     t.integer  "comments_count",                   default: 0
     t.integer  "o_embed_cache_id"
     t.integer  "reshares_count",                   default: 0
@@ -355,7 +354,7 @@ ActiveRecord::Schema.define(version: 20140824230505) do
   end
 
   add_index "posts", ["author_id", "root_guid"], name: "index_posts_on_author_id_and_root_guid", unique: true, using: :btree
-  add_index "posts", ["author_id"], name: "index_posts_on_author_id", using: :btree
+  add_index "posts", ["author_id"], name: "index_posts_on_person_id", using: :btree
   add_index "posts", ["guid"], name: "index_posts_on_guid", unique: true, using: :btree
   add_index "posts", ["id", "type", "created_at"], name: "index_posts_on_id_and_type_and_created_at", using: :btree
   add_index "posts", ["root_guid"], name: "index_posts_on_root_guid", using: :btree
@@ -392,7 +391,7 @@ ActiveRecord::Schema.define(version: 20140824230505) do
     t.string   "username"
     t.integer  "item"
     t.string   "table"
-    t.integer  "month",      limit: 2
+    t.integer  "month"
     t.integer  "year",       limit: 8
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -402,15 +401,15 @@ ActiveRecord::Schema.define(version: 20140824230505) do
 
   create_table "reports", force: true do |t|
     t.integer  "item_id",                    null: false
-    t.string   "item_type",                  null: false
     t.boolean  "reviewed",   default: false
     t.text     "text"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.string   "item_type",                  null: false
     t.integer  "user_id",                    null: false
   end
 
-  add_index "reports", ["item_id"], name: "index_reports_on_item_id", using: :btree
+  add_index "reports", ["item_id"], name: "index_post_reports_on_post_id", using: :btree
 
   create_table "roles", force: true do |t|
     t.integer  "person_id"
@@ -437,21 +436,21 @@ ActiveRecord::Schema.define(version: 20140824230505) do
     t.integer  "shareable_id",                               null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "hidden",                    default: false,  null: false
     t.integer  "contact_id",                                 null: false
+    t.boolean  "hidden",                    default: false,  null: false
     t.string   "shareable_type", limit: 60, default: "Post", null: false
   end
 
-  add_index "share_visibilities", ["contact_id"], name: "index_share_visibilities_on_contact_id", using: :btree
+  add_index "share_visibilities", ["contact_id"], name: "index_post_visibilities_on_contact_id", using: :btree
   add_index "share_visibilities", ["shareable_id", "shareable_type", "contact_id"], name: "shareable_and_contact_id", using: :btree
   add_index "share_visibilities", ["shareable_id", "shareable_type", "hidden", "contact_id"], name: "shareable_and_hidden_and_contact_id", using: :btree
-  add_index "share_visibilities", ["shareable_id"], name: "index_share_visibilities_on_post_id", using: :btree
+  add_index "share_visibilities", ["shareable_id"], name: "index_post_visibilities_on_post_id", using: :btree
 
   create_table "simple_captcha_data", force: true do |t|
     t.string   "key",        limit: 40
     t.string   "value",      limit: 6
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
   end
 
   add_index "simple_captcha_data", ["key"], name: "idx_key", using: :btree
@@ -503,7 +502,7 @@ ActiveRecord::Schema.define(version: 20140824230505) do
     t.boolean  "disable_mail",                                   default: false, null: false
     t.string   "language"
     t.string   "email",                                          default: "",    null: false
-    t.string   "encrypted_password",                             default: "",    null: false
+    t.string   "encrypted_password",                 limit: 128, default: "",    null: false
     t.string   "invitation_token",                   limit: 60
     t.datetime "invitation_sent_at"
     t.string   "reset_password_token"
@@ -521,9 +520,9 @@ ActiveRecord::Schema.define(version: 20140824230505) do
     t.integer  "invited_by_id"
     t.string   "invited_by_type"
     t.string   "authentication_token",               limit: 30
+    t.datetime "locked_at"
     t.string   "unconfirmed_email"
     t.string   "confirm_email_token",                limit: 30
-    t.datetime "locked_at"
     t.boolean  "show_community_spotlight_in_stream",             default: true,  null: false
     t.boolean  "auto_follow_back",                               default: false
     t.integer  "auto_follow_back_aspect_id"
@@ -538,36 +537,36 @@ ActiveRecord::Schema.define(version: 20140824230505) do
   add_index "users", ["invitation_token"], name: "index_users_on_invitation_token", using: :btree
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
-  add_foreign_key "aspect_memberships", "aspects", name: "aspect_memberships_aspect_id_fk", dependent: :delete
-  add_foreign_key "aspect_memberships", "contacts", name: "aspect_memberships_contact_id_fk", dependent: :delete
+  add_foreign_key "aspect_memberships", "aspects", name: "aspect_memberships_aspect_id_fkey"
+  add_foreign_key "aspect_memberships", "contacts", name: "aspect_memberships_contact_id_fkey"
 
-  add_foreign_key "aspect_visibilities", "aspects", name: "aspect_visibilities_aspect_id_fk", dependent: :delete
+  add_foreign_key "aspect_visibilities", "aspects", name: "aspect_visibilities_aspect_id_fkey"
 
-  add_foreign_key "comments", "people", name: "comments_author_id_fk", column: "author_id", dependent: :delete
+  add_foreign_key "comments", "people", name: "comments_author_id_fkey", column: "author_id"
 
-  add_foreign_key "contacts", "people", name: "contacts_person_id_fk", dependent: :delete
+  add_foreign_key "contacts", "people", name: "contacts_person_id_fkey"
 
-  add_foreign_key "conversation_visibilities", "conversations", name: "conversation_visibilities_conversation_id_fk", dependent: :delete
-  add_foreign_key "conversation_visibilities", "people", name: "conversation_visibilities_person_id_fk", dependent: :delete
+  add_foreign_key "conversation_visibilities", "conversations", name: "conversation_visibilities_conversation_id_fkey"
+  add_foreign_key "conversation_visibilities", "people", name: "conversation_visibilities_person_id_fkey"
 
-  add_foreign_key "conversations", "people", name: "conversations_author_id_fk", column: "author_id", dependent: :delete
+  add_foreign_key "conversations", "people", name: "conversations_author_id_fkey", column: "author_id"
 
-  add_foreign_key "invitations", "users", name: "invitations_recipient_id_fk", column: "recipient_id", dependent: :delete
-  add_foreign_key "invitations", "users", name: "invitations_sender_id_fk", column: "sender_id", dependent: :delete
+  add_foreign_key "invitations", "users", name: "invitations_recipient_id_fkey", column: "recipient_id"
+  add_foreign_key "invitations", "users", name: "invitations_sender_id_fkey", column: "sender_id"
 
-  add_foreign_key "likes", "people", name: "likes_author_id_fk", column: "author_id", dependent: :delete
+  add_foreign_key "likes", "people", name: "likes_author_id_fkey", column: "author_id"
 
-  add_foreign_key "messages", "conversations", name: "messages_conversation_id_fk", dependent: :delete
-  add_foreign_key "messages", "people", name: "messages_author_id_fk", column: "author_id", dependent: :delete
+  add_foreign_key "messages", "conversations", name: "messages_conversation_id_fkey"
+  add_foreign_key "messages", "people", name: "messages_author_id_fkey", column: "author_id"
 
-  add_foreign_key "notification_actors", "notifications", name: "notification_actors_notification_id_fk", dependent: :delete
+  add_foreign_key "notification_actors", "notifications", name: "notification_actors_notification_id_fkey"
 
-  add_foreign_key "posts", "people", name: "posts_author_id_fk", column: "author_id", dependent: :delete
+  add_foreign_key "posts", "people", name: "posts_author_id_fkey", column: "author_id"
 
-  add_foreign_key "profiles", "people", name: "profiles_person_id_fk", dependent: :delete
+  add_foreign_key "profiles", "people", name: "profiles_person_id_fkey"
 
-  add_foreign_key "services", "users", name: "services_user_id_fk", dependent: :delete
+  add_foreign_key "services", "users", name: "services_user_id_fkey"
 
-  add_foreign_key "share_visibilities", "contacts", name: "post_visibilities_contact_id_fk", dependent: :delete
+  add_foreign_key "share_visibilities", "contacts", name: "share_visibilities_contact_id_fkey"
 
 end
