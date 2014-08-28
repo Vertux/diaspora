@@ -79,6 +79,7 @@ gem 'entypo-rails', '2.2.2'
 gem 'backbone-on-rails', '1.1.1'
 gem 'handlebars_assets', '0.12.0'
 gem 'jquery-rails',      '3.0.4'
+gem 'js_image_paths',    '0.0.1'
 
 # jQuery plugins
 
@@ -128,7 +129,7 @@ gem 'typhoeus',           '0.6.9'
 
 # Views
 
-gem 'gon',                     '5.1.2'
+gem 'gon',                     '5.2.0'
 gem 'haml',                    '4.0.5'
 gem 'mobile-fu',               '1.3.1'
 gem 'will_paginate',           '3.0.7'
@@ -192,7 +193,7 @@ group :test do
   # RSpec (unit tests, some integration tests)
 
   gem 'fixture_builder',   '0.3.6'
-  gem 'fuubar',            '1.3.3'
+  gem 'fuubar',            '2.0.0'
   gem 'rspec-instafail',   '0.2.5', :require => false
   gem 'test_after_commit', '0.2.5'
 
@@ -212,7 +213,7 @@ end
 
 group :development, :test do
   # RSpec (unit tests, some integration tests)
-  gem "rspec-rails",     '2.14.2'
+  gem 'rspec-rails',     '3.0.2'
 
   # Cucumber (integration tests)
   gem 'cucumber-rails',     '1.4.1', :require => false
