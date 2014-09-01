@@ -29,7 +29,7 @@ gem 'simple_captcha2', '0.3.2', :require => 'simple_captcha'
 
 # Background processing
 
-gem 'sidekiq', '3.2.2'
+gem 'sidekiq', '3.2.3'
 gem 'sinatra', '1.3.3'
 
 # Compression
@@ -76,15 +76,15 @@ gem 'entypo-rails', '2.2.2'
 
 # JavaScript
 
-gem 'backbone-on-rails', '1.1.1'
-gem 'handlebars_assets', '0.12.0'
-gem 'jquery-rails',      '3.0.4'
-gem 'js_image_paths',    '0.0.1'
+gem 'backbone-on-rails',   '1.1.1'
+gem 'handlebars_assets',   '0.17.1'
+gem 'jquery-rails',        '3.1.1'
+gem 'rails-assets-jquery', '1.11.1' # Should be kept in sync with jquery-rails
+gem 'js_image_paths',      '0.0.1'
 
 # jQuery plugins
 
 gem 'rails-assets-perfect-scrollbar', '0.4.11'
-gem 'rails-assets-jquery', '1.10.2'
 
 # Localization
 
@@ -109,7 +109,7 @@ gem 'opengraph_parser', '0.2.3'
 
 # Services
 
-gem 'omniauth',          '1.2.1'
+gem 'omniauth',          '1.2.2'
 gem 'omniauth-facebook', '1.6.0'
 gem 'omniauth-tumblr',   '1.1'
 gem 'omniauth-twitter',  '1.0.1'
@@ -118,7 +118,7 @@ gem 'omniauth-wordpress','0.2.1'
 
 # Tags
 
-gem 'acts-as-taggable-on', '3.3.0'
+gem 'acts-as-taggable-on', '3.4.1'
 
 # URIs and HTTP
 
