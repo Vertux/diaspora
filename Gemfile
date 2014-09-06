@@ -11,7 +11,7 @@ gem 'actionpack-page_caching'
 
 # Appserver
 
-gem 'puma', '2.9.0', :require => false
+gem 'puma', '2.9.1', :require => false
 
 # API and JSON
 
