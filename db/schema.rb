@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140826165533) do
+ActiveRecord::Schema.define(version: 20140906192846) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -218,8 +218,8 @@ ActiveRecord::Schema.define(version: 20140826165533) do
   create_table "open_graph_caches", force: true do |t|
     t.string "title"
     t.string "ob_type"
-    t.string "image"
-    t.string "url"
+    t.text "image"
+    t.text "url"
     t.text   "description"
   end
 
