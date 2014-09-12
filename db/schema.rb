@@ -218,8 +218,8 @@ ActiveRecord::Schema.define(version: 20140906192846) do
   create_table "open_graph_caches", force: true do |t|
     t.string "title"
     t.string "ob_type"
-    t.text "image"
-    t.text "url"
+    t.text   "image"
+    t.text   "url"
     t.text   "description"
   end
 
