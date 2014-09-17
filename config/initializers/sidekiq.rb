@@ -34,6 +34,10 @@ Sidekiq.configure_server do |config|
 
   config.server_middleware do |chain|
     chain.add SidekiqMiddlewares::CleanAndShortBacktraces
+    if ENV['PROFILE']
+      SidekiqMiddlewares::Profiler.enable
+      chain.add SidekiqMiddlewares::Profiler
+    end
   end
 
   Sidekiq::Logging.initialize_logger AppConfig.sidekiq_log unless AppConfig.heroku?
@@ -44,7 +48,7 @@ Sidekiq.configure_server do |config|
     ENV['DATABASE_URL'] = "#{database_url}?pool=#{AppConfig.environment.sidekiq.concurrency.get}"
     ActiveRecord::Base.establish_connection
   end
-  
+
   # Make sure each Sidekiq process has its own sequence of UUIDs
   UUID.generator.next_sequence
 end
