@@ -41,6 +41,7 @@ The default for including jQuery from a CDN has changed. If you want to continue
 * Add tests for mobile sign up [#5185](https://github.com/diaspora/diaspora/pull/5185)
 * Display new conversation form on conversations/index [#5178](https://github.com/diaspora/diaspora/pull/5178)
 * Port profile page to Backbone [#5180](https://github.com/diaspora/diaspora/pull/5180)
+* Pull punycode.js from rails-assets.org [#5263](https://github.com/diaspora/diaspora/pull/5263)
 
 
 ## Bug fixes
@@ -49,6 +50,7 @@ The default for including jQuery from a CDN has changed. If you want to continue
 * Handle long URLs and titles in OpenGraph descriptions [#5208](https://github.com/diaspora/diaspora/pull/5208)
 * Fix deformed getting started popover [#5227](https://github.com/diaspora/diaspora/pull/5227)
 * Use correct locale for invitation subject [#5232](https://github.com/diaspora/diaspora/pull/5232)
+* Initial support for IDN emails
 
 ## Features
 * Don't pull jQuery from a CDN by default [#5105](https://github.com/diaspora/diaspora/pull/5105)

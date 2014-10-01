@@ -38,7 +38,7 @@ gem 'uglifier', '2.5.3'
 
 # Configuration
 
-gem 'configurate', '0.0.8'
+gem 'configurate', '0.1.0'
 
 # Cross-origin resource sharing
 
@@ -76,12 +76,13 @@ gem 'entypo-rails', '2.2.2'
 
 # JavaScript
 
-gem 'backbone-on-rails',   '1.1.1'
-gem 'handlebars_assets',   '0.18.0'
-gem 'jquery-rails',        '3.1.2'
-gem 'rails-assets-jquery', '1.11.1' # Should be kept in sync with jquery-rails
-gem 'js_image_paths',      '0.0.1'
-gem 'js-routes',           '0.9.9'
+gem 'backbone-on-rails',     '1.1.1'
+gem 'handlebars_assets',     '0.18.0'
+gem 'jquery-rails',          '3.1.2'
+gem 'rails-assets-jquery',   '1.11.1' # Should be kept in sync with jquery-rails
+gem 'js_image_paths',        '0.0.1'
+gem 'js-routes',             '0.9.9'
+gem 'rails-assets-punycode', '1.3.1'
 
 # jQuery plugins
 
@@ -119,7 +120,7 @@ gem 'omniauth-wordpress','0.2.1'
 
 # Tags
 
-gem 'acts-as-taggable-on', '3.4.1'
+gem 'acts-as-taggable-on', '3.4.2'
 
 # URIs and HTTP
 
@@ -188,6 +189,10 @@ group :development do
 
   gem 'guard-spork', '1.5.1'
   gem 'spork',       '1.0.0rc4'
+
+  # Debugging
+  gem 'pry'
+  gem 'pry-debundle'
 end
 
 group :test do

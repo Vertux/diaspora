@@ -38,7 +38,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
-    acts-as-taggable-on (3.4.1)
+    acts-as-taggable-on (3.4.2)
       activerecord (>= 3.2, < 5)
     acts_as_api (0.4.2)
       activemodel (>= 3.0.0)
@@ -93,7 +93,7 @@ GEM
       sass (~> 3.2.19)
     compass-rails (2.0.0)
       compass (>= 0.12.2)
-    configurate (0.0.8)
+    configurate (0.1.0)
     connection_pool (2.0.0)
     crack (0.4.2)
       safe_yaml (~> 1.0.0)
@@ -265,7 +265,7 @@ GEM
     mini_magick (3.8.1)
       subexec (~> 0.2.1)
     mini_portile (0.5.3)
-    minitest (5.4.1)
+    minitest (5.4.2)
     mobile-fu (1.3.1)
       rack-mobile-detect
       rails
@@ -316,6 +316,8 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    pry-debundle (0.8)
+      pry
     puma (2.9.1)
       rack (>= 1.1, < 2.0)
     rack (1.5.2)
@@ -349,6 +351,7 @@ GEM
     rails-assets-jquery (1.11.1)
     rails-assets-perfect-scrollbar (0.4.11)
       rails-assets-jquery (>= 1.10)
+    rails-assets-punycode (1.3.1)
     rails-i18n (4.0.3)
       i18n (~> 0.6)
       railties (~> 4.0)
@@ -498,7 +501,7 @@ DEPENDENCIES
   actionpack-action_caching
   actionpack-page_caching
   activerecord-import (= 0.5.0)
-  acts-as-taggable-on (= 3.4.1)
+  acts-as-taggable-on (= 3.4.2)
   acts_as_api (= 0.4.2)
   addressable (= 2.3.6)
   asset_sync (= 1.1.0)
@@ -507,7 +510,7 @@ DEPENDENCIES
   capybara (= 2.4.1)
   carrierwave (= 0.10.0)
   compass-rails (= 2.0.0)
-  configurate (= 0.0.8)
+  configurate (= 0.1.0)
   cucumber-rails (= 1.4.1)
   database_cleaner (= 1.3.0)
   devise (= 3.3.0)
@@ -547,6 +550,8 @@ DEPENDENCIES
   omniauth-wordpress (= 0.2.1)
   opengraph_parser (= 0.2.3)
   pg (= 0.17.1)
+  pry
+  pry-debundle
   puma (= 2.9.1)
   rack-cors (= 0.2.9)
   rack-google-analytics (= 1.2.0)
@@ -557,6 +562,7 @@ DEPENDENCIES
   rails (= 4.1.6)
   rails-assets-jquery (= 1.11.1)
   rails-assets-perfect-scrollbar (= 0.4.11)
+  rails-assets-punycode (= 1.3.1)
   rails-i18n (= 4.0.3)
   rails-timeago (= 2.11.0)
   rails_admin (= 0.6.3)
