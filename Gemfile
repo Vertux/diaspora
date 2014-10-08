@@ -38,7 +38,7 @@ gem 'uglifier', '2.5.3'
 
 # Configuration
 
-gem 'configurate', '0.1.0'
+gem 'configurate', '0.2.0'
 
 # Cross-origin resource sharing
 
@@ -86,7 +86,10 @@ gem 'rails-assets-punycode', '1.3.1'
 
 # jQuery plugins
 
-gem 'rails-assets-perfect-scrollbar', '0.4.11'
+gem 'rails-assets-jquery-idletimer',   '1.0.1'
+gem 'rails-assets-jquery-placeholder', '2.0.8'
+gem 'rails-assets-jquery-textchange',  '0.2.3'
+gem 'rails-assets-perfect-scrollbar',  '0.4.11'
 
 # Localization
 
@@ -193,6 +196,7 @@ group :development do
   # Debugging
   gem 'pry'
   gem 'pry-debundle'
+  gem 'pry-byebug'
 end
 
 group :test do
