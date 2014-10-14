@@ -20,7 +20,7 @@ gem 'json',        '1.8.1'
 
 # Authentication
 
-gem 'devise', '3.3.0'
+gem 'devise', '3.4.0'
 gem 'devise_lastseenable', '0.0.4'
 
 # Captcha
@@ -57,13 +57,13 @@ ENV['DB'] ||= 'mysql'
 gem 'mysql2', '0.3.16' if ENV['DB'] == 'all' || ENV['DB'] == 'mysql'
 gem 'pg',     '0.17.1' if ENV['DB'] == 'all' || ENV['DB'] == 'postgres'
 
-gem 'activerecord-import', '0.5.0'
+gem 'activerecord-import', '0.6.0'
 gem 'foreigner',           '1.6.1'
 
 # File uploading
 
 gem 'carrierwave', '0.10.0'
-gem 'fog',         '1.23.0'
+gem 'fog',         '1.24.0'
 gem 'mini_magick', '3.8.1'
 gem 'remotipart',  '1.2.1'
 
@@ -76,7 +76,7 @@ gem 'entypo-rails', '2.2.2'
 
 # JavaScript
 
-gem 'backbone-on-rails',     '1.1.1'
+gem 'backbone-on-rails',     '1.1.2'
 gem 'handlebars_assets',     '0.18.0'
 gem 'jquery-rails',          '3.1.2'
 gem 'rails-assets-jquery',   '1.11.1' # Should be kept in sync with jquery-rails
@@ -89,7 +89,7 @@ gem 'rails-assets-punycode', '1.3.1'
 gem 'rails-assets-jquery-idletimer',   '1.0.1'
 gem 'rails-assets-jquery-placeholder', '2.0.8'
 gem 'rails-assets-jquery-textchange',  '0.2.3'
-gem 'rails-assets-perfect-scrollbar',  '0.4.11'
+gem 'rails-assets-perfect-scrollbar',  '0.5.2'
 
 # Localization
 
@@ -106,7 +106,7 @@ gem 'messagebus_ruby_api', '1.0.3'
 
 gem 'nokogiri',         '1.6.1'
 gem 'rails_autolink',   '1.1.6'
-gem 'redcarpet',        '3.1.2'
+gem 'redcarpet',        '3.2.0'
 gem 'roxml',            '3.1.6'
 gem 'ruby-oembed',      '0.8.10'
 gem 'opengraph_parser', '0.2.3'
@@ -138,7 +138,7 @@ gem 'gon',                     '5.2.0'
 gem 'haml',                    '4.0.5'
 gem 'mobile-fu',               '1.3.1'
 gem 'will_paginate',           '3.0.7'
-gem 'rails-timeago',           '2.11.0'
+gem 'rails-timeago',           '2.11.1'
 
 # Workarounds
 # https://github.com/rubyzip/rubyzip#important-note
@@ -156,7 +156,7 @@ group :production do # we don't install these on travis to speed up test runs
 
   # Administration
 
-  gem 'rails_admin', '0.6.3'
+  gem 'rails_admin', '0.6.5'
 
   # Analytics
 
@@ -205,11 +205,11 @@ group :test do
   gem 'fixture_builder',   '0.3.6'
   gem 'fuubar',            '2.0.0'
   gem 'rspec-instafail',   '0.2.5', :require => false
-  gem 'test_after_commit', '0.2.7'
+  gem 'test_after_commit', '0.3.0'
 
   # Cucumber (integration tests)
 
-  gem 'capybara',           '2.4.1'
+  gem 'capybara',           '2.4.4'
   gem 'database_cleaner',   '1.3.0'
   gem 'selenium-webdriver', '2.43.0'
 
@@ -217,7 +217,7 @@ group :test do
 
   gem 'factory_girl_rails', '4.4.1'
   gem 'timecop',            '0.7.1'
-  gem 'webmock',            '1.18.0', :require => false
+  gem 'webmock',            '1.19.0', :require => false
 end
 
 
@@ -226,10 +226,10 @@ group :development, :test do
   gem 'rspec-rails',     '3.1.0'
 
   # Cucumber (integration tests)
-  gem 'cucumber-rails',     '1.4.1', :require => false
+  gem 'cucumber-rails',     '1.4.2', :require => false
 
   # Jasmine (client side application tests (JS))
-  gem 'jasmine',              '2.0.2'
+  gem 'jasmine',              '2.0.3'
   gem 'jasmine-jquery-rails', '2.0.3'
   gem 'sinon-rails',	      '1.10.3'
 end

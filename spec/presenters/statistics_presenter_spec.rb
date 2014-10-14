@@ -22,11 +22,13 @@ describe StatisticsPresenter do
     it 'provides generic pod data in json' do
       expect(@presenter.as_json).to eq({
         "name" => AppConfig.settings.pod_name,
+        "network" => "Diaspora",
         "version" => AppConfig.version_string,
         "registrations_open" => AppConfig.settings.enable_registrations,
+        "services"=> ["facebook",],
         "facebook" => true,
-        "twitter" => false,
         "tumblr" => false,
+        "twitter" => false,
         "wordpress" => false,
       })
     end
@@ -47,6 +49,7 @@ describe StatisticsPresenter do
       it 'provides generic pod data and counts in json' do
         expect(@presenter.as_json).to eq({
           "name" => AppConfig.settings.pod_name,
+          "network" => "Diaspora",
           "version" => AppConfig.version_string,
           "registrations_open" => AppConfig.settings.enable_registrations,
           "total_users" => User.count,
@@ -54,6 +57,7 @@ describe StatisticsPresenter do
           "active_users_monthly" => User.monthly_actives.count,
           "local_posts" => @presenter.local_posts,
           "local_comments" => @presenter.local_comments,
+          "services" => ["twitter","facebook"],
           "facebook" => true,
           "twitter" => true,
           "tumblr" => false,

@@ -32,6 +32,11 @@ series and run our comphrensive testsuite against it.
 ## Change in defaults.yml
 The default for including jQuery from a CDN has changed. If you want to continue to include it from a CDN, please explicitly set the `jquery_cdn` setting to `true` in diaspora.yml.
 
+## Change in statistics.json schema
+The way services are shown in the `statistics.json` route is changing. The keys relating to showing whether services are enabled or not are moving to their own container as `"services": {....}`, instead of having them all in the root level of the json.
+
+The keys will still be available in the root level within the 0.5 release. The old keys will be removed in the 0.6 release.
+
 ## Refactor
 * Redesign contacts page [#5153](https://github.com/diaspora/diaspora/pull/5153)
 * Improve profile page design on mobile [#5084](https://github.com/diaspora/diaspora/pull/5084)
@@ -44,6 +49,14 @@ The default for including jQuery from a CDN has changed. If you want to continue
 * Pull punycode.js from rails-assets.org [#5263](https://github.com/diaspora/diaspora/pull/5263)
 * Redesign profile page and port to Bootstrap [#4657](https://github.com/diaspora/diaspora/pull/4657)
 * Unify stream selection links in the left sidebar [#5271](https://github.com/diaspora/diaspora/pull/5271)
+* Refactor schema of statistics.json regarding services [#5296](https://github.com/diaspora/diaspora/pull/5296)
+* Pull jquery.idle-timer.js from rails-assets.org [#5310](https://github.com/diaspora/diaspora/pull/5310)
+* Pull jquery.placeholder.js from rails-assets.org [#5299](https://github.com/diaspora/diaspora/pull/5299)
+* Pull jquery.textchange.js from rails-assets.org [#5297](https://github.com/diaspora/diaspora/pull/5297)
+* Reduce number of useless background job retries and pull public posts when missing [#5209](https://github.com/diaspora/diaspora/pull/5209
+* Updated Weekly User Stats admin page to show data for the most recent week including reversing the order of the weeks in the drop down to show the most recent. [#5331](https://github.com/diaspora/diaspora/pull/5331)
+* Convert some cukes to rspec tests [#5289](https://github.com/diaspora/diaspora/pull/5289)
+* Hidden overflow for long names on tag pages [#5279](https://github.com/diaspora/diaspora/pull/5279)
 
 ## Bug fixes
 * orca cannot see 'Add Contact' button [#5158](https://github.com/diaspora/diaspora/pull/5158)
@@ -53,6 +66,12 @@ The default for including jQuery from a CDN has changed. If you want to continue
 * Use correct locale for invitation subject [#5232](https://github.com/diaspora/diaspora/pull/5232)
 * Initial support for IDN emails
 * Fix services settings reported by statistics.json [#5256](https://github.com/diaspora/diaspora/pull/5256)
+* Only collapse empty comment box [#5328](https://github.com/diaspora/diaspora/pull/5328)
+* Fix pagination for people/guid/contacts [#5304](https://github.com/diaspora/diaspora/pull/5304)
+* Fix poll creation on Bootstrap pages [#5334](https://github.com/diaspora/diaspora/pull/5334)
+* Show error message on invalid reset password attempt [#5325](https://github.com/diaspora/diaspora/pull/5325)
+* Fix translations on mobile password reset pages [#5318](https://github.com/diaspora/diaspora/pull/5318)
+* Handle unset user agent when signing out [#5316](https://github.com/diaspora/diaspora/pull/5316)
 
 ## Features
 * Don't pull jQuery from a CDN by default [#5105](https://github.com/diaspora/diaspora/pull/5105)
@@ -61,6 +80,10 @@ The default for including jQuery from a CDN has changed. If you want to continue
 * Increased the number of notifications shown in drop down bar to 15 [#5129](https://github.com/diaspora/diaspora/pull/5129)
 * Increase possible captcha length [#5169](https://github.com/diaspora/diaspora/pull/5169)
 * Display visibility icon in publisher aspects dropdown [#4982](https://github.com/diaspora/diaspora/pull/4982)
+* Add a link to the reported comment in the admin panel [#5337](https://github.com/diaspora/diaspora/pull/5337)
+* Strip search query from leading and trailing whitespace [#5317](https://github.com/diaspora/diaspora/pull/5317)
+* Add the "network" key to statistics.json and set it to "Diaspora" [#5308](https://github.com/diaspora/diaspora/pull/5308)
+* Infinite scrolling in the notifications dropdown [#5237](https://github.com/diaspora/diaspora/pull/5237)
 
 # 0.4.1.1
 
