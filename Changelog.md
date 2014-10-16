@@ -37,6 +37,11 @@ The way services are shown in the `statistics.json` route is changing. The keys 
 
 The keys will still be available in the root level within the 0.5 release. The old keys will be removed in the 0.6 release.
 
+## New maintenance feature to automatically expire inactive accounts
+Removing of old inactive users can now be done automatically by background processing. The amount of inactivity is set by `after_days`. A warning email will be sent to the user and after an additional `warn_days`, the account will be automatically closed.
+
+This maintenance is not enabled by default. Podmins can enable it by for example copying over the new settings under `settings.maintenance` to their `diaspora.yml` file and setting it enabled. The default setting is to expire accounts that have been inactive for 2 years (no login).
+
 ## Refactor
 * Redesign contacts page [#5153](https://github.com/diaspora/diaspora/pull/5153)
 * Improve profile page design on mobile [#5084](https://github.com/diaspora/diaspora/pull/5084)
@@ -57,6 +62,8 @@ The keys will still be available in the root level within the 0.5 release. The o
 * Updated Weekly User Stats admin page to show data for the most recent week including reversing the order of the weeks in the drop down to show the most recent. [#5331](https://github.com/diaspora/diaspora/pull/5331)
 * Convert some cukes to rspec tests [#5289](https://github.com/diaspora/diaspora/pull/5289)
 * Hidden overflow for long names on tag pages [#5279](https://github.com/diaspora/diaspora/pull/5279)
+* Always reshare absolute root of a post [#5276](https://github.com/diaspora/diaspora/pull/5276)
+* Convert remaining SASS stylesheets to SCSS [#5342](https://github.com/diaspora/diaspora/pull/5342)
 
 ## Bug fixes
 * orca cannot see 'Add Contact' button [#5158](https://github.com/diaspora/diaspora/pull/5158)
@@ -72,6 +79,7 @@ The keys will still be available in the root level within the 0.5 release. The o
 * Show error message on invalid reset password attempt [#5325](https://github.com/diaspora/diaspora/pull/5325)
 * Fix translations on mobile password reset pages [#5318](https://github.com/diaspora/diaspora/pull/5318)
 * Handle unset user agent when signing out [#5316](https://github.com/diaspora/diaspora/pull/5316)
+* More robust URL parsing for oEmbed and OpenGraph [#5347](https://github.com/diaspora/diaspora/pull/5347)
 
 ## Features
 * Don't pull jQuery from a CDN by default [#5105](https://github.com/diaspora/diaspora/pull/5105)
@@ -84,6 +92,7 @@ The keys will still be available in the root level within the 0.5 release. The o
 * Strip search query from leading and trailing whitespace [#5317](https://github.com/diaspora/diaspora/pull/5317)
 * Add the "network" key to statistics.json and set it to "Diaspora" [#5308](https://github.com/diaspora/diaspora/pull/5308)
 * Infinite scrolling in the notifications dropdown [#5237](https://github.com/diaspora/diaspora/pull/5237)
+* Maintenance feature to automatically expire inactive accounts [#5288](https://github.com/diaspora/diaspora/pull/5288)
 
 # 0.4.1.1
 

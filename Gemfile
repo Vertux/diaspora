@@ -32,6 +32,10 @@ gem 'simple_captcha2', '0.3.2', :require => 'simple_captcha'
 gem 'sidekiq', '3.2.5'
 gem 'sinatra', '1.3.3'
 
+# Scheduled processing
+
+gem 'sidetiq', '0.6.3'
+
 # Compression
 
 gem 'uglifier', '2.5.3'
@@ -105,8 +109,8 @@ gem 'messagebus_ruby_api', '1.0.3'
 # Parsing
 
 gem 'nokogiri',         '1.6.1'
-gem 'rails_autolink',   '1.1.6'
 gem 'redcarpet',        '3.2.0'
+gem 'twitter-text',     '1.9.2'
 gem 'roxml',            '3.1.6'
 gem 'ruby-oembed',      '0.8.10'
 gem 'opengraph_parser', '0.2.3'
