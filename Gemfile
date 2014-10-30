@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 source 'https://rails-assets.org'
 
-gem 'rails', '4.1.6'
+gem 'rails', '4.1.7'
 
 # Legacy Rails features, remove me!
 
@@ -90,10 +90,11 @@ gem 'rails-assets-punycode', '1.3.1'
 
 # jQuery plugins
 
-gem 'rails-assets-jquery-idletimer',   '1.0.1'
-gem 'rails-assets-jquery-placeholder', '2.0.8'
-gem 'rails-assets-jquery-textchange',  '0.2.3'
-gem 'rails-assets-perfect-scrollbar',  '0.5.2'
+gem 'rails-assets-jeresig--jquery.hotkeys', '0.2.0'
+gem 'rails-assets-jquery-idletimer',        '1.0.1'
+gem 'rails-assets-jquery-placeholder',      '2.0.8'
+gem 'rails-assets-jquery-textchange',       '0.2.3'
+gem 'rails-assets-perfect-scrollbar',       '0.5.2'
 
 # Localization
 
