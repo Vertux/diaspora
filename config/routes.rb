@@ -233,5 +233,5 @@ Diaspora::Application.routes.draw do
   end
 
   # Startpage
-  root :to => 'streams#multi'
+  root :to => redirect('/stream')
 end
