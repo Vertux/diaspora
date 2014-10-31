@@ -1,8 +1,5 @@
 [Unit]
-Description=Diaspora social network (worker %i)a
-# For MySQL/MariaDB use mysqld.service
-Wants=redis.service postgresql.service
-After=redis.service postgresql.service
+Description=Diaspora social network (worker %i)
 PartOf=diaspora.target
 StopWhenUnneeded=true
 
@@ -11,6 +8,7 @@ User=diaspora
 WorkingDirectory=/home/diaspora/diaspora
 Environment=RAILS_ENV=production DB=postgres
 ExecStart=/usr/bin/chruby-exec 2.1 -- bundle exec sidekiq
+Restart=always
 CPUAccounting=true
 MemoryAccounting=true
 BlockIOAccounting=true
