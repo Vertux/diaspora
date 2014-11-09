@@ -20,7 +20,7 @@ gem 'json',        '1.8.1'
 
 # Authentication
 
-gem 'devise', '3.4.0'
+gem 'devise', '3.4.1'
 gem 'devise_lastseenable', '0.0.4'
 
 # Captcha
@@ -52,7 +52,7 @@ gem 'rack-cors', '0.2.9', :require => 'rack/cors'
 
 gem 'bootstrap-sass', '2.3.2.2'
 gem 'compass-rails',  '2.0.0'
-gem 'sass-rails',     '4.0.3'
+gem 'sass-rails',     '4.0.4'
 
 # Database
 
@@ -86,7 +86,7 @@ gem 'jquery-rails',          '3.1.2'
 gem 'rails-assets-jquery',   '1.11.1' # Should be kept in sync with jquery-rails
 gem 'js_image_paths',        '0.0.1'
 gem 'js-routes',             '0.9.9'
-gem 'rails-assets-punycode', '1.3.1'
+gem 'rails-assets-punycode', '1.3.2'
 
 # jQuery plugins
 
@@ -94,7 +94,7 @@ gem 'rails-assets-jeresig--jquery.hotkeys', '0.2.0'
 gem 'rails-assets-jquery-idletimer',        '1.0.1'
 gem 'rails-assets-jquery-placeholder',      '2.0.8'
 gem 'rails-assets-jquery-textchange',       '0.2.3'
-gem 'rails-assets-perfect-scrollbar',       '0.5.2'
+gem 'rails-assets-perfect-scrollbar',       '0.5.7'
 
 # Localization
 
@@ -109,11 +109,11 @@ gem 'messagebus_ruby_api', '1.0.3'
 
 # Parsing
 
-gem 'nokogiri',         '1.6.1'
+gem 'nokogiri',         '1.6.4.1'
 gem 'redcarpet',        '3.2.0'
-gem 'twitter-text',     '1.9.2'
+gem 'twitter-text',     '1.10.0'
 gem 'roxml',            '3.1.6'
-gem 'ruby-oembed',      '0.8.10'
+gem 'ruby-oembed',      '0.8.11'
 gem 'opengraph_parser', '0.2.3'
 
 
@@ -139,7 +139,7 @@ gem 'typhoeus',           '0.6.9'
 
 # Views
 
-gem 'gon',                     '5.2.0'
+gem 'gon',                     '5.2.3'
 gem 'haml',                    '4.0.5'
 gem 'mobile-fu',               '1.3.1'
 gem 'will_paginate',           '3.0.7'
@@ -188,7 +188,7 @@ end
 
 group :development do
   # Automatic test runs
-  gem 'guard-cucumber', '1.4.1'
+  gem 'guard-cucumber', '1.5.1'
   gem 'guard-rspec',    '4.3.1'
   gem 'rb-fsevent',     '0.9.4', :require => false
   gem 'rb-inotify',     '0.9.5', :require => false
@@ -210,19 +210,19 @@ group :test do
   gem 'fixture_builder',   '0.3.6'
   gem 'fuubar',            '2.0.0'
   gem 'rspec-instafail',   '0.2.5', :require => false
-  gem 'test_after_commit', '0.3.0'
+  gem 'test_after_commit', '0.4.0'
 
   # Cucumber (integration tests)
 
   gem 'capybara',           '2.4.4'
   gem 'database_cleaner',   '1.3.0'
-  gem 'selenium-webdriver', '2.43.0'
+  gem 'selenium-webdriver', '2.44.0'
 
   # General helpers
 
-  gem 'factory_girl_rails', '4.4.1'
+  gem 'factory_girl_rails', '4.5.0'
   gem 'timecop',            '0.7.1'
-  gem 'webmock',            '1.19.0', :require => false
+  gem 'webmock',            '1.20.4', :require => false
 end
 
 
