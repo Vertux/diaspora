@@ -92,6 +92,8 @@ This is disabled by default since it requires the installation of additional pac
 * Fix Publisher doesn't expand while uloading images [#3098](https://github.com/diaspora/diaspora/issues/3098)
 * Drop unneeded and too open crossdomain.xml
 * Fix hidden aspect dropdown on getting started page [#5407](https://github.com/diaspora/diaspora/pulls/5407)
+* Fix a few issues on Bootstrap pages [#5401](https://github.com/diaspora/diaspora/pull/5401)
+* Improve handling of the `more` link on mobile stream pages [#5400](https://github.com/diaspora/diaspora/pull/5400)
 
 ## Features
 * Don't pull jQuery from a CDN by default [#5105](https://github.com/diaspora/diaspora/pull/5105)
