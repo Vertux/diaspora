@@ -32,6 +32,9 @@ series and run our comphrensive testsuite against it.
 ## Change in defaults.yml
 The default for including jQuery from a CDN has changed. If you want to continue to include it from a CDN, please explicitly set the `jquery_cdn` setting to `true` in diaspora.yml.
 
+## Experimental chat feature
+This release adds experimental integration with XMPP for realtime chat. Please see  [our wiki](https://wiki.diasporafoundation.org/Vines) for further informations.
+
 ## Change in statistics.json schema
 The way services are shown in the `statistics.json` route is changing. The keys relating to showing whether services are enabled or not are moving to their own container as `"services": {....}`, instead of having them all in the root level of the json.
 
@@ -87,6 +90,8 @@ This is disabled by default since it requires the installation of additional pac
 * Handle unset user agent when signing out [#5316](https://github.com/diaspora/diaspora/pull/5316)
 * More robust URL parsing for oEmbed and OpenGraph [#5347](https://github.com/diaspora/diaspora/pull/5347)
 * Fix Publisher doesn't expand while uloading images [#3098](https://github.com/diaspora/diaspora/issues/3098)
+* Drop unneeded and too open crossdomain.xml
+* Fix hidden aspect dropdown on getting started page [#5407](https://github.com/diaspora/diaspora/pulls/5407)
 
 ## Features
 * Don't pull jQuery from a CDN by default [#5105](https://github.com/diaspora/diaspora/pull/5105)
