@@ -73,6 +73,8 @@ This is disabled by default since it requires the installation of additional pac
 * Hidden overflow for long names on tag pages [#5279](https://github.com/diaspora/diaspora/pull/5279)
 * Always reshare absolute root of a post [#5276](https://github.com/diaspora/diaspora/pull/5276)
 * Convert remaining SASS stylesheets to SCSS [#5342](https://github.com/diaspora/diaspora/pull/5342)
+* Update rack-protection [#5403](https://github.com/diaspora/diaspora/pull/5403)
+* Cleanup diaspora.yml [#5426](https://github.com/diaspora/diaspora/pull/5426)
 
 ## Bug fixes
 * orca cannot see 'Add Contact' button [#5158](https://github.com/diaspora/diaspora/pull/5158)
@@ -112,6 +114,8 @@ This is disabled by default since it requires the installation of additional pac
 * Allow page-specific styling via individual CSS classes [#5282](https://github.com/diaspora/diaspora/pull/5282)
 * Change diaspora logo in the header on hover [#5355](https://github.com/diaspora/diaspora/pull/5355)
 * Display diaspora handle in search results [#5419](https://github.com/diaspora/diaspora/pull/5419)
+* Show a message on the ignored users page when there are none [#5434](https://github.com/diaspora/diaspora/pull/5434)
+* Truncate too long OpenGraph descriptions [#5387](https://github.com/diaspora/diaspora/pull/5387)
 
 # 0.4.1.2
 

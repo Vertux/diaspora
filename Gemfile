@@ -31,7 +31,7 @@ gem 'simple_captcha2', '0.3.2', :require => 'simple_captcha'
 # Background processing
 
 gem 'sidekiq', '3.3.0'
-gem 'sinatra', '1.3.3'
+gem 'sinatra', '1.4.5'
 
 # Scheduled processing
 
@@ -154,6 +154,13 @@ gem 'rails-timeago',           '2.11.0'
 # https://github.com/rubyzip/rubyzip#important-note
 gem 'zip-zip'
 
+# Prevent occasions where minitest is not bundled in
+# packaged versions of ruby. See following issues/prs:
+# https://github.com/gitlabhq/gitlabhq/issues/3826
+# https://github.com/gitlabhq/gitlabhq/pull/3852
+# https://github.com/discourse/discourse/pull/238
+gem 'minitest'
+
 
 # Windows and OSX have an execjs compatible runtime built-in, Linux users should
 # install Node.js or use 'therubyracer'.
@@ -175,7 +182,7 @@ group :production do # we don't install these on travis to speed up test runs
 
   # Click-jacking protection
 
-  gem 'rack-protection', '1.2'
+  gem 'rack-protection', '1.5.2'
 
   # Process management
 
