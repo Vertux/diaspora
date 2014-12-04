@@ -160,12 +160,12 @@ end
 
 Then /^(?:|I )should not see a "([^\"]*)"(?: within "([^\"]*)")?$/ do |selector, scope_selector|
   with_scope(scope_selector) do
-    current_scope.has_css?(selector, :visible => true).should be false
+    current_scope.should have_no_css(selector, :visible => true)
   end
 end
 
 Then /^page should (not )?have "([^\"]*)"$/ do |negate, selector|
-  page.has_css?(selector).should ( negate ? (be false) : (be true) )
+  page.should ( negate ? (have_no_css(selector)) : (have_css(selector)) )
 end
 
 When /^I have turned off jQuery effects$/ do
