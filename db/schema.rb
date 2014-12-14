@@ -46,11 +46,11 @@ ActiveRecord::Schema.define(version: 20141209041241) do
   add_index "aspect_visibilities", ["shareable_id", "shareable_type"], name: "index_aspect_visibilities_on_shareable_id_and_shareable_type", using: :btree
 
   create_table "aspects", force: true do |t|
-    t.string   "name",                            null: false
-    t.integer  "user_id",                         null: false
+    t.string   "name",                             null: false
+    t.integer  "user_id",                          null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "contacts_visible", default: true, null: false
+    t.boolean  "contacts_visible", default: true,  null: false
     t.integer  "order_id"
     t.boolean  "chat_enabled",     default: false
   end
