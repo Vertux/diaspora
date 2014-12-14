@@ -48,6 +48,10 @@ def remote_raphael
   @remote_raphael ||= Person.where(:diaspora_handle => 'raphael@remote.net').first
 end
 
+def peter
+  @peter ||= User.where(:username => 'peter').first
+end
+
 def photo_fixture_name
   @photo_fixture_name = File.join(File.dirname(__FILE__), 'fixtures', 'button.png')
 end
@@ -90,15 +94,5 @@ RSpec.configure do |config|
   # Reset overridden settings
   config.after(:each) do
     AppConfig.reset_dynamic!
-  end
-end
-
-# https://makandracards.com/makandra/950-speed-up-rspec-by-deferring-garbage-collection
-RSpec.configure do |config|
-  config.before(:all) do
-    DeferredGarbageCollection.start
-  end
-  config.after(:all) do
-    DeferredGarbageCollection.reconsider
   end
 end
