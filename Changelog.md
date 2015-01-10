@@ -85,6 +85,7 @@ diaspora.yml file**. The existing settings from 0.4.x and before will not work a
 * Change tooltip for delete button in conversations view [#5477](https://github.com/diaspora/diaspora/pull/5477)
 * Replace a modifier-rescue with a specific rescue [#5491](https://github.com/diaspora/diaspora/pull/5491)
 * Port contacts page to backbone [#5473](https://github.com/diaspora/diaspora/pull/5473)
+* Replace CSS vendor prefixes automatically [#5532](https://github.com/diaspora/diaspora/pull/5532)
 
 ## Bug fixes
 * orca cannot see 'Add Contact' button [#5158](https://github.com/diaspora/diaspora/pull/5158)
@@ -140,6 +141,7 @@ diaspora.yml file**. The existing settings from 0.4.x and before will not work a
 * Don't include the content of non-public posts into notification mails [#5494](https://github.com/diaspora/diaspora/pull/5494)
 * Allow to set unhosted button and currency for paypal donation [#5452](https://github.com/diaspora/diaspora/pull/5452)
 * Add followed tags in the mobile menu [#5468](https://github.com/diaspora/diaspora/pull/5468)
+* Replace Pagedown with markdown-it [#5526](https://github.com/diaspora/diaspora/pull/5526)
 
 # 0.4.1.2
 
