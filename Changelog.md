@@ -115,6 +115,8 @@ diaspora.yml file**. The existing settings from 0.4.x and before will not work a
 * Fix broken aspect selectbox on asynchronous search results [#5488](https://github.com/diaspora/diaspora/pull/5488)
 * Replace %{third_party_tools} by the appropriate hyperlink in tags FAQ [#5509](https://github.com/diaspora/diaspora/pull/5509)
 * Repair downloading the profile image from Facebook [#5493](https://github.com/diaspora/diaspora/pull/5493)
+* Fix localization of post and comment timestamps on mobile [#5482](https://github.com/diaspora/diaspora/issues/5482)
+* Fix mobile JS loading to quieten errors. Fixes also service buttons on mobile bookmarklet.
 
 ## Features
 * Don't pull jQuery from a CDN by default [#5105](https://github.com/diaspora/diaspora/pull/5105)
@@ -137,12 +139,13 @@ diaspora.yml file**. The existing settings from 0.4.x and before will not work a
 * Truncate too long OpenGraph descriptions [#5387](https://github.com/diaspora/diaspora/pull/5387)
 * Make the source code URL configurable [#5410](https://github.com/diaspora/diaspora/pull/5410)
 * Prefill publisher on the tag pages [#5442](https://github.com/diaspora/diaspora/pull/5442)
-* Allows users to export their data in JSON format from their user settings page [#5354](https://github.com/diaspora/diaspora/pull/5354)
 * Don't include the content of non-public posts into notification mails [#5494](https://github.com/diaspora/diaspora/pull/5494)
 * Allow to set unhosted button and currency for paypal donation [#5452](https://github.com/diaspora/diaspora/pull/5452)
 * Add followed tags in the mobile menu [#5468](https://github.com/diaspora/diaspora/pull/5468)
 * Replace Pagedown with markdown-it [#5526](https://github.com/diaspora/diaspora/pull/5526)
 * Do not truncate notification emails anymore [#4342](https://github.com/diaspora/diaspora/issues/4342)
+* Allows users to export their data in gzipped JSON format from their user settings page [#5499](https://github.com/diaspora/diaspora/pull/5499)
+* Strip EXIF data from newly uploaded images [#5510](https://github.com/diaspora/diaspora/pull/5510)
 
 # 0.4.1.2
 

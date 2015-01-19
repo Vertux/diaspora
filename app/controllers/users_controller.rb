@@ -52,6 +52,12 @@ class UsersController < ApplicationController
         else
           flash[:notice] = I18n.t 'users.update.settings_not_updated'
         end
+      elsif u[:strip_exif]
+        if @user.update_attributes(u)
+          flash[:notice] = I18n.t 'users.update.settings_updated'
+        else
+          flash[:notice] = I18n.t 'users.update.settings_not_updated'
+        end
       elsif u[:language]
         if @user.update_attributes(u)
           I18n.locale = @user.language
@@ -135,12 +141,14 @@ class UsersController < ApplicationController
     redirect_to stream_path
   end
 
-  def export
-    if export = Diaspora::Exporter.new(current_user).execute
-      send_data export, filename: "#{current_user.username}_diaspora_data.json", type: :json
-    else
-      head :not_acceptable
-    end
+  def export_profile
+    current_user.queue_export
+    flash[:notice] = I18n.t('users.edit.export_in_progress')
+    redirect_to edit_user_path
+  end
+
+  def download_profile
+    send_data File.open(current_user.export.path).read, type: :json, filename: current_user.export.filename
   end
 
   def export_photos
@@ -180,6 +188,7 @@ class UsersController < ApplicationController
       :invitation_service,
       :invitation_identifier,
       :show_community_spotlight_in_stream,
+      :strip_exif,
       :auto_follow_back,
       :auto_follow_back_aspect_id,
       :remember_me,

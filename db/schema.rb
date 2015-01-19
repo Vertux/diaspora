@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141216213423) do
+ActiveRecord::Schema.define(version: 20141230214830) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -557,6 +557,10 @@ ActiveRecord::Schema.define(version: 20141216213423) do
     t.datetime "reset_password_sent_at"
     t.datetime "last_seen"
     t.datetime "remove_after"
+    t.boolean  "strip_exif",                                     default: true
+    t.string   "export"
+    t.datetime "exported_at"
+    t.boolean  "exporting",                                      default: false
   end
 
   add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", unique: true, using: :btree
