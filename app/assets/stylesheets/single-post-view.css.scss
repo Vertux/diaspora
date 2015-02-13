@@ -41,9 +41,19 @@
         margin-left: 8px;
         margin-right: 8px;
       }
+      .post-context {
+        font-size: 12px;
+
+        #single-post-moderation {
+          margin-left: 5px;
+
+          > div.info {
+            display: inline-block;
+          }
+        }
+      }
       .post-time a {
         color: $text-grey;
-        display: block;
         font-size: 12px;
       }
       .avatar {
@@ -82,6 +92,24 @@
         &:hover {
           text-decoration: none;
         }
+      }
+    }
+    #single-post-moderation {
+      a:hover {
+        text-decoration: none;
+      }
+      i {
+        padding-right: 5px;
+        vertical-align: top;
+        &:hover {
+          color: #424242;
+        }
+      }
+      a.post_report > i {
+        font-size: 14px;
+      }
+      i.cross {
+        font-size: 20px;
       }
     }
   }

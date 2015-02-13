@@ -6,6 +6,7 @@ app.views.SinglePostContent = app.views.Base.extend({
 
   subviews : {
     "#single-post-actions" : "singlePostActionsView",
+    '#single-post-moderation': "singlePostModerationView",
     '#real-post-content' : 'postContentView',
     ".oembed" : "oEmbedView",
     ".opengraph" : "openGraphView",
@@ -15,6 +16,7 @@ app.views.SinglePostContent = app.views.Base.extend({
 
   initialize : function() {
     this.singlePostActionsView = new app.views.SinglePostActions({model: this.model});
+    this.singlePostModerationView = new app.views.SinglePostModeration({model: this.model});
     this.oEmbedView = new app.views.OEmbed({model : this.model});
     this.openGraphView = new app.views.SPVOpenGraph({model : this.model});
     this.postContentView = new app.views.ExpandedStatusMessage({model: this.model});
@@ -30,12 +32,11 @@ app.views.SinglePostContent = app.views.Base.extend({
       authorIsCurrentUser :app.currentUser.isAuthorOf(this.model),
       showPost : this.showPost(),
       text : app.helpers.textFormatter(this.model.get("text"), this.model.get("mentioned_people"))
-    })
+    });
   },
 
   showPost : function() {
-    return (app.currentUser.get("showNsfw")) || !this.model.get("nsfw")
+    return (app.currentUser.get("showNsfw")) || !this.model.get("nsfw");
   }
 });
 // @license-end
-

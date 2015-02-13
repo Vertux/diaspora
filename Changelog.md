@@ -32,6 +32,12 @@ series and run our comprehensive test suite against it.
 ## Change in defaults.yml
 The default for including jQuery from a CDN has changed. If you want to continue to include it from a CDN, please explicitly set the `jquery_cdn` setting to `true` in diaspora.yml.
 
+## Change in database.yml
+For MySQL databases, replace `charset: utf8` with `encoding: utf8mb4` and  change `collation` from `utf8_bin` to `utf8mb4_bin` in the file `config/database.yml`.
+This is enables full UTF8 support (4bytes characters), including standard emoji characters.
+See `database.yml.example` for reference.
+Please make sure to stop Diaspora prior running this migration!
+
 ## Experimental chat feature
 This release adds experimental integration with XMPP for real-time chat. Please see  [our wiki](https://wiki.diasporafoundation.org/Vines) for further informations.
 
@@ -86,6 +92,9 @@ diaspora.yml file**. The existing settings from 0.4.x and before will not work a
 * Replace a modifier-rescue with a specific rescue [#5491](https://github.com/diaspora/diaspora/pull/5491)
 * Port contacts page to backbone [#5473](https://github.com/diaspora/diaspora/pull/5473)
 * Replace CSS vendor prefixes automatically [#5532](https://github.com/diaspora/diaspora/pull/5532)
+* Use sentence case consistently throughout UI [#5588](https://github.com/diaspora/diaspora/pull/5588)
+* Hide sign up button when registrations are disabled [#5612](https://github.com/diaspora/diaspora/pull/5612)
+* Standardize capitalization throughout the UI [#5588](https://github.com/diaspora/diaspora/pull/5588)
 
 ## Bug fixes
 * orca cannot see 'Add Contact' button [#5158](https://github.com/diaspora/diaspora/pull/5158)
@@ -117,6 +126,9 @@ diaspora.yml file**. The existing settings from 0.4.x and before will not work a
 * Repair downloading the profile image from Facebook [#5493](https://github.com/diaspora/diaspora/pull/5493)
 * Fix localization of post and comment timestamps on mobile [#5482](https://github.com/diaspora/diaspora/issues/5482)
 * Fix mobile JS loading to quieten errors. Fixes also service buttons on mobile bookmarklet.
+* Don't error out when adding a too long location to the profile [#5614](https://github.com/diaspora/diaspora/pull/5614)
+* Correctly decrease unread count for conversations [#5646](https://github.com/diaspora/diaspora/pull/5646)
+* Fix automatic scroll for conversations [#5646](https://github.com/diaspora/diaspora/pull/5646)
 
 ## Features
 * Don't pull jQuery from a CDN by default [#5105](https://github.com/diaspora/diaspora/pull/5105)
@@ -146,6 +158,12 @@ diaspora.yml file**. The existing settings from 0.4.x and before will not work a
 * Do not truncate notification emails anymore [#4342](https://github.com/diaspora/diaspora/issues/4342)
 * Allows users to export their data in gzipped JSON format from their user settings page [#5499](https://github.com/diaspora/diaspora/pull/5499)
 * Strip EXIF data from newly uploaded images [#5510](https://github.com/diaspora/diaspora/pull/5510)
+* Hide user setting if the community spotlight is not enabled on the pod [#5562](https://github.com/diaspora/diaspora/pull/5562)
+* Add HTML view for pod statistics [#5464](https://github.com/diaspora/diaspora/pull/5464)
+* Added/Moved hide, block user, report and delete button in SPV [#5547](https://github.com/diaspora/diaspora/pull/5547)
+* Added keyboard shortcuts r(reshare), m(expand Post), o(open first link in post) [#5602](https://github.com/diaspora/diaspora/pull/5602)
+* Dynamically compute minimum and maximum valid year for birthday field [#5639](https://github.com/diaspora/diaspora/pull/5639)
+* Show hovercard on mentions [#5652](https://github.com/diaspora/diaspora/pull/5652)
 
 # 0.4.1.2
 

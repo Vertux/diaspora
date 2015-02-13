@@ -54,7 +54,7 @@ app.views.StreamPost = app.views.Post.extend({
     var normalizedClass = this.model.get("post_type").replace(/::/, "__")
       , postClass = app.views[normalizedClass] || app.views.StatusMessage;
 
-    return new postClass({ model : this.model })
+    return new postClass({ model : this.model });
   },
 
   postLocationStreamView : function(){
@@ -63,7 +63,7 @@ app.views.StreamPost = app.views.Post.extend({
 
   removeNsfwShield: function(evt){
     if(evt){ evt.preventDefault(); }
-    this.model.set({nsfw : false})
+    this.model.set({nsfw : false});
     this.render();
   },
 
@@ -88,22 +88,29 @@ app.views.StreamPost = app.views.Post.extend({
 
   remove : function() {
     $(this.el).slideUp(400, _.bind(function(){this.$el.remove()}, this));
-    return this
+    return this;
   },
 
   hidePost : function(evt) {
     if(evt) { evt.preventDefault(); }
     if(!confirm(Diaspora.I18n.t('confirm_dialog'))) { return }
 
+    var self = this;
     $.ajax({
       url : "/share_visibilities/42",
       type : "PUT",
       data : {
         post_id : this.model.id
       }
-    })
-
-    this.remove();
+    }).done(function() {
+        self.remove();
+      })
+      .fail(function() {
+        Diaspora.page.flashMessages.render({
+          success: false,
+          notice: Diaspora.I18n.t('hide_post_failed')
+        });
+      });
   },
 
   focusCommentTextarea: function(evt){
@@ -114,6 +121,5 @@ app.views.StreamPost = app.views.Post.extend({
     return this;
   }
 
-})
+});
 // @license-end
-

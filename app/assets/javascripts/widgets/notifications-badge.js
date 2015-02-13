@@ -83,12 +83,13 @@
             self.dropdownNotifications.append(notification.note_html);
         });
       });
-      self.dropdownNotifications.find("time.timeago").timeago();
 
-      self.dropdownNotifications.find('.unread').each(function(index) {
+      app.helpers.timeago(self.dropdownNotifications);
+
+      self.dropdownNotifications.find('.unread').each(function() {
         Diaspora.page.header.notifications.setUpUnread( $(this) );
       });
-      self.dropdownNotifications.find('.read').each(function(index) {
+      self.dropdownNotifications.find('.read').each(function() {
         Diaspora.page.header.notifications.setUpRead( $(this) );
       });
       $('.notifications').perfectScrollbar('destroy');
@@ -97,10 +98,10 @@
       isLoading = false;
       $('.notifications').removeClass("loading");
       //Infinite Scrolling
-      $('.notifications').scroll(function(e) {
+      $('.notifications').scroll(function() {
         var bottom = $('.notifications').prop('scrollHeight') - $('.notifications').height();
         var currentPosition = $('.notifications').scrollTop();
-        isLoading = ($('.loading').length == 1);
+        isLoading = ($('.loading').length === 1);
         if (currentPosition + 50 >= bottom && notificationsLoaded <= self.notifications.length && !isLoading) {
             $('.notifications').addClass("loading");
             ++currentPage;
@@ -113,4 +114,3 @@
   Diaspora.Widgets.NotificationsDropdown = NotificationDropdown;
 })();
 // @license-end
-

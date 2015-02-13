@@ -26,9 +26,6 @@ var View = {
       .on('click', this.dropdowns.selector, this.dropdowns.click)
       .on('keypress', this.dropdowns.selector, this.dropdowns.click);
 
-    /* Avatars */
-    $(this.avatars.selector).error(this.avatars.fallback);
-
     /* Clear forms after successful submit, this is some legacy dan hanson stuff, do we still want it? */
     $.fn.clearForm = function() {
       return this.each(function() {
@@ -41,27 +38,21 @@ var View = {
           $(this).attr('checked', false);
         } else if ($(this).is('select')) {
           this.selectedIndex = -1;
-        } else if ($(this).attr('name') == 'photos[]') {
+        } else if ($(this).attr('name') === 'photos[]') {
           $(this).val('');
         }
         $(this).blur();
       });
     };
 
-    $(document).on('ajax:success', 'form[data-remote]', function (e) {
+    $(document).on('ajax:success', 'form[data-remote]', function () {
       $(this).clearForm();
       $(this).focusout();
     });
 
     /* tag following */
-    $("#new_tag_following .tag_input").bind('focus', function(evt){
+    $("#new_tag_following .tag_input").bind('focus', function(){
       $(this).siblings("#tag_following_submit").removeClass('hidden');
-    });
-
-    /* photo exporting in the works */
-    $("#photo-export-button").bind("click", function(evt){
-      evt.preventDefault();
-      alert($(this).attr('title'));
     });
 
     $(document.body).click(this.dropdowns.removeFocus);
@@ -71,8 +62,8 @@ var View = {
       Diaspora.page.directionDetector.updateBinds();
     });
 
-    $("a.new_aspect").click(function(e){
-      $("input#aspect_name").focus()
+    $("a.new_aspect").click(function(){
+      $("input#aspect_name").focus();
     });
 
     /* facebox 'done' buttons */
@@ -113,13 +104,6 @@ var View = {
     },
     selector: ".dropdown > .toggle",
     parentSelector: ".dropdown > .wrapper"
-  },
-
-  avatars: {
-    fallback: function(evt) {
-      $(this).attr("src", ImagePaths.get("user/default.png"));
-    },
-    selector: "img.avatar"
   }
 };
 
@@ -127,4 +111,3 @@ $(function() {
   View.initialize();
 });
 // @license-end
-
