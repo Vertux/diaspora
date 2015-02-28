@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
   scope :daily_actives, ->(time = Time.now) { logged_in_since(time - 1.day) }
   scope :yearly_actives, ->(time = Time.now) { logged_in_since(time - 1.year) }
   scope :halfyear_actives, ->(time = Time.now) { logged_in_since(time - 6.month) }
+  scope :active, -> { joins(:person).where(people: {closed_account: false}).where.not(username: nil) }
 
   devise :token_authenticatable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
@@ -480,15 +481,19 @@ class User < ActiveRecord::Base
     AccountDeletion.create(:person => self.person)
   end
 
+  def closed_account?
+    self.person.closed_account
+  end
+
   def clear_account!
     clearable_fields.each do |field|
       self[field] = nil
     end
     [:getting_started,
-     :disable_mail,
      :show_community_spotlight_in_stream].each do |field|
       self[field] = false
     end
+    self[:disable_mail] = true
     self[:strip_exif] = true
     self[:email] = "deletedaccount_#{self[:id]}@example.org"
 
@@ -513,7 +518,7 @@ class User < ActiveRecord::Base
       self.save
     end
   end
-  
+
   def after_database_authentication
     # remove any possible remove_after timestamp flag set by maintenance.remove_old_users
     unless self.remove_after.nil?
@@ -523,6 +528,7 @@ class User < ActiveRecord::Base
   end
 
   private
+
   def clearable_fields
     self.attributes.keys - ["id", "username", "encrypted_password",
                             "created_at", "updated_at", "locked_at",
