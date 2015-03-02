@@ -97,6 +97,7 @@ diaspora.yml file**. The existing settings from 0.4.x and before will not work a
 * Standardize capitalization throughout the UI [#5588](https://github.com/diaspora/diaspora/pull/5588)
 * Display photos on the profile page as thumbnails [#5521](https://github.com/diaspora/diaspora/pull/5521)
 * Unify not connected pages (sign in, sign up, forgot password) [#5391](https://github.com/diaspora/diaspora/pull/5391)
+* Port remaining stream pages to Bootstrap [#5715](https://github.com/diaspora/diaspora/pull/5715)
 
 ## Bug fixes
 * orca cannot see 'Add Contact' button [#5158](https://github.com/diaspora/diaspora/pull/5158)
@@ -136,6 +137,7 @@ diaspora.yml file**. The existing settings from 0.4.x and before will not work a
 * Strip Unicode format characters prior post processing [#5680](https://github.com/diaspora/diaspora/pull/5680)
 * Disable email notifications for closed user accounts [#5640](https://github.com/diaspora/diaspora/pull/5640)
 * Total user statistic no longer includes closed accounts [#5041](https://github.com/diaspora/diaspora/pull/5041)
+* Don't add a space when rendering a mention [#5711](https://github.com/diaspora/diaspora/pull/5711)
 
 ## Features
 * Don't pull jQuery from a CDN by default [#5105](https://github.com/diaspora/diaspora/pull/5105)

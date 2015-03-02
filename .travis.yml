@@ -11,7 +11,11 @@ env:
   - DB=mysql BUILD_TYPE=cucumber
 
 sudo: false
-cache: bundler
+cache:
+  bundler: true
+  directories:
+    - public/assets
+    - app/assets/images
 
 branches:
   only:
