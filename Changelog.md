@@ -138,6 +138,7 @@ diaspora.yml file**. The existing settings from 0.4.x and before will not work a
 * Disable email notifications for closed user accounts [#5640](https://github.com/diaspora/diaspora/pull/5640)
 * Total user statistic no longer includes closed accounts [#5041](https://github.com/diaspora/diaspora/pull/5041)
 * Don't add a space when rendering a mention [#5711](https://github.com/diaspora/diaspora/pull/5711)
+* Fix flickering hovercards [#5714](https://github.com/diaspora/diaspora/pull/5714)
 
 ## Features
 * Don't pull jQuery from a CDN by default [#5105](https://github.com/diaspora/diaspora/pull/5105)
@@ -181,6 +182,7 @@ diaspora.yml file**. The existing settings from 0.4.x and before will not work a
 * Add reshares to the stream view immediately [#5699](https://github.com/diaspora/diaspora/pull/5699)
 * Update and improve help section [#5665](https://github.com/diaspora/diaspora/pull/5665), [#5706](https://github.com/diaspora/diaspora/pull/5706)
 * Expose participation controls in the stream view [#5511](https://github.com/diaspora/diaspora/pull/5511)
+* Reimplement photo export [#5685](https://github.com/diaspora/diaspora/pull/5685)
 
 # 0.4.1.2
 
@@ -1202,7 +1204,7 @@ The new configuration system allows all possible settings to be overriden by env
 
 ### Environment variable changes:
 
-#### deprectated
+#### deprecated
 
 * REDISTOGO_URL in favour of REDIS_URL or ENVIRONMENT_REDIS
 
