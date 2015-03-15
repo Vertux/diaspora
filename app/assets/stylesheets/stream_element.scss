@@ -5,7 +5,7 @@
   }
   &.deleting {
     > .media { opacity: 0.3; }
-    .controls { display: none !important; }
+    .control-icons { display: none !important; }
   }
 }
 
@@ -15,17 +15,16 @@
     > .bd {
       position: relative;
       overflow: inherit;
-      > .controls {
+      > .control-icons {
+        border-radius: 4px;
+        padding-left: 5px;
         position: absolute;
         right: 6px;
-        top: 1px;
-        width: 15px;
-        height: 15px;
         text-align: center;
-        line-height: 15px;
+        top: 1px;
       }
     }
-    &:hover > .bd > .controls { background: #fff; }
+    &:hover > .bd > .control-icons { background: #fff; }
   }
   .thumbnail {
     height: 200px;
@@ -53,12 +52,12 @@
         width: 50px;
       }
     }
-    .author {
+    .author-name {
       font-weight: bold;
       margin-bottom: 4px;
       unicode-bidi: bidi-override;
     }
-    a.author { color: $blue; }
+    a.author-name { color: $blue; }
     .feedback {
       margin-top: 5px;
       font-size: 11px;

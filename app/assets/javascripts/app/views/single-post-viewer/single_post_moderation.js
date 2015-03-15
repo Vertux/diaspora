@@ -1,15 +1,19 @@
 app.views.SinglePostModeration = app.views.Feedback.extend({
   templateName: "single-post-viewer/single-post-moderation",
 
+  className: 'control-icons',
+
   events: function() {
     return _.defaults({
       "click .remove_post": "destroyModel",
+      "click .create_participation": "createParticipation",
+      "click .destroy_participation": "destroyParticipation"
     }, app.views.Feedback.prototype.events);
   },
 
   presenter: function() {
     return _.extend(this.defaultPresenter(), {
-      authorIsCurrentUser : this.authorIsCurrentUser(),
+      authorIsCurrentUser : this.authorIsCurrentUser()
     });
   },
 
@@ -40,6 +44,25 @@ app.views.SinglePostModeration = app.views.Feedback.extend({
           });
         });
     }
-  }
+  },
 
+  createParticipation: function (evt) {
+    if(evt) { evt.preventDefault(); }
+    var self = this;
+    $.post(Routes.post_participation_path(this.model.get("id")), {}, function () {
+      self.model.set({participation: true});
+      self.render();
+    });
+  },
+
+  destroyParticipation: function (evt) {
+    if(evt) { evt.preventDefault(); }
+    var self = this;
+    $.post(Routes.post_participation_path(this.model.get("id")), { _method: "delete" }, function () {
+      self.model.set({participation: false});
+      self.render();
+    });
+  },
+
+  participation: function(){ return this.model.get("participation"); }
 });
