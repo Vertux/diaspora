@@ -98,12 +98,13 @@ diaspora.yml file**. The existing settings from 0.4.x and before will not work a
 * Display photos on the profile page as thumbnails [#5521](https://github.com/diaspora/diaspora/pull/5521)
 * Unify not connected pages (sign in, sign up, forgot password) [#5391](https://github.com/diaspora/diaspora/pull/5391)
 * Port remaining stream pages to Bootstrap [#5715](https://github.com/diaspora/diaspora/pull/5715)
-* Partial Backbone port of the notification dropdown [#5707](https://github.com/diaspora/diaspora/pull/5707)
+* Port notification dropdown to Backbone [#5707](https://github.com/diaspora/diaspora/pull/5707) [#5761](https://github.com/diaspora/diaspora/pull/5761)
 * Add rounded corners for avatars [#5733](https://github.com/diaspora/diaspora/pull/5733)
 * Move registration form to a partial [#5764](https://github.com/diaspora/diaspora/pull/5764)
 * Add tests for liking and unliking posts [#5741](https://github.com/diaspora/diaspora/pull/5741)
 * Rewrite slide effect in conversations as css transition for better performance [#5776](https://github.com/diaspora/diaspora/pull/5776)
-* Various cleanups and improvements in the frontend code [#5781](https://github.com/diaspora/diaspora/pull/5781) [#5769](https://github.com/diaspora/diaspora/pull/5769) [#5763](https://github.com/diaspora/diaspora/pull/5763) [#5762](https://github.com/diaspora/diaspora/pull/5762) [#5758](https://github.com/diaspora/diaspora/pull/5758) [#5755](https://github.com/diaspora/diaspora/pull/5755) [#5747](https://github.com/diaspora/diaspora/pull/5747) [#5734](https://github.com/diaspora/diaspora/pull/5734)
+* Various cleanups and improvements in the frontend code [#5781](https://github.com/diaspora/diaspora/pull/5781) [#5769](https://github.com/diaspora/diaspora/pull/5769) [#5763](https://github.com/diaspora/diaspora/pull/5763) [#5762](https://github.com/diaspora/diaspora/pull/5762) [#5758](https://github.com/diaspora/diaspora/pull/5758) [#5755](https://github.com/diaspora/diaspora/pull/5755) [#5747](https://github.com/diaspora/diaspora/pull/5747) [#5734](https://github.com/diaspora/diaspora/pull/5734) [#5786](https://github.com/diaspora/diaspora/pull/5786) [#5768](https://github.com/diaspora/diaspora/pull/5798)
+* Add specs and validations to the role model [#5792](https://github.com/diaspora/diaspora/pull/5792)
 
 ## Bug fixes
 * orca cannot see 'Add Contact' button [#5158](https://github.com/diaspora/diaspora/pull/5158)
@@ -152,6 +153,8 @@ diaspora.yml file**. The existing settings from 0.4.x and before will not work a
 * Fix mobile sign up from an invitation [#5754](https://github.com/diaspora/diaspora/pull/5754)
 * Set max-width for tag following button on tag page [#5752](https://github.com/diaspora/diaspora/pull/5752)
 * Display error messages for failed password change [#5580](https://github.com/diaspora/diaspora/pull/5580)
+* Display correct error message for too long tags [#5783](https://github.com/diaspora/diaspora/pull/5783)
+* Fix displaying reshares in the stream on mobile [#5790](https://github.com/diaspora/diaspora/pull/5790)
 
 ## Features
 * Don't pull jQuery from a CDN by default [#5105](https://github.com/diaspora/diaspora/pull/5105)
@@ -197,6 +200,7 @@ diaspora.yml file**. The existing settings from 0.4.x and before will not work a
 * Expose participation controls in the stream view [#5511](https://github.com/diaspora/diaspora/pull/5511)
 * Reimplement photo export [#5685](https://github.com/diaspora/diaspora/pull/5685)
 * Add participation controls in the single post view [#5722](https://github.com/diaspora/diaspora/pull/5722)
+* Display polls on reshares [#5782](https://github.com/diaspora/diaspora/pull/5782)
 
 # 0.4.1.2
 
