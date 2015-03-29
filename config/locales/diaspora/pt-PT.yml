@@ -114,8 +114,6 @@ pt-PT:
     add_to_aspect:
       failure: "Não foi possível adicionar o contacto ao grupo."
       success: "Contacto adicionado ao grupo com sucesso."
-    aspect_contacts:
-      done_editing: "finalizar edição"
     aspect_listings:
       add_an_aspect: "+ Adicionar um grupo"
       deselect_all: "Desmarcar todos"
@@ -134,21 +132,14 @@ pt-PT:
       failure: "%{name} não se encontra vazio e não pôde ser removido."
       success: "%{name} foi removido(a) com sucesso."
     edit:
-      add_existing: "Adicionar um contacto existente"
       aspect_list_is_not_visible: "Os contactos neste grupo não podem ver-se uns aos outros."
       aspect_list_is_visible: "Os contactos neste grupo podem ver-se uns aos outros."
       confirm_remove_aspect: "Tem a certeza que deseja apagar este grupo?"
-      done: "Concluído"
       make_aspect_list_visible: "tornar visíveis uns aos outros nos contactos deste grupo?"
       remove_aspect: "Apagar este grupo"
       rename: "renomear"
       update: "atualizar"
       updating: "a atualizar"
-    few: "%{count} grupos"
-    helper:
-      are_you_sure: "Tem a certeza que deseja apagar este grupo?"
-      aspect_not_empty: "Grupo não vazio"
-      remove: "remover"
     index:
       diaspora_id:
         content_1: "A sua identificação diaspora* é:"
@@ -189,11 +180,6 @@ pt-PT:
         heading: "Conetar Serviços"
       unfollow_tag: "Deixar de seguir #%{tag}"
       welcome_to_diaspora: "Bem-vindo ao diaspora*, %{name}!"
-    many: "%{count} grupos"
-    move_contact:
-      error: "Erro ao mover o contacto: %{inspect}"
-      failure: "não funcionou %{inspect}"
-      success: "Pessoa movida para o novo grupo"
     new:
       create: "Criar"
       name: "Nome (apenas visível para si)"
@@ -211,14 +197,6 @@ pt-PT:
       family: "Família"
       friends: "Amigos"
       work: "Trabalho"
-    selected_contacts:
-      manage_your_aspects: "Gerir os seus grupos."
-      no_contacts: "Ainda não tem quaisquer contactos aqui."
-      view_all_community_spotlight: "Ver todos os destaques da comunidade"
-      view_all_contacts: "Ver todos os contactos"
-    show:
-      edit_aspect: "editar grupo"
-    two: "%{count} grupos"
     update:
       failure: "O seu grupo, %{name}, tinha um nome grande demais para ser guardado."
       success: "O seu grupo, %{name}, foi editado com sucesso."
@@ -238,36 +216,28 @@ pt-PT:
     post_success: "Publicado! A fechar!"
   cancel: "Cancelar"
   comments:
-    few: "%{count} comentários"
-    many: "%{count} comentários"
     new_comment:
       comment: "Comentar"
       commenting: "A comentar..."
     one: "1 comentário"
     other: "%{count} comentários"
-    two: "%{count} comentários"
     zero: "não há comentários"
   contacts:
     create:
       failure: "Erro ao criar contacto"
-    few: "%{count} contactos"
     index:
       add_a_new_aspect: "Adicionar um novo grupo"
       add_to_aspect: "Adicionar contactos a %{name}"
-      add_to_aspect_link: "adicionar contactos a %{name}"
       all_contacts: "Todos os contactos"
       community_spotlight: "Destaques da comunidade"
       many_people_are_you_sure: "Tem a certeza de que deseja começar um conversa privada com mais de %{suggested_limit} contactos? Publicar para este grupo pode ser uma forma melhor de os contactar."
       my_contacts: "Os meus contactos"
       no_contacts: "Parece que precisa de adicionar alguns contactos."
       no_contacts_message: "Verifique %{community_spotlight}"
-      no_contacts_message_with_aspect: "Verifique %{community_spotlight} ou %{add_to_aspect_link}"
       only_sharing_with_me: "Apenas a partilhar comigo"
-      remove_person_from_aspect: "Remover %{person_name} de \"%{aspect_name}\""
       start_a_conversation: "Iniciar uma conversa"
       title: "Contactos"
       your_contacts: "Os seus contactos"
-    many: "%{count} contactos"
     one: "1 contacto"
     other: "%{count} contactos"
     sharing:
@@ -275,7 +245,6 @@ pt-PT:
     spotlight:
       community_spotlight: "Destaque da comunidade"
       suggest_member: "Sugerir um membro"
-    two: "%{count} contactos"
     zero: "contactos"
   conversations:
     conversation:
@@ -284,8 +253,6 @@ pt-PT:
       fail: "Mensagem inválida"
       no_contact: "Cuidado, tem de adicionar primeiro um contacto!"
       sent: "A mensagem foi enviada"
-    destroy:
-      success: "A conversa foi removida com sucesso"
     helper:
       new_messages:
         few: "%{count} novas mensagens"
@@ -686,7 +653,6 @@ pt-PT:
       add_contact_from_tag: "adicionar contacto pela etiqueta"
     aspect_list:
       edit_membership: "editar a participação no grupo"
-    few: "%{count} pessoas"
     helper:
       is_not_sharing: "%{name} não está a partilhar consigo"
       is_sharing: "%{name} está a partilhar consigo"
@@ -697,7 +663,6 @@ pt-PT:
       no_results: "Ei! Precisa pesquisar por alguma coisa."
       results_for: "Utilizadores que correspondem %{search_term}"
       searching: "a pesquisar, por favor aguarde..."
-    many: "%{count} pessoas"
     one: "1 pessoa"
     other: "%{count} pessoas"
     person:
@@ -734,7 +699,6 @@ pt-PT:
       add_some: "adicionar alguns"
       edit: "editar"
       you_have_no_tags: "não tem etiquetas!"
-    two: "%{count} pessoas"
     webfinger:
       fail: "Lamentamos muito, não conseguimos encontrar %{handle}."
     zero: "ninguém"
@@ -829,15 +793,12 @@ pt-PT:
       update: "Atualizar"
     invalid_invite: "A hiperligação de convite fornecida já não é válida!"
     new:
-      continue: "Continuar"
       create_my_account: "Criar a minha conta!"
-      diaspora: "<3 diaspora*"
       email: "EMAIL"
       enter_email: "Introduza um endereço de email"
       enter_password: "Insira uma senha (mínimo de 6 carateres)"
       enter_password_again: "Introduza de novo a mesma palavra-passe"
       enter_username: "Escolha um nome de utilizador (apenas letras, números e sublinhado (_))"
-      hey_make: "OLÁ,<br/>EFETUE<br/>ALGO."
       join_the_movement: "Junte-se ao movimento!"
       password: "PALAVRA-PASSE"
       password_confirmation: "CONFIRMAÇÃO DA SENHA"
@@ -999,10 +960,7 @@ pt-PT:
       no_message_to_display: "Não há mensagens para mostrar."
     new:
       mentioning: "A mencionar: %{person}"
-    too_long:
-      one: "por favour, não utilize mais de %{count} carateres nas suas mensagens de estado"
-      other: "por favour, não utilize mais de %{count} carateres nas suas mensagens de estado"
-      zero: "por favor, não utilize mais de %{count} carateres nas suas mensagens de estado"
+    too_long: "{\"one\"=>\"por favour, não utilize mais de %{count} carateres nas suas mensagens de estado\", \"other\"=>\"por favour, não utilize mais de %{count} carateres nas suas mensagens de estado\", \"zero\"=>\"por favor, não utilize mais de %{count} carateres nas suas mensagens de estado\"}"
   stream_helper:
     hide_comments: "Ocultar todos comentários"
     show_comments:
@@ -1040,7 +998,6 @@ pt-PT:
       title: "Atividade pública"
     tags:
       contacts_title: "Pessoas que gostam desta etiqueta"
-      tag_prefill_text: "O que acontece com %{tag_name} é... "
       title: "Publicações marcadas: %{tags}"
   tag_followings:
     create:
@@ -1054,10 +1011,7 @@ pt-PT:
     show:
       follow: "Seguir #%{tag}"
       following: "A Seguir #%{tag}"
-      nobody_talking: "Ainda ninguém está a falar sobre %{tag}."
       none: "A etiqueta vazia não existe!"
-      people_tagged_with: "Pessoas com a etiqueta %{tag}"
-      posts_tagged_with: "Publicações com a etiqueta #%{tag}"
       stop_following: "Deixar de Seguir #%{tag}"
   terms_and_conditions: "Termos e Condições"
   undo: "Anular?"
@@ -1093,7 +1047,6 @@ pt-PT:
       current_password: "Palavra-passe atual"
       current_password_expl: "aquela que utiliza para iniciar sessão..."
       download_photos: "descarregar as minhas fotografias"
-      download_xml: "descarregar o meu xml"
       edit_account: "Editar conta"
       email_awaiting_confirmation: "Enviámos-lhe uma hiperligação de ativação para %{unconfirmed_email}. Até que siga esta hiperligação e ative o novo endereço, continuaremos a utilizar o seu endereço original %{email}."
       export_data: "Exportar dados"
@@ -1102,7 +1055,6 @@ pt-PT:
       liked: "alguém gosta da sua publicação"
       mentioned: "está mencionado numa publicação"
       new_password: "Nova palavra-passe"
-      photo_export_unavailable: "Exportação de fotografias atualmente indisponível"
       private_message: "recebe uma mensagem privada"
       receive_email_notifications: "Receber notificações por e-mail quando:"
       reshared: "alguém volta a compartilhar a sua publicação"

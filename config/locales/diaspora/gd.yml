@@ -47,11 +47,8 @@ gd:
       edit_aspect: "Deasaich %{name}"
       select_all: "Tagh na h-uile"
     edit:
-      done: "Deiseil"
       update: "ùraich"
       updating: "ag ùrachadh"
-    helper:
-      remove: "dubh às"
     index:
       diaspora_id:
         content_1: "'S e seo an ID diaspora* agad:"
@@ -78,28 +75,21 @@ gd:
   back: "Air ais"
   cancel: "Sgùir"
   comments:
-    few: "%{count} beachdan"
-    many: "%{count} beachdan"
     new_comment:
       comment: "Thoir beachd air"
       commenting: "a' toirt beachd air..."
     one: "1 bheachd"
     other: "%{count} beachdan"
-    two: "%{count} bheachd"
     zero: "Gun bheachd"
   contacts:
-    few: "%{count} càirdean"
     index:
       all_contacts: "Càirdean gu lèir"
       my_contacts: "Mo Chàirdean"
       no_contacts_message: "Thoir sùil air %{community_spotlight}"
-      no_contacts_message_with_aspect: "Thoir sùil air %{community_spotlight} no %{add_to_aspect_link}"
       title: "Càirdean"
       your_contacts: "Do Chàirdean"
-    many: "%{count} càirdean"
     one: "1 chàraid"
     other: "%{count} càirdean"
-    two: "%{count} chàraid"
     zero: "càirdean"
   conversations:
     create:

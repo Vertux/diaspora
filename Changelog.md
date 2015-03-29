@@ -61,6 +61,9 @@ Podmins can now set the currency for donations, and use an unhosted button if th
 a hosted one. Note: you need to **copy the new settings from diaspora.yml.example to your
 diaspora.yml file**. The existing settings from 0.4.x and before will not work any more.
 
+## Custom splash page changes
+diaspora* no longer adds a `div.container` to wrap custom splash pages. This adds the ability for podmins to write home pages using Bootstrap's fluid design. Podmins who added a custom splash page in `app/views/home/_show.{html,mobile}.haml` need to wrap the contents into a `div.container` to keep the old design.
+
 ## Refactor
 * Redesign contacts page [#5153](https://github.com/diaspora/diaspora/pull/5153)
 * Improve profile page design on mobile [#5084](https://github.com/diaspora/diaspora/pull/5084)
@@ -105,6 +108,7 @@ diaspora.yml file**. The existing settings from 0.4.x and before will not work a
 * Rewrite slide effect in conversations as css transition for better performance [#5776](https://github.com/diaspora/diaspora/pull/5776)
 * Various cleanups and improvements in the frontend code [#5781](https://github.com/diaspora/diaspora/pull/5781) [#5769](https://github.com/diaspora/diaspora/pull/5769) [#5763](https://github.com/diaspora/diaspora/pull/5763) [#5762](https://github.com/diaspora/diaspora/pull/5762) [#5758](https://github.com/diaspora/diaspora/pull/5758) [#5755](https://github.com/diaspora/diaspora/pull/5755) [#5747](https://github.com/diaspora/diaspora/pull/5747) [#5734](https://github.com/diaspora/diaspora/pull/5734) [#5786](https://github.com/diaspora/diaspora/pull/5786) [#5768](https://github.com/diaspora/diaspora/pull/5798)
 * Add specs and validations to the role model [#5792](https://github.com/diaspora/diaspora/pull/5792)
+* Replace 'Make something' text by diaspora ball logo on registration page [#5743](https://github.com/diaspora/diaspora/pull/5743)
 
 ## Bug fixes
 * orca cannot see 'Add Contact' button [#5158](https://github.com/diaspora/diaspora/pull/5158)
@@ -155,6 +159,8 @@ diaspora.yml file**. The existing settings from 0.4.x and before will not work a
 * Display error messages for failed password change [#5580](https://github.com/diaspora/diaspora/pull/5580)
 * Display correct error message for too long tags [#5783](https://github.com/diaspora/diaspora/pull/5783)
 * Fix displaying reshares in the stream on mobile [#5790](https://github.com/diaspora/diaspora/pull/5790)
+* Remove bottom margin from lists that are the last element of a post. [#5721](https://github.com/diaspora/diaspora/pull/5721)
+* Fix pagination design on conversations page [#5791](https://github.com/diaspora/diaspora/pull/5791)
 
 ## Features
 * Don't pull jQuery from a CDN by default [#5105](https://github.com/diaspora/diaspora/pull/5105)
@@ -201,6 +207,7 @@ diaspora.yml file**. The existing settings from 0.4.x and before will not work a
 * Reimplement photo export [#5685](https://github.com/diaspora/diaspora/pull/5685)
 * Add participation controls in the single post view [#5722](https://github.com/diaspora/diaspora/pull/5722)
 * Display polls on reshares [#5782](https://github.com/diaspora/diaspora/pull/5782)
+* Remove footer from stream pages [#5816](https://github.com/diaspora/diaspora/pull/5816)
 
 # 0.4.1.2
 

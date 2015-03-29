@@ -13,7 +13,9 @@ require 'capybara/session'
 #require 'cucumber/rails/capybara_javascript_emulation' # Lets you click links with onclick javascript handlers without using @culerity or @javascript
 
 # Ensure we know the appservers port
-Capybara.server_port = 9887
+Capybara.server_port = AppConfig.pod_uri.port
+Rails.application.routes.default_url_options[:host] = AppConfig.pod_uri.host
+Rails.application.routes.default_url_options[:port] = AppConfig.pod_uri.port
 
 # Use a version of Firefox defined by environment variable, if set
 Capybara.register_driver :selenium do |app|
@@ -45,14 +47,8 @@ Capybara.default_wait_time = 15
 # of your scenarios, as this makes it hard to discover errors in your application.
 ActionController::Base.allow_rescue = false
 
-Cucumber::Rails::Database.autorun_database_cleaner = false
+Cucumber::Rails::Database.autorun_database_cleaner = true
 Cucumber::Rails::World.use_transactional_fixtures = false
-
-DatabaseRewinder.clean_all
-
-After do
-  DatabaseRewinder.clean
-end
 
 require File.join(File.dirname(__FILE__), "integration_sessions_controller")
 require File.join(File.dirname(__FILE__), "poor_mans_webmock")

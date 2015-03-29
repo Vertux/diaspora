@@ -120,8 +120,6 @@ it:
     add_to_aspect:
       failure: "Errore nell'aggiungere il contatto all'aspetto."
       success: "Il contatto è stato aggiunto all'aspetto."
-    aspect_contacts:
-      done_editing: "modifica eseguita"
     aspect_listings:
       add_an_aspect: "+ Aggiungi un aspetto"
       deselect_all: "Deseleziona tutti"
@@ -140,22 +138,14 @@ it:
       failure: "%{name} non è stato rimosso perché non è vuoto."
       success: "%{name} è stato rimosso con successo."
     edit:
-      add_existing: "Aggiungi un contatto esistente"
       aspect_list_is_not_visible: "i Contatti in questo aspetto non sono visibili tra loro"
       aspect_list_is_visible: "I Contatti in questo aspetto sono visibili tra loro"
       confirm_remove_aspect: "Sei sicuro di voler eliminare questo aspetto?"
-      done: "Fatto"
       make_aspect_list_visible: "Vuoi che i contatti di questo aspetto vedano gli altri che ne fanno parte?"
-      manage: "Gestisci"
       remove_aspect: "Elimina questo aspetto"
       rename: "rinomina"
       update: "aggiorna"
       updating: "aggiornamento in corso"
-    few: "%{count} aspetti"
-    helper:
-      are_you_sure: "Sei sicuro di voler eliminare questo aspetto?"
-      aspect_not_empty: "Aspetto non vuoto"
-      remove: "rimuovi"
     index:
       diaspora_id:
         content_1: "Il tuo ID è:"
@@ -196,11 +186,6 @@ it:
         heading: "Servizi connessi"
       unfollow_tag: "Smetti di seguire #%{tag}"
       welcome_to_diaspora: "Benvenuto in diaspora, %{name}!"
-    many: "%{count} aspetti"
-    move_contact:
-      error: "Errore nello spostare il contatto: %{inspect}"
-      failure: "non ha funzionato %{inspect}"
-      success: "Persona spostata in un altro aspetto"
     new:
       create: "Crea"
       name: "Nome (visibile solo a te)"
@@ -218,14 +203,6 @@ it:
       family: "Famiglia"
       friends: "Amici"
       work: "Lavoro"
-    selected_contacts:
-      manage_your_aspects: "Modifica gli aspetti."
-      no_contacts: "Ancora non hai contatti."
-      view_all_community_spotlight: "Tutti gli utenti in evidenza"
-      view_all_contacts: "Mostra tutti i contatti"
-    show:
-      edit_aspect: "modifica aspetto"
-    two: "%{count} aspetti"
     update:
       failure: "Il tuo aspetto, %{name}, ha un nome troppo lungo per poter essere salvato."
       success: "Il tuo aspetto, %{name}, è stato modificato con successo."
@@ -245,36 +222,28 @@ it:
     post_success: "Inviato! Chiusura in corso!"
   cancel: "Annulla"
   comments:
-    few: "%{count} commenti"
-    many: "%{count} commenti"
     new_comment:
       comment: "Commenta"
       commenting: "Invio commento in corso..."
     one: "1 commento"
     other: "%{count} commenti"
-    two: "%{count} commenti"
     zero: "nessun commento"
   contacts:
     create:
       failure: "Impossibile creare il contatto"
-    few: "%{count} contatti"
     index:
       add_a_new_aspect: "Aggiungi un aspetto"
       add_to_aspect: "aggiungi i contatti a %{name}"
-      add_to_aspect_link: "aggiungi contatti a %{name}"
       all_contacts: "Tutti i contatti"
       community_spotlight: "In evidenza nella comunità"
       many_people_are_you_sure: "Stai inviando un messaggio privato a più di %{suggested_limit} contatti. Vuoi farlo davvero? Forse potrebbe essere più opportuno pubblicarlo su un aspetto!"
       my_contacts: "I miei contatti"
       no_contacts: "Probabilmente devi aggiungere qualche contatto!"
       no_contacts_message: "Scopri gli utenti %{community_spotlight}"
-      no_contacts_message_with_aspect: "Scopri gli utenti %{community_spotlight} oppure %{add_to_aspect_link}"
       only_sharing_with_me: "Condividono con me"
-      remove_person_from_aspect: "Rimuovi %{person_name} da \"%{aspect_name}\""
       start_a_conversation: "Inizia una conversazione"
       title: "Contatti"
       your_contacts: "I tuoi contatti"
-    many: "%{count} contatti"
     one: "1 contatto"
     other: "%{count} contatti"
     sharing:
@@ -282,7 +251,6 @@ it:
     spotlight:
       community_spotlight: "In evidenza nella comunità"
       suggest_member: "Suggerisci un utente"
-    two: "%{count} contatti"
     zero: "contatti"
   conversations:
     conversation:
@@ -291,8 +259,6 @@ it:
       fail: "Messaggio non valido"
       no_contact: "Hey, devi prima aggiungere un contatto!"
       sent: "Messaggio inviato"
-    destroy:
-      success: "Conversazione rimossa con successo"
     helper:
       new_messages:
         one: "%{count} nuovo messaggio"
@@ -560,7 +526,6 @@ it:
       back_to_top: "Torna all'inizio"
       powered_by: "POWERED BY DIASPORA*"
       public_feed: "Feed pubblici diaspora* di %{name}"
-      source_package: ""
       toggle: "attiva/disattiva versione mobile"
       whats_new: "novità"
       your_aspects: "i tuoi aspetti"
@@ -748,7 +713,6 @@ it:
       add_contact_from_tag: "aggiungi contatto dal #tag"
     aspect_list:
       edit_membership: "modifica appartenenza all'aspetto"
-    few: "%{count} persone"
     helper:
       is_not_sharing: "%{name} non condivide con te"
       is_sharing: "%{name} sta condividendo con te"
@@ -762,7 +726,6 @@ it:
       search_handle: "Utilizza la loro ID diaspora* (nomeutente@pod.tld) per essere sicuro di trovare i tuoi amici."
       searching: "ricerca in corso, devi avere pazienza..."
       send_invite: "Ancora niente? Manda un invito!"
-    many: "%{count} persone"
     one: "una persona"
     other: "%{count} persone"
     person:
@@ -799,7 +762,6 @@ it:
       add_some: "aggiungi"
       edit: "modifica"
       you_have_no_tags: "non hai alcun tag!"
-    two: "%{count} persone"
     webfinger:
       fail: "Spiacenti, non possiamo trovare %{handle}."
     zero: "nessuna persona"
@@ -897,15 +859,12 @@ it:
       update: "Aggiorna"
     invalid_invite: "L'invito che hai usato non è più valido!"
     new:
-      continue: "Continua"
       create_my_account: "Crea il mio account!"
-      diaspora: "<3 Diaspora*"
       email: "EMAIL"
       enter_email: "Inserisci un indirizzo email"
       enter_password: "Scegli una password (minimo 6 caratteri)"
       enter_password_again: "Scrivi di nuovo la password per verifica"
       enter_username: "Scegli un nome utente (usa solo lettere, numeri e trattino basso)"
-      hey_make: "HEY,<br/>CREA<br/>QUALCOSA."
       join_the_movement: "Partecipa al movimento!"
       password: "PASSWORD"
       password_confirmation: "CONFERMA PASSWORD"
@@ -1086,8 +1045,7 @@ it:
       no_message_to_display: "Nessun messaggio da visualizzare."
     new:
       mentioning: "Stai menzionando: %{person}"
-    too_long:
-      other: "Per favore scrivi i tuoi stati con meno di %{count} carattere. Al momento ci sono %{current_length} caratteri"
+    too_long: "Per favore scrivi i tuoi stati con meno di %{count} carattere. Al momento ci sono %{current_length} caratteri"
   stream_helper:
     hide_comments: "Nascondi i commenti"
     show_comments:
@@ -1125,7 +1083,6 @@ it:
       title: "Attività pubblica"
     tags:
       contacts_title: "Persone con questo tag"
-      tag_prefill_text: "A proposito di %{tag_name} ..."
       title: "Post con tag: %{tags}"
   tag_followings:
     create:
@@ -1138,15 +1095,8 @@ it:
   tags:
     show:
       follow: "Segui #%{tag}"
-      followed_by_people:
-        one: "Seguita da una persona"
-        other: "Seguito da %{count} persone"
-        zero: "Seguito da nessuno"
       following: "Stai seguendo #%{tag}"
-      nobody_talking: "Nessuno sta ancora parlando di %{tag}."
       none: "Il tag vuoto non esiste!"
-      people_tagged_with: "Persone con il tag %{tag}"
-      posts_tagged_with: "Post con il tag #%{tag}"
       stop_following: "Smetti di seguire #%{tag}"
   terms_and_conditions: "Termini e condizioni d'uso"
   undo: "Annullare?"
@@ -1182,7 +1132,6 @@ it:
       current_password: "Password attuale"
       current_password_expl: "quella con cui accedi..."
       download_photos: "scarica le mie foto"
-      download_xml: "scarica il mio xml"
       edit_account: "Modifica account"
       email_awaiting_confirmation: "Il link di attivazione è stato spedito a %{unconfirmed_email}. Continueremo ad usare la tua email originale %{email} finché non cliccherai sul link e attiverai il nuovo indirizzo."
       export_data: "Esporta dati"
@@ -1191,7 +1140,6 @@ it:
       liked: "a qualcuno piace un tuo post"
       mentioned: "sei menzionato in un post"
       new_password: "Nuova password"
-      photo_export_unavailable: "Al momento l'esportazione delle foto non è disponibile "
       private_message: "hai ricevuto un messaggio privato"
       receive_email_notifications: "Ricevi notifiche via email quando:"
       reshared: "qualcuno ha condiviso un tuo post"

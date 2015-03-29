@@ -1,5 +1,4 @@
 source "https://rubygems.org"
-source "https://rails-assets.org"
 
 gem "rails", "4.2.1"
 
@@ -33,8 +32,8 @@ gem "simple_captcha2", "0.3.4", require: "simple_captcha"
 
 # Background processing
 
-gem "sidekiq", "3.3.2"
-gem "sinatra", "1.4.5"
+gem "sidekiq", "3.3.3"
+gem "sinatra", "1.4.6"
 
 # Scheduled processing
 
@@ -57,7 +56,7 @@ gem "rack-cors", "0.3.1", require: "rack/cors"
 gem "bootstrap-sass", "2.3.2.2"
 gem "compass-rails",  "2.0.4"
 gem "sass-rails",     "5.0.1"
-gem "autoprefixer-rails", "5.1.7"
+gem "autoprefixer-rails", "5.1.7.1"
 
 # Database
 
@@ -72,7 +71,7 @@ gem "activerecord-import", "0.7.0"
 
 gem "carrierwave", "0.10.0"
 gem "fog",         "1.28.0"
-gem "mini_magick", "4.1.0"
+gem "mini_magick", "4.2.0"
 gem "remotipart",  "1.2.1"
 
 # GUID generation
@@ -87,25 +86,28 @@ gem "entypo-rails", "2.2.2"
 gem "backbone-on-rails",                                "1.1.2"
 gem "handlebars_assets",                                "0.20.1"
 gem "jquery-rails",                                     "3.1.2"
-gem "rails-assets-jquery",                              "1.11.1" # Should be kept in sync with jquery-rails
 gem "js_image_paths",                                   "0.0.2"
 gem "js-routes",                                        "1.0.0"
-gem "rails-assets-punycode",                            "1.3.2"
-gem "rails-assets-markdown-it",                         "3.1.0"
-gem "rails-assets-markdown-it-hashtag",                 "0.2.3"
-gem "rails-assets-markdown-it-diaspora-mention",        "0.2.1"
-gem "rails-assets-markdown-it-sanitizer",               "0.2.2"
-gem "rails-assets-markdown-it--markdown-it-for-inline", "0.1.0"
-gem "rails-assets-markdown-it-sub",                     "0.1.0"
-gem "rails-assets-markdown-it-sup",                     "0.1.0"
 
-# jQuery plugins
+source "https://rails-assets.org" do
+  gem "rails-assets-jquery",                              "1.11.1" # Should be kept in sync with jquery-rails
 
-gem "rails-assets-jeresig--jquery.hotkeys", "0.2.0"
-gem "rails-assets-jquery-idletimer",        "1.0.1"
-gem "rails-assets-jquery-placeholder",      "2.1.1"
-gem "rails-assets-jquery-textchange",       "0.2.3"
-gem "rails-assets-perfect-scrollbar",       "0.5.9"
+  gem "rails-assets-markdown-it",                         "4.0.3"
+  gem "rails-assets-markdown-it-hashtag",                 "0.3.0"
+  gem "rails-assets-markdown-it-diaspora-mention",        "0.3.0"
+  gem "rails-assets-markdown-it-sanitizer",               "0.3.0"
+  gem "rails-assets-markdown-it--markdown-it-for-inline", "0.1.0"
+  gem "rails-assets-markdown-it-sub",                     "1.0.0"
+  gem "rails-assets-markdown-it-sup",                     "1.0.0"
+
+  # jQuery plugins
+
+  gem "rails-assets-jeresig--jquery.hotkeys", "0.2.0"
+  gem "rails-assets-jquery-idletimer",        "1.0.1"
+  gem "rails-assets-jquery-placeholder",      "2.1.1"
+  gem "rails-assets-jquery-textchange",       "0.2.3"
+  gem "rails-assets-perfect-scrollbar",       "0.5.9"
+end
 
 # Localization
 
@@ -142,11 +144,11 @@ gem "active_model_serializers", "0.9.3"
 
 # XMPP chat dependencies
 gem "diaspora-vines",             "~> 0.1.27"
-gem "rails-assets-diaspora_jsxc", "~> 0.1.1"
+gem "rails-assets-diaspora_jsxc", "~> 0.1.1", source: "https://rails-assets.org"
 
 # Tags
 
-gem "acts-as-taggable-on", "3.4.4"
+gem "acts-as-taggable-on", "3.5.0"
 
 # URIs and HTTP
 
@@ -185,7 +187,7 @@ gem "minitest"
 group :production do # we don"t install these on travis to speed up test runs
   # Administration
 
-  gem "rails_admin", "0.6.6"
+  gem "rails_admin", "0.6.7"
 
   # Analytics
 
@@ -212,11 +214,11 @@ end
 
 group :development do
   # Automatic test runs
-  gem "guard-cucumber", "1.5.3"
+  gem "guard-cucumber", "1.5.4"
   gem "guard-jshintrb", "1.1.1"
   gem "guard-rspec",    "4.5.0"
   gem "guard-rubocop",  "1.2.0"
-  gem "guard",          "2.12.4", require: false
+  gem "guard",          "2.12.5", require: false
   gem "rb-fsevent",     "0.9.4", require: false
   gem "rb-inotify",     "0.9.5", require: false
 
@@ -242,12 +244,12 @@ group :test do
   gem "fixture_builder",   "0.3.6"
   gem "fuubar",            "2.0.0"
   gem "rspec-instafail",   "0.2.6", require: false
-  gem "test_after_commit", "0.4.0"
+  gem "test_after_commit", "0.4.1"
 
   # Cucumber (integration tests)
 
   gem "capybara",           "2.4.4"
-  gem "database_rewinder",  "0.5.1"
+  gem "database_cleaner" ,  "1.4.1"
   gem "selenium-webdriver", "2.45.0"
 
   # General helpers
@@ -260,7 +262,7 @@ end
 
 group :development, :test do
   # RSpec (unit tests, some integration tests)
-  gem "rspec-rails",     "3.1.0"
+  gem "rspec-rails",     "3.2.1"
 
   # Cucumber (integration tests)
   gem "cucumber-rails",     "1.4.2", require: false
@@ -268,6 +270,6 @@ group :development, :test do
   # Jasmine (client side application tests (JS))
   gem "jasmine",                   "2.2.0"
   gem "jasmine-jquery-rails",      "2.0.3"
-  gem "rails-assets-jasmine-ajax", "3.0.0"
+  gem "rails-assets-jasmine-ajax", "3.1.0", source: "https://rails-assets.org"
   gem "sinon-rails",               "1.10.3"
 end
