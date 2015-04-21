@@ -1,12 +1,14 @@
 # Head
 
 ## Refactor
+* Use Bootstrap modal for new aspect pane [#5850](https://github.com/diaspora/diaspora/pull/5850)
 
 ## Bug fixes
 * Disable auto follow back on aspect deletion [#5846](https://github.com/diaspora/diaspora/pull/5846)
 * Fix only sharing flag for contacts that are receiving [#5848](https://github.com/diaspora/diaspora/pull/5848)
 * Return 406 when requesting a JSON representation of people/:guid/contacts [#5849](https://github.com/diaspora/diaspora/pull/5849)
 * Destroy Participation when removing interactions with a post [#5852](https://github.com/diaspora/diaspora/pull/5852)
+* Hide manage services link in the publisher on certain pages [#5854](https://github.com/diaspora/diaspora/pull/5854)
 
 ## Features
 * Hide post title of limited post in comment notification email [#5843](https://github.com/diaspora/diaspora/pull/5843)
@@ -162,7 +164,7 @@ diaspora* no longer adds a `div.container` to wrap custom splash pages. This add
 * Disable email notifications for closed user accounts [#5640](https://github.com/diaspora/diaspora/pull/5640)
 * Total user statistic no longer includes closed accounts [#5041](https://github.com/diaspora/diaspora/pull/5041)
 * Don't add a space when rendering a mention [#5711](https://github.com/diaspora/diaspora/pull/5711)
-* Fix flickering hovercards [#5714](https://github.com/diaspora/diaspora/pull/5714)
+* Fix flickering hovercards [#5714](https://github.com/diaspora/diaspora/pull/5714) [#5876](https://github.com/diaspora/diaspora/pull/5876)
 * Improved stripping markdown in post titles [#5730](https://github.com/diaspora/diaspora/pull/5730)
 * Remove border from reply form for conversations [#5744](https://github.com/diaspora/diaspora/pull/5744)
 * Fix overflow for headings, blockquotes and other elements [#5731](https://github.com/diaspora/diaspora/pull/5731)
@@ -175,6 +177,10 @@ diaspora* no longer adds a `div.container` to wrap custom splash pages. This add
 * Remove bottom margin from lists that are the last element of a post. [#5721](https://github.com/diaspora/diaspora/pull/5721)
 * Fix pagination design on conversations page [#5791](https://github.com/diaspora/diaspora/pull/5791)
 * Prevent inserting posts into the wrong stream [#5838](https://github.com/diaspora/diaspora/pull/5838)
+* Update help section [#5857](https://github.com/diaspora/diaspora/pull/5857) [#5859](https://github.com/diaspora/diaspora/pull/5859)
+* Fix asset precompilation check in script/server [#5863](https://github.com/diaspora/diaspora/pull/5863)
+* Convert MySQL databases to utf8mb4 [#5530](https://github.com/diaspora/diaspora/pull/5530) [#5624](https://github.com/diaspora/diaspora/pull/5624) [#5865](https://github.com/diaspora/diaspora/pull/5865)
+* Don't upcase labels on mobile sign up/sign in [#5872](https://github.com/diaspora/diaspora/pull/5872)
 
 ## Features
 * Don't pull jQuery from a CDN by default [#5105](https://github.com/diaspora/diaspora/pull/5105)
