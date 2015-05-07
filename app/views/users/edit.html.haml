@@ -179,9 +179,9 @@
             = link_to t('.download_export'), download_profile_user_path, class: "btn btn-success"
             %h6
               = t('.last_exported_at', timestamp: current_user.exported_at)
-            = link_to t('.request_export_update'), export_profile_user_path, class: "btn"
+            = link_to t(".request_export_update"), export_profile_user_path, method: :post, class: "btn"
           - else
-            = link_to t('.request_export'), export_profile_user_path, :class => "btn"
+            = link_to t(".request_export"), export_profile_user_path, method: :post, class: "btn"
 
           - if current_user.exporting_photos
             .small-horizontal-spacer
@@ -191,48 +191,15 @@
             = link_to t('.download_export_photos'), download_photos_user_path, class: "btn  btn-success"
             %h6
               = t('.last_exported_at', timestamp: current_user.exported_photos_at)
-            = link_to t('.request_export_photos_update'), export_photos_user_path, class: "btn"
+            = link_to t(".request_export_photos_update"), export_photos_user_path, method: :post, class: "btn"
           - else
             .small-horizontal-spacer
-            = link_to t('.request_export_photos'), export_photos_user_path, :class => "btn"
+            = link_to t(".request_export_photos"), export_photos_user_path, method: :post, class: "btn"
 
         .span6
           %h3
-            = t('.close_account_text')
-          =link_to t('.close_account_text'), '#close_account_pane', :rel => 'facebox', :class => "btn btn-danger", :id => "close_account"
+            = t(".close_account_text")
+          .btn.btn-danger{ id: "close_account", data: {toggle: "modal", target: "#closeAccountModal"}}
+            = t(".close_account_text")
 
-          .hidden#close_account_pane{:rel => 'facebox'}
-            #inner_account_delete
-              %h1
-                = t('.close_account.dont_go')
-              %p
-                = t('.close_account.make_diaspora_better')
-              .row-fluid
-                .span6
-                  = image_tag 'sadcat.jpg'
-                  .small-horizontal-spacer
-                  %small
-                    %b
-                      = t('.close_account.mr_wiggles')
-                .span6
-                  %ul
-                    %li
-                      = t('.close_account.what_we_delete')
-                    %li
-                      = t('.close_account.locked_out')
-                    %li
-                      = t('.close_account.lock_username')
-                  %p
-                    %b
-                      = t('.close_account.no_turning_back')
-
-                  = form_for 'user', :url => user_path, :html => { :method => :delete } do |f|
-                    = f.error_messages
-
-                    %p
-                      = f.label :close_account_password, t('.current_password'), :for => :close_account_password
-                      = f.password_field :current_password, :id => :close_account_password
-                    %p
-                      = f.submit t('.close_account_text'), :class => "btn btn-danger", :id => "close_account_confirm", :data => { :confirm => t('are_you_sure_delete_account') }
-
-    .span3
+          = render "close_account_modal"

@@ -1,17 +1,56 @@
-# Head
+# 0.6.0.0
+
+## Supported Ruby versions
+
+This release recommends using Ruby 2.2, while retaining Ruby 2.1 as an officially supported version.
+Ruby 2.0 is no longer officially supported.
+
+## Refactor
+* Improve bookmarklet [#5904](https://github.com/diaspora/diaspora/pull/5904)
+
+## Bug fixes
+* Destroy Participation when removing interactions with a post [#5852](https://github.com/diaspora/diaspora/pull/5852)
+
+## Features
+
+# 0.5.1.0
 
 ## Refactor
 * Use Bootstrap modal for new aspect pane [#5850](https://github.com/diaspora/diaspora/pull/5850)
+* Use asset helper instead of .css.erb [#5886](https://github.com/diaspora/diaspora/pull/5886)
+* Dropped db/seeds.rb [#5896](https://github.com/diaspora/diaspora/pull/5896)
+* Drop broken install scripts [#5907](https://github.com/diaspora/diaspora/pull/5907)
+* Improve invoking mobile site in the testsuite [#5915](https://github.com/diaspora/diaspora/pull/5915)
 
 ## Bug fixes
 * Disable auto follow back on aspect deletion [#5846](https://github.com/diaspora/diaspora/pull/5846)
 * Fix only sharing flag for contacts that are receiving [#5848](https://github.com/diaspora/diaspora/pull/5848)
 * Return 406 when requesting a JSON representation of people/:guid/contacts [#5849](https://github.com/diaspora/diaspora/pull/5849)
-* Destroy Participation when removing interactions with a post [#5852](https://github.com/diaspora/diaspora/pull/5852)
 * Hide manage services link in the publisher on certain pages [#5854](https://github.com/diaspora/diaspora/pull/5854)
+* Fix notification mails for limited posts [#5877](https://github.com/diaspora/diaspora/pull/5877)
+* Fix medium and small avatar URLs when using Camo [#5883](https://github.com/diaspora/diaspora/pull/5883)
+* Improve output of script/server [#5885](https://github.com/diaspora/diaspora/pull/5885)
+* Fix CSS for bold links [#5887](https://github.com/diaspora/diaspora/pull/5887)
+* Correctly handle IE8 in the chrome frame middleware [#5878](https://github.com/diaspora/diaspora/pull/5878)
+* Fix code reloading for PostPresenter [#5888](https://github.com/diaspora/diaspora/pull/5888)
+* Fix closing account from mobile view [#5913](https://github.com/diaspora/diaspora/pull/5913)
+* Allow using common custom template for desktop & mobile landing page [#5915](https://github.com/diaspora/diaspora/pull/5915)
+* Use correct branding in Atom feed [#5929](https://github.com/diaspora/diaspora/pull/5929)
+* Update the configurate gem to avoid issues by missed missing settings keys [#5934](https://github.com/diaspora/diaspora/pull/5934)
 
 ## Features
 * Hide post title of limited post in comment notification email [#5843](https://github.com/diaspora/diaspora/pull/5843)
+* More and better environment checks in script/server [#5891](https://github.com/diaspora/diaspora/pull/5891)
+* Enable aspect sorting again [#5559](https://github.com/diaspora/diaspora/pull/5559)
+* Submit messages in conversations with Ctrl+Enter [#5910](https://github.com/diaspora/diaspora/pull/5910)
+* Support syntax highlighting for fenced code blocks [#5908](https://github.com/diaspora/diaspora/pull/5908)
+* Added link to diasporafoundation.org to invitation email [#5893](https://github.com/diaspora/diaspora/pull/5893)
+* Gracefully handle missing `og:url`s [#5926](https://github.com/diaspora/diaspora/pull/5926)
+* Remove private post content from "also commented" mails [#5931](https://github.com/diaspora/diaspora/pull/5931)
+
+# 0.5.0.1
+
+Use the correct setting for captcha length instead of defaulting to 1 always.
 
 # 0.5.0.0
 

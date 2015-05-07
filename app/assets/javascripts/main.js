@@ -15,11 +15,15 @@
 //= require facebox
 //= require browser_detection
 //= require jquery.events.input
-//= require jquery.elastic
+//= require jakobmattsson-jquery-elastic
 //= require jquery.mentionsInput
 //= require jquery-idletimer/dist/idle-timer
 //= require jquery.infinitescroll-custom
 //= require jquery.autocomplete-custom
+//= require jquery-ui/core
+//= require jquery-ui/widget
+//= require jquery-ui/mouse
+//= require jquery-ui/sortable
 //= require keycodes
 //= require fileuploader-custom
 //= require handlebars.runtime
@@ -31,6 +35,7 @@
 //= require markdown-it-sanitizer
 //= require markdown-it-sub
 //= require markdown-it-sup
+//= require highlightjs
 //= require clear-form
 //= require app/app
 //= require diaspora
