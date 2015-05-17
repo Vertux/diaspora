@@ -21,6 +21,7 @@ Ruby 2.0 is no longer officially supported.
 * Dropped db/seeds.rb [#5896](https://github.com/diaspora/diaspora/pull/5896)
 * Drop broken install scripts [#5907](https://github.com/diaspora/diaspora/pull/5907)
 * Improve invoking mobile site in the testsuite [#5915](https://github.com/diaspora/diaspora/pull/5915)
+* Do not retry a couple of unrecoverable job failures [#5938](https://github.com/diaspora/diaspora/pull/5938) [#5942](https://github.com/diaspora/diaspora/pull/5943)
 
 ## Bug fixes
 * Disable auto follow back on aspect deletion [#5846](https://github.com/diaspora/diaspora/pull/5846)
@@ -37,6 +38,12 @@ Ruby 2.0 is no longer officially supported.
 * Allow using common custom template for desktop & mobile landing page [#5915](https://github.com/diaspora/diaspora/pull/5915)
 * Use correct branding in Atom feed [#5929](https://github.com/diaspora/diaspora/pull/5929)
 * Update the configurate gem to avoid issues by missed missing settings keys [#5934](https://github.com/diaspora/diaspora/pull/5934)
+* ContactPresenter#full_hash_with_person did not contain relationship information [#5936](https://github.com/diaspora/diaspora/pull/5936)
+* Fix inactive user removal not respecting configuration for daily limits [#5953](https://github.com/diaspora/diaspora/pull/5953)
+* Fix missing localization of inactive user removal warning emails [#5950](https://github.com/diaspora/diaspora/issues/5950)
+* Fix fetching for public post while Webfingering [#5958](https://github.com/diaspora/diaspora/pull/5958)
+* Handle empty searchable in HCard gracefully [#5962](https://github.com/diaspora/diaspora/pull/5962)
+* Fix a freeze in new post parsing [#5965](https://github.com/diaspora/diaspora/pull/5965)
 
 ## Features
 * Hide post title of limited post in comment notification email [#5843](https://github.com/diaspora/diaspora/pull/5843)
@@ -47,6 +54,10 @@ Ruby 2.0 is no longer officially supported.
 * Added link to diasporafoundation.org to invitation email [#5893](https://github.com/diaspora/diaspora/pull/5893)
 * Gracefully handle missing `og:url`s [#5926](https://github.com/diaspora/diaspora/pull/5926)
 * Remove private post content from "also commented" mails [#5931](https://github.com/diaspora/diaspora/pull/5931)
+* Add a button to follow/unfollow tags to the mobile interface [#5941](https://github.com/diaspora/diaspora/pull/5941)
+* Add a "Manage followed tags" page to mass unfollow tags in the mobile interface [#5945](https://github.com/diaspora/diaspora/pull/5945)
+* Add popover/tooltip about email visibility to registration/settings page [#5956](https://github.com/diaspora/diaspora/pull/5956)
+* Fetch person posts on sharing request [#5960](https://github.com/diaspora/diaspora/pull/5960)
 
 # 0.5.0.1
 
