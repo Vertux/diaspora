@@ -1,5 +1,19 @@
 # 0.6.0.0
 
+## The DB environment variable is gone
+
+With Bundler 1.10 supporting optional groups, we removed the DB environment variable. When updating to this release, please update
+bundler and select the database support you want:
+
+```sh
+gem install bundler
+bundle install --with mysql # For MySQL and MariaDB
+bundle install --with postgresql # For PostgreSQL
+```
+
+For production setups we now additionally recommend adding the `--deployment` flag.
+If you set the DB environment variable anywhere, that's no longer necessary.
+
 ## Supported Ruby versions
 
 This release recommends using Ruby 2.2, while retaining Ruby 2.1 as an officially supported version.
@@ -7,6 +21,7 @@ Ruby 2.0 is no longer officially supported.
 
 ## Refactor
 * Improve bookmarklet [#5904](https://github.com/diaspora/diaspora/pull/5904)
+* Update listen configuration to listen on unix sockets by default [#5974](https://github.com/diaspora/diaspora/pull/5974)
 
 ## Bug fixes
 * Destroy Participation when removing interactions with a post [#5852](https://github.com/diaspora/diaspora/pull/5852)
@@ -22,6 +37,20 @@ Ruby 2.0 is no longer officially supported.
 * Drop broken install scripts [#5907](https://github.com/diaspora/diaspora/pull/5907)
 * Improve invoking mobile site in the testsuite [#5915](https://github.com/diaspora/diaspora/pull/5915)
 * Do not retry a couple of unrecoverable job failures [#5938](https://github.com/diaspora/diaspora/pull/5938) [#5942](https://github.com/diaspora/diaspora/pull/5943)
+* Remove some old temporary workarounds [#5964](https://github.com/diaspora/diaspora/pull/5964)
+* Remove unused `hasPhotos` and `hasText` functions [#5969](https://github.com/diaspora/diaspora/pull/5969)
+* Replace foreman with eye [#5966](https://github.com/diaspora/diaspora/pull/5966)
+* Improved handling of reshares with deleted roots [#5968](https://github.com/diaspora/diaspora/pull/5968)
+* Remove two unused methods [#5970](https://github.com/diaspora/diaspora/pull/5970)
+* Refactored the Logger to add basic logrotating and more useful timestamps [#5975](https://github.com/diaspora/diaspora/pull/5975)
+* Gracefully handle mailer failures if a like is already deleted again [#5983](https://github.com/diaspora/diaspora/pull/5983)
+* Ensure posts have an author [#5986](https://github.com/diaspora/diaspora/pull/5986)
+* Improve the logging messages of Sidekiq messages [#5988](https://github.com/diaspora/diaspora/pull/5988)
+* Improve the logging of Eyes output [#5989](https://github.com/diaspora/diaspora/pull/5989)
+* Gracefully handle XML parse errors within federation [#5991](https://github.com/diaspora/diaspora/pull/5991)
+* Remove zip-zip workaround gem [#6001](https://github.com/diaspora/diaspora/pull/6001)
+* Cleanup and reorganize image assets [#6004](https://github.com/diaspora/diaspora/pull/6004)
+* Replace vendored assets for facebox by gem [#6005](https://github.com/diaspora/diaspora/pull/6005)
 
 ## Bug fixes
 * Disable auto follow back on aspect deletion [#5846](https://github.com/diaspora/diaspora/pull/5846)
@@ -44,6 +73,9 @@ Ruby 2.0 is no longer officially supported.
 * Fix fetching for public post while Webfingering [#5958](https://github.com/diaspora/diaspora/pull/5958)
 * Handle empty searchable in HCard gracefully [#5962](https://github.com/diaspora/diaspora/pull/5962)
 * Fix a freeze in new post parsing [#5965](https://github.com/diaspora/diaspora/pull/5965)
+* Add case insensitive unconfirmed email addresses as authentication key [#5967](https://github.com/diaspora/diaspora/pull/5967)
+* Fix liking on single post views when accessed via GUID [#5978](https://github.com/diaspora/diaspora/pull/5978)
+* Only return the current_users participation for post interactions [#6007](https://github.com/diaspora/diaspora/pull/6007)
 
 ## Features
 * Hide post title of limited post in comment notification email [#5843](https://github.com/diaspora/diaspora/pull/5843)
@@ -58,6 +90,8 @@ Ruby 2.0 is no longer officially supported.
 * Add a "Manage followed tags" page to mass unfollow tags in the mobile interface [#5945](https://github.com/diaspora/diaspora/pull/5945)
 * Add popover/tooltip about email visibility to registration/settings page [#5956](https://github.com/diaspora/diaspora/pull/5956)
 * Fetch person posts on sharing request [#5960](https://github.com/diaspora/diaspora/pull/5960)
+* Introduce 'authorized' configuration option for services [#5985](https://github.com/diaspora/diaspora/pull/5985)
+* Added configuration options for log rotating [#5994](https://github.com/diaspora/diaspora/pull/5994)
 
 # 0.5.0.1
 

@@ -60,10 +60,12 @@ gem "autoprefixer-rails", "5.1.11"
 
 # Database
 
-ENV["DB"] ||= "mysql"
-
-gem "mysql2", "0.3.18" if ENV["DB"] == "all" || ENV["DB"] == "mysql"
-gem "pg",     "0.18.1" if ENV["DB"] == "all" || ENV["DB"] == "postgres"
+group :mysql, optional: true do
+  gem "mysql2", "0.3.18"
+end
+group :postgresql, optional: true do
+  gem "pg",     "0.18.1"
+end
 
 gem "activerecord-import", "0.7.0"
 
@@ -94,7 +96,7 @@ source "https://rails-assets.org" do
   gem "rails-assets-jquery",                              "1.11.2" # Should be kept in sync with jquery-rails
 
   gem "rails-assets-markdown-it",                         "4.2.1"
-  gem "rails-assets-markdown-it-hashtag",                 "0.3.0"
+  gem "rails-assets-markdown-it-hashtag",                 "0.3.1"
   gem "rails-assets-markdown-it-diaspora-mention",        "0.3.0"
   gem "rails-assets-markdown-it-sanitizer",               "0.3.1"
   gem "rails-assets-markdown-it--markdown-it-for-inline", "0.1.1"
@@ -111,6 +113,8 @@ source "https://rails-assets.org" do
   gem "rails-assets-perfect-scrollbar",             "0.5.9"
   gem "rails-assets-jakobmattsson--jquery-elastic", "1.6.11"
 end
+
+gem "facebox-rails", "0.2.0"
 
 # Localization
 
@@ -130,7 +134,7 @@ gem "redcarpet",         "3.2.3"
 gem "twitter-text",      "1.12.0"
 gem "roxml",             "3.1.6"
 gem "ruby-oembed",       "0.8.14"
-gem "open_graph_reader", "0.6.0"
+gem "open_graph_reader", "0.6.1"
 
 # Services
 
@@ -169,9 +173,13 @@ gem "mobile-fu",               "1.3.1"
 gem "will_paginate",           "3.0.7"
 gem "rails-timeago",           "2.11.0"
 
-# Workarounds
-# https://github.com/rubyzip/rubyzip#important-note
-gem "zip-zip"
+# Logging
+
+gem "logging-rails", "0.5.0", require: "logging/rails"
+
+# Reading and writing zip files
+
+gem "rubyzip", "1.1.7"
 
 # Prevent occasions where minitest is not bundled in
 # packaged versions of ruby. See following issues/prs:
@@ -203,7 +211,7 @@ group :production do # we don"t install these on travis to speed up test runs
 
   # Process management
 
-  gem "foreman", "0.62"
+  gem "eye", "0.7.pre"
 
   # Redirects
 
@@ -280,4 +288,7 @@ group :development, :test do
   gem "jasmine-jquery-rails",      "2.0.3"
   gem "rails-assets-jasmine-ajax", "3.1.1", source: "https://rails-assets.org"
   gem "sinon-rails",               "1.10.3"
+
+  # silence assets
+  gem "quiet_assets", "1.1.0"
 end

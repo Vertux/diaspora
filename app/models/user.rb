@@ -325,7 +325,7 @@ class User < ActiveRecord::Base
   def perform_export_photos!
     temp_zip = Tempfile.new([username, '_photos.zip'])
     begin
-      Zip::ZipOutputStream.open(temp_zip.path) do |zos|
+      Zip::OutputStream.open(temp_zip.path) do |zos|
         photos.each do |photo|
           begin
             photo_file = photo.unprocessed_image.file
@@ -361,10 +361,9 @@ class User < ActiveRecord::Base
     end
   end
 
-  def mail_confirm_email
-    return false if unconfirmed_email.blank?
+  def send_confirm_email
+    return if unconfirmed_email.blank?
     Workers::Mail::ConfirmEmail.perform_async(id)
-    true
   end
 
   ######### Posts and Such ###############
