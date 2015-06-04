@@ -22,6 +22,7 @@ Ruby 2.0 is no longer officially supported.
 ## Refactor
 * Improve bookmarklet [#5904](https://github.com/diaspora/diaspora/pull/5904)
 * Update listen configuration to listen on unix sockets by default [#5974](https://github.com/diaspora/diaspora/pull/5974)
+* Port to Bootstrap 3 [#6015](https://github.com/diaspora/diaspora/pull/6015)
 
 ## Bug fixes
 * Destroy Participation when removing interactions with a post [#5852](https://github.com/diaspora/diaspora/pull/5852)
@@ -51,6 +52,11 @@ Ruby 2.0 is no longer officially supported.
 * Remove zip-zip workaround gem [#6001](https://github.com/diaspora/diaspora/pull/6001)
 * Cleanup and reorganize image assets [#6004](https://github.com/diaspora/diaspora/pull/6004)
 * Replace vendored assets for facebox by gem [#6005](https://github.com/diaspora/diaspora/pull/6005)
+* Improve styling of horizontal ruler in posts [#6016](https://github.com/diaspora/diaspora/pull/6016)
+* Increase post titles length to 50 and use configured pod name as title in the atom feed [#6020](https://github.com/diaspora/diaspora/pull/6020)
+* Remove deprecated Facebook permissions [#6019](https://github.com/diaspora/diaspora/pull/6019)
+* Make used post title lengths more consistent [#6022](https://github.com/diaspora/diaspora/pull/6022)
+* Improved logging source [#6041](https://github.com/diaspora/diaspora/pull/6041)
 
 ## Bug fixes
 * Disable auto follow back on aspect deletion [#5846](https://github.com/diaspora/diaspora/pull/5846)
@@ -76,6 +82,10 @@ Ruby 2.0 is no longer officially supported.
 * Add case insensitive unconfirmed email addresses as authentication key [#5967](https://github.com/diaspora/diaspora/pull/5967)
 * Fix liking on single post views when accessed via GUID [#5978](https://github.com/diaspora/diaspora/pull/5978)
 * Only return the current_users participation for post interactions [#6007](https://github.com/diaspora/diaspora/pull/6007)
+* Fix tag rendering in emails [#6009](https://github.com/diaspora/diaspora/pull/6009)
+* Fix the logo in emails [#6013](https://github.com/diaspora/diaspora/pull/6013)
+* Disable autocorrect for username on mobile sign in [#6028](https://github.com/diaspora/diaspora/pull/6028)
+* Fix broken default avatars in the database [#6014](https://github.com/diaspora/diaspora/pull/6014)
 
 ## Features
 * Hide post title of limited post in comment notification email [#5843](https://github.com/diaspora/diaspora/pull/5843)

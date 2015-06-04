@@ -53,7 +53,7 @@ gem "rack-cors", "0.4.0", require: "rack/cors"
 
 # CSS
 
-gem "bootstrap-sass", "2.3.2.2"
+gem "bootstrap-sass", "3.3.4.1"
 gem "compass-rails",  "2.0.4"
 gem "sass-rails",     "5.0.1"
 gem "autoprefixer-rails", "5.1.11"
@@ -139,11 +139,11 @@ gem "open_graph_reader", "0.6.1"
 # Services
 
 gem "omniauth",           "1.2.2"
-gem "omniauth-facebook",  "1.6.0"
+gem "omniauth-facebook",  "2.0.1"
 gem "omniauth-tumblr",    "1.1"
-gem "omniauth-twitter",   "1.0.1"
+gem "omniauth-twitter",   "1.2.0"
 gem "twitter",            "4.8.1"
-gem "omniauth-wordpress", "0.2.1"
+gem "omniauth-wordpress", "0.2.2"
 
 # Serializers
 
@@ -252,7 +252,7 @@ end
 group :test do
   # RSpec (unit tests, some integration tests)
 
-  gem "fixture_builder",   "0.3.6"
+  gem "fixture_builder",   "0.4.1"
   gem "fuubar",            "2.0.0"
   gem "rspec-instafail",   "0.2.6", require: false
   gem "test_after_commit", "0.4.1"
