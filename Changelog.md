@@ -23,6 +23,7 @@ Ruby 2.0 is no longer officially supported.
 * Improve bookmarklet [#5904](https://github.com/diaspora/diaspora/pull/5904)
 * Update listen configuration to listen on unix sockets by default [#5974](https://github.com/diaspora/diaspora/pull/5974)
 * Port to Bootstrap 3 [#6015](https://github.com/diaspora/diaspora/pull/6015)
+* Use a fixed width for the mobile drawer [#6057](https://github.com/diaspora/diaspora/pull/6057)
 
 ## Bug fixes
 * Destroy Participation when removing interactions with a post [#5852](https://github.com/diaspora/diaspora/pull/5852)
@@ -86,6 +87,7 @@ Ruby 2.0 is no longer officially supported.
 * Fix the logo in emails [#6013](https://github.com/diaspora/diaspora/pull/6013)
 * Disable autocorrect for username on mobile sign in [#6028](https://github.com/diaspora/diaspora/pull/6028)
 * Fix broken default avatars in the database [#6014](https://github.com/diaspora/diaspora/pull/6014)
+* Only strip text direction codepoints around hashtags [#6067](https://github.com/diaspora/diaspora/issues/6067)
 
 ## Features
 * Hide post title of limited post in comment notification email [#5843](https://github.com/diaspora/diaspora/pull/5843)
