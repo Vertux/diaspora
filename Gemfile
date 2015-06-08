@@ -110,7 +110,7 @@ source "https://rails-assets.org" do
   gem "rails-assets-jquery-idletimer",              "1.0.1"
   gem "rails-assets-jquery-placeholder",            "2.1.1"
   gem "rails-assets-jquery-textchange",             "0.2.3"
-  gem "rails-assets-perfect-scrollbar",             "0.5.9"
+  gem "rails-assets-perfect-scrollbar",             "0.6.2"
   gem "rails-assets-jakobmattsson--jquery-elastic", "1.6.11"
 end
 
@@ -142,7 +142,7 @@ gem "omniauth",           "1.2.2"
 gem "omniauth-facebook",  "2.0.1"
 gem "omniauth-tumblr",    "1.1"
 gem "omniauth-twitter",   "1.2.0"
-gem "twitter",            "4.8.1"
+gem "twitter",            "5.14.0"
 gem "omniauth-wordpress", "0.2.2"
 
 # Serializers
@@ -247,6 +247,9 @@ group :development do
   gem "pry"
   gem "pry-debundle"
   gem "pry-byebug"
+
+  # test coverage
+  gem "simplecov", "0.10.0", require: false
 end
 
 group :test do

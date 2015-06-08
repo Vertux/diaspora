@@ -17,7 +17,10 @@
           %p
             %b= current_user.diaspora_handle
         .col-md-6
-          %h3= t('.your_email')
+          %h3
+            = t(".your_email")
+            %i.entypo.lock.gray.settings_visibility{title: t("users.edit.your_email_private")}
+
 
           = form_for 'user', url: user_path, html: { method: :put, class: "form-horizontal col-md-12" , id: "email-form"} do |f|
             = f.error_messages
@@ -47,8 +50,7 @@
           %div.col-sm-6
             = f.password_field :password_confirmation, placeholder: t('.character_minimum_expl'), class: "form-control"
 
-        .submit_block
-          = link_to t('cancel'), edit_user_path, class: "btn btn-default"
+        .clearfix
           = f.submit t('.change_password'), class: "btn btn-primary pull-right", name: 'change_password'
 
       %hr
@@ -58,6 +60,14 @@
         .form-inline.clearfix
           = f.select :language, available_language_options, {}, { class: 'form-control form-group' }
           = f.submit t('.change_language'), class: "btn btn-primary pull-right"
+
+      %hr
+
+      %h3= t(".change_color_theme")
+      = form_for "user", url: user_path, html: {method: :put} do |f|
+        .form-inline.clearfix
+          = f.select :color_theme, available_color_themes, {}, {class: "form-control form-group"}
+          = f.submit t(".change_color_theme"), class: "btn btn-primary pull-right"
 
       %hr
 

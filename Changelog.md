@@ -29,8 +29,21 @@ Ruby 2.0 is no longer officially supported.
 * Destroy Participation when removing interactions with a post [#5852](https://github.com/diaspora/diaspora/pull/5852)
 
 ## Features
+* Support color themes [#6033](https://github.com/diaspora/diaspora/pull/6033)
+
+# 0.5.2.0
+
+# Refactor
+* Update perfect-scrollbar [#6085](https://github.com/diaspora/diaspora/pull/6085)
 
 # 0.5.1.0
+
+## Configuration changes
+
+Please note that the default listen parameter for production setups got
+changed. diaspora\* will no longer listen on `0.0.0.0:3000` as it will now
+bind to an UNIX socket at `unix:tmp/diaspora.sock`. Please change your local
+`diaspora.yml` if necessary.
 
 ## Refactor
 * Use Bootstrap modal for new aspect pane [#5850](https://github.com/diaspora/diaspora/pull/5850)
@@ -58,6 +71,9 @@ Ruby 2.0 is no longer officially supported.
 * Remove deprecated Facebook permissions [#6019](https://github.com/diaspora/diaspora/pull/6019)
 * Make used post title lengths more consistent [#6022](https://github.com/diaspora/diaspora/pull/6022)
 * Improved logging source [#6041](https://github.com/diaspora/diaspora/pull/6041)
+* Gracefully handle duplicate entry while receiving share-visibility in parallel [#6068](https://github.com/diaspora/diaspora/pull/6068)
+* Update twitter gem to get rid of deprecation warnings [#6083](https://github.com/diaspora/diaspora/pull/6083)
+* Refactor photos federation to get rid of some hacks [#6082](https://github.com/diaspora/diaspora/pull/6082)
 
 ## Bug fixes
 * Disable auto follow back on aspect deletion [#5846](https://github.com/diaspora/diaspora/pull/5846)
@@ -88,6 +104,9 @@ Ruby 2.0 is no longer officially supported.
 * Disable autocorrect for username on mobile sign in [#6028](https://github.com/diaspora/diaspora/pull/6028)
 * Fix broken default avatars in the database [#6014](https://github.com/diaspora/diaspora/pull/6014)
 * Only strip text direction codepoints around hashtags [#6067](https://github.com/diaspora/diaspora/issues/6067)
+* Fix selected week on admin weekly stats page [#6079](https://github.com/diaspora/diaspora/pull/6079)
+* Fix that some unread conversations may be hidden [#6060](https://github.com/diaspora/diaspora/pull/6060)
+* Fix photo links in the mobile interface [#6082](https://github.com/diaspora/diaspora/pull/6082)
 
 ## Features
 * Hide post title of limited post in comment notification email [#5843](https://github.com/diaspora/diaspora/pull/5843)
