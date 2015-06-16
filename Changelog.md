@@ -19,11 +19,21 @@ If you set the DB environment variable anywhere, that's no longer necessary.
 This release recommends using Ruby 2.2, while retaining Ruby 2.1 as an officially supported version.
 Ruby 2.0 is no longer officially supported.
 
+## Configuration changes
+
+Please note that the default listen parameter for production setups got
+changed. diaspora\* will no longer listen on `0.0.0.0:3000` as it will now
+bind to an UNIX socket at `unix:tmp/diaspora.sock`. Please change your local
+`diaspora.yml` if necessary.
+
 ## Refactor
 * Improve bookmarklet [#5904](https://github.com/diaspora/diaspora/pull/5904)
 * Update listen configuration to listen on unix sockets by default [#5974](https://github.com/diaspora/diaspora/pull/5974)
 * Port to Bootstrap 3 [#6015](https://github.com/diaspora/diaspora/pull/6015)
 * Use a fixed width for the mobile drawer [#6057](https://github.com/diaspora/diaspora/pull/6057)
+* Replace jquery.autoresize with autosize [#6104](https://github.com/diaspora/diaspora/pull/6104)
+* Improve mobile conversation design [#6087](https://github.com/diaspora/diaspora/pull/6087)
+* Replace remaining faceboxes with Bootstrap modals [#6106](https://github.com/diaspora/diaspora/pull/6106)
 
 ## Bug fixes
 * Destroy Participation when removing interactions with a post [#5852](https://github.com/diaspora/diaspora/pull/5852)
@@ -33,17 +43,25 @@ Ruby 2.0 is no longer officially supported.
 
 # 0.5.2.0
 
-# Refactor
+## Refactor
 * Update perfect-scrollbar [#6085](https://github.com/diaspora/diaspora/pull/6085)
 
+## Bug fixes
+* Precompile facebox images [#6105](https://github.com/diaspora/diaspora/pull/6105)
+
+## Features
+* Add configuration options for some debug logs [#6090](https://github.com/diaspora/diaspora/pull/6090)
+
+# 0.5.1.1
+
+Update rails to 4.2.2, rack to 1.6.2 and jquery-rails to 4.0.4. This fixes
+
+* [CVE-2015-3226](https://groups.google.com/d/msg/rubyonrails-security/7VlB_pck3hU/3QZrGIaQW6cJ)
+* [CVE-2015-3227](https://groups.google.com/d/msg/rubyonrails-security/bahr2JLnxvk/x4EocXnHPp8J)
+* [CVE-2015-1840](https://groups.google.com/d/msg/rubyonrails-security/XIZPbobuwaY/fqnzzpuOlA4J)
+* [CVE-2015-3225](https://groups.google.com/d/msg/rubyonrails-security/gcUbICUmKMc/qiCotVZwXrMJ)
+
 # 0.5.1.0
-
-## Configuration changes
-
-Please note that the default listen parameter for production setups got
-changed. diaspora\* will no longer listen on `0.0.0.0:3000` as it will now
-bind to an UNIX socket at `unix:tmp/diaspora.sock`. Please change your local
-`diaspora.yml` if necessary.
 
 ## Refactor
 * Use Bootstrap modal for new aspect pane [#5850](https://github.com/diaspora/diaspora/pull/5850)
