@@ -15,8 +15,10 @@ module NavigationHelpers
         tag_path($1)
       when /^its ([\w ]+) page$/
         send("#{$1.gsub(/\W+/, '_')}_path", @it)
+      when /^the mobile ([\w ]+) page$/
+        public_send("#{$1.gsub(/\W+/, '_')}_path", format: "mobile")
       when /^the ([\w ]+) page$/
-        send("#{$1.gsub(/\W+/, '_')}_path")
+        public_send("#{$1.gsub(/\W+/, '_')}_path")
       when /^my edit profile page$/
         edit_profile_path
       when /^my profile page$/

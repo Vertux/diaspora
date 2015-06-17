@@ -65,13 +65,16 @@ app.views.PublisherGettingStarted = Backbone.View.extend({
       var close = $(popup).find(".close");
 
       close.click(function() {
-        if( $(".popover").length <= 1 ) {
+        el.popover("hide");
+        return false;
+      });
+
+      el.on("hidden.bs.popover", function() {
+        if( $(".popover").length === 0) {
           $.get("/getting_started_completed", {success: function() {
             $("#welcome-to-diaspora, #welcome-to-diaspora~br").remove();
           }});
         }
-        el.popover("hide");
-        return false;
       });
     }, timeout);
   }

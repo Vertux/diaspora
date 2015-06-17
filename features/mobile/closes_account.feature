@@ -12,8 +12,8 @@ Feature: Close account
     When I put in my password in "close_account_password"
     And I press "close_account_confirm"
     And I confirm the alert
+    Then I should be on the mobile new user session page
 
-    When I am on the new user session page
-    And I try to sign in manually
+    When I try to sign in manually
     Then I should be on the new user session page
     And I should see a flash message with a warning

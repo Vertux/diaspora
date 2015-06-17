@@ -46,7 +46,9 @@ module LayoutHelper
   end
 
   def include_color_theme(view="desktop")
-    stylesheet_link_tag "#{current_color_theme}/#{view}", media: "all"
+    tags = stylesheet_link_tag "#{current_color_theme}/#{view}", media: "all"
+    tags << stylesheet_link_tag("test", media: "all") if Rails.env.test?
+    tags
   end
 
   def old_browser_js_support
