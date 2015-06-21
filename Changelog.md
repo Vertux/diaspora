@@ -34,20 +34,26 @@ bind to an UNIX socket at `unix:tmp/diaspora.sock`. Please change your local
 * Replace jquery.autoresize with autosize [#6104](https://github.com/diaspora/diaspora/pull/6104)
 * Improve mobile conversation design [#6087](https://github.com/diaspora/diaspora/pull/6087)
 * Replace remaining faceboxes with Bootstrap modals [#6106](https://github.com/diaspora/diaspora/pull/6106)
+* Rewrite header using Bootstrap 3 [#6109](https://github.com/diaspora/diaspora/pull/6109)
 
 ## Bug fixes
 * Destroy Participation when removing interactions with a post [#5852](https://github.com/diaspora/diaspora/pull/5852)
 
 ## Features
 * Support color themes [#6033](https://github.com/diaspora/diaspora/pull/6033)
+* Add mobile services and privacy settings pages [#6086](https://github.com/diaspora/diaspora/pull/6086)
 
 # 0.5.2.0
 
 ## Refactor
 * Update perfect-scrollbar [#6085](https://github.com/diaspora/diaspora/pull/6085)
+* Remove top margin for first heading in a post [#6110](https://github.com/diaspora/diaspora/pull/6110)
+* Add link to pod statistics in right navigation [#6117](https://github.com/diaspora/diaspora/pull/6117)
 
 ## Bug fixes
 * Precompile facebox images [#6105](https://github.com/diaspora/diaspora/pull/6105)
+* Fix wrong closing a-tag [#6111](https://github.com/diaspora/diaspora/pull/6111)
+* Fix mobile more-button wording when there are less than 15 posts [#6118](https://github.com/diaspora/diaspora/pull/6118)
 
 ## Features
 * Add configuration options for some debug logs [#6090](https://github.com/diaspora/diaspora/pull/6090)
