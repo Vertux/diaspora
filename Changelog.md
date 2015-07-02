@@ -34,7 +34,7 @@ bind to an UNIX socket at `unix:tmp/diaspora.sock`. Please change your local
 * Replace jquery.autoresize with autosize [#6104](https://github.com/diaspora/diaspora/pull/6104)
 * Improve mobile conversation design [#6087](https://github.com/diaspora/diaspora/pull/6087)
 * Replace remaining faceboxes with Bootstrap modals [#6106](https://github.com/diaspora/diaspora/pull/6106)
-* Rewrite header using Bootstrap 3 [#6109](https://github.com/diaspora/diaspora/pull/6109)
+* Rewrite header using Bootstrap 3 [#6109](https://github.com/diaspora/diaspora/pull/6109) [#6130](https://github.com/diaspora/diaspora/pull/6130) [#6132](https://github.com/diaspora/diaspora/pull/6132)
 
 ## Bug fixes
 * Destroy Participation when removing interactions with a post [#5852](https://github.com/diaspora/diaspora/pull/5852)
@@ -49,6 +49,7 @@ bind to an UNIX socket at `unix:tmp/diaspora.sock`. Please change your local
 * Update perfect-scrollbar [#6085](https://github.com/diaspora/diaspora/pull/6085)
 * Remove top margin for first heading in a post [#6110](https://github.com/diaspora/diaspora/pull/6110)
 * Add link to pod statistics in right navigation [#6117](https://github.com/diaspora/diaspora/pull/6117)
+* Update to Rails 4.2.3 [#6140](https://github.com/diaspora/diaspora/pull/6140)
 
 ## Bug fixes
 * Precompile facebox images [#6105](https://github.com/diaspora/diaspora/pull/6105)
@@ -57,6 +58,13 @@ bind to an UNIX socket at `unix:tmp/diaspora.sock`. Please change your local
 
 ## Features
 * Add configuration options for some debug logs [#6090](https://github.com/diaspora/diaspora/pull/6090)
+* Send new users a welcome message from the podmin [#6128](https://github.com/diaspora/diaspora/pull/6128)
+
+# 0.5.1.2
+
+diaspora\* versions prior 0.5.1.2 leaked potentially private profile data (namely the bio, birthday, gender and location fields) to
+unauthorized users. While the frontend properly hid them, the backend missed a check to not include them in responses.
+Thanks to @cmrd-senya for finding and reporting the issue.
 
 # 0.5.1.1
 
