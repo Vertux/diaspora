@@ -16,7 +16,6 @@
 //= require jquery.events.input
 //= require jakobmattsson-jquery-elastic
 //= require jquery.mentionsInput
-//= require jquery-idletimer/dist/idle-timer
 //= require jquery.infinitescroll-custom
 //= require jquery.autocomplete-custom
 //= require jquery-ui/core
@@ -42,7 +41,7 @@
 //= require_tree ./pages
 //= require_tree ./widgets
 //= require view
-//= require aspects-dropdown
 //= require mentions
 //= require bootstrap
 //= require osmlocator
+//= require bootstrap-switch

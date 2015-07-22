@@ -152,6 +152,42 @@ describe("app.views.Publisher", function() {
       });
     });
 
+    describe("createPostPreview", function(){
+      beforeEach(function() {
+        app.stream = { addNow: $.noop };
+      });
+
+      it("calls handleTextchange to complete missing mentions", function(){
+        spyOn(this.view, "handleTextchange");
+        this.view.createPostPreview($.Event());
+        expect(this.view.handleTextchange).toHaveBeenCalled();
+      });
+
+      it("calls removePostPreview to remove the last preview", function(){
+        spyOn(this.view, "removePostPreview");
+        this.view.createPostPreview($.Event());
+        expect(this.view.removePostPreview).toHaveBeenCalled();
+      });
+
+      it("adds the status message to the stream", function() {
+        spyOn(app.stream, "addNow");
+        this.view.createPostPreview($.Event());
+        expect(app.stream.addNow).toHaveBeenCalled();
+      });
+
+      it("sets recentPreview", function(){
+        expect(this.view.recentPreview).toBeUndefined();
+        this.view.createPostPreview($.Event());
+        expect(this.view.recentPreview).toBeDefined();
+      });
+
+      it("calls modifyPostPreview to apply the preview style to the post", function(){
+        spyOn(this.view, "modifyPostPreview");
+        this.view.createPostPreview($.Event());
+        expect(this.view.modifyPostPreview).toHaveBeenCalled();
+      });
+    });
+
     describe('#setText', function() {
       it("sets the content text", function() {
         this.view.setText("FOO bar");
@@ -315,26 +351,26 @@ describe("app.views.Publisher", function() {
     });
 
     it("initializes with 'all_aspects'", function(){
-      expect($("#publisher #visibility-icon")).not.toHaveClass("globe");
-      expect($("#publisher #visibility-icon")).toHaveClass("lock");
+      expect($("#publisher #visibility-icon")).not.toHaveClass("entypo-globe");
+      expect($("#publisher #visibility-icon")).toHaveClass("entypo-lock");
     });
 
     describe("toggles the selected entry visually", function(){
       it("click on the first aspect", function(){
         this.view.$(".aspect_dropdown li.aspect_selector:first").click();
-        expect($("#publisher #visibility-icon")).not.toHaveClass("globe");
-        expect($("#publisher #visibility-icon")).toHaveClass("lock");
+        expect($("#publisher #visibility-icon")).not.toHaveClass("entypo-globe");
+        expect($("#publisher #visibility-icon")).toHaveClass("entypo-lock");
       });
 
       it("click on public", function(){
         this.view.$(".aspect_dropdown li.public").click();
-        expect($("#publisher #visibility-icon")).toHaveClass("globe");
-        expect($("#publisher #visibility-icon")).not.toHaveClass("lock");
+        expect($("#publisher #visibility-icon")).toHaveClass("entypo-globe");
+        expect($("#publisher #visibility-icon")).not.toHaveClass("entypo-lock");
       });
 
       it("click on 'all aspects'", function(){
-        expect($("#publisher #visibility-icon")).not.toHaveClass("globe");
-        expect($("#publisher #visibility-icon")).toHaveClass("lock");
+        expect($("#publisher #visibility-icon")).not.toHaveClass("entypo-globe");
+        expect($("#publisher #visibility-icon")).toHaveClass("entypo-lock");
       });
     });
 

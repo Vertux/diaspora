@@ -24,7 +24,7 @@
             <li class="dropdown" id="notification-dropdown">
               <a id="notifications-link" href="/notifications" title="{{t "header.notifications"}}" class="nav-badge" role="button" data-toggle="dropdown" aria-expanded="false" data-target="#">
                 <span class="hidden-xs hidden-sm">
-                  <i class="entypo bell"></i>
+                  <i class="entypo-bell"></i>
                 </span>
                 <span class="visible-xs-inline visible-sm-inline">
                   {{t "header.notifications"}}
@@ -63,7 +63,7 @@
             <li>
               <a id="conversations-link" href="/conversations" title="{{t "header.conversations"}}" class="nav-badge">
                 <span class="hidden-xs hidden-sm">
-                  <i class="entypo mail"></i>
+                  <i class="entypo-mail"></i>
                 </span>
                 <span class="visible-xs-inline visible-sm-inline">
                   {{t "header.conversations"}}
@@ -92,7 +92,7 @@
                 <li><a href="/user/edit">{{t "header.settings"}}</a></li>
                 <li><a href="/help">{{t "header.help"}}</a></li>
                 {{#if current_user.admin}}
-                  <li><a href="/admins/user_search">{{t "header.admin"}}</a></li>
+                  <li><a href="/admins/dashboard">{{t "header.admin"}}</a></li>
                 {{/if}}
                 <li><a href="/users/sign_out" data-method="delete">{{t "header.log_out"}}</a></li>
               </ul>
