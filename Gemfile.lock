@@ -502,8 +502,7 @@ GEM
       pry (~> 0.10)
     pry-debundle (0.8)
       pry
-    puma (2.11.3)
-      rack (>= 1.1, < 2.0)
+    puma (2.13.4)
     quiet_assets (1.1.0)
       railties (>= 3.1, < 5.0)
     rack (1.6.4)
