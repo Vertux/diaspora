@@ -252,14 +252,14 @@ ActiveRecord::Schema.define(version: 20150724152052) do
 
   create_table "participations", force: :cascade do |t|
     t.string   "guid",                    limit: 255
-    t.integer  "target_id",               limit: 4
-    t.string   "target_type",             limit: 60,                null: false
-    t.integer  "author_id",               limit: 4
-    t.text     "author_signature",        limit: 65535
-    t.text     "parent_author_signature", limit: 65535
-    t.datetime "created_at",                                        null: false
-    t.datetime "updated_at",                                        null: false
-    t.integer  "count",                   limit: 4,     default: 1, null: false
+    t.integer  "target_id"
+    t.string   "target_type",             limit: 60,              null: false
+    t.integer  "author_id"
+    t.text     "author_signature"
+    t.text     "parent_author_signature"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "count",                               default: 1, null: false
   end
 
   add_index "participations", ["guid"], name: "index_participations_on_guid", using: :btree
@@ -565,7 +565,7 @@ ActiveRecord::Schema.define(version: 20150724152052) do
     t.string   "exported_photos_file"
     t.datetime "exported_photos_at"
     t.boolean  "exporting_photos",                               default: false
-    t.string   "color_theme",                        limit: 255
+    t.string   "color_theme"
   end
 
   add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", unique: true, using: :btree
