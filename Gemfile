@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem "rails", "4.2.3"
+gem "rails", "4.2.4"
 
 # Legacy Rails features, remove me!
 # responders (class level)
@@ -12,7 +12,7 @@ gem 'puma', :require => false
 
 # Federation
 
-gem "diaspora_federation-rails", "0.0.3"
+gem "diaspora_federation-rails", "0.0.6"
 
 # API and JSON
 
@@ -150,8 +150,8 @@ gem "omniauth-wordpress", "0.2.2"
 gem "active_model_serializers", "0.9.3"
 
 # XMPP chat dependencies
-gem "diaspora-vines",             "~> 0.1.27"
-gem "rails-assets-diaspora_jsxc", "~> 0.1.3", source: "https://rails-assets.org"
+gem "diaspora-vines",             "~> 0.2.0.develop"
+gem "rails-assets-diaspora_jsxc", "~> 0.1.4.develop", source: "https://rails-assets.org"
 
 # Tags
 
@@ -236,9 +236,11 @@ group :development do
   # Linters
   gem "jshintrb",       "0.3.0"
   gem "rubocop",        "0.32.1"
+  gem "haml_lint",      "0.13.0"
   gem "pronto",         "0.4.2"
   gem "pronto-jshint",  "0.4.2"
   gem "pronto-rubocop", "0.4.4"
+  gem "pronto-haml",    "0.4.3"
 
   # Preloading environment
 
