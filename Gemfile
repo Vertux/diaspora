@@ -41,7 +41,7 @@ gem "sidetiq", "0.6.3"
 
 # Compression
 
-gem "uglifier", "2.7.1"
+gem "uglifier", "2.7.2"
 
 # Configuration
 
@@ -114,6 +114,7 @@ source "https://rails-assets.org" do
   gem "rails-assets-perfect-scrollbar",             "0.6.4"
   gem "rails-assets-jakobmattsson--jquery-elastic", "1.6.11"
   gem "rails-assets-autosize",                      "3.0.8"
+  gem "rails-assets-blueimp-gallery", "2.16.0"
 end
 
 # Localization
@@ -269,7 +270,7 @@ group :test do
 
   gem "capybara",           "2.4.4"
   gem "database_cleaner" ,  "1.4.1"
-  gem "selenium-webdriver", "2.46.2"
+  gem "selenium-webdriver", "2.47.1"
 
   # General helpers
 

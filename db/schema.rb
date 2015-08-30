@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150731123114) do
+ActiveRecord::Schema.define(version: 20150828132451) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -318,6 +318,7 @@ ActiveRecord::Schema.define(version: 20150731123114) do
   end
 
   add_index "pods", ["checked_at"], name: "index_pods_on_checked_at", using: :btree
+  add_index "pods", ["host"], name: "index_pods_on_host", unique: true, length: {"host"=>190}, using: :btree
   add_index "pods", ["offline_since"], name: "index_pods_on_offline_since", using: :btree
   add_index "pods", ["status"], name: "index_pods_on_status", using: :btree
 
