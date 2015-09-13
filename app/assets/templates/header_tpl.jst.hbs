@@ -16,7 +16,7 @@
             <li>
               <a href="/notifications" title="{{t "header.notifications"}}" class="notifications-link nav-badge">
                 <i class="entypo-bell"></i>
-                <span class="badge {{#unless current_user.notifications_count}} hidden {{/unless}}">
+                <span class="badge badge-important {{#unless current_user.notifications_count}} hidden {{/unless}}">
                   {{current_user.notifications_count}}
                 </span>
               </a>
@@ -24,7 +24,7 @@
             <li>
               <a href="/conversations" title="{{t "header.conversations"}}" class="conversations-link nav-badge">
                 <i class="entypo-mail"></i>
-                <span class="badge {{#unless current_user.unread_messages_count}} hidden {{/unless}}">
+                <span class="badge badge-important {{#unless current_user.unread_messages_count}} hidden {{/unless}}">
                   {{current_user.unread_messages_count}}
                 </span>
               </a>
@@ -43,7 +43,7 @@
             <li class="dropdown" id="notification-dropdown">
               <a id="notifications-link" href="/notifications" title="{{t "header.notifications"}}" class="notifications-link nav-badge hidden-sm hidden-xs" role="button" data-toggle="dropdown" aria-expanded="false" data-target="#">
                 <i class="entypo-bell"></i>
-                <span class="badge {{#unless current_user.notifications_count}} hidden {{/unless}}">
+                <span class="badge badge-important {{#unless current_user.notifications_count}} hidden {{/unless}}">
                   {{current_user.notifications_count}}
                 </span>
               </a>
@@ -76,7 +76,7 @@
             <li>
               <a id="conversations-link" href="/conversations" title="{{t "header.conversations"}}" class="conversations-link nav-badge hidden-sm hidden-xs">
                 <i class="entypo-mail"></i>
-                <span class="badge {{#unless current_user.unread_messages_count}} hidden {{/unless}}">
+                <span class="badge badge-important {{#unless current_user.unread_messages_count}} hidden {{/unless}}">
                   {{current_user.unread_messages_count}}
                 </span>
               </a>
@@ -100,6 +100,8 @@
                 <li><a href="/help">{{t "header.help"}}</a></li>
                 {{#if current_user.admin}}
                   <li><a href="/admins/dashboard">{{t "header.admin"}}</a></li>
+                {{else if current_user.moderator}}
+                   <li><a href="/report">{{t "header.moderator"}}</a></li>
                 {{/if}}
                 <li><a href="/users/sign_out" data-method="delete">{{t "header.log_out"}}</a></li>
               </ul>
@@ -113,6 +115,7 @@
             <input name="utf8" type="hidden" value="✓">
           </form>
         </div>
+      </div>
       </div>
     </div>
   </div>
