@@ -26,11 +26,7 @@ code {
   }
 
 body {
-  background: {
-    image: image-url("mobile/hatched-light.jpg");
-    /* scale background image down for iOS retina display */
-    size: 200px;
-  }
+  background-color: $sidebars-background;
   padding: 0;
 }
 
@@ -406,15 +402,11 @@ h3 {  margin-top: 0; }
 #new_status_message {
   margin: 0;
 
-  fieldset {
-    padding: 10px;
+  .service_icon {
+    cursor: pointer;
 
-    .service_icon {
-      cursor: pointer;
-
-      &.dim {
-        opacity: 0.6;
-      }
+    &.dim {
+      opacity: .6;
     }
   }
 

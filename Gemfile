@@ -128,6 +128,9 @@ gem "rails-i18n",           "4.0.5"
 gem "markerb",             "1.1.0"
 gem "messagebus_ruby_api", "1.0.3"
 
+# Map
+gem "leaflet-rails",       "0.7.4"
+
 # Parsing
 
 gem "nokogiri",          "1.6.6.2"
@@ -242,6 +245,7 @@ group :development do
   gem "pronto-jshint",  "0.4.2"
   gem "pronto-rubocop", "0.4.6"
   gem "pronto-haml",    "0.4.4"
+  gem "pronto-scss",    "0.4.7", require: false
 
   # Preloading environment
 
