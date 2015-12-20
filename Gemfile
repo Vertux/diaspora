@@ -12,7 +12,7 @@ gem 'puma', :require => false
 
 # Federation
 
-gem "diaspora_federation-rails", "0.0.8"
+gem "diaspora_federation-rails", "0.0.9"
 
 # API and JSON
 
@@ -133,7 +133,7 @@ gem "leaflet-rails",       "0.7.4"
 
 # Parsing
 
-gem "nokogiri",          "1.6.6.4"
+gem "nokogiri",          "1.6.7.1"
 gem "redcarpet",         "3.3.3"
 gem "twitter-text",      "1.13.0"
 gem "roxml",             "3.1.6"
@@ -282,6 +282,8 @@ group :test do
   gem "timecop",            "0.8.0"
   gem "webmock",            "1.22.1", require: false
   gem "shoulda-matchers",   "3.0.0"
+
+  gem "diaspora_federation-test", "0.0.9"
 end
 
 group :development, :test do
