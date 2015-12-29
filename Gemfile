@@ -103,7 +103,7 @@ source "https://rails-assets.org" do
   gem "rails-assets-markdown-it--markdown-it-for-inline", "0.1.1"
   gem "rails-assets-markdown-it-sub",                     "1.0.0"
   gem "rails-assets-markdown-it-sup",                     "1.0.0"
-  gem "rails-assets-highlightjs",                         "8.9.1"
+  gem "rails-assets-highlightjs",                         "9.0.0"
   gem "rails-assets-typeahead.js",                        "0.11.1"
 
   # jQuery plugins
@@ -155,7 +155,7 @@ gem "active_model_serializers", "0.9.3"
 
 # XMPP chat dependencies
 gem "diaspora-vines",             "~> 0.2.0.develop"
-gem "rails-assets-diaspora_jsxc", "~> 0.1.4.develop", source: "https://rails-assets.org"
+gem "rails-assets-diaspora_jsxc", "~> 0.1.5.develop", source: "https://rails-assets.org"
 
 # Tags
 
