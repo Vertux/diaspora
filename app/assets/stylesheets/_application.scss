@@ -74,7 +74,6 @@
 
 /* stream */
 @import 'tag';
-@import 'stream-faces';
 @import 'stream';
 @import 'stream_element';
 @import 'comments';
@@ -100,6 +99,7 @@
 
 /* gallery */
 @import 'blueimp-gallery';
+@import 'blueimp-gallery/blueimp-gallery-indicator';
 @import 'gallery';
 
 // settings

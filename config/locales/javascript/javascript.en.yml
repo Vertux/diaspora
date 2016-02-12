@@ -248,7 +248,6 @@ en:
 
       followed_tag:
         title: "#Followed tags"
-        contacts_title: "People who dig these tags"
         add_a_tag: "Add a tag"
         follow: "Follow"
 
@@ -259,6 +258,11 @@ en:
         stop_following_confirm: "Stop following #<%= tag %>?"
         follow_error: "Couldn’t follow #<%= tag %> :("
         stop_following_error: "Couldn’t stop following #<%= tag %> :("
+      
+      reactions:
+        zero: "<%= count%> reactions"
+        one: "<%= count%> reaction"
+        other: "<%= count%> reactions"
 
     header:
       home: "Home"
