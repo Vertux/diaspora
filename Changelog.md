@@ -108,6 +108,7 @@ before.
 * Adjusted Facebook integration for a successful review [#6778](https://github.com/diaspora/diaspora/pull/6778)
 * Redirect to the sign-in page instead of the stream on account deletion [#6784](https://github.com/diaspora/diaspora/pull/6784)
 * Removed own unicorn killer by a maintained third-party gem [#6792](https://github.com/diaspora/diaspora/pull/6792)
+* Removed deprecated `REDISTOGO_URL` environment variable [#6863](https://github.com/diaspora/diaspora/pull/6863)
 
 ## Bug fixes
 * Destroy Participation when removing interactions with a post [#5852](https://github.com/diaspora/diaspora/pull/5852)
@@ -155,9 +156,17 @@ before.
 
 ## Refactor
 
+* Removed the publisher from a user's photo stream due to various issues [#6851](https://github.com/diaspora/diaspora/pull/6851)
+
 ## Bug fixes
 
 ## Features
+
+# 0.5.9.1
+
+Update Nokogiri to 1.6.8, which in turn updates libxml2 to 2.9.4 and libxslt to 1.1.29,
+addressing a range of security issues. See https://groups.google.com/forum/#!topic/ruby-security-ann/RCHyF5K9Lbc
+for more details.
 
 # 0.5.9.0
 
