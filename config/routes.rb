@@ -232,6 +232,7 @@ Diaspora::Application.routes.draw do
 
   # Startpage
   root :to => redirect('/stream')
+  get "podmin", to: "home#podmin"
 
   api_version(module: "Api::V0", path: {value: "api/v0"}, default: true) do
     match "user", to: "users#show", via: %i(get post)

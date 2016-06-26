@@ -12,7 +12,7 @@ gem 'puma', :require => false
 
 # Federation
 
-gem "diaspora_federation-rails", "0.0.13"
+gem "diaspora_federation-rails", "0.1.0"
 
 # API and JSON
 
@@ -135,7 +135,6 @@ gem "leaflet-rails",       "0.7.7"
 gem "nokogiri",          "1.6.8"
 gem "redcarpet",         "3.3.4"
 gem "twitter-text",      "1.13.4"
-gem "roxml",             "3.1.6"
 gem "ruby-oembed",       "0.10.1"
 gem "open_graph_reader", "0.6.1"
 
@@ -233,10 +232,10 @@ end
 
 group :development do
   # Automatic test runs
-  gem "guard-cucumber", "2.1.2"
-  gem "guard-rspec",    "4.7.2"
-  gem "guard-rubocop",  "1.2.0"
   gem "guard",          "2.14.0", require: false
+  gem "guard-cucumber", "2.1.2", require: false
+  gem "guard-rspec",    "4.7.2", require: false
+  gem "guard-rubocop",  "1.2.0", require: false
   gem "rb-fsevent",     "0.9.7", require: false
   gem "rb-inotify",     "0.9.7", require: false
 
@@ -249,9 +248,6 @@ group :development do
   gem "pronto-haml",    "0.6.0"
   gem "pronto-scss",    "0.6.0", require: false
 
-  # We need to use a fork of eslintrb until https://github.com/zendesk/eslintrb/pull/7 is merged
-  gem "eslintrb",       github: "denschub/eslintrb", ref: "8e6eec682909ae5dabb2609b3ac6331f128cf539"
-
   # Preloading environment
 
   gem "spring", "1.7.1"
@@ -260,7 +256,6 @@ group :development do
 
   # Debugging
   gem "pry"
-  gem "pry-debundle"
   gem "pry-byebug"
 
   # test coverage
@@ -280,7 +275,7 @@ group :test do
 
   gem "capybara",           "2.7.1"
   gem "database_cleaner",   "1.5.3"
-  gem "selenium-webdriver", "2.47.1"
+  gem "poltergeist",        "1.9.0"
 
   gem "cucumber-api-steps", "0.13", require: false
   gem "json_spec", "1.1.4"
@@ -292,7 +287,7 @@ group :test do
   gem "webmock",            "2.1.0", require: false
   gem "shoulda-matchers",   "3.1.1"
 
-  gem "diaspora_federation-test", "0.0.13"
+  gem "diaspora_federation-test", "0.1.0"
 end
 
 group :development, :test do

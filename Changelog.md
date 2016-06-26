@@ -109,6 +109,9 @@ before.
 * Redirect to the sign-in page instead of the stream on account deletion [#6784](https://github.com/diaspora/diaspora/pull/6784)
 * Removed own unicorn killer by a maintained third-party gem [#6792](https://github.com/diaspora/diaspora/pull/6792)
 * Removed deprecated `REDISTOGO_URL` environment variable [#6863](https://github.com/diaspora/diaspora/pull/6863)
+* Use Poltergeist instead of Selenium [#6768](https://github.com/diaspora/diaspora/pull/6768)
+* Redesigned the landing page and added dedicated notes for podmins [#6268](https://github.com/diaspora/diaspora/pull/6268)
+* Moved the entire federation implementation into its own gem. 🎉 [#6873](https://github.com/diaspora/diaspora/pull/6873)
 
 ## Bug fixes
 * Destroy Participation when removing interactions with a post [#5852](https://github.com/diaspora/diaspora/pull/5852)
@@ -152,15 +155,20 @@ before.
 * Add links to the single post view of the related post to photos in the photo stream [#6621](https://github.com/diaspora/diaspora/pull/6621)
 * Add a note for people with disabled JavaScript [#6777](https://github.com/diaspora/diaspora/pull/6777)
 
+# 0.5.11.0
+
+## Refactor
+
+## Bug fixes
+
+## Features
+
 # 0.5.10.0
 
 ## Refactor
 
 * Removed the publisher from a user's photo stream due to various issues [#6851](https://github.com/diaspora/diaspora/pull/6851)
-
-## Bug fixes
-
-## Features
+* Don't implicitly ignore missing templateName in app.views.Base [#6877](https://github.com/diaspora/diaspora/pull/6877)
 
 # 0.5.9.1
 
