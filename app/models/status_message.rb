@@ -28,7 +28,6 @@ class StatusMessage < Post
   attr_accessor :oembed_url
   attr_accessor :open_graph_url
 
-  before_create :filter_mentions
   after_create :create_mentions
   after_commit :queue_gather_oembed_data, :on => :create, :if => :contains_oembed_url_in_text?
   after_commit :queue_gather_open_graph_data, :on => :create, :if => :contains_open_graph_url_in_text?
@@ -95,10 +94,6 @@ class StatusMessage < Post
     mentioned_people.include? person
   end
 
-  def notify_person(person)
-    self.mentions.where(:person_id => person.id).first.try(:notify_recipient)
-  end
-
   def comment_email_subject
     message.title
   end
@@ -150,23 +145,9 @@ class StatusMessage < Post
     end
   end
 
-  def filter_mentions
-    return if self.public? || self.aspects.empty?
-
-    author_usr = self.author.try(:owner)
-    aspect_ids = self.aspects.map(&:id)
-
-    self.raw_message = Diaspora::Mentionable.filter_for_aspects(self.raw_message, author_usr, *aspect_ids)
-  end
-
   private
   def self.tag_stream(tag_ids)
     joins(:taggings).where('taggings.tag_id IN (?)', tag_ids)
-  end
-
-  def after_parse
-    # Make sure already received photos don't invalidate the model
-    self.photos = photos.select(&:valid?)
   end
 end
 

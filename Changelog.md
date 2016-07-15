@@ -132,6 +132,8 @@ before.
 * Fix typeahead for non-latin characters [#6741](https://github.com/diaspora/diaspora/pull/6741)
 * Fix upload size error on mobile [#6803](https://github.com/diaspora/diaspora/pull/6803)
 * Connection tester handles invalid NodeInfo implementations [#6890](https://github.com/diaspora/diaspora/pull/6890)
+* Do not allow to change email to an already used one [#6905](https://github.com/diaspora/diaspora/pull/6905)
+* Correctly filter mentions on the server side [#6902](https://github.com/diaspora/diaspora/pull/6902)
 
 ## Features
 * Support color themes [#6033](https://github.com/diaspora/diaspora/pull/6033)
@@ -163,6 +165,10 @@ before.
 ## Bug fixes
 
 ## Features
+
+# 0.5.10.1
+
+We made a mistake and removed `mysql2` from the `Gemfile.lock` in a recent gem update. Since this could cause some issues for some installations, we decided to release a hotfix.
 
 # 0.5.10.0
 
