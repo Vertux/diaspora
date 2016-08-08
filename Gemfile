@@ -233,7 +233,7 @@ group :development do
   # Automatic test runs
   gem "guard",          "2.14.0", require: false
   gem "guard-cucumber", "2.1.2", require: false
-  gem "guard-rspec",    "4.7.2", require: false
+  gem "guard-rspec",    "4.7.3", require: false
   gem "guard-rubocop",  "1.2.0", require: false
   gem "rb-fsevent",     "0.9.7", require: false
   gem "rb-inotify",     "0.9.7", require: false
@@ -241,11 +241,11 @@ group :development do
   # Linters
   gem "rubocop",        "0.40.0"
   gem "haml_lint",      "0.17.1"
-  gem "pronto",         "0.6.0"
-  gem "pronto-eslint",  "0.6.1"
-  gem "pronto-rubocop", "0.6.2"
-  gem "pronto-haml",    "0.6.0"
-  gem "pronto-scss",    "0.6.0", require: false
+  gem "pronto",         "0.7.0"
+  gem "pronto-eslint",  "0.7.0"
+  gem "pronto-rubocop", "0.7.0"
+  gem "pronto-haml",    "0.7.0"
+  gem "pronto-scss",    "0.7.0", require: false
 
   # Preloading environment
 
@@ -294,7 +294,7 @@ end
 
 group :development, :test do
   # RSpec (unit tests, some integration tests)
-  gem "rspec-rails", "3.4.2"
+  gem "rspec-rails", "3.5.1"
 
   # Cucumber (integration tests)
   gem "cucumber-rails", "1.4.3", require: false

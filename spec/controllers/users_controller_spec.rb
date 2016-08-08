@@ -5,6 +5,8 @@
 require 'spec_helper'
 
 describe UsersController, :type => :controller do
+  include_context :gon
+
   before do
     @user = alice
     sign_in :user, @user
@@ -61,7 +63,7 @@ describe UsersController, :type => :controller do
     it 'renders xml if atom is requested' do
       sm = FactoryGirl.create(:status_message, :public => true, :author => @user.person)
       get :public, :username => @user.username, :format => :atom
-      expect(response.body).to include(sm.raw_message)
+      expect(response.body).to include(sm.text)
     end
 
     it 'renders xml if atom is requested with clickalbe urls' do
@@ -77,7 +79,7 @@ describe UsersController, :type => :controller do
     it 'includes reshares in the atom feed' do
       reshare = FactoryGirl.create(:reshare, :author => @user.person)
       get :public, :username => @user.username, :format => :atom
-      expect(response.body).to include reshare.root.raw_message
+      expect(response.body).to include reshare.root.text
     end
 
     it 'do not show reshares in atom feed if origin post is deleted' do
@@ -318,6 +320,20 @@ describe UsersController, :type => :controller do
     it 'does not fail miserably on mobile' do
       get :getting_started, :format => :mobile
       expect(response).to be_success
+    end
+
+    context "with inviter" do
+      [bob, eve].each do |inviter|
+        sharing = !alice.contact_for(inviter.person).nil?
+
+        context sharing ? "when sharing" : "when don't share" do
+          it "preloads data using gon for the aspect memberships dropdown" do
+            alice.invited_by = inviter
+            get :getting_started
+            expect_gon_preloads_for_aspect_membership_dropdown(:inviter, sharing)
+          end
+        end
+      end
     end
   end
 end
