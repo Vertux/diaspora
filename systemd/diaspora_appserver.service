@@ -7,7 +7,7 @@ StopWhenUnneeded=true
 User=diaspora
 WorkingDirectory=/home/diaspora/diaspora
 Environment=RAILS_ENV=production
-ExecStart=/usr/bin/chruby-exec 2.2 -- bin/bundle exec puma -b unix:///var/run/diaspora/diaspora.sock -e $RAILS_ENV
+ExecStart=/usr/bin/chruby-exec 2.3 -- bin/bundle exec puma -b unix:///var/run/diaspora/diaspora.sock -e $RAILS_ENV
 Restart=always
 CPUAccounting=true
 MemoryAccounting=true
