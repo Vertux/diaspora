@@ -12,7 +12,7 @@ gem 'puma', :require => false
 
 # Federation
 
-gem "diaspora_federation-rails", "0.1.2"
+gem "diaspora_federation-rails", "0.1.3"
 
 # API and JSON
 
@@ -95,7 +95,7 @@ gem "js_image_paths",    "0.1.0"
 gem "js-routes",         "1.2.6"
 
 source "https://rails-assets.org" do
-  gem "rails-assets-jquery",                              "1.12.0" # Should be kept in sync with jquery-rails
+  gem "rails-assets-jquery",                              "2.2.1" # Should be kept in sync with jquery-rails
 
   gem "rails-assets-markdown-it",                         "6.0.5"
   gem "rails-assets-markdown-it-hashtag",                 "0.4.0"
@@ -105,7 +105,6 @@ source "https://rails-assets.org" do
   gem "rails-assets-markdown-it-sub",                     "1.0.0"
   gem "rails-assets-markdown-it-sup",                     "1.0.0"
   gem "rails-assets-highlightjs",                         "9.4.0"
-  gem "rails-assets-typeahead.js",                        "0.11.1"
 
   # jQuery plugins
 
@@ -286,7 +285,7 @@ group :test do
   gem "webmock",            "2.1.0", require: false
   gem "shoulda-matchers",   "3.1.1"
 
-  gem "diaspora_federation-test", "0.1.2"
+  gem "diaspora_federation-test", "0.1.3"
 
   # Coverage
   gem 'coveralls', require: false

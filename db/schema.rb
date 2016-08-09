@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160618033455) do
+ActiveRecord::Schema.define(version: 20160807212443) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -103,12 +103,21 @@ ActiveRecord::Schema.define(version: 20160618033455) do
     t.datetime "created_at",             null: false
   end
 
+  create_table "comment_signatures", id: false, force: :cascade do |t|
+    t.integer "comment_id",         limit: 4,     null: false
+    t.text    "author_signature",   limit: 65535, null: false
+    t.integer "signature_order_id", limit: 4,     null: false
+    t.text    "additional_data",    limit: 65535
+  end
+
+  add_index "comment_signatures", ["comment_id"], name: "index_comment_signatures_on_comment_id", unique: true, using: :btree
+  add_index "comment_signatures", ["signature_order_id"], name: "comment_signatures_signature_orders_id_fk", using: :btree
+
   create_table "comments", force: :cascade do |t|
     t.text     "text",                                          null: false
     t.integer  "commentable_id",                                null: false
     t.integer  "author_id",                                     null: false
     t.string   "guid",             limit: 255,                  null: false
-    t.text     "author_signature"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "likes_count",                  default: 0,      null: false
@@ -185,12 +194,21 @@ ActiveRecord::Schema.define(version: 20160618033455) do
   add_index "invitations", ["recipient_id"], name: "index_invitations_on_recipient_id", using: :btree
   add_index "invitations", ["sender_id"], name: "index_invitations_on_sender_id", using: :btree
 
+  create_table "like_signatures", id: false, force: :cascade do |t|
+    t.integer "like_id",            limit: 4,     null: false
+    t.text    "author_signature",   limit: 65535, null: false
+    t.integer "signature_order_id", limit: 4,     null: false
+    t.text    "additional_data",    limit: 65535
+  end
+
+  add_index "like_signatures", ["like_id"], name: "index_like_signatures_on_like_id", unique: true, using: :btree
+  add_index "like_signatures", ["signature_order_id"], name: "like_signatures_signature_orders_id_fk", using: :btree
+
   create_table "likes", force: :cascade do |t|
     t.boolean  "positive",                     default: true
     t.integer  "target_id"
     t.integer  "author_id"
     t.string   "guid",             limit: 255
-    t.text     "author_signature"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "target_type",      limit: 60,                 null: false
@@ -392,12 +410,21 @@ ActiveRecord::Schema.define(version: 20160618033455) do
   add_index "poll_answers", ["guid"], name: "index_poll_answers_on_guid", unique: true, using: :btree
   add_index "poll_answers", ["poll_id"], name: "index_poll_answers_on_poll_id", using: :btree
 
+  create_table "poll_participation_signatures", id: false, force: :cascade do |t|
+    t.integer "poll_participation_id", limit: 4,     null: false
+    t.text    "author_signature",      limit: 65535, null: false
+    t.integer "signature_order_id",    limit: 4,     null: false
+    t.text    "additional_data",       limit: 65535
+  end
+
+  add_index "poll_participation_signatures", ["poll_participation_id"], name: "index_poll_participation_signatures_on_poll_participation_id", unique: true, using: :btree
+  add_index "poll_participation_signatures", ["signature_order_id"], name: "poll_participation_signatures_signature_orders_id_fk", using: :btree
+
   create_table "poll_participations", force: :cascade do |t|
     t.integer  "poll_answer_id",               null: false
     t.integer  "author_id",                    null: false
     t.integer  "poll_id",                      null: false
     t.string   "guid",             limit: 255
-    t.text     "author_signature"
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
   end
@@ -421,31 +448,17 @@ ActiveRecord::Schema.define(version: 20160618033455) do
     t.integer  "author_id",                                         null: false
     t.boolean  "public",                            default: false, null: false
     t.string   "guid",                  limit: 255,                 null: false
-    t.boolean  "pending",                           default: false, null: false
     t.string   "type",                  limit: 40,                  null: false
     t.text     "text"
-    t.text     "remote_photo_path"
-    t.string   "remote_photo_name",     limit: 255
-    t.string   "random_string",         limit: 255
-    t.string   "processed_image",       limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "unprocessed_image",     limit: 255
-    t.string   "object_url",            limit: 255
-    t.string   "image_url",             limit: 255
-    t.integer  "image_height"
-    t.integer  "image_width"
     t.string   "provider_display_name", limit: 255
-    t.string   "actor_url",             limit: 255
-    t.string   "objectId",              limit: 255
-    t.string   "status_message_guid",   limit: 255
-    t.integer  "likes_count",                       default: 0
     t.string   "root_guid",             limit: 255
+    t.integer  "likes_count",                       default: 0
     t.integer  "comments_count",                    default: 0
     t.integer  "o_embed_cache_id"
     t.integer  "reshares_count",                    default: 0
     t.datetime "interacted_at"
-    t.string   "frame_name",            limit: 255
     t.string   "facebook_id",           limit: 255
     t.string   "tweet_id",              limit: 255
     t.integer  "open_graph_cache_id"
@@ -555,6 +568,12 @@ ActiveRecord::Schema.define(version: 20160618033455) do
   add_index "share_visibilities", ["shareable_id"], name: "index_post_visibilities_on_post_id", using: :btree
   add_index "share_visibilities", ["user_id"], name: "index_share_visibilities_on_user_id", using: :btree
 
+  create_table "signature_orders", force: :cascade do |t|
+    t.string "order", limit: 255, null: false
+  end
+
+  add_index "signature_orders", ["order"], name: "index_signature_orders_on_order", unique: true, length: {"order"=>191}, using: :btree
+
   create_table "simple_captcha_data", force: :cascade do |t|
     t.string   "key",        limit: 40
     t.string   "value",      limit: 12
@@ -660,6 +679,8 @@ ActiveRecord::Schema.define(version: 20160618033455) do
   add_foreign_key "aspect_visibilities", "aspects", name: "aspect_visibilities_aspect_id_fkey"
   add_foreign_key "authorizations", "o_auth_applications"
   add_foreign_key "authorizations", "users"
+  add_foreign_key "comment_signatures", "comments", name: "comment_signatures_comment_id_fk", on_delete: :cascade
+  add_foreign_key "comment_signatures", "signature_orders", name: "comment_signatures_signature_orders_id_fk"
   add_foreign_key "comments", "people", column: "author_id", name: "comments_author_id_fkey"
   add_foreign_key "contacts", "people", name: "contacts_person_id_fkey"
   add_foreign_key "conversation_visibilities", "conversations", name: "conversation_visibilities_conversation_id_fkey"
@@ -675,6 +696,8 @@ ActiveRecord::Schema.define(version: 20160618033455) do
   add_foreign_key "o_auth_access_tokens", "authorizations"
   add_foreign_key "o_auth_applications", "users"
   add_foreign_key "people", "pods", name: "people_pod_id_fk", on_delete: :cascade
+  add_foreign_key "poll_participation_signatures", "poll_participations", name: "poll_participation_signatures_poll_participation_id_fk", on_delete: :cascade
+  add_foreign_key "poll_participation_signatures", "signature_orders", name: "poll_participation_signatures_signature_orders_id_fk"
   add_foreign_key "posts", "people", column: "author_id", name: "posts_author_id_fkey"
   add_foreign_key "ppid", "o_auth_applications"
   add_foreign_key "ppid", "users"

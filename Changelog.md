@@ -20,7 +20,7 @@ If you set the DB environment variable anywhere, that's no longer necessary.
 
 ## Supported Ruby versions
 
-This release recommends using Ruby 2.2, while retaining Ruby 2.1 as an officially supported version.
+This release recommends using Ruby 2.3, while retaining Ruby 2.1 as an officially supported version.
 Ruby 2.0 is no longer officially supported.
 
 ## Configuration changes
@@ -115,6 +115,9 @@ before.
 * Remove `StatusMessage#raw_message` [#6921](https://github.com/diaspora/diaspora/pull/6921)
 * Extract photo export into a service class [#6922](https://github.com/diaspora/diaspora/pull/6922)
 * Use handlebars template for aspect membership dropdown [#6864](https://github.com/diaspora/diaspora/pull/6864)
+* Extract relayable signatures into their own tables [#6932](https://github.com/diaspora/diaspora/pull/6932)
+* Remove outdated columns from posts table [#6940](https://github.com/diaspora/diaspora/pull/6940)
+* Remove some unused routes [#6781](https://github.com/diaspora/diaspora/pull/6781)
 
 ## Bug fixes
 * Destroy Participation when removing interactions with a post [#5852](https://github.com/diaspora/diaspora/pull/5852)
@@ -138,6 +141,7 @@ before.
 * Do not allow to change email to an already used one [#6905](https://github.com/diaspora/diaspora/pull/6905)
 * Correctly filter mentions on the server side [#6902](https://github.com/diaspora/diaspora/pull/6902)
 * Add aspects to the aspect membership dropdown when creating them on the getting started page [#6864](https://github.com/diaspora/diaspora/pull/6864)
+* Strip markdown from message preview in conversations list [#6923](https://github.com/diaspora/diaspora/pull/6923)
 
 ## Features
 * Support color themes [#6033](https://github.com/diaspora/diaspora/pull/6033)
@@ -165,6 +169,7 @@ before.
 * Add 'Be excellent to each other!' to the sidebar [#6914](https://github.com/diaspora/diaspora/pull/6910)
 * Expose Sidekiq dead queue configuration options
 * Properly support pluralization in timeago strings [#6926](https://github.com/diaspora/diaspora/pull/6926)
+* Return all contacts in people search [#6951](https://github.com/diaspora/diaspora/pull/6951)
 
 # 0.5.11.0
 
