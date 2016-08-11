@@ -59,6 +59,24 @@ wiki](https://wiki.diasporafoundation.org/Integration/Chat#Vines_to_Prosody)
 for more information on how to migrate to Prosody if you've been using Vines
 before.
 
+## Sidekiq queue changes
+
+We've decreased the amount of sidekiq queues from 13 to 5 in PR [#6950](https://github.com/diaspora/diaspora/pull/6950).
+The new queues are organized according to priority for the jobs they will process. When upgrading please make sure to
+empty the sidekiq queues before shutting down the server for an update.
+
+If you run your sidekiq with a custom queue configuration, please make sure to update that for the new queues.
+
+The new queues are: `urgent, high, medium, low, default`.
+
+When you upgrade to the new version, some jobs may persist in the old queues. To ensure that jobs to be processed, launch
+job processing for old queues using command:
+```
+bin/rake migrations:run_legacy_queues
+```
+
+The command will report queues that still have jobs and launch sidekiq process for that queues.
+
 ## Refactor
 * Improve bookmarklet [#5904](https://github.com/diaspora/diaspora/pull/5904)
 * Update listen configuration to listen on unix sockets by default [#5974](https://github.com/diaspora/diaspora/pull/5974)
@@ -78,15 +96,15 @@ before.
 * Replace jquery.autocomplete with typeahead.js [#6293](https://github.com/diaspora/diaspora/pull/6293)
 * Redesign sidebars on stream pages [#6309](https://github.com/diaspora/diaspora/pull/6309)
 * Improve ignored users styling [#6349](https://github.com/diaspora/diaspora/pull/6349)
-* Use Blueimp image gallery instead of lightbox [#6301](https://github.com/diaspora/diaspora/6301)
-* Unify mobile and desktop header design [#6285](https://github.com/diaspora/diaspora/6285)
-* Add white background and box-shadow to stream elements [#6324](https://github.com/diaspora/diaspora/6324)
-* Override Bootstrap list group design [#6345](https://github.com/diaspora/diaspora/6345)
-* Clean up publisher code [#6336](https://github.com/diaspora/diaspora/6336)
+* Use Blueimp image gallery instead of lightbox [#6301](https://github.com/diaspora/diaspora/pull/6301)
+* Unify mobile and desktop header design [#6285](https://github.com/diaspora/diaspora/pull/6285)
+* Add white background and box-shadow to stream elements [#6324](https://github.com/diaspora/diaspora/pull/6324)
+* Override Bootstrap list group design [#6345](https://github.com/diaspora/diaspora/pull/6345)
+* Clean up publisher code [#6336](https://github.com/diaspora/diaspora/pull/6336)
 * Port conversations to new design [#6431](https://github.com/diaspora/diaspora/pull/6431)
 * Hide cancel button in publisher on small screens [#6435](https://github.com/diaspora/diaspora/pull/6435)
 * Replace mobile background with color [#6415](https://github.com/diaspora/diaspora/pull/6415)
-* Port flash messages to backbone [#6395](https://github.com/diaspora/diaspora/6395)
+* Port flash messages to backbone [#6395](https://github.com/diaspora/diaspora/pull/6395)
 * Change login/registration/forgot password button color [#6504](https://github.com/diaspora/diaspora/pull/6504)
 * A note regarding ignoring users was added to the failure messages on commenting/liking [#6646](https://github.com/diaspora/diaspora/pull/6646)
 * Replace sidetiq with sidekiq-cron [#6616](https://github.com/diaspora/diaspora/pull/6616)
@@ -118,12 +136,13 @@ before.
 * Extract relayable signatures into their own tables [#6932](https://github.com/diaspora/diaspora/pull/6932)
 * Remove outdated columns from posts table [#6940](https://github.com/diaspora/diaspora/pull/6940)
 * Remove some unused routes [#6781](https://github.com/diaspora/diaspora/pull/6781)
+* Consolidate sidekiq queues [#6950](https://github.com/diaspora/diaspora/pull/6950)
 
 ## Bug fixes
 * Destroy Participation when removing interactions with a post [#5852](https://github.com/diaspora/diaspora/pull/5852)
 * Improve accessibility of a couple pages [#6227](https://github.com/diaspora/diaspora/pull/6227)
 * Capitalize "Powered by diaspora" [#6254](https://github.com/diaspora/diaspora/pull/6254)
-* Display username and avatar for NSFW posts in mobile view [#6245](https://github.com/diaspora/diaspora/6245)
+* Display username and avatar for NSFW posts in mobile view [#6245](https://github.com/diaspora/diaspora/pull/6245)
 * Prevent multiple comment boxes on mobile [#6363](https://github.com/diaspora/diaspora/pull/6363)
 * Correctly display location in post preview [#6429](https://github.com/diaspora/diaspora/pull/6429)
 * Do not fail when submitting an empty comment in the mobile view [#6543](https://github.com/diaspora/diaspora/pull/6543)

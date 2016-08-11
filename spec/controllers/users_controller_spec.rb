@@ -9,7 +9,7 @@ describe UsersController, :type => :controller do
 
   before do
     @user = alice
-    sign_in :user, @user
+    sign_in @user, scope: :user
     allow(@controller).to receive(:current_user).and_return(@user)
   end
 
@@ -118,11 +118,6 @@ describe UsersController, :type => :controller do
       expect(response).to render_template('edit')
     end
 
-    it 'responds with a 204 on a js request' do
-      put :update, @params.merge(:format => :js)
-      expect(response.status).to eq(204)
-    end
-
     describe 'password updates' do
       let(:password_params) do
         {:current_password => 'bluepin7',
@@ -186,7 +181,7 @@ describe UsersController, :type => :controller do
       end
 
       it 'informs the user about failure' do
-        put(:update, :id => @user.id, :user => { :email => "my@newemailcom"})
+        put(:update, id: @user.id, user: {email: "mynewemailcom"})
         expect(request.flash[:error]).to eql(I18n.t('users.update.unconfirmed_email_not_changed'))
         expect(request.flash[:notice]).to be_blank
       end

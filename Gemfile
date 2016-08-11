@@ -22,9 +22,9 @@ gem "json-schema", "2.6.2"
 
 # Authentication
 
-gem "devise", "3.5.6"
+gem "devise", "4.2.0"
 gem "devise_lastseenable", "0.0.6"
-gem "devise-token_authenticatable", "0.4.6"
+gem "devise-token_authenticatable", "0.5.2"
 
 # Captcha
 
@@ -100,7 +100,7 @@ source "https://rails-assets.org" do
   gem "rails-assets-markdown-it",                         "6.0.5"
   gem "rails-assets-markdown-it-hashtag",                 "0.4.0"
   gem "rails-assets-markdown-it-diaspora-mention",        "0.4.0"
-  gem "rails-assets-markdown-it-sanitizer",               "0.4.1"
+  gem "rails-assets-markdown-it-sanitizer",               "0.4.2"
   gem "rails-assets-markdown-it--markdown-it-for-inline", "0.1.1"
   gem "rails-assets-markdown-it-sub",                     "1.0.0"
   gem "rails-assets-markdown-it-sup",                     "1.0.0"
