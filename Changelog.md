@@ -189,14 +189,12 @@ The command will report queues that still have jobs and launch sidekiq process f
 * Expose Sidekiq dead queue configuration options
 * Properly support pluralization in timeago strings [#6926](https://github.com/diaspora/diaspora/pull/6926)
 * Return all contacts in people search [#6951](https://github.com/diaspora/diaspora/pull/6951)
+* Make screenreaders read alerts [#6973](https://github.com/diaspora/diaspora/pull/6973)
+* Display message when there are no posts in a stream [#6974](https://github.com/diaspora/diaspora/pull/6974)
 
-# 0.5.11.0
+# 0.5.10.2
 
-## Refactor
-
-## Bug fixes
-
-## Features
+Update to Rails 4.2.7.1 which fixes [CVE-2016-6316](https://groups.google.com/forum/#!topic/ruby-security-ann/8B2iV2tPRSE) and [CVE-2016-6317](https://groups.google.com/forum/#!topic/ruby-security-ann/WccgKSKiPZA).
 
 # 0.5.10.1
 
