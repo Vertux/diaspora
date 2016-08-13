@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160807212443) do
+ActiveRecord::Schema.define(version: 20160810230114) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -175,23 +175,6 @@ ActiveRecord::Schema.define(version: 20160807212443) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "invitations", force: :cascade do |t|
-    t.text     "message"
-    t.integer  "sender_id"
-    t.integer  "recipient_id"
-    t.integer  "aspect_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "service",      limit: 255
-    t.string   "identifier",   limit: 255
-    t.boolean  "admin",                    default: false
-    t.string   "language",     limit: 255, default: "en"
-  end
-
-  add_index "invitations", ["aspect_id"], name: "index_invitations_on_aspect_id", using: :btree
-  add_index "invitations", ["recipient_id"], name: "index_invitations_on_recipient_id", using: :btree
-  add_index "invitations", ["sender_id"], name: "index_invitations_on_sender_id", using: :btree
 
   create_table "like_signatures", id: false, force: :cascade do |t|
     t.integer "like_id",            null: false
@@ -619,15 +602,13 @@ ActiveRecord::Schema.define(version: 20160807212443) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "username",                           limit: 255
+    t.string   "username",                           limit: 255,                   null: false
     t.text     "serialized_private_key"
     t.boolean  "getting_started",                                default: true,  null: false
     t.boolean  "disable_mail",                                   default: false, null: false
     t.string   "language",                           limit: 255
     t.string   "email",                              limit: 255, default: "",    null: false
     t.string   "encrypted_password",                 limit: 128, default: "",    null: false
-    t.string   "invitation_token",                   limit: 60
-    t.datetime "invitation_sent_at"
     t.string   "reset_password_token",               limit: 255
     t.datetime "remember_created_at"
     t.integer  "sign_in_count",                                  default: 0
@@ -637,11 +618,10 @@ ActiveRecord::Schema.define(version: 20160807212443) do
     t.string   "last_sign_in_ip",                    limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "invitation_service",                 limit: 127
-    t.string   "invitation_identifier",              limit: 127
-    t.integer  "invitation_limit"
-    t.integer  "invited_by_id"
-    t.string   "invited_by_type",                    limit: 255
+(??)    t.string   "invitation_service",                 limit: 127
+(??)    t.string   "invitation_identifier",              limit: 127
+(??)    t.integer  "invitation_limit",                   limit: 4
+(??)    t.integer  "invited_by_id",                      limit: 4
     t.string   "authentication_token",               limit: 30
     t.datetime "locked_at"
     t.string   "unconfirmed_email",                  limit: 255
@@ -665,8 +645,6 @@ ActiveRecord::Schema.define(version: 20160807212443) do
 
   add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", unique: true, using: :btree
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
-  add_index "users", ["invitation_service", "invitation_identifier"], name: "index_users_on_invitation_service_and_invitation_identifier", unique: true, using: :btree
-  add_index "users", ["invitation_token"], name: "index_users_on_invitation_token", using: :btree
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
   add_foreign_key "aspect_memberships", "aspects", name: "aspect_memberships_aspect_id_fkey"
@@ -682,8 +660,6 @@ ActiveRecord::Schema.define(version: 20160807212443) do
   add_foreign_key "conversation_visibilities", "people", name: "conversation_visibilities_person_id_fkey"
   add_foreign_key "conversations", "people", column: "author_id", name: "conversations_author_id_fkey"
   add_foreign_key "id_tokens", "authorizations"
-  add_foreign_key "invitations", "users", column: "recipient_id", name: "invitations_recipient_id_fkey"
-  add_foreign_key "invitations", "users", column: "sender_id", name: "invitations_sender_id_fkey"
   add_foreign_key "like_signatures", "likes", name: "like_signatures_like_id_fk", on_delete: :cascade
   add_foreign_key "like_signatures", "signature_orders", name: "like_signatures_signature_orders_id_fk"
   add_foreign_key "likes", "people", column: "author_id", name: "likes_author_id_fkey"
