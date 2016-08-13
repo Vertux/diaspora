@@ -602,7 +602,7 @@ ActiveRecord::Schema.define(version: 20160810230114) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "username",                           limit: 255,                   null: false
+    t.string   "username",                                                       null: false
     t.text     "serialized_private_key"
     t.boolean  "getting_started",                                default: true,  null: false
     t.boolean  "disable_mail",                                   default: false, null: false
@@ -618,10 +618,7 @@ ActiveRecord::Schema.define(version: 20160810230114) do
     t.string   "last_sign_in_ip",                    limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-(??)    t.string   "invitation_service",                 limit: 127
-(??)    t.string   "invitation_identifier",              limit: 127
-(??)    t.integer  "invitation_limit",                   limit: 4
-(??)    t.integer  "invited_by_id",                      limit: 4
+    t.integer  "invited_by_id"
     t.string   "authentication_token",               limit: 30
     t.datetime "locked_at"
     t.string   "unconfirmed_email",                  limit: 255
@@ -644,7 +641,7 @@ ActiveRecord::Schema.define(version: 20160810230114) do
   end
 
   add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", unique: true, using: :btree
-  add_index "users", ["email"], name: "index_users_on_email", using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
   add_foreign_key "aspect_memberships", "aspects", name: "aspect_memberships_aspect_id_fkey"
