@@ -12,7 +12,7 @@ gem 'puma', :require => false
 
 # Federation
 
-gem "diaspora_federation-rails", "0.1.3"
+gem "diaspora_federation-rails", "0.1.4"
 
 # API and JSON
 
@@ -154,7 +154,7 @@ gem "openid_connect", "0.12.0"
 gem "active_model_serializers", "0.9.5"
 
 # XMPP chat dependencies
-gem "diaspora-prosody-config",    "0.0.5"
+gem "diaspora-prosody-config",    "0.0.7"
 gem "rails-assets-diaspora_jsxc", "0.1.5.develop.1", source: "https://rails-assets.org"
 
 # Tags
@@ -286,7 +286,7 @@ group :test do
   gem "webmock",            "2.1.0", require: false
   gem "shoulda-matchers",   "3.1.1"
 
-  gem "diaspora_federation-test", "0.1.3"
+  gem "diaspora_federation-test", "0.1.4"
 
   # Coverage
   gem 'coveralls', require: false

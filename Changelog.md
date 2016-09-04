@@ -1,3 +1,31 @@
+# 0.7.0.0
+
+## Refactor
+
+## Bug fixes
+
+## Features
+
+# 0.6.1.0
+
+## Refactor
+* Indicate proper way to report bugs in the sidebar [#7039](https://github.com/diaspora/diaspora/pull/7039)
+* Remove text color from notification mails and fix sender avatar [#7054](https://github.com/diaspora/diaspora/pull/7054)
+* Make the session cookies HttpOnly again [#7041](https://github.com/diaspora/diaspora/pull/7041)
+* Invalidate sessions with invalid CSRF tokens [#7050](https://github.com/diaspora/diaspora/pull/7050)
+* Liking a post will no longer update its interacted timestamp [#7030](https://github.com/diaspora/diaspora/pull/7030)
+
+## Bug fixes
+* Post comments no longer get collapsed when interacting with a post [#7040](https://github.com/diaspora/diaspora/pull/7040)
+* Closed accounts will no longer show up in the account search [#7042](https://github.com/diaspora/diaspora/pull/7042)
+* Code blocks in conversations no longer overflow the content [#7055](https://github.com/diaspora/diaspora/pull/7055)
+* More buttons in mobile streams are fixed [#7036](https://github.com/diaspora/diaspora/pull/7036)
+
+## Features
+* Deleted comments will be removed when loading more comments [#7045](https://github.com/diaspora/diaspora/pull/7045)
+* The "subscribe" indicator on a post now gets toggled when you like or rehsare a post [#7040](https://github.com/diaspora/diaspora/pull/7040)
+* Add OpenGraph video support [#7043](https://github.com/diaspora/diaspora/pull/7043)
+
 # 0.6.0.0
 
 ## Warning: This release contains long migrations
@@ -142,6 +170,7 @@ The command will report queues that still have jobs and launch sidekiq process f
 * Consolidate sidekiq queues [#6950](https://github.com/diaspora/diaspora/pull/6950)
 * Don't re-render the whole comment stream when adding comments [#6406](https://github.com/diaspora/diaspora/pull/6406)
 * Drop legacy invitation system [#6976](https://github.com/diaspora/diaspora/pull/6976)
+* More consistent and updated meta tags throughout [#6998](https://github.com/diaspora/diaspora/pull/6998)
 
 ## Bug fixes
 * Destroy Participation when removing interactions with a post [#5852](https://github.com/diaspora/diaspora/pull/5852)
@@ -167,6 +196,7 @@ The command will report queues that still have jobs and launch sidekiq process f
 * Add aspects to the aspect membership dropdown when creating them on the getting started page [#6864](https://github.com/diaspora/diaspora/pull/6864)
 * Strip markdown from message preview in conversations list [#6923](https://github.com/diaspora/diaspora/pull/6923)
 * Improve tag stream performance [#6903](https://github.com/diaspora/diaspora/pull/6903)
+* Only show mutual contacts in conversations auto suggestions [#7001](https://github.com/diaspora/diaspora/pull/7001)
 
 ## Features
 * Support color themes [#6033](https://github.com/diaspora/diaspora/pull/6033)
@@ -191,7 +221,7 @@ The command will report queues that still have jobs and launch sidekiq process f
 * Add links to the single post view of the related post to photos in the photo stream [#6621](https://github.com/diaspora/diaspora/pull/6621)
 * Add a note for people with disabled JavaScript [#6777](https://github.com/diaspora/diaspora/pull/6777)
 * Do not include conversation subject in notification mail [#6910](https://github.com/diaspora/diaspora/pull/6910)
-* Add 'Be excellent to each other!' to the sidebar [#6914](https://github.com/diaspora/diaspora/pull/6910)
+* Add 'Be excellent to each other!' to the sidebar [#6914](https://github.com/diaspora/diaspora/pull/6914)
 * Expose Sidekiq dead queue configuration options
 * Properly support pluralization in timeago strings [#6926](https://github.com/diaspora/diaspora/pull/6926)
 * Return all contacts in people search [#6951](https://github.com/diaspora/diaspora/pull/6951)

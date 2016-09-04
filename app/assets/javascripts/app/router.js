@@ -2,35 +2,34 @@
 
 app.Router = Backbone.Router.extend({
   routes: {
-    "activity": "stream",
-    "admin/pods": "adminPods",
-    "admins/dashboard": "adminDashboard",
-    "aspects": "aspects",
-    "commented": "stream",
-    "community_spotlight": "spotlight",
-    "contacts": "contacts",
-    "conversations": "conversations",
-    "followed_tags": "followed_tags",
-    "getting_started": "gettingStarted",
-    "help": "help",
-    "help/": "help",
-    "help/:section": "help",
-    "liked": "stream",
-    "mentions": "stream",
-    "notifications": "notifications",
-    "p/:id": "singlePost",
-    "people": "pageWithAspectMembershipDropdowns",
-    "people/:id": "profile",
-    "people/:id/contacts": "profile",
-    "people/:id/photos": "photos",
-    "posts/:id": "singlePost",
-    "profile/edit": "settings",
-    "public": "stream",
-    "stream": "stream",
-    "tags/:name": "followed_tags",
-    "u/:name": "profile",
-    "user/edit": "settings",
-    "users/sign_up": "registration"
+    "activity(/)": "stream",
+    "admin/pods(/)": "adminPods",
+    "admins/dashboard(/)": "adminDashboard",
+    "aspects(/)": "aspects",
+    "commented(/)": "stream",
+    "community_spotlight(/)": "spotlight",
+    "contacts(/)": "contacts",
+    "conversations(/)": "conversations",
+    "followed_tags(/)": "followed_tags",
+    "getting_started(/)": "gettingStarted",
+    "help(/)": "help",
+    "help/:section(/)": "help",
+    "liked(/)": "stream",
+    "mentions(/)": "stream",
+    "notifications(/)": "notifications",
+    "p/:id(/)": "singlePost",
+    "people(/)": "peopleSearch",
+    "people/:id(/)": "profile",
+    "people/:id/contacts(/)": "profile",
+    "people/:id/photos(/)": "photos",
+    "posts/:id(/)": "singlePost",
+    "profile/edit(/)": "settings",
+    "public(/)": "stream",
+    "stream(/)": "stream",
+    "tags/:name(/)": "followed_tags",
+    "u/:name(/)": "profile",
+    "user/edit(/)": "settings",
+    "users/sign_up(/)": "registration"
   },
 
   initialize: function() {
@@ -138,6 +137,14 @@ app.Router = Backbone.Router.extend({
     new app.views.Notifications({el: "#notifications_container"});
   },
 
+  peopleSearch: function() {
+    this._loadContacts();
+    this.renderAspectMembershipDropdowns($(document));
+    $(".invitations-link").click(function() {
+      app.helpers.showModal("#invitationsModal");
+    });
+  },
+
   photos: function(guid) {
     this._loadContacts();
     this.renderPage(function() {
@@ -213,11 +220,6 @@ app.Router = Backbone.Router.extend({
 
   _loadContacts: function() {
     app.contacts = new app.collections.Contacts(app.parsePreload("contacts"));
-  },
-
-  pageWithAspectMembershipDropdowns: function() {
-    this._loadContacts();
-    this.renderAspectMembershipDropdowns($(document));
   },
 
   renderAspectMembershipDropdowns: function($context) {
