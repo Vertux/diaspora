@@ -298,7 +298,7 @@ ActiveRecord::Schema.define(version: 20161024231443) do
     t.text   "image"
     t.text   "url"
     t.text   "description"
-    t.text   "video_url",   limit: 65535
+    t.text   "video_url"
   end
 
   create_table "participations", force: :cascade do |t|
@@ -354,17 +354,17 @@ ActiveRecord::Schema.define(version: 20161024231443) do
   add_index "photos", ["status_message_guid"], name: "index_photos_on_status_message_guid", using: :btree
 
   create_table "pods", force: :cascade do |t|
-    t.string   "host",            limit: 255,                                 null: false
+    t.string   "host",                                                        null: false
     t.boolean  "ssl"
-    t.datetime "created_at",                                                  null: false
-    t.datetime "updated_at",                                                  null: false
-    t.integer  "status",          limit: 4,   default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "status",                      default: 0
     t.datetime "checked_at",                  default: '1970-01-01 00:00:00'
     t.datetime "offline_since"
-    t.integer  "response_time",   limit: 4,   default: -1
+    t.integer  "response_time",               default: -1
     t.string   "software",        limit: 255
     t.string   "error",           limit: 255
-    t.integer  "port",            limit: 4
+    t.integer  "port"
     t.boolean  "blocked",                     default: false
     t.boolean  "scheduled_check",             default: false,                 null: false
   end
@@ -631,7 +631,7 @@ ActiveRecord::Schema.define(version: 20161024231443) do
     t.datetime "exported_photos_at"
     t.boolean  "exporting_photos",                               default: false
     t.string   "color_theme"
-    t.boolean  "post_default_public",                              default: false
+    t.boolean  "post_default_public",                            default: false
   end
 
   add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", unique: true, using: :btree
