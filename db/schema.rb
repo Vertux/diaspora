@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160901072443) do
+ActiveRecord::Schema.define(version: 20161024231443) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20160901072443) do
     t.boolean  "contacts_visible",             default: true,  null: false
     t.integer  "order_id"
     t.boolean  "chat_enabled",                 default: false
+    t.boolean  "post_default",                 default: true
   end
 
   add_index "aspects", ["user_id", "contacts_visible"], name: "index_aspects_on_user_id_and_contacts_visible", using: :btree
@@ -353,18 +354,19 @@ ActiveRecord::Schema.define(version: 20160901072443) do
   add_index "photos", ["status_message_guid"], name: "index_photos_on_status_message_guid", using: :btree
 
   create_table "pods", force: :cascade do |t|
-    t.string   "host",          limit: 255
+    t.string   "host",            limit: 255,                                 null: false
     t.boolean  "ssl"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "status",                    default: 0
-    t.datetime "checked_at",                default: '1970-01-01 00:00:00'
+    t.datetime "created_at",                                                  null: false
+    t.datetime "updated_at",                                                  null: false
+    t.integer  "status",          limit: 4,   default: 0
+    t.datetime "checked_at",                  default: '1970-01-01 00:00:00'
     t.datetime "offline_since"
-    t.integer  "response_time",             default: -1
-    t.string   "software",      limit: 255
-    t.string   "error",         limit: 255
-    t.integer  "port"
-    t.boolean  "blocked",                   default: false
+    t.integer  "response_time",   limit: 4,   default: -1
+    t.string   "software",        limit: 255
+    t.string   "error",           limit: 255
+    t.integer  "port",            limit: 4
+    t.boolean  "blocked",                     default: false
+    t.boolean  "scheduled_check",             default: false,                 null: false
   end
 
   add_index "pods", ["checked_at"], name: "index_pods_on_checked_at", using: :btree
@@ -533,7 +535,7 @@ ActiveRecord::Schema.define(version: 20160901072443) do
   end
 
   add_index "share_visibilities", ["shareable_id", "shareable_type", "hidden", "user_id"], name: "shareable_and_hidden_and_user_id", using: :btree
-  add_index "share_visibilities", ["shareable_id", "shareable_type", "user_id"], name: "shareable_and_user_id", using: :btree
+  add_index "share_visibilities", ["shareable_id", "shareable_type", "user_id"], name: "shareable_and_user_id", unique: true, using: :btree
   add_index "share_visibilities", ["shareable_id"], name: "index_post_visibilities_on_post_id", using: :btree
   add_index "share_visibilities", ["user_id"], name: "index_share_visibilities_on_user_id", using: :btree
 
@@ -629,6 +631,7 @@ ActiveRecord::Schema.define(version: 20160901072443) do
     t.datetime "exported_photos_at"
     t.boolean  "exporting_photos",                               default: false
     t.string   "color_theme"
+    t.boolean  "post_default_public",                              default: false
   end
 
   add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", unique: true, using: :btree
