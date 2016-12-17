@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161024231443) do
+ActiveRecord::Schema.define(version: 20161107100840) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -201,13 +201,14 @@ ActiveRecord::Schema.define(version: 20161024231443) do
   end
 
   create_table "mentions", force: :cascade do |t|
-    t.integer "post_id",   null: false
-    t.integer "person_id", null: false
+    t.integer "mentions_container_id",   limit: 4,   null: false
+    t.integer "person_id",               limit: 4,   null: false
+    t.string  "mentions_container_type", limit: 255, null: false
   end
 
-  add_index "mentions", ["person_id", "post_id"], name: "index_mentions_on_person_id_and_post_id", unique: true, using: :btree
+  add_index "mentions", ["mentions_container_id", "mentions_container_type"], name: "index_mentions_on_mc_id_and_mc_type", length: {"mentions_container_id"=>nil, "mentions_container_type"=>191}, using: :btree
+  add_index "mentions", ["person_id", "mentions_container_id", "mentions_container_type"], name: "index_mentions_on_person_and_mc_id_and_mc_type", unique: true, length: {"person_id"=>nil, "mentions_container_id"=>nil, "mentions_container_type"=>191}, using: :btree
   add_index "mentions", ["person_id"], name: "index_mentions_on_person_id", using: :btree
-  add_index "mentions", ["post_id"], name: "index_mentions_on_post_id", using: :btree
 
   create_table "messages", force: :cascade do |t|
     t.integer  "conversation_id",              null: false
