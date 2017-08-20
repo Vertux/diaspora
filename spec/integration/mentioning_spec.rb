@@ -51,7 +51,10 @@ module MentioningSpecHelpers
     sign_in user1
     status_msg = nil
     inlined_jobs do
-      post "/status_messages.json", status_message: {text: text_mentioning(mentioned_user)}, aspect_ids: aspects
+      post "/status_messages.json", params: {
+        status_message: {text: text_mentioning(mentioned_user)},
+        aspect_ids:     aspects
+      }
       status_msg = StatusMessage.find(JSON.parse(response.body)["id"])
     end
     status_msg
@@ -73,7 +76,7 @@ module MentioningSpecHelpers
   end
 
   def receive_status_message_via_federation(text, *recipients)
-    entity = FactoryGirl.build(
+    entity = Fabricate(
       :status_message_entity,
       author: remote_raphael.diaspora_handle,
       text:   text,

@@ -5,8 +5,9 @@ module PublishingCukeHelpers
 
   def append_to_publisher(txt)
     status_message_text = find("#status_message_text").value
-    find("#status_message_text").native.send_key(" #{txt}")
-    expect(page).to have_field("status_message[text]", with: "#{status_message_text} #{txt}")
+    fill_in id: "status_message_text", with: "#{status_message_text} #{txt}"
+    # trigger JavaScript event listeners
+    find("#status_message_text").native.send_key(:end)
   end
 
   def upload_file_with_publisher(path)
@@ -94,7 +95,9 @@ module PublishingCukeHelpers
 
   def like_stream_post(post_text)
     within_post(post_text) do
-      find(:css, 'a.like').click
+      action = find(:css, "a.like").text
+      find(:css, "a.like").click
+      expect(find(:css, "a.like")).not_to have_text(action)
     end
   end
 
